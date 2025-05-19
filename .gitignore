@@ -1,0 +1,63 @@
+# ----------------------------------------
+# Node/Vendor dependencies
+# ----------------------------------------
+node_modules/
+vendor/
+
+# ----------------------------------------
+# Log files
+# ----------------------------------------
+*.log
+
+# ----------------------------------------
+# OS / Editor metadata
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ----------------------------------------
+# Environment-specific config
+# ----------------------------------------
+wp-config.php           # local or prod credentials
+wp-config-local.php     # your override file
+php.ini                 # if you keep one for dev
+
+# ----------------------------------------
+# WordPress core (optional)
+# ----------------------------------------
+# If you manage WP core via Git or WP-CLI, uncomment:
+# wp-admin/
+# wp-includes/
+
+# ----------------------------------------
+# Permalinks & rewrites
+# ----------------------------------------
+.htaccess
+sitemap.xml
+sitemap.xml.gz
+
+# ----------------------------------------
+# Caching & backups (auto-generated)
+# ----------------------------------------
+wp-content/advanced-cache.php     # WP Super Cache, etc.
+wp-content/wp-cache-config.php    # WP-Cache plugin
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+wp-content/backup-db/
+wp-content/blogs.dir/
+
+# ----------------------------------------
+# User uploads & media
+# ----------------------------------------
+wp-content/uploads/
+
+# ----------------------------------------
+# Database dumps & archives
+# ----------------------------------------
+*.sql
+dbs*.sql
+*.zip
+*.tar.gz
