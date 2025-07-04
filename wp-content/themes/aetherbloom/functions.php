@@ -266,7 +266,7 @@ class Aetherbloom_Walker_Nav_Menu extends Walker_Nav_Menu {
         $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
 
         $item_output = isset($args->before) ? $args->before : '';
-        $item_output .= '<a' . $attributes . ' class="nav-link">';
+        $item_output .= '<a' . $attributes . '>';
         $item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
         $item_output .= '</a>';
         $item_output .= isset($args->after) ? $args->after : '';
@@ -280,23 +280,59 @@ class Aetherbloom_Walker_Nav_Menu extends Walker_Nav_Menu {
 }
 
 /**
- * Handle contact form submission
+ * Handle newsletter subscription AJAX
+ */
+function aetherbloom_handle_newsletter() {
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'aetherbloom_nonce')) {
+        wp_send_json_error('Security check failed');
+        return;
+    }
+
+    $email = sanitize_email($_POST['email']);
+
+    if (!is_email($email)) {
+        wp_send_json_error('Please enter a valid email address.');
+        return;
+    }
+
+    // Here you would typically integrate with your email service
+    // For now, we'll just store in WordPress options or send an email
+    
+    $to = get_option('admin_email');
+    $subject = 'New Newsletter Subscription';
+    $message = "New newsletter subscription from: " . $email;
+    $headers = array('Content-Type: text/plain; charset=UTF-8');
+
+    $sent = wp_mail($to, $subject, $message, $headers);
+
+    if ($sent) {
+        wp_send_json_success('Thank you for subscribing to our newsletter!');
+    } else {
+        wp_send_json_error('There was an error processing your subscription. Please try again.');
+    }
+}
+add_action('wp_ajax_aetherbloom_newsletter', 'aetherbloom_handle_newsletter');
+add_action('wp_ajax_nopriv_aetherbloom_newsletter', 'aetherbloom_handle_newsletter');
+
+/**
+ * Handle contact form AJAX
  */
 function aetherbloom_handle_contact_form() {
     // Verify nonce
     if (!wp_verify_nonce($_POST['nonce'], 'aetherbloom_nonce')) {
-        wp_die('Security check failed');
+        wp_send_json_error('Security check failed');
+        return;
     }
 
-    // Sanitize form data
     $name = sanitize_text_field($_POST['name']);
     $email = sanitize_email($_POST['email']);
     $company = sanitize_text_field($_POST['company']);
     $message = sanitize_textarea_field($_POST['message']);
 
     // Validate required fields
-    if (empty($name) || empty($email) || empty($company) || empty($message)) {
-        wp_send_json_error('All fields are required.');
+    if (empty($name) || empty($email) || empty($message)) {
+        wp_send_json_error('Please fill in all required fields.');
         return;
     }
 
@@ -305,7 +341,7 @@ function aetherbloom_handle_contact_form() {
         return;
     }
 
-    // Prepare email
+    // Send email
     $to = get_option('admin_email');
     $subject = 'New Contact Form Submission from ' . $name;
     $email_message = "Name: $name\n";
