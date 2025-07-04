@@ -1,0 +1,661 @@
+/* File: /wp-content/themes/aetherbloom/css/pricing-calculator.css */
+
+.calculator-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  padding: 12rem 0 0rem 0;
+}
+
+.calculator-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.calculator-wrapper {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header Section */
+.calculator-header-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem 6rem 4rem;
+  text-align: center;
+}
+
+.calculator-section-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.calculator-section-subtitle {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+/* UK Section Styling */
+.uk-section {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 4rem;
+  min-height: 15vh;
+}
+
+.uk-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.uk-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.uk-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: right;
+}
+
+/* Aetherbloom Section */
+.aetherbloom-section {
+  background: #2d5a4a;
+  color: white;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 4rem;
+  min-height: 15vh;
+}
+
+.aetherbloom-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.aetherbloom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aetherbloom-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: right;
+}
+
+/* Dropdown Styles */
+.calculator-dropdown {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.dropdown-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.dropdown-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.2;
+  margin-right: 1rem;
+}
+
+.aetherbloom-section .dropdown-label {
+  color: #ffffff;
+}
+
+.dropdown-arrow {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.aetherbloom-section .dropdown-arrow {
+  color: #ffffff;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.total-cost {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.aetherbloom-section .total-cost {
+  color: #ffffff;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 320px;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease;
+}
+
+.aetherbloom-section .dropdown-menu {
+  background: #2d5a4a;
+  border-color: #3a6b5a;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-option {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aetherbloom-section .dropdown-option {
+  color: #ffffff;
+  border-bottom-color: #3a6b5a;
+}
+
+.dropdown-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.aetherbloom-section .dropdown-option:hover {
+  background: #3a6b5a;
+}
+
+.dropdown-option.selected {
+  background: rgba(255, 147, 64, 0.2);
+  color: #ff9340;
+}
+
+.aetherbloom-section .dropdown-option.selected {
+  background: rgba(255, 147, 64, 0.2);
+  color: #ff9340;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.option-name {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.aetherbloom-section .option-name {
+  color: #ffffff;
+}
+
+.option-salary,
+.option-details {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.aetherbloom-section .option-details {
+  color: #ffffff;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0;
+}
+
+.breakdown-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.aetherbloom-section .breakdown-label {
+  color: #ffffff;
+}
+
+.breakdown-value {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.aetherbloom-section .breakdown-value {
+  color: #ffffff;
+}
+
+.total-breakdown {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.aetherbloom-section .total-breakdown {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.total-breakdown .breakdown-label,
+.total-breakdown .breakdown-value {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Savings Display */
+.savings-display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0;
+}
+
+.savings-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.savings-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.savings-value {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
+}
+
+.savings-percentage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.percentage-value {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff9340;
+  text-shadow: 0 2px 15px rgba(255, 147, 64, 0.4);
+}
+
+.percentage-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Custom scrollbar for dropdown menus */
+.dropdown-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #f1f3f4;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #d84e28;
+  border-radius: 2px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #ff9340;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .calculator-section {
+    min-height: 90vh;
+    padding: 7rem 0 2.5rem 0;
+  }
+
+  .calculator-header-section {
+    padding: 0 2rem 5rem 2rem;
+  }
+
+  .calculator-section-title {
+    font-size: 3rem;
+  }
+
+  .calculator-section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .uk-section,
+  .aetherbloom-section {
+    padding: 1.25rem 2rem;
+    min-height: 12vh;
+  }
+  
+  .uk-right,
+  .aetherbloom-right {
+    gap: 0.5rem;
+  }
+  
+  .breakdown-item {
+    min-height: 2.25rem;
+    padding: 0.2rem 0;
+  }
+  
+  .dropdown-label {
+    font-size: 2rem;
+  }
+  
+  .total-cost {
+    font-size: 3rem;
+  }
+  
+  .savings-value {
+    font-size: 1.2rem;
+  }
+  
+  .percentage-value {
+    font-size: 1.4rem;
+  }
+  
+  .savings-display {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .calculator-section {
+    min-height: 100vh;
+    padding: 6rem 0 2rem 0;
+  }
+
+  .calculator-header-section {
+    padding: 0 1.5rem 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .calculator-section-title {
+    font-size: 2.5rem;
+  }
+
+  .calculator-section-subtitle {
+    font-size: 1rem;
+    max-width: none;
+  }
+
+  .uk-section,
+  .aetherbloom-section {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    justify-content: center;
+    min-height: auto;
+  }
+  
+  .uk-content,
+  .aetherbloom-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .uk-left,
+  .aetherbloom-left {
+    gap: 1rem;
+  }
+  
+  .uk-right,
+  .aetherbloom-right {
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .breakdown-item {
+    min-height: 2rem;
+    padding: 0.15rem 0;
+  }
+  
+  .dropdown-label {
+    font-size: 1.8rem;
+  }
+  
+  .total-cost {
+    font-size: 2.5rem;
+  }
+  
+  .savings-display {
+    margin-top: 0.5rem;
+    padding-top: 0;
+    gap: 0.4rem;
+  }
+  
+  .savings-amount,
+  .savings-percentage-container {
+    text-align: center;
+    padding: 0.2rem 0;
+  }
+  
+  .total-breakdown {
+    padding-top: 0.4rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator-section {
+    padding: 5rem 0 2rem 0;
+  }
+
+  .calculator-header-section {
+    padding: 0 1rem 3rem 1rem;
+  }
+
+  .calculator-section-title {
+    font-size: 2rem;
+  }
+
+  .calculator-section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .uk-section,
+  .aetherbloom-section {
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+  
+  .uk-left,
+  .aetherbloom-left {
+    gap: 1rem;
+  }
+  
+  .uk-right,
+  .aetherbloom-right {
+    gap: 0.75rem;
+  }
+  
+  .breakdown-item {
+    min-height: 2rem;
+    padding: 0.25rem 0;
+  }
+  
+  .dropdown-label {
+    font-size: 1.5rem;
+  }
+  
+  .total-cost {
+    font-size: 2rem;
+  }
+  
+  .savings-value {
+    font-size: 1rem;
+  }
+  
+  .percentage-value {
+    font-size: 1.2rem;
+  }
+  
+  .breakdown-label,
+  .breakdown-value {
+    font-size: 0.9rem;
+  }
+  
+  .savings-display {
+    margin-top: 0.5rem;
+    padding-top: 0;
+    gap: 0.5rem;
+  }
+  
+  .savings-amount,
+  .savings-percentage-container {
+    padding: 0.3rem 0;
+  }
+  
+  .total-breakdown {
+    padding-top: 0.4rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .calculator-wrapper,
+  .dropdown-arrow,
+  .dropdown-option {
+    transition: none !important;
+  }
+  
+  .dropdown-menu {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .uk-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffffff;
+  }
+  
+  .aetherbloom-section {
+    border: 2px solid #ffffff;
+  }
+  
+  .total-breakdown {
+    border-top-color: #ffffff;
+  }
+  
+  .aetherbloom-section .total-breakdown {
+    border-top-color: #ffffff;
+  }
+}
