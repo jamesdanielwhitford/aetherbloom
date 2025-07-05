@@ -1,0 +1,573 @@
+/* File: /wp-content/themes/aetherbloom/css/careers.css */
+
+/**
+ * Careers Page Styles
+ * 
+ * @package Aetherbloom
+ * @version 1.0.0
+ */
+
+/* Careers Page Layout */
+.careers-page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.careers-page .content-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 3;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.9), rgba(76, 175, 80, 0.9));
+  padding: 120px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../assets/images/pattern-overlay.png') repeat;
+  opacity: 0.1;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Careers Overview Section */
+.careers-overview-section {
+  padding: 80px 0;
+  background: white;
+  text-align: center;
+}
+
+.overview-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.overview-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #5a6c7d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Why Work With Us Section */
+.why-work-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.why-work-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #d84e28, #4caf50);
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(76, 175, 80, 0.1));
+  border-radius: 50%;
+}
+
+.benefit-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.benefit-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.benefit-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin: 0;
+}
+
+/* Roles Section */
+.roles-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.roles-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+}
+
+.role-card {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.02), rgba(76, 175, 80, 0.02));
+  border-radius: 16px;
+  padding: 3rem;
+  border: 2px solid rgba(216, 78, 40, 0.1);
+  transition: all 0.3s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 78, 40, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.role-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.role-type {
+  font-size: 1rem;
+  color: #d84e28;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.role-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin-bottom: 2rem;
+}
+
+.role-requirements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.role-requirements li {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.role-requirements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Testimonial Section */
+.testimonial-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+}
+
+.testimonial-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.testimonial-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  padding: 4rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.testimonial-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 4px solid #f8f9fa;
+}
+
+.testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-text blockquote {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #2c3e50;
+  font-style: italic;
+  margin: 0 0 2rem 0;
+  position: relative;
+}
+
+.testimonial-text blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  color: rgba(216, 78, 40, 0.2);
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-family: serif;
+}
+
+.testimonial-text cite {
+  display: block;
+  font-style: normal;
+}
+
+.testimonial-text cite strong {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-text cite span {
+  color: #d84e28;
+  font-weight: 500;
+}
+
+/* Growth Section */
+.growth-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.growth-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.growth-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.growth-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #d84e28, #4caf50);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-marker {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #d84e28, #4caf50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(216, 78, 40, 0.2);
+}
+
+.timeline-content {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 0 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: calc(50% + 3rem);
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: calc(50% + 3rem);
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.timeline-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin: 0;
+}
+
+/* CTA Section */
+.careers-cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+}
+
+.cta-primary {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: #d84e28;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.3);
+  margin-bottom: 1rem;
+}
+
+.cta-primary:hover {
+  background: #c44426;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(216, 78, 40, 0.4);
+}
+
+.cta-note {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 1rem 0 0 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 3rem;
+  }
+  
+  .roles-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .testimonial-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .page-header {
+    padding: 100px 0 60px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .careers-overview-section,
+  .why-work-section,
+  .roles-section,
+  .testimonial-section,
+  .growth-section,
+  .careers-cta-section {
+    padding: 60px 0;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .benefit-card,
+  .role-card {
+    padding: 2rem;
+  }
+  
+  .testimonial-card {
+    padding: 2rem;
+  }
+  
+  .growth-timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-marker {
+    left: 30px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .timeline-content {
+    margin-left: 80px !important;
+    margin-right: 0 !important;
+  }
+  
+  .timeline-item {
+    flex-direction: row !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .overview-content h2,
+  .why-work-section h2,
+  .roles-section h2,
+  .testimonial-section h2,
+  .growth-section h2,
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+  
+  .benefit-card,
+  .role-card {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-text blockquote {
+    font-size: 1.1rem;
+  }
+}

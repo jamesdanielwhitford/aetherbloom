@@ -1,0 +1,576 @@
+/* File: /wp-content/themes/aetherbloom/css/impact.css */
+
+/**
+ * Impact Page Styles
+ * 
+ * @package Aetherbloom
+ * @version 1.0.0
+ */
+
+/* Impact Page Layout */
+.impact-page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.impact-page .content-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 3;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.9), rgba(76, 175, 80, 0.9));
+  padding: 120px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../assets/images/pattern-overlay.png') repeat;
+  opacity: 0.1;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Mission Overview Section */
+.mission-overview-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.mission-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.mission-item {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mission-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 78, 40, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mission-item h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #d84e28;
+  margin-bottom: 1rem;
+}
+
+.mission-item p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin: 0;
+}
+
+.mission-quote {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 16px;
+  color: white;
+}
+
+.mission-quote p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Reality Section */
+.reality-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.reality-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #d84e28;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.stat-description {
+  font-size: 1rem;
+  color: #5a6c7d;
+  line-height: 1.4;
+}
+
+.human-cost {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.human-cost h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.human-cost p {
+  font-size: 1.2rem;
+  color: #5a6c7d;
+  margin-bottom: 2rem;
+}
+
+.impact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.impact-list li {
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.impact-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #d84e28;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Foundation Programs Section */
+.foundation-programs-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.foundation-programs-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.foundation-subtitle {
+  font-size: 1.2rem;
+  color: #5a6c7d;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.program-card {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.02), rgba(76, 175, 80, 0.02));
+  border-radius: 16px;
+  padding: 3rem;
+  position: relative;
+  border: 2px solid rgba(216, 78, 40, 0.1);
+  transition: all 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 78, 40, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.program-number {
+  position: absolute;
+  top: -20px;
+  left: 3rem;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #d84e28, #4caf50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.program-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.program-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin-bottom: 1.5rem;
+}
+
+.program-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.program-benefits li {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.program-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Business Impact Section */
+.business-impact-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+}
+
+.business-impact-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.business-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-list li {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.benefit-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #d84e28;
+  font-weight: bold;
+}
+
+/* Get Involved Section */
+.get-involved-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.get-involved-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.involvement-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.involvement-card {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  border: 2px solid rgba(216, 78, 40, 0.1);
+  transition: all 0.3s ease;
+}
+
+.involvement-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 78, 40, 0.3);
+}
+
+.involvement-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.involvement-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin-bottom: 2rem;
+}
+
+.involvement-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #d84e28;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(216, 78, 40, 0.3);
+}
+
+.involvement-btn:hover {
+  background: #c44426;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.4);
+}
+
+/* Impact CTA Section */
+.impact-cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+}
+
+.cta-primary {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: #d84e28;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.3);
+}
+
+.cta-primary:hover {
+  background: #c44426;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(216, 78, 40, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 3rem;
+  }
+  
+  .mission-grid {
+    gap: 2rem;
+  }
+  
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .page-header {
+    padding: 100px 0 60px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .mission-overview-section,
+  .reality-section,
+  .foundation-programs-section,
+  .business-impact-section,
+  .get-involved-section,
+  .impact-cta-section {
+    padding: 60px 0;
+  }
+  
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statistics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .involvement-options {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .program-card,
+  .involvement-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .mission-quote p {
+    font-size: 1.3rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .mission-content h2,
+  .reality-section h2,
+  .foundation-programs-section h2,
+  .business-impact-section h2,
+  .get-involved-section h2,
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+}

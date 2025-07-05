@@ -1,0 +1,621 @@
+/* File: /wp-content/themes/aetherbloom/css/contact.css */
+
+/**
+ * Contact Page Styles
+ * 
+ * @package Aetherbloom
+ * @version 1.0.0
+ */
+
+/* Contact Page Layout */
+.contact-page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-page .content-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 3;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.9), rgba(76, 175, 80, 0.9));
+  padding: 120px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../assets/images/pattern-overlay.png') repeat;
+  opacity: 0.1;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Contact Overview Section */
+.contact-overview-section {
+  padding: 60px 0;
+  background: white;
+  text-align: center;
+}
+
+.overview-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #5a6c7d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Contact Main Section */
+.contact-main-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-wrapper h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 3rem;
+}
+
+.form-section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(216, 78, 40, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #d84e28;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d84e28;
+  box-shadow: 0 0 0 3px rgba(216, 78, 40, 0.1);
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: #5a6c7d;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  margin-top: 0.25rem;
+}
+
+.checkbox-item label {
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.form-actions {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #d84e28, #c44426);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(216, 78, 40, 0.3);
+  margin-bottom: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.4);
+}
+
+.form-guarantee {
+  font-size: 1rem;
+  color: #4caf50;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.form-alternative {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  margin: 0;
+}
+
+.book-call-link {
+  color: #d84e28;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.book-call-link:hover {
+  text-decoration: underline;
+}
+
+/* Contact Info Wrapper */
+.contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info-card,
+.free-resource-card,
+.scheduler-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.contact-info-card:hover,
+.free-resource-card:hover,
+.scheduler-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-info-card h3,
+.free-resource-card h3,
+.scheduler-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.contact-method:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(76, 175, 80, 0.1));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contact-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-details h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.25rem;
+}
+
+.contact-details p {
+  font-size: 0.9rem;
+  color: #5a6c7d;
+  margin-bottom: 0.25rem;
+}
+
+.contact-hours {
+  font-size: 0.85rem;
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.contact-link {
+  color: #d84e28;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Free Resource Card */
+.resource-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resource-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #d84e28, #4caf50);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.resource-icon img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+}
+
+.resource-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.resource-info p {
+  font-size: 0.85rem;
+  color: #5a6c7d;
+  margin-bottom: 1rem;
+}
+
+.resource-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.resource-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.resource-form button {
+  background: #d84e28;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.resource-form button:hover {
+  background: #c44426;
+}
+
+/* Scheduler Card */
+.scheduler-options {
+  text-align: center;
+}
+
+.scheduler-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+  margin-bottom: 1rem;
+}
+
+.scheduler-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.scheduler-guarantee {
+  font-size: 0.9rem;
+  color: #4caf50;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Next Steps Section */
+.next-steps-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.next-steps-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.steps-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step-item {
+  text-align: center;
+  position: relative;
+}
+
+.step-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #d84e28, #4caf50);
+  z-index: 1;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #d84e28, #4caf50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(216, 78, 40, 0.2);
+}
+
+.step-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .steps-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  
+  .step-item:nth-child(2)::after,
+  .step-item:nth-child(4)::after {
+    display: none;
+  }
+  
+  .step-item:nth-child(1)::after {
+    right: -50%;
+    width: 100%;
+  }
+  
+  .step-item:nth-child(3)::after {
+    right: -50%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .page-header {
+    padding: 100px 0 60px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .contact-overview-section,
+  .contact-main-section,
+  .next-steps-section {
+    padding: 60px 0;
+  }
+  
+  .contact-form-wrapper {
+    padding: 2rem;
+  }
+  
+  .contact-info-wrapper {
+    gap: 1.5rem;
+  }
+  
+  .contact-info-card,
+  .free-resource-card,
+  .scheduler-card {
+    padding: 1.5rem;
+  }
+  
+  .resource-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .resource-form {
+    flex-direction: column;
+  }
+  
+  .steps-timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .step-item::after {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .contact-form-wrapper h2 {
+    font-size: 1.5rem;
+  }
+  
+  .next-steps-section h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-form-wrapper,
+  .contact-info-card,
+  .free-resource-card,
+  .scheduler-card {
+    padding: 1rem;
+  }
+  
+  .form-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .checkbox-group {
+    gap: 0.5rem;
+  }
+  
+  .submit-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}

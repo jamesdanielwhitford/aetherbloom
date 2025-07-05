@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/functions.php
 
 /**
- * Aetherbloom Theme Functions - Phase 3 Complete Integration
+ * Aetherbloom Theme Functions - Updated for separate pages
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -65,7 +65,7 @@ function aetherbloom_content_width() {
 add_action('after_setup_theme', 'aetherbloom_content_width', 0);
 
 /**
- * Enqueue scripts and styles - COMPLETE INTEGRATION
+ * Enqueue scripts and styles - Updated for separate pages
  */
 function aetherbloom_scripts() {
     $theme_version = wp_get_theme()->get('Version');
@@ -123,73 +123,124 @@ function aetherbloom_scripts() {
         $theme_version
     );
 
-    // JAVASCRIPT FILES - COMPLETE INTEGRATION WITH PROPER DEPENDENCIES
-    
-    // Main JavaScript - loads first
+    // Page-specific CSS files
+    if (is_page('about')) {
+        wp_enqueue_style(
+            'aetherbloom-about',
+            get_template_directory_uri() . '/css/about.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
+    if (is_page('services')) {
+        wp_enqueue_style(
+            'aetherbloom-services-page',
+            get_template_directory_uri() . '/css/services-page.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
+    if (is_page('impact')) {
+        wp_enqueue_style(
+            'aetherbloom-impact',
+            get_template_directory_uri() . '/css/impact.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
+    if (is_page('careers')) {
+        wp_enqueue_style(
+            'aetherbloom-careers',
+            get_template_directory_uri() . '/css/careers.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
+    if (is_page('contact')) {
+        wp_enqueue_style(
+            'aetherbloom-contact',
+            get_template_directory_uri() . '/css/contact.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
+    // JavaScript files - Load navbar on all pages
     wp_enqueue_script(
-        'aetherbloom-main',
-        get_template_directory_uri() . '/js/main.js',
+        'aetherbloom-navbar',
+        get_template_directory_uri() . '/js/navbar.js',
         array(),
         $theme_version,
         true
     );
 
-    // Component JavaScript files - all depend on main.js
-    wp_enqueue_script(
-        'aetherbloom-navbar',
-        get_template_directory_uri() . '/js/navbar.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+    // Load homepage scripts on front page and home page
+    if (is_front_page() || is_home()) {
+        wp_enqueue_script(
+            'aetherbloom-hero',
+            get_template_directory_uri() . '/js/hero.js',
+            array(),
+            $theme_version,
+            true
+        );
 
-    wp_enqueue_script(
-        'aetherbloom-hero',
-        get_template_directory_uri() . '/js/hero.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+        wp_enqueue_script(
+            'aetherbloom-why-aetherbloom',
+            get_template_directory_uri() . '/js/why-aetherbloom.js',
+            array(),
+            $theme_version,
+            true
+        );
 
-    wp_enqueue_script(
-        'aetherbloom-why-aetherbloom',
-        get_template_directory_uri() . '/js/why-aetherbloom.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+        wp_enqueue_script(
+            'aetherbloom-services',
+            get_template_directory_uri() . '/js/services.js',
+            array(),
+            $theme_version,
+            true
+        );
 
-    wp_enqueue_script(
-        'aetherbloom-services',
-        get_template_directory_uri() . '/js/services.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+        wp_enqueue_script(
+            'aetherbloom-pricing',
+            get_template_directory_uri() . '/js/pricing-calculator.js',
+            array(),
+            $theme_version,
+            true
+        );
 
-    wp_enqueue_script(
-        'aetherbloom-pricing',
-        get_template_directory_uri() . '/js/pricing-calculator.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+        wp_enqueue_script(
+            'aetherbloom-cta',
+            get_template_directory_uri() . '/js/cta.js',
+            array(),
+            $theme_version,
+            true
+        );
 
-    wp_enqueue_script(
-        'aetherbloom-cta',
-        get_template_directory_uri() . '/js/cta.js',
-        array('aetherbloom-main'),
-        $theme_version,
-        true
-    );
+        wp_enqueue_script(
+            'aetherbloom-main',
+            get_template_directory_uri() . '/js/main.js',
+            array('aetherbloom-navbar', 'aetherbloom-hero', 'aetherbloom-why-aetherbloom', 'aetherbloom-services', 'aetherbloom-pricing', 'aetherbloom-cta'),
+            $theme_version,
+            true
+        );
+    }
 
-    // Localize script for AJAX
-    wp_localize_script('aetherbloom-main', 'aetherbloom_ajax', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('aetherbloom_nonce'),
-    ));
+    // Add page-specific JavaScript for contact form handling
+    if (is_page('contact')) {
+        wp_enqueue_script(
+            'aetherbloom-contact',
+            get_template_directory_uri() . '/js/contact.js',
+            array(),
+            $theme_version,
+            true
+        );
+    }
 
-    // Add conditional script for comment reply
+    // Comment reply script
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
@@ -197,193 +248,120 @@ function aetherbloom_scripts() {
 add_action('wp_enqueue_scripts', 'aetherbloom_scripts');
 
 /**
- * AJAX handler for contact form
+ * Register widget area
  */
-function aetherbloom_handle_contact_form() {
-    // Verify nonce
-    if (!wp_verify_nonce($_POST['nonce'], 'aetherbloom_nonce')) {
-        wp_die('Security check failed');
-    }
-
-    // Sanitize and validate input
-    $name = sanitize_text_field($_POST['name']);
-    $email = sanitize_email($_POST['email']);
-    $company = sanitize_text_field($_POST['company']);
-    $message = sanitize_textarea_field($_POST['message']);
-
-    // Basic validation
-    if (empty($name) || empty($email) || empty($message)) {
-        wp_send_json_error('Please fill in all required fields.');
-        return;
-    }
-
-    if (!is_email($email)) {
-        wp_send_json_error('Please enter a valid email address.');
-        return;
-    }
-
-    // Prepare email
-    $to = get_option('admin_email');
-    $subject = 'New Contact Form Submission from ' . $name;
-    $email_message = "Name: {$name}\n";
-    $email_message .= "Email: {$email}\n";
-    if (!empty($company)) {
-        $email_message .= "Company: {$company}\n";
-    }
-    $email_message .= "Message:\n{$message}";
-
-    $headers = array('Content-Type: text/plain; charset=UTF-8');
-
-    // Send email
-    if (wp_mail($to, $subject, $email_message, $headers)) {
-        wp_send_json_success('Thank you for your message. We\'ll get back to you soon!');
-    } else {
-        wp_send_json_error('Sorry, there was an error sending your message. Please try again.');
-    }
+function aetherbloom_widgets_init() {
+    register_sidebar(array(
+        'name'          => esc_html__('Sidebar', 'aetherbloom'),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__('Add widgets here.', 'aetherbloom'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
 }
-add_action('wp_ajax_aetherbloom_contact_form', 'aetherbloom_handle_contact_form');
-add_action('wp_ajax_nopriv_aetherbloom_contact_form', 'aetherbloom_handle_contact_form');
+add_action('widgets_init', 'aetherbloom_widgets_init');
 
 /**
- * AJAX handler for newsletter signup
+ * Custom template loader
  */
-function aetherbloom_handle_newsletter_signup() {
-    // Verify nonce
-    if (!wp_verify_nonce($_POST['nonce'], 'aetherbloom_nonce')) {
-        wp_die('Security check failed');
+function aetherbloom_template_include($template) {
+    // Check if we're on a specific page and load custom template
+    if (is_page('about')) {
+        $new_template = locate_template(array('page-about.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
     }
-
-    // Sanitize and validate input
-    $email = sanitize_email($_POST['email']);
-
-    // Basic validation
-    if (empty($email)) {
-        wp_send_json_error('Please enter your email address.');
-        return;
+    
+    if (is_page('services')) {
+        $new_template = locate_template(array('page-services.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
     }
-
-    if (!is_email($email)) {
-        wp_send_json_error('Please enter a valid email address.');
-        return;
+    
+    if (is_page('impact')) {
+        $new_template = locate_template(array('page-impact.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
     }
-
-    // Here you would integrate with your email marketing service
-    // For now, we'll just send a notification email
-    $to = get_option('admin_email');
-    $subject = 'New Newsletter Signup';
-    $message = "New newsletter signup: {$email}";
-    $headers = array('Content-Type: text/plain; charset=UTF-8');
-
-    if (wp_mail($to, $subject, $message, $headers)) {
-        wp_send_json_success('Thank you for subscribing to our newsletter!');
-    } else {
-        wp_send_json_error('Sorry, there was an error processing your subscription. Please try again.');
+    
+    if (is_page('careers')) {
+        $new_template = locate_template(array('page-careers.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
     }
+    
+    if (is_page('contact')) {
+        $new_template = locate_template(array('page-contact.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
+    }
+    
+    return $template;
 }
-add_action('wp_ajax_aetherbloom_newsletter_signup', 'aetherbloom_handle_newsletter_signup');
-add_action('wp_ajax_nopriv_aetherbloom_newsletter_signup', 'aetherbloom_handle_newsletter_signup');
+add_filter('template_include', 'aetherbloom_template_include');
 
 /**
- * Customize theme options
+ * Customizer additions
  */
-function aetherbloom_customize_register($wp_customize) {
-    // Hero Section
-    $wp_customize->add_section('aetherbloom_hero', array(
-        'title'    => __('Hero Section', 'aetherbloom'),
-        'priority' => 120,
-    ));
-
-    // Hero title line 1
-    $wp_customize->add_setting('hero_title_line1', array(
-        'default'           => 'Transform Your Business With',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control('hero_title_line1', array(
-        'label'   => __('Hero Title Line 1', 'aetherbloom'),
-        'section' => 'aetherbloom_hero',
-        'type'    => 'text',
-    ));
-
-    // Hero animated texts
-    $wp_customize->add_setting('hero_animated_texts', array(
-        'default'           => 'Transformed.,Cost-Effective.,Scalable.,Agile.,Optimized.',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control('hero_animated_texts', array(
-        'label'       => __('Hero Animated Texts (comma-separated)', 'aetherbloom'),
-        'section'     => 'aetherbloom_hero',
-        'type'        => 'text',
-        'description' => __('Enter comma-separated texts that will cycle in the hero title', 'aetherbloom'),
-    ));
-
-    // Hero description
-    $wp_customize->add_setting('hero_description', array(
-        'default'           => 'Scale your operations with expertly-sourced South African professionals trained to UK standards. Cut costs by 40%+ while scaling with confidence.',
-        'sanitize_callback' => 'sanitize_textarea_field',
-    ));
-    $wp_customize->add_control('hero_description', array(
-        'label'   => __('Hero Description', 'aetherbloom'),
-        'section' => 'aetherbloom_hero',
-        'type'    => 'textarea',
-    ));
-
-    // Social Links Section
-    $wp_customize->add_section('aetherbloom_social', array(
-        'title'    => __('Social Links', 'aetherbloom'),
-        'priority' => 130,
-    ));
-
-    // Social media links
-    $social_networks = array('facebook', 'twitter', 'linkedin', 'instagram');
-    foreach ($social_networks as $network) {
-        $wp_customize->add_setting("social_{$network}", array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        ));
-        $wp_customize->add_control("social_{$network}", array(
-            'label'   => sprintf(__('%s URL', 'aetherbloom'), ucfirst($network)),
-            'section' => 'aetherbloom_social',
-            'type'    => 'url',
-        ));
-    }
+$customizer_file = get_template_directory() . '/inc/customizer.php';
+if (file_exists($customizer_file)) {
+    require $customizer_file;
 }
-add_action('customize_register', 'aetherbloom_customize_register');
 
 /**
- * Custom fields for post/page content
+ * Load Jetpack compatibility file
  */
-function aetherbloom_add_custom_fields() {
+if (defined('JETPACK__VERSION')) {
+    $jetpack_file = get_template_directory() . '/inc/jetpack.php';
+    if (file_exists($jetpack_file)) {
+        require $jetpack_file;
+    }
+}
+
+/**
+ * Custom post meta fields (if needed for page customization)
+ */
+function aetherbloom_add_page_meta_boxes() {
     add_meta_box(
-        'aetherbloom_custom_fields',
-        'Aetherbloom Custom Fields',
-        'aetherbloom_custom_fields_callback',
-        'page',
-        'normal',
-        'high'
+        'aetherbloom_page_options',
+        'Page Options',
+        'aetherbloom_page_options_callback',
+        'page'
     );
 }
-add_action('add_meta_boxes', 'aetherbloom_add_custom_fields');
+add_action('add_meta_boxes', 'aetherbloom_add_page_meta_boxes');
 
-function aetherbloom_custom_fields_callback($post) {
-    wp_nonce_field('aetherbloom_save_custom_fields', 'aetherbloom_custom_fields_nonce');
+function aetherbloom_page_options_callback($post) {
+    wp_nonce_field('aetherbloom_page_options', 'aetherbloom_page_options_nonce');
     
     $hero_video = get_post_meta($post->ID, '_hero_video', true);
-    $services = get_post_meta($post->ID, '_services', true);
+    $page_subtitle = get_post_meta($post->ID, '_page_subtitle', true);
     
     echo '<table class="form-table">';
     echo '<tr>';
     echo '<th><label for="hero_video">Hero Video URL</label></th>';
     echo '<td><input type="url" id="hero_video" name="hero_video" value="' . esc_attr($hero_video) . '" style="width: 100%;" /></td>';
     echo '</tr>';
+    echo '<tr>';
+    echo '<th><label for="page_subtitle">Page Subtitle</label></th>';
+    echo '<td><input type="text" id="page_subtitle" name="page_subtitle" value="' . esc_attr($page_subtitle) . '" style="width: 100%;" /></td>';
+    echo '</tr>';
     echo '</table>';
 }
 
-function aetherbloom_save_custom_fields($post_id) {
-    if (!isset($_POST['aetherbloom_custom_fields_nonce'])) {
+function aetherbloom_save_page_options($post_id) {
+    if (!isset($_POST['aetherbloom_page_options_nonce'])) {
         return;
     }
     
-    if (!wp_verify_nonce($_POST['aetherbloom_custom_fields_nonce'], 'aetherbloom_save_custom_fields')) {
+    if (!wp_verify_nonce($_POST['aetherbloom_page_options_nonce'], 'aetherbloom_page_options')) {
         return;
     }
     
@@ -396,64 +374,125 @@ function aetherbloom_save_custom_fields($post_id) {
     }
     
     if (isset($_POST['hero_video'])) {
-        update_post_meta($post_id, '_hero_video', esc_url_raw($_POST['hero_video']));
+        update_post_meta($post_id, '_hero_video', sanitize_url($_POST['hero_video']));
     }
-}
-add_action('save_post', 'aetherbloom_save_custom_fields');
-
-/**
- * Disable WordPress blocks and enable classic editor
- */
-function aetherbloom_disable_blocks() {
-    add_filter('use_block_editor_for_post', '__return_false');
-    add_filter('use_block_editor_for_post_type', '__return_false');
-}
-add_action('init', 'aetherbloom_disable_blocks');
-
-/**
- * Clean up WordPress head
- */
-function aetherbloom_clean_head() {
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wp_shortlink_wp_head');
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
-}
-add_action('init', 'aetherbloom_clean_head');
-
-/**
- * Optimize WordPress queries
- */
-function aetherbloom_optimize_queries() {
-    if (!is_admin()) {
-        // Disable WordPress emojis
-        remove_action('wp_head', 'print_emoji_detection_script', 7);
-        remove_action('admin_print_scripts', 'print_emoji_detection_script');
-        remove_action('wp_print_styles', 'print_emoji_styles');
-        remove_action('admin_print_styles', 'print_emoji_styles');
-        remove_filter('the_content_feed', 'wp_staticize_emoji');
-        remove_filter('comment_text_rss', 'wp_staticize_emoji');
-        remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-    }
-}
-add_action('init', 'aetherbloom_optimize_queries');
-
-/**
- * Security enhancements
- */
-function aetherbloom_security() {
-    // Hide WordPress version
-    remove_action('wp_head', 'wp_generator');
     
-    // Remove version from scripts and styles
-    function remove_version_scripts_styles($src) {
-        if (strpos($src, 'ver=')) {
-            $src = remove_query_arg('ver', $src);
-        }
-        return $src;
+    if (isset($_POST['page_subtitle'])) {
+        update_post_meta($post_id, '_page_subtitle', sanitize_text_field($_POST['page_subtitle']));
     }
-    add_filter('style_loader_src', 'remove_version_scripts_styles', 9999);
-    add_filter('script_loader_src', 'remove_version_scripts_styles', 9999);
 }
-add_action('init', 'aetherbloom_security');
+add_action('save_post', 'aetherbloom_save_page_options');
+
+/**
+ * Add body classes for page-specific styling
+ */
+function aetherbloom_body_classes($classes) {
+    if (is_page('about')) {
+        $classes[] = 'page-about';
+    }
+    if (is_page('services')) {
+        $classes[] = 'page-services';
+    }
+    if (is_page('impact')) {
+        $classes[] = 'page-impact';
+    }
+    if (is_page('careers')) {
+        $classes[] = 'page-careers';
+    }
+    if (is_page('contact')) {
+        $classes[] = 'page-contact';
+    }
+    
+    return $classes;
+}
+add_filter('body_class', 'aetherbloom_body_classes');
+
+/**
+ * Custom navigation walker (if needed for advanced menu styling)
+ */
+class Aetherbloom_Walker_Nav_Menu extends Walker_Nav_Menu {
+    
+    function start_lvl(&$output, $depth = 0, $args = null) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+    }
+    
+    function end_lvl(&$output, $depth = 0, $args = null) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n";
+    }
+    
+    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+        $indent = ($depth) ? str_repeat("\t", $depth) : '';
+        
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $classes[] = 'menu-item-' . $item->ID;
+        
+        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+        $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+        
+        $id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
+        $id = $id ? ' id="' . esc_attr($id) . '"' : '';
+        
+        $output .= $indent . '<li' . $id . $class_names .'>';
+        
+        $attributes = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+        $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target     ) .'"' : '';
+        $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn        ) .'"' : '';
+        $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
+        
+        $item_output = isset($args->before) ? $args->before : '';
+        $item_output .= '<a class="nav-link"' . $attributes .'>';
+        $item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
+        $item_output .= '</a>';
+        $item_output .= isset($args->after) ? $args->after : '';
+        
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+    }
+    
+    function end_el(&$output, $item, $depth = 0, $args = null) {
+        $output .= "</li>\n";
+    }
+}
+
+/**
+ * Security and performance enhancements
+ */
+function aetherbloom_security_headers() {
+    if (!is_admin()) {
+        // Remove WordPress version from head
+        remove_action('wp_head', 'wp_generator');
+        
+        // Remove RSD link
+        remove_action('wp_head', 'rsd_link');
+        
+        // Remove wlwmanifest.xml
+        remove_action('wp_head', 'wlwmanifest_link');
+        
+        // Remove shortlink
+        remove_action('wp_head', 'wp_shortlink_wp_head');
+        
+        // Remove feed links
+        remove_action('wp_head', 'feed_links_extra', 3);
+    }
+}
+add_action('init', 'aetherbloom_security_headers');
+
+/**
+ * Optimize WordPress for performance
+ */
+function aetherbloom_optimize_performance() {
+    // Remove emoji scripts
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    
+    // Remove block editor styles from frontend if not needed
+    if (!is_admin() && !is_user_logged_in()) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-block-style');
+    }
+}
+add_action('init', 'aetherbloom_optimize_performance');
