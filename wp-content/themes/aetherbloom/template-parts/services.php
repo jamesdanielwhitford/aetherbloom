@@ -42,8 +42,8 @@ $services_data = array(
 ?>
 
 <section class="services-section" id="services" data-section="services">
-  <div class="background-image" style="background-image: url('<?php echo esc_url($services_bg_image); ?>');"></div>
-  <div class="overlay"></div>
+  <div class="services-background-image" style="background-image: url('<?php echo esc_url($services_bg_image); ?>');"></div>
+  <div class="services-overlay"></div>
   
   <div class="services-container">
     <div class="services-content" id="services-content">

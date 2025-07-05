@@ -138,7 +138,7 @@
 }
 
 /* Dropdown Styles */
-.calculator-dropdown {
+.dropdown {
   position: relative;
   margin-bottom: 1rem;
 }
@@ -182,18 +182,6 @@
 
 .dropdown-arrow.open {
   transform: rotate(180deg);
-}
-
-.total-cost {
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1;
-}
-
-.aetherbloom-section .total-cost {
-  color: #ffffff;
 }
 
 /* Dropdown Menu */
@@ -294,6 +282,7 @@
   color: #ffffff;
 }
 
+/* Breakdown Items */
 .breakdown-item {
   display: flex;
   justify-content: space-between;
@@ -342,6 +331,18 @@
   font-size: 1.1rem;
 }
 
+.total-cost {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.aetherbloom-section .total-cost {
+  color: #ffffff;
+}
+
 /* Savings Display */
 .savings-display {
   display: flex;
@@ -373,7 +374,7 @@
   text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
 }
 
-.savings-percentage-container {
+.percentage-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -540,7 +541,7 @@
   }
   
   .savings-amount,
-  .savings-percentage-container {
+  .percentage-container {
     text-align: center;
     padding: 0.2rem 0;
   }
@@ -617,7 +618,7 @@
   }
   
   .savings-amount,
-  .savings-percentage-container {
+  .percentage-container {
     padding: 0.3rem 0;
   }
   

@@ -35,20 +35,20 @@
         tierArrow: null,
         tierOptions: [],
         
-        // Cost display elements
-        ukTotalCost: null,
-        ukSalary: null,
-        ukNiPension: null,
-        ukRecruitment: null,
+        // UK cost display elements
+        ukBaseSalary: null,
+        ukEmployerNi: null,
+        ukPension: null,
+        ukHoliday: null,
         ukTraining: null,
         ukOffice: null,
-        ukTotal: null,
+        ukEquipment: null,
+        ukInsurance: null,
+        ukTotalCost: null,
         
+        // Aetherbloom cost display elements
+        aetherbloomServiceFee: null,
         aetherbloomTotalCost: null,
-        tierServiceName: null,
-        tierHours: null,
-        tierMonthly: null,
-        aetherbloomTotal: null,
         savingsAmount: null,
         savingsPercentage: null
     };
@@ -105,20 +105,20 @@
         pricingElements.tierArrow = document.getElementById('tier-arrow');
         pricingElements.tierOptions = Array.from(document.querySelectorAll('#tier-dropdown-menu .dropdown-option'));
         
-        // Cost display elements
-        pricingElements.ukTotalCost = document.getElementById('uk-total-cost');
-        pricingElements.ukSalary = document.getElementById('uk-salary');
-        pricingElements.ukNiPension = document.getElementById('uk-ni-pension');
-        pricingElements.ukRecruitment = document.getElementById('uk-recruitment');
+        // UK cost display elements
+        pricingElements.ukBaseSalary = document.getElementById('uk-base-salary');
+        pricingElements.ukEmployerNi = document.getElementById('uk-employer-ni');
+        pricingElements.ukPension = document.getElementById('uk-pension');
+        pricingElements.ukHoliday = document.getElementById('uk-holiday');
         pricingElements.ukTraining = document.getElementById('uk-training');
         pricingElements.ukOffice = document.getElementById('uk-office');
-        pricingElements.ukTotal = document.getElementById('uk-total');
+        pricingElements.ukEquipment = document.getElementById('uk-equipment');
+        pricingElements.ukInsurance = document.getElementById('uk-insurance');
+        pricingElements.ukTotalCost = document.getElementById('uk-total-cost');
         
+        // Aetherbloom cost display elements
+        pricingElements.aetherbloomServiceFee = document.getElementById('aetherbloom-service-fee');
         pricingElements.aetherbloomTotalCost = document.getElementById('aetherbloom-total-cost');
-        pricingElements.tierServiceName = document.getElementById('tier-service-name');
-        pricingElements.tierHours = document.getElementById('tier-hours');
-        pricingElements.tierMonthly = document.getElementById('tier-monthly');
-        pricingElements.aetherbloomTotal = document.getElementById('aetherbloom-total');
         pricingElements.savingsAmount = document.getElementById('savings-amount');
         pricingElements.savingsPercentage = document.getElementById('savings-percentage');
     }
@@ -274,98 +274,135 @@
     // Selection functions
     function selectRole(roleName) {
         pricingData.selectedRole = roleName;
-        updateRoleSelection();
+        
+        // Update label
+        if (pricingElements.roleLabel) {
+            pricingElements.roleLabel.textContent = roleName;
+        }
+        
+        // Update option states
+        pricingElements.roleOptions.forEach(option => {
+            if (option.dataset.roleName === roleName) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+        });
+        
+        // Update calculations
         updateCalculations();
     }
     
     function selectTier(tierId) {
         pricingData.selectedTier = tierId;
-        updateTierSelection();
+        
+        // Find tier data
+        const tierData = pricingData.tierOptions.find(tier => tier.id === tierId);
+        
+        if (tierData && pricingElements.tierLabel) {
+            pricingElements.tierLabel.textContent = `Aetherbloom ${tierData.name}`;
+        }
+        
+        // Update option states
+        pricingElements.tierOptions.forEach(option => {
+            if (option.dataset.tierId === tierId) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+        });
+        
+        // Update calculations
         updateCalculations();
     }
     
-    // Update role selection UI
-    function updateRoleSelection() {
-        if (pricingElements.roleLabel) {
-            pricingElements.roleLabel.textContent = pricingData.selectedRole;
+    // Update all calculations and display
+    function updateCalculations() {
+        const selectedRoleData = pricingData.roleOptions.find(role => role.name === pricingData.selectedRole);
+        const selectedTierData = pricingData.tierOptions.find(tier => tier.id === pricingData.selectedTier);
+        
+        if (!selectedRoleData || !selectedTierData) {
+            return;
         }
         
-        // Update selected state in options
-        pricingElements.roleOptions.forEach(option => {
-            if (option.dataset.roleName === pricingData.selectedRole) {
-                option.classList.add('selected');
-            } else {
-                option.classList.remove('selected');
-            }
-        });
-    }
-    
-    // Update tier selection UI
-    function updateTierSelection() {
-        const selectedTierData = getSelectedTierData();
-        if (selectedTierData && pricingElements.tierLabel) {
-            pricingElements.tierLabel.textContent = `Aetherbloom ${selectedTierData.name}`;
+        // Calculate UK costs
+        const ukCosts = calculateUKCosts(selectedRoleData.salary);
+        const aetherbloomCost = selectedTierData.cost;
+        const savings = ukCosts.total - aetherbloomCost;
+        const savingsPercentage = Math.round((savings / ukCosts.total) * 100);
+        
+        // Update UK cost displays
+        if (pricingElements.ukBaseSalary) {
+            pricingElements.ukBaseSalary.textContent = formatCurrency(selectedRoleData.salary);
+        }
+        if (pricingElements.ukEmployerNi) {
+            pricingElements.ukEmployerNi.textContent = formatCurrency(ukCosts.employerNi);
+        }
+        if (pricingElements.ukPension) {
+            pricingElements.ukPension.textContent = formatCurrency(ukCosts.pension);
+        }
+        if (pricingElements.ukHoliday) {
+            pricingElements.ukHoliday.textContent = formatCurrency(ukCosts.holiday);
+        }
+        if (pricingElements.ukTraining) {
+            pricingElements.ukTraining.textContent = formatCurrency(ukCosts.training);
+        }
+        if (pricingElements.ukOffice) {
+            pricingElements.ukOffice.textContent = formatCurrency(ukCosts.office);
+        }
+        if (pricingElements.ukEquipment) {
+            pricingElements.ukEquipment.textContent = formatCurrency(ukCosts.equipment);
+        }
+        if (pricingElements.ukInsurance) {
+            pricingElements.ukInsurance.textContent = formatCurrency(ukCosts.insurance);
+        }
+        if (pricingElements.ukTotalCost) {
+            pricingElements.ukTotalCost.textContent = formatCurrency(ukCosts.total);
         }
         
-        // Update selected state in options
-        pricingElements.tierOptions.forEach(option => {
-            if (option.dataset.tierId === pricingData.selectedTier) {
-                option.classList.add('selected');
-            } else {
-                option.classList.remove('selected');
-            }
-        });
-    }
-    
-    // Get selected role data
-    function getSelectedRoleData() {
-        return pricingData.roleOptions.find(role => role.name === pricingData.selectedRole);
-    }
-    
-    // Get selected tier data
-    function getSelectedTierData() {
-        return pricingData.tierOptions.find(tier => tier.id === pricingData.selectedTier);
-    }
-    
-    // Calculate UK costs
-    function calculateUKCosts() {
-        const roleData = getSelectedRoleData();
-        if (!roleData) return null;
+        // Update Aetherbloom cost displays
+        if (pricingElements.aetherbloomServiceFee) {
+            pricingElements.aetherbloomServiceFee.textContent = formatCurrency(aetherbloomCost);
+        }
+        if (pricingElements.aetherbloomTotalCost) {
+            pricingElements.aetherbloomTotalCost.textContent = formatCurrency(aetherbloomCost);
+        }
         
-        const salary = roleData.salary;
-        const niPension = Math.round(salary * 0.13);
-        const recruitment = Math.round(salary * 0.15);
-        const training = Math.round(salary * 0.05);
-        const office = 5400;
-        const total = salary + niPension + recruitment + training + office;
+        // Update savings displays
+        if (pricingElements.savingsAmount) {
+            pricingElements.savingsAmount.textContent = formatCurrency(savings);
+        }
+        if (pricingElements.savingsPercentage) {
+            pricingElements.savingsPercentage.textContent = `${savingsPercentage}%`;
+        }
+    }
+    
+    // Calculate UK employment costs
+    function calculateUKCosts(baseSalary) {
+        const employerNi = Math.round(baseSalary * 0.138); // 13.8% employer NI
+        const pension = Math.round(baseSalary * 0.03); // 3% pension contribution
+        const holiday = Math.round(baseSalary * 0.1077); // 10.77% holiday pay (28 days)
+        const training = 1500; // Fixed training cost
+        const office = 3600; // Fixed office cost per year
+        const equipment = 1200; // Fixed equipment cost
+        const insurance = 600; // Fixed insurance cost
+        
+        const total = baseSalary + employerNi + pension + holiday + training + office + equipment + insurance;
         
         return {
-            salary,
-            niPension,
-            recruitment,
+            baseSalary,
+            employerNi,
+            pension,
+            holiday,
             training,
             office,
+            equipment,
+            insurance,
             total
         };
     }
     
-    // Calculate savings
-    function calculateSavings() {
-        const ukCosts = calculateUKCosts();
-        const tierData = getSelectedTierData();
-        
-        if (!ukCosts || !tierData) return null;
-        
-        const savings = ukCosts.total - tierData.cost;
-        const percentage = ((savings / ukCosts.total) * 100).toFixed(1);
-        
-        return {
-            savings,
-            percentage
-        };
-    }
-    
-    // Format currency
+    // Format currency values
     function formatCurrency(amount) {
         return new Intl.NumberFormat('en-GB', {
             style: 'currency',
@@ -375,60 +412,41 @@
         }).format(amount);
     }
     
-    // Update all calculations and display
-    function updateCalculations() {
-        const ukCosts = calculateUKCosts();
-        const tierData = getSelectedTierData();
-        const savingsData = calculateSavings();
+    // Cleanup function
+    function cleanup() {
+        // Close any open dropdowns
+        closeRoleDropdown();
+        closeTierDropdown();
         
-        if (!ukCosts || !tierData || !savingsData) return;
-        
-        // Update UK costs
-        if (pricingElements.ukSalary) {
-            pricingElements.ukSalary.textContent = formatCurrency(ukCosts.salary);
+        // Remove event listeners
+        if (pricingElements.roleDropdownTrigger) {
+            pricingElements.roleDropdownTrigger.removeEventListener('click', () => {});
         }
-        if (pricingElements.ukNiPension) {
-            pricingElements.ukNiPension.textContent = formatCurrency(ukCosts.niPension);
-        }
-        if (pricingElements.ukRecruitment) {
-            pricingElements.ukRecruitment.textContent = formatCurrency(ukCosts.recruitment);
-        }
-        if (pricingElements.ukTraining) {
-            pricingElements.ukTraining.textContent = formatCurrency(ukCosts.training);
-        }
-        if (pricingElements.ukOffice) {
-            pricingElements.ukOffice.textContent = formatCurrency(ukCosts.office);
-        }
-        if (pricingElements.ukTotal) {
-            pricingElements.ukTotal.textContent = formatCurrency(ukCosts.total);
-        }
-        if (pricingElements.ukTotalCost) {
-            pricingElements.ukTotalCost.textContent = `${formatCurrency(ukCosts.total)}/year`;
+        if (pricingElements.tierDropdownTrigger) {
+            pricingElements.tierDropdownTrigger.removeEventListener('click', () => {});
         }
         
-        // Update Aetherbloom costs
-        if (pricingElements.tierServiceName) {
-            pricingElements.tierServiceName.textContent = tierData.name;
-        }
-        if (pricingElements.tierHours) {
-            pricingElements.tierHours.textContent = tierData.hours;
-        }
-        if (pricingElements.tierMonthly) {
-            pricingElements.tierMonthly.textContent = tierData.monthly;
-        }
-        if (pricingElements.aetherbloomTotal) {
-            pricingElements.aetherbloomTotal.textContent = formatCurrency(tierData.cost);
-        }
-        if (pricingElements.aetherbloomTotalCost) {
-            pricingElements.aetherbloomTotalCost.textContent = `${formatCurrency(tierData.cost)}/year`;
-        }
+        pricingElements.roleOptions.forEach(option => {
+            option.removeEventListener('click', () => {});
+        });
         
-        // Update savings
-        if (pricingElements.savingsAmount) {
-            pricingElements.savingsAmount.textContent = formatCurrency(savingsData.savings);
-        }
-        if (pricingElements.savingsPercentage) {
-            pricingElements.savingsPercentage.textContent = `${savingsData.percentage}%`;
+        pricingElements.tierOptions.forEach(option => {
+            option.removeEventListener('click', () => {});
+        });
+        
+        document.removeEventListener('click', () => {});
+    }
+    
+    // Handle reduced motion preferences
+    function handleReducedMotion() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+            // Disable animations
+            if (pricingElements.wrapper) {
+                pricingElements.wrapper.style.opacity = '1';
+                pricingElements.wrapper.style.transform = 'translateY(0)';
+            }
         }
     }
     
@@ -439,14 +457,22 @@
         initPricingCalculator();
     }
     
+    // Handle reduced motion changes
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    reducedMotionQuery.addListener(handleReducedMotion);
+    handleReducedMotion(); // Initial check
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', cleanup);
+    
     // Expose functions for external access if needed
     window.aetherbloomPricingCalculator = {
         init: initPricingCalculator,
+        cleanup: cleanup,
         selectRole: selectRole,
         selectTier: selectTier,
         getSelectedRole: () => pricingData.selectedRole,
-        getSelectedTier: () => pricingData.selectedTier,
-        updateCalculations: updateCalculations
+        getSelectedTier: () => pricingData.selectedTier
     };
     
 })();

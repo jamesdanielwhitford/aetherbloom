@@ -115,17 +115,17 @@
                 const deltaX = e.clientX - cardCenterX;
                 const deltaY = e.clientY - cardCenterY;
                 
-                // Normalize the values based on card size
-                const rotateX = (deltaY / cardRect.height) * -10; // Max 10 degrees
-                const rotateY = (deltaX / cardRect.width) * 10;   // Max 10 degrees
-                const translateX = (deltaX / cardRect.width) * 10; // Max 10px movement
-                const translateY = (deltaY / cardRect.height) * 10; // Max 10px movement
+                // Normalize the values based on card size - reduced intensity for smoother effect
+                const rotateX = (deltaY / cardRect.height) * -8; // Max 8 degrees
+                const rotateY = (deltaX / cardRect.width) * 8;   // Max 8 degrees
+                const translateX = (deltaX / cardRect.width) * 8; // Max 8px movement
+                const translateY = (deltaY / cardRect.height) * 8; // Max 8px movement
                 
                 servicesData.mousePosition = {
-                    x: translateX,
-                    y: translateY,
-                    rotateX: Math.max(-10, Math.min(10, rotateX)),
-                    rotateY: Math.max(-10, Math.min(10, rotateY))
+                    x: Math.max(-8, Math.min(8, translateX)),
+                    y: Math.max(-8, Math.min(8, translateY)),
+                    rotateX: Math.max(-8, Math.min(8, rotateX)),
+                    rotateY: Math.max(-8, Math.min(8, rotateY))
                 };
                 
                 updateCardTransform();
@@ -149,10 +149,32 @@
         }
     }
     
+    // Update card transform based on mouse position
+    function updateCardTransform() {
+        if (servicesElements.cardContent) {
+            const { x, y, rotateX, rotateY } = servicesData.mousePosition;
+            
+            if (servicesData.isHovering) {
+                const transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${x}px) translateY(${y}px) scale(1.02)`;
+                servicesElements.cardContent.style.transform = transform;
+                servicesElements.cardContent.style.transition = 'transform 0.1s ease-out';
+            } else {
+                servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
+                servicesElements.cardContent.style.transition = 'transform 0.3s ease-out';
+            }
+        }
+    }
+    
     // Initialize service menu interactions
     function initServiceMenu() {
         servicesElements.menuItems.forEach((item, index) => {
-            item.addEventListener('mouseenter', () => setActiveService(index));
+            item.addEventListener('mouseenter', () => {
+                setActiveService(index);
+            });
+            
+            item.addEventListener('click', () => {
+                setActiveService(index);
+            });
         });
     }
     
@@ -161,114 +183,114 @@
         if (index >= 0 && index < servicesData.services.length) {
             servicesData.activeService = index;
             updateServiceDisplay();
-            updateMenuStates();
+            updateMenuItemStates();
         }
     }
     
-    // Update service menu visual states
-    function updateMenuStates() {
-        servicesElements.menuItems.forEach((item, index) => {
-            const arrow = item.querySelector('.service-arrow');
-            
-            if (index === servicesData.activeService) {
-                item.classList.add('active');
-                if (arrow) arrow.classList.add('visible');
-            } else {
-                item.classList.remove('active');
-                if (arrow) arrow.classList.remove('visible');
-            }
-        });
-    }
-    
-    // Update service card display with current service data
+    // Update service card content
     function updateServiceDisplay() {
-        const currentService = servicesData.services[servicesData.activeService];
-        if (!currentService) return;
+        if (!servicesData.services[servicesData.activeService]) {
+            return;
+        }
         
-        // Update card number
+        const service = servicesData.services[servicesData.activeService];
+        
+        // Update card number (pad with zero)
         if (servicesElements.cardNumber) {
             servicesElements.cardNumber.textContent = String(servicesData.activeService + 1).padStart(2, '0');
         }
         
         // Update card title
         if (servicesElements.cardTitle) {
-            servicesElements.cardTitle.textContent = currentService.title;
+            servicesElements.cardTitle.textContent = service.title;
         }
         
         // Update card subtitle
         if (servicesElements.cardSubtitle) {
-            servicesElements.cardSubtitle.textContent = currentService.subtitle;
+            servicesElements.cardSubtitle.textContent = service.subtitle;
         }
         
         // Update card description
         if (servicesElements.cardDescription) {
-            servicesElements.cardDescription.textContent = currentService.description;
+            servicesElements.cardDescription.textContent = service.description;
         }
         
         // Update features list
-        if (servicesElements.featuresList && currentService.features) {
+        if (servicesElements.featuresList && service.features) {
             servicesElements.featuresList.innerHTML = '';
-            currentService.features.forEach(feature => {
+            
+            service.features.forEach(feature => {
                 const li = document.createElement('li');
                 li.className = 'feature-item';
-                li.innerHTML = `<span class="feature-icon">✓</span>${feature}`;
+                li.innerHTML = `
+                    <span class="feature-icon">✓</span>
+                    ${feature}
+                `;
                 servicesElements.featuresList.appendChild(li);
             });
         }
     }
     
-    // Update card transform based on mouse position
-    function updateCardTransform() {
-        if (!servicesElements.cardContent) return;
-        
-        const transform = getCardTransform();
-        const transition = servicesData.isHovering ? 
-            'transform 0.1s ease-out' : 
-            'transform 0.3s ease-out';
-        
-        servicesElements.cardContent.style.transform = transform;
-        servicesElements.cardContent.style.transition = transition;
+    // Update menu item active states
+    function updateMenuItemStates() {
+        servicesElements.menuItems.forEach((item, index) => {
+            const arrow = item.querySelector('.service-arrow');
+            
+            if (index === servicesData.activeService) {
+                item.classList.add('active');
+                if (arrow) {
+                    arrow.classList.add('visible');
+                }
+            } else {
+                item.classList.remove('active');
+                if (arrow) {
+                    arrow.classList.remove('visible');
+                }
+            }
+        });
     }
     
-    // Calculate transform string for the card
-    function getCardTransform() {
-        if (!servicesData.isHovering) {
-            return 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
-        }
-        
-        const { x, y, rotateX, rotateY } = servicesData.mousePosition;
-        return `perspective(1000px) rotateX(${rotateX || 0}deg) rotateY(${rotateY || 0}deg) translateX(${x || 0}px) translateY(${y || 0}px) scale(1.02)`;
-    }
-    
-    // Cleanup function
-    function cleanup() {
-        // Reset card transform
-        if (servicesElements.cardContent) {
-            servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
-        }
-        
-        servicesData.isHovering = false;
-        servicesData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
-    }
-    
-    // Handle reduced motion preference
-    function handleReducedMotion() {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        if (prefersReducedMotion && servicesElements.cardContent) {
-            servicesElements.cardContent.style.transform = 'none';
-            servicesElements.cardContent.style.transition = 'none';
-        }
-    }
-    
-    // Handle mobile devices (disable 3D effects for performance)
+    // Handle mobile optimization
     function handleMobileOptimization() {
         const isMobile = window.innerWidth <= 768;
         
         if (isMobile && servicesElements.cardContent) {
+            // Disable 3D effects on mobile
             servicesElements.cardContent.style.transform = 'none !important';
             servicesElements.cardContent.style.transition = 'all 0.3s ease !important';
         }
+    }
+    
+    // Handle reduced motion preferences
+    function handleReducedMotion() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+            // Disable transforms and transitions
+            if (servicesElements.cardContent) {
+                servicesElements.cardContent.style.transform = 'none !important';
+                servicesElements.cardContent.style.transition = 'none !important';
+            }
+            
+            if (servicesElements.content) {
+                servicesElements.content.style.opacity = '1';
+                servicesElements.content.style.transform = 'translateY(0)';
+            }
+        }
+    }
+    
+    // Cleanup function
+    function cleanup() {
+        if (servicesElements.section) {
+            servicesElements.section.removeEventListener('mousemove', () => {});
+            servicesElements.section.removeEventListener('mouseenter', () => {});
+            servicesElements.section.removeEventListener('mouseleave', () => {});
+        }
+        
+        servicesElements.menuItems.forEach(item => {
+            item.removeEventListener('mouseenter', () => {});
+            item.removeEventListener('click', () => {});
+        });
     }
     
     // Initialize when DOM is ready
@@ -295,9 +317,8 @@
     // Expose functions for external access if needed
     window.aetherbloomServices = {
         init: initServices,
-        cleanup: cleanup,
         setActiveService: setActiveService,
-        getActiveService: () => servicesData.activeService
+        cleanup: cleanup
     };
     
 })();

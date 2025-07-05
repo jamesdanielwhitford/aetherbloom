@@ -36,37 +36,37 @@ $cards_data = array(
 
 <section class="why-section" id="why-aetherbloom" data-section="why-aetherbloom">
   <div class="why-container">
-    <div class="text-content">
-      <h2 class="section-title">
+    <div class="why-text-content">
+      <h2 class="why-section-title">
         <?php echo wp_kses_post($section_title); ?>
       </h2>
-      <div class="text-paragraph">
+      <div class="why-text-paragraph">
         <p>
           <?php echo wp_kses_post($section_description); ?>
         </p>
       </div>
     </div>
 
-    <div class="cards-container">
-      <div class="cards-grid" id="why-cards-grid">
+    <div class="why-cards-container">
+      <div class="why-cards-grid" id="why-cards-grid">
         <?php foreach ($cards_data as $index => $card): ?>
           <div 
-            class="card card<?php echo ($index + 1); ?>" 
+            class="why-card card-<?php echo ($index + 1); ?>" 
             data-card-index="<?php echo $index; ?>"
             data-card-id="<?php echo esc_attr($card['id']); ?>"
             style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1);"
           >
-            <div class="card-image">
+            <div class="why-card-image">
               <img 
                 src="<?php echo esc_url($card['image']); ?>" 
                 alt="<?php echo esc_attr($card['title']); ?>"
-                class="card-icon"
+                class="why-card-icon"
                 loading="lazy"
               />
             </div>
-            <div class="card-body">
-              <h3 class="card-title"><?php echo esc_html($card['title']); ?></h3>
-              <p class="card-content"><?php echo esc_html($card['content']); ?></p>
+            <div class="why-card-body">
+              <h3 class="why-card-title"><?php echo esc_html($card['title']); ?></h3>
+              <p class="why-card-content"><?php echo esc_html($card['content']); ?></p>
             </div>
           </div>
         <?php endforeach; ?>

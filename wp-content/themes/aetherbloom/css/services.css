@@ -161,7 +161,7 @@
   justify-content: center;
 }
 
-.service-card-content {
+.card-content {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
@@ -180,7 +180,7 @@
   will-change: transform;
 }
 
-.service-card-content:hover {
+.card-content:hover {
   box-shadow: 
     0 30px 80px rgba(0, 0, 0, 0.3),
     0 10px 30px rgba(255, 255, 255, 0.1);
@@ -188,7 +188,7 @@
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-.service-card-header {
+.card-header {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
@@ -196,7 +196,7 @@
   flex-shrink: 0;
 }
 
-.service-card-number {
+.card-number {
   font-family: 'Poppins', -apple-system, sans-serif;
   font-size: 3rem;
   font-weight: 100;
@@ -204,11 +204,11 @@
   line-height: 1;
 }
 
-.service-card-title-group {
+.card-title-group {
   flex: 1;
 }
 
-.service-card-title {
+.card-title {
   font-family: 'Poppins', -apple-system, sans-serif;
   font-size: 2rem;
   font-weight: 600;
@@ -217,7 +217,7 @@
   line-height: 1.2;
 }
 
-.service-card-subtitle {
+.card-subtitle {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -226,7 +226,7 @@
   letter-spacing: 1px;
 }
 
-.service-card-description {
+.card-description {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 1.1rem;
   font-weight: 300;
@@ -236,14 +236,14 @@
   flex-shrink: 0;
 }
 
-.service-card-features {
+.card-features {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 0; /* Allow flex child to shrink */
 }
 
-.service-features-title {
+.features-title {
   font-family: 'Poppins', -apple-system, sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
@@ -254,7 +254,7 @@
   flex-shrink: 0;
 }
 
-.service-features-list {
+.features-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -262,7 +262,7 @@
   overflow-y: auto;
 }
 
-.service-feature-item {
+.feature-item {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -273,7 +273,7 @@
   gap: 1rem;
 }
 
-.service-feature-icon {
+.feature-icon {
   color: #ffffff;
   font-weight: 600;
   font-size: 1.1rem;
@@ -281,43 +281,44 @@
 }
 
 /* Custom scrollbar for card content */
-.service-card-content::-webkit-scrollbar {
+.card-content::-webkit-scrollbar {
   width: 4px;
 }
 
-.service-card-content::-webkit-scrollbar-track {
+.card-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
 }
 
-.service-card-content::-webkit-scrollbar-thumb {
+.card-content::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
 }
 
-.service-card-content::-webkit-scrollbar-thumb:hover {
+.card-content::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
 /* Custom scrollbar for features list */
-.service-features-list::-webkit-scrollbar {
+.features-list::-webkit-scrollbar {
   width: 4px;
 }
 
-.service-features-list::-webkit-scrollbar-track {
+.features-list::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
 }
 
-.service-features-list::-webkit-scrollbar-thumb {
+.features-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
 }
 
-.service-features-list::-webkit-scrollbar-thumb:hover {
+.features-list::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
+/* Responsive Design */
 @media (max-width: 1024px) {
   .services-content {
     grid-template-columns: 1fr;
@@ -338,7 +339,7 @@
     height: auto;
   }
   
-  .service-card-content {
+  .card-content {
     height: 500px; /* Slightly smaller on tablet */
   }
   
@@ -378,7 +379,7 @@
     display: flex;
   }
   
-  .service-card-content {
+  .card-content {
     padding: 2rem;
     height: 450px; /* Smaller on mobile */
     /* Disable 3D effects on mobile */
@@ -386,17 +387,17 @@
     transition: all 0.3s ease !important;
   }
   
-  .service-card-content:hover {
+  .card-content:hover {
     transform: none !important;
   }
   
-  .service-card-header {
+  .card-header {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
   
-  .service-card-title {
+  .card-title {
     font-size: 1.7rem;
   }
   
@@ -422,16 +423,16 @@
     font-size: 1.5rem;
   }
   
-  .service-card-content {
+  .card-content {
     padding: 1.5rem;
     height: 400px; /* Even smaller on small mobile */
   }
   
-  .service-card-title {
+  .card-title {
     font-size: 1.5rem;
   }
   
-  .service-card-description {
+  .card-description {
     font-size: 1rem;
   }
   
@@ -440,10 +441,11 @@
   }
 }
 
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   .service-menu-item,
   .service-arrow,
-  .service-card-content,
+  .card-content,
   .services-content {
     transition: none !important;
   }
@@ -458,12 +460,29 @@
     transform: none;
   }
   
-  .service-card-content {
+  .card-content {
     transform: none !important;
     will-change: auto;
   }
   
-  .service-card-content:hover {
+  .card-content:hover {
     transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: #ffffff;
+  }
+  
+  .service-title {
+    color: #ffffff;
+  }
+  
+  .card-title,
+  .features-title {
+    color: #ffffff;
   }
 }

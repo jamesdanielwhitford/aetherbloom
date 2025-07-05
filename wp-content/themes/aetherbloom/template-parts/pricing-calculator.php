@@ -64,9 +64,9 @@ $default_tier = 'enterprise';
     <div class="calculator-wrapper" id="calculator-wrapper">
       
       <!-- Header Section -->
-      <div class="header-section">
-        <h2 class="section-title"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle"><?php echo esc_html($section_subtitle); ?></p>
+      <div class="calculator-header-section">
+        <h2 class="calculator-section-title"><?php echo esc_html($section_title); ?></h2>
+        <p class="calculator-section-subtitle"><?php echo esc_html($section_subtitle); ?></p>
       </div>
 
       <div class="comparison-grid">
@@ -92,44 +92,52 @@ $default_tier = 'enterprise';
                       class="dropdown-option <?php echo $role['name'] === $default_role ? 'selected' : ''; ?>"
                       data-role-name="<?php echo esc_attr($role['name']); ?>"
                       data-role-salary="<?php echo esc_attr($role['salary']); ?>"
-                      data-role-index="<?php echo $index; ?>"
+                      data-role-index="<?php echo esc_attr($index); ?>"
                     >
-                      <span class="option-name"><?php echo esc_html($role['name']); ?></span>
-                      <span class="option-salary">£<?php echo number_format($role['salary']); ?></span>
+                      <div class="option-name"><?php echo esc_html($role['name']); ?></div>
+                      <div class="option-salary">£<?php echo number_format($role['salary']); ?>/year</div>
                     </button>
                   <?php endforeach; ?>
                 </div>
               </div>
-              
-              <div class="total-cost" id="uk-total-cost">
-                £45,400/year
-              </div>
             </div>
-
+            
             <div class="uk-right">
               <div class="breakdown-item">
-                <span class="breakdown-label">Base Salary</span>
-                <span class="breakdown-value" id="uk-salary">£26,000</span>
+                <span class="breakdown-label">Base salary</span>
+                <span class="breakdown-value" id="uk-base-salary">£26,000</span>
               </div>
               <div class="breakdown-item">
-                <span class="breakdown-label">NI & Pension (13%)</span>
-                <span class="breakdown-value" id="uk-ni-pension">£3,380</span>
+                <span class="breakdown-label">Employer NI</span>
+                <span class="breakdown-value" id="uk-employer-ni">£2,510</span>
               </div>
               <div class="breakdown-item">
-                <span class="breakdown-label">Recruitment (15%)</span>
-                <span class="breakdown-value" id="uk-recruitment">£3,900</span>
+                <span class="breakdown-label">Pension</span>
+                <span class="breakdown-value" id="uk-pension">£780</span>
               </div>
               <div class="breakdown-item">
-                <span class="breakdown-label">Training & Development</span>
-                <span class="breakdown-value" id="uk-training">£1,300</span>
+                <span class="breakdown-label">Holiday pay</span>
+                <span class="breakdown-value" id="uk-holiday">£2,800</span>
               </div>
               <div class="breakdown-item">
-                <span class="breakdown-label">Office, IT & Benefits</span>
-                <span class="breakdown-value" id="uk-office">£5,400</span>
+                <span class="breakdown-label">Training</span>
+                <span class="breakdown-value" id="uk-training">£1,500</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Office costs</span>
+                <span class="breakdown-value" id="uk-office">£3,600</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Equipment</span>
+                <span class="breakdown-value" id="uk-equipment">£1,200</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Insurance</span>
+                <span class="breakdown-value" id="uk-insurance">£600</span>
               </div>
               <div class="breakdown-item total-breakdown">
                 <span class="breakdown-label">Total cost</span>
-                <span class="breakdown-value" id="uk-total">£45,400</span>
+                <span class="breakdown-value total-cost" id="uk-total-cost">£38,990</span>
               </div>
             </div>
           </div>
@@ -146,7 +154,7 @@ $default_tier = 'enterprise';
                   aria-expanded="false"
                   aria-haspopup="true"
                 >
-                  <span class="dropdown-label" id="tier-label">Aetherbloom Digital Enterprise</span>
+                  <span class="dropdown-label" id="tier-label">Aetherbloom <?php echo esc_html($tier_options[2]['name']); ?></span>
                   <span class="dropdown-arrow" id="tier-arrow">▼</span>
                 </button>
                 
@@ -159,43 +167,63 @@ $default_tier = 'enterprise';
                       data-tier-cost="<?php echo esc_attr($tier['cost']); ?>"
                       data-tier-hours="<?php echo esc_attr($tier['hours']); ?>"
                       data-tier-monthly="<?php echo esc_attr($tier['monthly']); ?>"
-                      data-tier-index="<?php echo $index; ?>"
+                      data-tier-index="<?php echo esc_attr($index); ?>"
                     >
-                      <span class="option-name">Aetherbloom <?php echo esc_html($tier['name']); ?></span>
-                      <span class="option-details"><?php echo esc_html($tier['hours']); ?> • <?php echo esc_html($tier['monthly']); ?></span>
+                      <div class="option-name"><?php echo esc_html($tier['name']); ?></div>
+                      <div class="option-details"><?php echo esc_html($tier['hours']); ?> • <?php echo esc_html($tier['monthly']); ?></div>
                     </button>
                   <?php endforeach; ?>
                 </div>
               </div>
-              
-              <div class="total-cost" id="aetherbloom-total-cost">
-                £8,760/year
-              </div>
             </div>
-
+            
             <div class="aetherbloom-right">
               <div class="breakdown-item">
-                <span class="breakdown-label" id="tier-service-name">Digital Enterprise</span>
-                <span class="breakdown-value" id="tier-hours">50 hrs/month</span>
+                <span class="breakdown-label">Service fee</span>
+                <span class="breakdown-value" id="aetherbloom-service-fee">£8,760</span>
               </div>
               <div class="breakdown-item">
-                <span class="breakdown-label">Monthly Cost</span>
-                <span class="breakdown-value" id="tier-monthly">£730/month</span>
+                <span class="breakdown-label">Management</span>
+                <span class="breakdown-value" id="aetherbloom-management">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Training</span>
+                <span class="breakdown-value" id="aetherbloom-training">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Equipment</span>
+                <span class="breakdown-value" id="aetherbloom-equipment">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Infrastructure</span>
+                <span class="breakdown-value" id="aetherbloom-infrastructure">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Quality assurance</span>
+                <span class="breakdown-value" id="aetherbloom-qa">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Support</span>
+                <span class="breakdown-value" id="aetherbloom-support">24/7</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Compliance</span>
+                <span class="breakdown-value" id="aetherbloom-compliance">GDPR</span>
               </div>
               <div class="breakdown-item total-breakdown">
                 <span class="breakdown-label">Total cost</span>
-                <span class="breakdown-value" id="aetherbloom-total">£8,760</span>
+                <span class="breakdown-value total-cost" id="aetherbloom-total-cost">£8,760</span>
               </div>
               
-              <!-- Savings Information -->
-              <div class="savings-display">
+              <!-- Savings Display -->
+              <div class="savings-display" id="savings-display">
                 <div class="savings-amount">
-                  <span class="savings-label">Annual Savings</span>
-                  <span class="savings-value" id="savings-amount">£36,640</span>
+                  <span class="savings-label">You save</span>
+                  <span class="savings-value" id="savings-amount">£30,230</span>
                 </div>
-                <div class="savings-percentage">
-                  <span class="percentage-label">Cost Reduction</span>
-                  <span class="percentage-value" id="savings-percentage">80.7%</span>
+                <div class="percentage-container">
+                  <span class="percentage-value" id="savings-percentage">77%</span>
+                  <span class="percentage-label">savings</span>
                 </div>
               </div>
             </div>
@@ -211,8 +239,8 @@ $default_tier = 'enterprise';
 window.aetherbloomPricingData = {
     roleOptions: <?php echo json_encode($role_options); ?>,
     tierOptions: <?php echo json_encode($tier_options); ?>,
-    defaultRole: <?php echo json_encode($default_role); ?>,
-    defaultTier: <?php echo json_encode($default_tier); ?>,
+    defaultRole: '<?php echo esc_js($default_role); ?>',
+    defaultTier: '<?php echo esc_js($default_tier); ?>',
     sectionSelector: '.calculator-section'
 };
 </script>

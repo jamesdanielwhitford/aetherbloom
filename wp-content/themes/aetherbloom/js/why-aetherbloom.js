@@ -28,12 +28,12 @@
             whyData.cardsData = window.aetherbloomWhyData.cardsData;
         }
         
-        // Cache DOM elements
+        // Cache DOM elements with updated class names
         whyElements.section = document.querySelector('.why-section');
-        whyElements.textContent = document.querySelector('.why-section .text-content');
-        whyElements.cardsContainer = document.querySelector('.why-section .cards-container');
+        whyElements.textContent = document.querySelector('.why-section .why-text-content');
+        whyElements.cardsContainer = document.querySelector('.why-section .why-cards-container');
         whyElements.cardsGrid = document.getElementById('why-cards-grid');
-        whyElements.cards = Array.from(document.querySelectorAll('.why-section .card'));
+        whyElements.cards = Array.from(document.querySelectorAll('.why-section .why-card'));
         
         if (!whyElements.section) {
             console.warn('Why Aetherbloom section not found');
@@ -124,10 +124,10 @@
             const deltaY = e.clientY - cardCenterY;
             
             // Reduced intensity for smoother interaction
-            const rotateX = (deltaY / cardRect.height) * -6; // Max 6 degrees
-            const rotateY = (deltaX / cardRect.width) * 6;   // Max 6 degrees
-            const translateX = (deltaX / cardRect.width) * 6; // Max 6px movement
-            const translateY = (deltaY / cardRect.height) * 6; // Max 6px movement
+            const rotateX = (deltaY / cardRect.height) * -6;
+            const rotateY = (deltaX / cardRect.width) * 6;
+            const translateX = (deltaX / cardRect.width) * 6;
+            const translateY = (deltaY / cardRect.height) * 6;
             
             whyData.mousePosition = {
                 x: Math.max(-6, Math.min(6, translateX)),
@@ -140,58 +140,42 @@
         }
     }
     
-    // Initialize individual card interactions
+    // Initialize card interactions
     function initCardInteractions() {
         whyElements.cards.forEach((card, index) => {
-            card.addEventListener('mouseenter', () => handleCardMouseEnter(index));
-            card.addEventListener('mouseleave', handleCardMouseLeave);
+            card.addEventListener('mouseenter', () => {
+                whyData.hoveredCard = index;
+                updateCardClasses();
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                whyData.hoveredCard = null;
+                whyData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
+                updateCardTransforms();
+                updateCardClasses();
+            });
         });
     }
     
-    // Handle card mouse enter
-    function handleCardMouseEnter(index) {
-        whyData.hoveredCard = index;
-        updateCardClasses();
-    }
-    
-    // Handle card mouse leave
-    function handleCardMouseLeave() {
-        whyData.hoveredCard = null;
-        whyData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
-        updateCardTransforms();
-        updateCardClasses();
-    }
-    
-    // Update card transform styles
+    // Update card transforms based on mouse position
     function updateCardTransforms() {
         whyElements.cards.forEach((card, index) => {
-            const transform = getCardTransform(index);
-            const transition = whyData.hoveredCard === index ? 
-                'transform 0.05s ease-out' : 
-                'transform 0.2s ease-out';
-            
-            card.style.transform = transform;
-            card.style.transition = transition;
+            if (index === whyData.hoveredCard) {
+                const { x, y, rotateX, rotateY } = whyData.mousePosition;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${x}px) translateY(${y}px) scale(1.02)`;
+            } else {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)`;
+            }
         });
-    }
-    
-    // Calculate transform string for a specific card
-    function getCardTransform(index) {
-        if (whyData.hoveredCard !== index) {
-            return 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
-        }
-        
-        const { x, y, rotateX, rotateY } = whyData.mousePosition;
-        return `perspective(1000px) rotateX(${rotateX || 0}deg) rotateY(${rotateY || 0}deg) translateX(${x || 0}px) translateY(${y || 0}px) scale(1.03)`;
     }
     
     // Update card hover classes
     function updateCardClasses() {
         whyElements.cards.forEach((card, index) => {
-            if (whyData.hoveredCard === index) {
-                card.classList.add('card-hovered');
+            if (index === whyData.hoveredCard) {
+                card.classList.add('why-card-hovered');
             } else {
-                card.classList.remove('card-hovered');
+                card.classList.remove('why-card-hovered');
             }
         });
     }
@@ -203,14 +187,16 @@
             whyData.rafId = null;
         }
         
-        // Reset all transforms
-        whyElements.cards.forEach(card => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
-            card.classList.remove('card-hovered');
-        });
+        // Remove event listeners
+        if (whyElements.section) {
+            whyElements.section.removeEventListener('mousemove', () => {});
+            whyElements.section.removeEventListener('mouseleave', () => {});
+        }
         
-        whyData.hoveredCard = null;
-        whyData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
+        whyElements.cards.forEach(card => {
+            card.removeEventListener('mouseenter', () => {});
+            card.removeEventListener('mouseleave', () => {});
+        });
     }
     
     // Handle reduced motion preference
@@ -218,20 +204,25 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         if (prefersReducedMotion) {
-            // Disable 3D transforms for accessibility
+            // Disable all transforms and transitions
             whyElements.cards.forEach(card => {
-                card.style.transform = 'none';
-                card.style.transition = 'none';
+                card.style.transform = 'none !important';
+                card.style.transition = 'none !important';
             });
             
-            // Remove mouse tracking
-            if (whyElements.section) {
-                whyElements.section.removeEventListener('mousemove', updateMousePosition);
+            if (whyElements.textContent) {
+                whyElements.textContent.style.opacity = '1';
+                whyElements.textContent.style.transform = 'translateY(0)';
+            }
+            
+            if (whyElements.cardsContainer) {
+                whyElements.cardsContainer.style.opacity = '1';
+                whyElements.cardsContainer.style.transform = 'translateY(0)';
             }
         }
     }
     
-    // Handle mobile devices (disable 3D effects for performance)
+    // Handle mobile optimization
     function handleMobileOptimization() {
         const isMobile = window.innerWidth <= 768;
         
