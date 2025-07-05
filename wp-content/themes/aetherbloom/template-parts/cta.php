@@ -26,20 +26,20 @@ $form_button_text = get_theme_mod('cta_form_button', 'Claim Your Free Session');
           </p>
         </div>
 
-        <div class="additional-info">
-          <p class="assessment-text">
+        <div class="cta-additional-info">
+          <p class="cta-assessment-text">
             <?php echo esc_html($cta_assessment_text); ?>
           </p>
         </div>
 
-        <div class="contact-info">
-          <div class="contact-item">
-            <a href="mailto:<?php echo esc_attr($cta_email); ?>" class="contact-link">
+        <div class="cta-contact-info">
+          <div class="cta-contact-item">
+            <a href="mailto:<?php echo esc_attr($cta_email); ?>" class="cta-contact-link">
               <?php echo esc_html($cta_email); ?>
             </a>
           </div>
-          <div class="contact-item">
-            <a href="tel:<?php echo esc_attr(str_replace(' ', '', $cta_phone)); ?>" class="contact-link">
+          <div class="cta-contact-item">
+            <a href="tel:<?php echo esc_attr(str_replace(' ', '', $cta_phone)); ?>" class="cta-contact-link">
               <?php echo esc_html($cta_phone); ?>
             </a>
           </div>
@@ -47,79 +47,40 @@ $form_button_text = get_theme_mod('cta_form_button', 'Claim Your Free Session');
       </div>
 
       <!-- Right Side - Contact Form -->
-      <div class="form-container">
-        <form 
-          class="contact-form" 
-          id="contact-form"
-          method="post"
-          action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>"
-          style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1);"
-        >
-          <?php wp_nonce_field('aetherbloom_contact_form', 'contact_nonce'); ?>
-          <input type="hidden" name="action" value="aetherbloom_contact_form">
-          
-          <div class="form-header">
-            <h3 class="form-title"><?php echo esc_html($form_title); ?></h3>
+      <div class="cta-form-container">
+        <form class="contact-form" id="contact-form" method="post" action="">
+          <div class="cta-form-header">
+            <h3 class="cta-form-title">
+              <?php echo esc_html($form_title); ?>
+            </h3>
           </div>
 
-          <div class="form-grid">
-            <div class="input-group">
-              <input
-                type="text"
-                name="full_name"
-                id="contact-name"
-                placeholder="Full Name"
-                class="form-input"
-                required
-                autocomplete="name"
-              />
+          <div class="cta-form-grid">
+            <div class="cta-input-group">
+              <input type="text" id="contact-name" name="contact_name" class="cta-form-input" placeholder="Your Name" required>
             </div>
-
-            <div class="input-group">
-              <input
-                type="email"
-                name="email"
-                id="contact-email"
-                placeholder="Work Email"
-                class="form-input"
-                required
-                autocomplete="email"
-              />
+            
+            <div class="cta-input-group">
+              <input type="email" id="contact-email" name="contact_email" class="cta-form-input" placeholder="Your Email" required>
             </div>
-
-            <div class="input-group">
-              <input
-                type="text"
-                name="company"
-                id="contact-company"
-                placeholder="Company Name"
-                class="form-input"
-                required
-                autocomplete="organization"
-              />
+            
+            <div class="cta-input-group">
+              <input type="text" id="contact-company" name="contact_company" class="cta-form-input" placeholder="Company Name" required>
             </div>
-
-            <div class="input-group">
-              <textarea
-                name="message"
-                id="contact-message"
-                placeholder="Tell us about your business needs..."
-                class="form-textarea"
-                rows="4"
-                required
-              ></textarea>
+            
+            <div class="cta-input-group">
+              <textarea id="contact-message" name="contact_message" class="cta-form-textarea" placeholder="Tell us about your business and how we can help you scale" rows="4" required></textarea>
             </div>
           </div>
 
-          <button type="submit" class="submit-button" id="contact-submit">
-            <span class="button-text"><?php echo esc_html($form_button_text); ?></span>
-            <span class="button-arrow">→</span>
+          <button type="submit" class="cta-submit-button" id="contact-submit">
+            <span class="cta-button-text"><?php echo esc_html($form_button_text); ?></span>
+            <span class="cta-button-arrow">→</span>
           </button>
-          
-          <!-- Form status messages -->
-          <div class="form-messages" id="form-messages" style="display: none;">
+
+          <div class="cta-form-messages">
             <div class="form-success" id="form-success">
-              Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+              Your message has been sent successfully. We'll get back to you within 24 hours.
             </div>
             <div class="form-error" id="form-error">
               Sorry, there was an error sending your message. Please try again or contact us directly.

@@ -44,7 +44,7 @@ $animated_texts_array = explode(',', $hero_animated_texts);
         <a href="#why-aetherbloom" class="learn-more-btn">
           <?php echo esc_html($hero_learn_more_text); ?>
         </a>
-        <a href="#pricing" class="pricing-btn">
+        <a href="#pricing" class="hero-pricing-btn">
           <?php echo esc_html($hero_pricing_text); ?>
         </a>
       </div>
