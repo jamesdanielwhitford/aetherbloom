@@ -50,52 +50,8 @@ get_header(); ?>
 
             <!-- CTA Section - Template part includes its own section wrapper -->
             <?php get_template_part('template-parts/cta'); ?>
+
+            <?php get_footer(); ?>
         </div>
     </main>
 </div>
-
-<!-- WordPress content (hidden by default, shown only for actual posts/pages) -->
-<?php if (have_posts() && !is_front_page()) : ?>
-    <div class="site-content">
-        <?php while (have_posts()) : the_post(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="entry-header">
-                    <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-                </header>
-
-                <div class="entry-content">
-                    <?php
-                    the_content();
-
-                    wp_link_pages(array(
-                        'before' => '<div class="page-links">' . esc_html__('Pages:', 'aetherbloom'),
-                        'after'  => '</div>',
-                    ));
-                    ?>
-                </div>
-
-                <footer class="entry-footer">
-                    <?php
-                    edit_post_link(
-                        sprintf(
-                            wp_kses(
-                                __('Edit <span class="screen-reader-text">%s</span>', 'aetherbloom'),
-                                array(
-                                    'span' => array(
-                                        'class' => array(),
-                                    ),
-                                )
-                            ),
-                            get_the_title()
-                        ),
-                        '<span class="edit-link">',
-                        '</span>'
-                    );
-                    ?>
-                </footer>
-            </article>
-        <?php endwhile; ?>
-    </div>
-<?php endif; ?>
-
-<?php get_footer(); ?>
