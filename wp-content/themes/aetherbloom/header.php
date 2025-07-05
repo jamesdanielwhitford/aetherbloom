@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/header.php
 
 /**
- * The header for our theme
+ * The header for our theme - Temporary fix without custom walker
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -71,14 +71,25 @@
                 <!-- Navigation Links -->
                 <div class="nav-links">
                     <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'primary',
-                        'menu_id'        => 'primary-menu',
-                        'container'      => false,
-                        'items_wrap'     => '%3$s',
-                        'walker'         => new Aetherbloom_Walker_Nav_Menu(),
-                        'fallback_cb'    => 'aetherbloom_fallback_menu',
-                    ));
+                    // Check if menu exists, otherwise show fallback
+                    if (has_nav_menu('primary')) {
+                        wp_nav_menu(array(
+                            'theme_location' => 'primary',
+                            'menu_id'        => 'primary-menu',
+                            'container'      => false,
+                            'items_wrap'     => '%3$s',
+                            'link_before'    => '',
+                            'link_after'     => '',
+                        ));
+                    } else {
+                        // Fallback navigation
+                        ?>
+                        <a href="#why-aetherbloom" class="nav-link">About us</a>
+                        <a href="#services" class="nav-link">Services</a>
+                        <a href="#impact" class="nav-link">Impact</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <?php
+                    }
                     ?>
                 </div>
 
@@ -101,21 +112,3 @@
             </div>
         </nav>
     </header><!-- #masthead -->
-
-<?php
-/**
- * Fallback menu for primary navigation
- */
-function aetherbloom_fallback_menu() {
-    $menu_items = array(
-        array('name' => 'About us', 'url' => '#why-aetherbloom'),
-        array('name' => 'Services', 'url' => '#services'),
-        array('name' => 'Impact', 'url' => '#impact'),
-        array('name' => 'Contact', 'url' => '#contact')
-    );
-
-    foreach ($menu_items as $item) {
-        echo '<a href="' . esc_url($item['url']) . '" class="nav-link">' . esc_html($item['name']) . '</a>';
-    }
-}
-?>

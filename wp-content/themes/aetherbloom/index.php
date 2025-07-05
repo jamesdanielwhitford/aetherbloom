@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/index.php
 
 /**
- * The main template file
+ * The main template file - Updated for Phase 3 Integration
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -34,43 +34,29 @@ get_header(); ?>
     </div>
     
     <main class="site-main" id="main">
-        <!-- Hero Section -->
-        <section class="hero-container section" id="hero">
-            <?php get_template_part('template-parts/hero'); ?>
-        </section>
+        <!-- Hero Section - Template part includes its own section wrapper -->
+        <?php get_template_part('template-parts/hero'); ?>
 
         <!-- Content Wrapper for remaining sections -->
         <div class="content-wrapper">
-            <!-- Why Aetherbloom Section -->
-            <section class="section" id="why-aetherbloom">
-                <?php get_template_part('template-parts/why-aetherbloom'); ?>
-            </section>
+            <!-- Why Aetherbloom Section - Template part includes its own section wrapper -->
+            <?php get_template_part('template-parts/why-aetherbloom'); ?>
 
-            <!-- Services Section -->
-            <section class="section" id="services">
-                <?php get_template_part('template-parts/services'); ?>
-            </section>
+            <!-- Services Section - Template part includes its own section wrapper -->
+            <?php get_template_part('template-parts/services'); ?>
 
-            <!-- Pricing Calculator Section -->
-            <section class="section" id="pricing">
-                <?php get_template_part('template-parts/pricing-calculator'); ?>
-            </section>
+            <!-- Pricing Calculator Section - Template part includes its own section wrapper -->
+            <?php get_template_part('template-parts/pricing-calculator'); ?>
 
-            <!-- CTA Section -->
-            <section class="section" id="contact">
-                <?php get_template_part('template-parts/cta'); ?>
-            </section>
-
-            <!-- Footer -->
-            <?php get_footer(); ?>
+            <!-- CTA Section - Template part includes its own section wrapper -->
+            <?php get_template_part('template-parts/cta'); ?>
         </div>
     </main>
 </div>
 
-<?php
-// If we have posts, show them
-if (have_posts()) : ?>
-    <div class="site-content" style="display: none;">
+<!-- WordPress content (hidden by default, shown only for actual posts/pages) -->
+<?php if (have_posts() && !is_front_page()) : ?>
+    <div class="site-content">
         <?php while (have_posts()) : the_post(); ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <header class="entry-header">
@@ -88,37 +74,28 @@ if (have_posts()) : ?>
                     ?>
                 </div>
 
-                <?php if (get_edit_post_link()) : ?>
-                    <footer class="entry-footer">
-                        <?php
-                        edit_post_link(
-                            sprintf(
-                                wp_kses(
-                                    __('Edit <span class="screen-reader-text">%s</span>', 'aetherbloom'),
-                                    array(
-                                        'span' => array(
-                                            'class' => array(),
-                                        ),
-                                    )
-                                ),
-                                get_the_title()
+                <footer class="entry-footer">
+                    <?php
+                    edit_post_link(
+                        sprintf(
+                            wp_kses(
+                                __('Edit <span class="screen-reader-text">%s</span>', 'aetherbloom'),
+                                array(
+                                    'span' => array(
+                                        'class' => array(),
+                                    ),
+                                )
                             ),
-                            '<span class="edit-link">',
-                            '</span>'
-                        );
-                        ?>
-                    </footer>
-                <?php endif; ?>
+                            get_the_title()
+                        ),
+                        '<span class="edit-link">',
+                        '</span>'
+                    );
+                    ?>
+                </footer>
             </article>
         <?php endwhile; ?>
-
-        <?php
-        the_posts_navigation(array(
-            'prev_text' => __('Previous page', 'aetherbloom'),
-            'next_text' => __('Next page', 'aetherbloom'),
-        ));
-        ?>
     </div>
 <?php endif; ?>
 
-<?php wp_footer(); ?>
+<?php get_footer(); ?>
