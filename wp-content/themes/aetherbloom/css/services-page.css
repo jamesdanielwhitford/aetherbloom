@@ -1,33 +1,54 @@
 /* File: /wp-content/themes/aetherbloom/css/services-page.css */
 
 /**
- * Services Page Styles
+ * Services Page Styles - Updated to match homepage petal background
  * 
  * @package Aetherbloom
  * @version 1.0.0
  */
 
-/* Services Page Layout */
+/* Services Page Layout - Updated for transparent content over fixed petal background */
 .services-page {
   min-height: 100vh;
   position: relative;
   z-index: 2;
 }
 
-.services-page .content-wrapper {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 3;
+/* Remove snap scroll behavior from Services page */
+.services-page .site-main {
+  scroll-snap-type: none !important;
+  overflow-y: auto;
 }
 
-/* Page Header */
+/* Remove snap scroll from content wrapper on Services page */
+.services-page .content-wrapper {
+  background: transparent;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 3;
+  scroll-snap-align: none !important;
+  height: auto;
+  overflow-y: visible;
+}
+
+/* Ensure smooth scrolling without snap */
+.services-page .site-main,
+.services-page .content-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Page Header - Updated with glassmorphism instead of solid gradient */
 .page-header {
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.9), rgba(76, 175, 80, 0.9));
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 120px 0 80px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin: 2rem 2rem 0 2rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .page-header::before {
@@ -37,8 +58,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../assets/images/pattern-overlay.png') repeat;
-  opacity: 0.1;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(255, 147, 64, 0.1));
+  border-radius: 24px;
 }
 
 .page-title {
@@ -46,7 +67,9 @@
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .page-subtitle {
@@ -54,6 +77,9 @@
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Container */
@@ -63,193 +89,209 @@
   padding: 0 2rem;
 }
 
-/* Services Overview Section */
+/* Services Overview Section - Glassmorphism styling */
 .services-overview-section {
   padding: 80px 0;
-  background: white;
+  background: transparent;
+}
+
+.overview-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
   text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .overview-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .overview-content p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 800px;
   margin: 0 auto;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Core Services Section */
+/* Core Services Section - Glassmorphism styling */
 .core-services-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  background: transparent;
 }
 
 .core-services-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .service-card {
-  background: white;
-  border-radius: 16px;
-  padding: 3rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, #d84e28, #4caf50);
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .service-icon {
   width: 80px;
   height: 80px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(76, 175, 80, 0.1));
-  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
 .service-icon img {
   width: 40px;
   height: 40px;
+  filter: brightness(0) invert(1);
 }
 
 .service-card h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
   margin-bottom: 0.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .service-subtitle {
   font-size: 1rem;
-  color: #d84e28;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  color: var(--brand-color-light);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .service-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #5a6c7d;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .service-features {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: left;
 }
 
 .service-features li {
-  font-size: 0.95rem;
-  color: #5a6c7d;
-  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   position: relative;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .service-features li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #4caf50;
+  color: var(--brand-color-light);
   font-weight: bold;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Additional Services Section */
+/* Additional Services Section - Glassmorphism styling */
 .additional-services-section {
   padding: 80px 0;
-  background: white;
+  background: transparent;
 }
 
 .additional-services-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .additional-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .additional-service-item {
-  background: #f8f9fa;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
   padding: 2rem;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .additional-service-item:hover {
-  transform: translateY(-5px);
-  background: white;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.additional-service-item h4 {
+.additional-service-item h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .additional-service-item p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: #5a6c7d;
-  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Why Choose Section */
+/* Why Choose Section - Glassmorphism styling */
 .why-choose-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+  background: transparent;
 }
 
 .why-choose-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .reasons-grid {
@@ -259,55 +301,89 @@
 }
 
 .reason-card {
-  background: white;
-  border-radius: 12px;
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .reason-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.reason-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 20px rgba(216, 78, 40, 0.3);
 }
 
 .reason-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .reason-card p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: #5a6c7d;
-  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* CTA Section */
+/* Services CTA Section - Glassmorphism styling */
 .services-cta-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
+  background: transparent;
+}
+
+.cta-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 4rem;
   text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .cta-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cta-content p {
   font-size: 1.2rem;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -320,29 +396,31 @@
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-block;
+  border: 2px solid transparent;
 }
 
 .cta-primary {
-  background: #d84e28;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
   color: white;
-  box-shadow: 0 5px 15px rgba(216, 78, 40, 0.3);
+  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
 .cta-primary:hover {
-  background: #c44426;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.4);
+  box-shadow: 0 15px 40px rgba(216, 78, 40, 0.4);
+  filter: brightness(1.1);
 }
 
 .cta-secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   color: white;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .cta-secondary:hover {
-  background: white;
-  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
 }
 
@@ -356,6 +434,10 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+  
+  .reasons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -365,6 +447,7 @@
   
   .page-header {
     padding: 100px 0 60px;
+    margin: 1rem;
   }
   
   .page-title {
@@ -381,6 +464,11 @@
   .why-choose-section,
   .services-cta-section {
     padding: 60px 0;
+  }
+  
+  .overview-content,
+  .cta-content {
+    padding: 2rem;
   }
   
   .service-card {
@@ -425,12 +513,11 @@
     font-size: 2rem;
   }
   
-  .service-card {
-    padding: 1.5rem;
-  }
-  
+  .overview-content,
+  .service-card,
   .additional-service-item,
-  .reason-card {
+  .reason-card,
+  .cta-content {
     padding: 1.5rem;
   }
 }

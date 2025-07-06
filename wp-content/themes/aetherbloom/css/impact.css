@@ -1,33 +1,54 @@
 /* File: /wp-content/themes/aetherbloom/css/impact.css */
 
 /**
- * Impact Page Styles
+ * Impact Page Styles - Updated to match homepage petal background
  * 
  * @package Aetherbloom
  * @version 1.0.0
  */
 
-/* Impact Page Layout */
+/* Impact Page Layout - Updated for transparent content over fixed petal background */
 .impact-page {
   min-height: 100vh;
   position: relative;
   z-index: 2;
 }
 
-.impact-page .content-wrapper {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 3;
+/* Remove snap scroll behavior from Impact page */
+.impact-page .site-main {
+  scroll-snap-type: none !important;
+  overflow-y: auto;
 }
 
-/* Page Header */
+/* Remove snap scroll from content wrapper on Impact page */
+.impact-page .content-wrapper {
+  background: transparent;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 3;
+  scroll-snap-align: none !important;
+  height: auto;
+  overflow-y: visible;
+}
+
+/* Ensure smooth scrolling without snap */
+.impact-page .site-main,
+.impact-page .content-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Page Header - Updated with glassmorphism instead of solid gradient */
 .page-header {
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.9), rgba(76, 175, 80, 0.9));
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 120px 0 80px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin: 2rem 2rem 0 2rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .page-header::before {
@@ -37,8 +58,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../assets/images/pattern-overlay.png') repeat;
-  opacity: 0.1;
+  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(76, 175, 80, 0.1));
+  border-radius: 24px;
 }
 
 .page-title {
@@ -46,7 +67,9 @@
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .page-subtitle {
@@ -54,6 +77,9 @@
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Container */
@@ -63,18 +89,19 @@
   padding: 0 2rem;
 }
 
-/* Mission Overview Section */
+/* Mission Overview Section - Glassmorphism styling */
 .mission-overview-section {
   padding: 80px 0;
-  background: white;
+  background: transparent;
 }
 
 .mission-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 3rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .mission-grid {
@@ -85,40 +112,46 @@
 }
 
 .mission-item {
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
-  border: 2px solid transparent;
   transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .mission-item:hover {
   transform: translateY(-5px);
-  border-color: rgba(216, 78, 40, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
 }
 
 .mission-item h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #d84e28;
+  color: var(--brand-color-light);
   margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .mission-item p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .mission-quote {
+  background: rgba(44, 62, 80, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  border-radius: 16px;
-  color: white;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .mission-quote p {
@@ -126,21 +159,23 @@
   font-weight: 600;
   font-style: italic;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Reality Section */
+/* Reality Section - Glassmorphism styling */
 .reality-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  background: transparent;
 }
 
 .reality-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .statistics-grid {
@@ -151,49 +186,63 @@
 }
 
 .stat-card {
-  background: white;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .stat-number {
   font-size: 3rem;
   font-weight: 700;
-  color: #d84e28;
+  color: var(--brand-color-light);
   margin-bottom: 1rem;
   line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .stat-description {
   font-size: 1rem;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.4;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .human-cost {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .human-cost h3 {
   font-size: 2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .human-cost p {
   font-size: 1.2rem;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .impact-list {
@@ -206,40 +255,44 @@
 
 .impact-list li {
   font-size: 1.1rem;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1rem;
   padding-left: 2rem;
   position: relative;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .impact-list li::before {
   content: '•';
   position: absolute;
   left: 0;
-  color: #d84e28;
+  color: var(--brand-color-light);
   font-weight: bold;
   font-size: 1.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Foundation Programs Section */
+/* Foundation Programs Section - Glassmorphism styling */
 .foundation-programs-section {
   padding: 80px 0;
-  background: white;
+  background: transparent;
 }
 
 .foundation-programs-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .foundation-subtitle {
   font-size: 1.2rem;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .programs-grid {
@@ -249,18 +302,20 @@
 }
 
 .program-card {
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.02), rgba(76, 175, 80, 0.02));
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 3rem;
   position: relative;
-  border: 2px solid rgba(216, 78, 40, 0.1);
   transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .program-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(216, 78, 40, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
 }
 
 .program-number {
@@ -269,7 +324,7 @@
   left: 3rem;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #d84e28, #4caf50);
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -277,21 +332,24 @@
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
+  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
 .program-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .program-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .program-benefits {
@@ -302,33 +360,36 @@
 
 .program-benefits li {
   font-size: 0.95rem;
-  color: #5a6c7d;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.75rem;
   padding-left: 1.5rem;
   position: relative;
   line-height: 1.5;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .program-benefits li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #4caf50;
+  color: var(--brand-color-light);
   font-weight: bold;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Business Impact Section */
+/* Business Impact Section - Glassmorphism styling */
 .business-impact-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
+  background: transparent;
 }
 
 .business-impact-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .business-benefits-grid {
@@ -338,120 +399,137 @@
 }
 
 .benefit-card {
-  background: white;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .benefit-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
 .benefit-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.benefit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.benefit-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.benefit-list li {
-  font-size: 0.95rem;
-  color: #5a6c7d;
-  margin-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  position: relative;
-  line-height: 1.5;
-}
-
-.benefit-list li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: #d84e28;
-  font-weight: bold;
-}
-
-/* Get Involved Section */
+/* Get Involved Section - Glassmorphism styling */
 .get-involved-section {
   padding: 80px 0;
-  background: white;
+  background: transparent;
 }
 
 .get-involved-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: white;
   text-align: center;
   margin-bottom: 4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .involvement-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .involvement-card {
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.05), rgba(76, 175, 80, 0.05));
-  border-radius: 16px;
-  padding: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
   text-align: center;
-  border: 2px solid rgba(216, 78, 40, 0.1);
   transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .involvement-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(216, 78, 40, 0.3);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .involvement-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .involvement-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #5a6c7d;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.involvement-btn {
+.involvement-link {
   display: inline-block;
-  padding: 1rem 2rem;
-  background: #d84e28;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
   color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(216, 78, 40, 0.3);
+  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.3);
 }
 
-.involvement-btn:hover {
-  background: #c44426;
+.involvement-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.4);
+  box-shadow: 0 12px 35px rgba(216, 78, 40, 0.4);
+  filter: brightness(1.1);
 }
 
-/* Impact CTA Section */
+/* Impact CTA Section - Glassmorphism styling */
 .impact-cta-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
+  background: transparent;
+}
+
+.cta-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 4rem;
   text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .cta-content h2 {
@@ -459,31 +537,33 @@
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cta-content p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 3rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cta-primary {
   display: inline-block;
   padding: 1.2rem 3rem;
-  background: #d84e28;
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
   color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(216, 78, 40, 0.3);
+  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
 .cta-primary:hover {
-  background: #c44426;
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(216, 78, 40, 0.4);
+  box-shadow: 0 15px 40px rgba(216, 78, 40, 0.4);
+  filter: brightness(1.1);
 }
 
 /* Responsive Design */
@@ -509,6 +589,7 @@
   
   .page-header {
     padding: 100px 0 60px;
+    margin: 1rem;
   }
   
   .page-title {
@@ -532,6 +613,12 @@
     grid-template-columns: 1fr;
   }
   
+  .mission-quote,
+  .human-cost,
+  .cta-content {
+    padding: 2rem;
+  }
+  
   .statistics-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -543,7 +630,8 @@
   }
   
   .program-card,
-  .involvement-card {
+  .involvement-card,
+  .benefit-card {
     padding: 2rem;
   }
 }
@@ -572,5 +660,14 @@
   .get-involved-section h2,
   .cta-content h2 {
     font-size: 2rem;
+  }
+  
+  .mission-quote,
+  .human-cost,
+  .program-card,
+  .benefit-card,
+  .involvement-card,
+  .cta-content {
+    padding: 1.5rem;
   }
 }

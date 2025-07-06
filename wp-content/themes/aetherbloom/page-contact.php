@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/page-contact.php
 
 /**
- * Template for Contact page
+ * Template for Contact page - Updated to match homepage structure
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -20,24 +20,25 @@ get_header(); ?>
     </div>
     
     <main class="site-main contact-page" id="main">
-        <div class="page-header">
-            <div class="container">
-                <h1 class="page-title"><?php esc_html_e('Contact Us', 'aetherbloom'); ?></h1>
-                <p class="page-subtitle"><?php esc_html_e('Let\'s Build Your Outsourcing Strategy – Zero Commitment, Maximum Clarity', 'aetherbloom'); ?></p>
-            </div>
-        </div>
-
         <div class="content-wrapper">
+            <!-- Page Header Section - Moved inside content-wrapper -->
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><?php esc_html_e('Contact Us', 'aetherbloom'); ?></h1>
+                    <p class="page-subtitle"><?php esc_html_e('Let\'s Build Your Outsourcing Strategy – Zero Commitment, Maximum Clarity', 'aetherbloom'); ?></p>
+                </div>
+            </section>
+
             <!-- Contact Overview Section -->
             <section class="contact-overview-section">
                 <div class="container">
                     <div class="overview-content">
-                        <p>We'd love to hear from you! Whether you're ready to get started or just want to explore how Aetherbloom can support your business, send us a message using the form below and a member of our team will be in touch.</p>
+                        <p>We'd love to hear from you! Whether you're ready to get started or just want to explore how Aetherbloom can support your business, send us a message using the form below and a member of our team will be in touch within 48 hours.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Contact Form & Info Section -->
+            <!-- Contact Main Section -->
             <section class="contact-main-section">
                 <div class="container">
                     <div class="contact-grid">
@@ -45,7 +46,8 @@ get_header(); ?>
                         <div class="contact-form-wrapper">
                             <h2><?php esc_html_e('Get Started in Just 2 Minutes', 'aetherbloom'); ?></h2>
                             
-                            <form class="contact-form" action="#" method="post">
+                            <form class="contact-form" id="contact-form" method="post" action="">
+                                <!-- Your Details Section -->
                                 <div class="form-section">
                                     <h3><?php esc_html_e('Your Details', 'aetherbloom'); ?></h3>
                                     
@@ -60,31 +62,32 @@ get_header(); ?>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="email"><?php esc_html_e('Email Address', 'aetherbloom'); ?> <span class="required">*</span></label>
-                                        <input type="email" id="email" name="email" required>
+                                        <label for="email_address"><?php esc_html_e('Email Address', 'aetherbloom'); ?> <span class="required">*</span></label>
+                                        <input type="email" id="email_address" name="email_address" required>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="phone"><?php esc_html_e('Phone Number', 'aetherbloom'); ?></label>
-                                        <input type="tel" id="phone" name="phone">
-                                        <small class="form-note"><?php esc_html_e('We\'ll call within 48hrs if preferred', 'aetherbloom'); ?></small>
+                                        <label for="phone_number"><?php esc_html_e('Phone Number', 'aetherbloom'); ?></label>
+                                        <input type="tel" id="phone_number" name="phone_number">
+                                        <span class="form-note"><?php esc_html_e('We\'ll call within 48hrs if preferred', 'aetherbloom'); ?></span>
                                     </div>
                                 </div>
 
+                                <!-- Service Needs Section -->
                                 <div class="form-section">
                                     <h3><?php esc_html_e('Service Needs', 'aetherbloom'); ?></h3>
                                     
                                     <div class="form-group">
-                                        <label for="primary_service"><?php esc_html_e('Primary Service', 'aetherbloom'); ?></label>
-                                        <select id="primary_service" name="primary_service">
+                                        <label for="primary_service"><?php esc_html_e('Primary Service', 'aetherbloom'); ?> <span class="required">*</span></label>
+                                        <select id="primary_service" name="primary_service" required>
                                             <option value=""><?php esc_html_e('Select one', 'aetherbloom'); ?></option>
                                             <option value="digital_customer_success"><?php esc_html_e('Digital Customer Success (Email/chat support, order management, CRM updates)', 'aetherbloom'); ?></option>
-                                            <option value="call_centre"><?php esc_html_e('Call Centre Solutions (Inbound/outbound calls, sales support, appointment booking)', 'aetherbloom'); ?></option>
+                                            <option value="call_centre_solutions"><?php esc_html_e('Call Centre Solutions (Inbound/outbound calls, sales support, appointment booking)', 'aetherbloom'); ?></option>
                                         </select>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label><?php esc_html_e('Add-On Services (Optional)', 'aetherbloom'); ?></label>
+                                        <label><?php esc_html_e('Add-On Services', 'aetherbloom'); ?> <span class="form-note"><?php esc_html_e('(Optional)', 'aetherbloom'); ?></span></label>
                                         <div class="checkbox-group">
                                             <div class="checkbox-item">
                                                 <input type="checkbox" id="hr_support" name="addon_services[]" value="hr_support">
@@ -106,65 +109,57 @@ get_header(); ?>
                                     </div>
                                 </div>
 
+                                <!-- How Can We Help Section -->
                                 <div class="form-section">
                                     <h3><?php esc_html_e('How Can We Help?', 'aetherbloom'); ?></h3>
                                     
                                     <div class="form-group">
-                                        <label for="message"><?php esc_html_e('Tell us more (Optional but helpful!)', 'aetherbloom'); ?></label>
-                                        <textarea id="message" name="message" rows="5" placeholder="<?php esc_attr_e('Describe your current challenges, team size, or specific requirements...', 'aetherbloom'); ?>"></textarea>
+                                        <label for="help_description"><?php esc_html_e('Tell us more', 'aetherbloom'); ?> <span class="form-note"><?php esc_html_e('(Optional but helpful!)', 'aetherbloom'); ?></span></label>
+                                        <textarea id="help_description" name="help_description" rows="4" placeholder="<?php esc_attr_e('Describe your current challenges, team size, or specific goals...', 'aetherbloom'); ?>"></textarea>
                                     </div>
                                 </div>
 
+                                <!-- Form Actions -->
                                 <div class="form-actions">
-                                    <button type="submit" class="submit-btn"><?php esc_html_e('Submit Form', 'aetherbloom'); ?></button>
-                                    <p class="form-guarantee"><?php esc_html_e('We\'ll respond within 48 hours', 'aetherbloom'); ?></p>
+                                    <button type="submit" class="submit-btn">
+                                        <?php esc_html_e('Submit Form', 'aetherbloom'); ?>
+                                    </button>
+                                    <div class="form-guarantee">
+                                        <?php esc_html_e('We\'ll respond within 48 hours', 'aetherbloom'); ?>
+                                    </div>
                                     <p class="form-alternative">
                                         <?php esc_html_e('Prefer to talk?', 'aetherbloom'); ?> 
-                                        <a href="#" class="book-call-link"><?php esc_html_e('Book a quick call', 'aetherbloom'); ?></a>
+                                        <a href="#scheduler" class="book-call-link"><?php esc_html_e('Book a quick call', 'aetherbloom'); ?></a>
                                     </p>
                                 </div>
                             </form>
                         </div>
 
-                        <!-- Contact Information -->
+                        <!-- Contact Info Sidebar -->
                         <div class="contact-info-wrapper">
+                            <!-- Live Chat Widget -->
                             <div class="contact-info-card">
-                                <h3><?php esc_html_e('Get In Touch', 'aetherbloom'); ?></h3>
+                                <h3><?php esc_html_e('Live Chat Widget', 'aetherbloom'); ?></h3>
+                                <a href="#chat" class="chat-widget">
+                                    <?php esc_html_e('Chat Now with Our UK Team', 'aetherbloom'); ?>
+                                </a>
+                                <p><?php esc_html_e('(Mon-Fri, 8 AM – 6 PM GMT)', 'aetherbloom'); ?></p>
+                            </div>
+
+                            <!-- Contact Details -->
+                            <div class="contact-info-card">
+                                <h3><?php esc_html_e('Contact Details', 'aetherbloom'); ?></h3>
                                 
-                                <!-- Live Chat Widget -->
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/icon-chat.svg'); ?>" alt="Live Chat">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4><?php esc_html_e('Live Chat', 'aetherbloom'); ?></h4>
-                                        <p><?php esc_html_e('Chat Now with Our UK Team', 'aetherbloom'); ?></p>
-                                        <span class="contact-hours"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
-                                    </div>
+                                <div class="contact-item">
+                                    <h4><?php esc_html_e('UK Office (Grace):', 'aetherbloom'); ?></h4>
+                                    <p>London, UK</p>
+                                    <a href="tel:+44XXXXXXXXX">+44 XXXX XXX XXX</a>
                                 </div>
-
-                                <!-- UK Office -->
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/icon-uk.svg'); ?>" alt="UK Office">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4><?php esc_html_e('UK Office (Grace)', 'aetherbloom'); ?></h4>
-                                        <p>London, UK</p>
-                                        <a href="tel:+44XXXXXXXXX" class="contact-link">+44 XXXX XXX XXX</a>
-                                    </div>
-                                </div>
-
-                                <!-- SA Hub -->
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/icon-sa.svg'); ?>" alt="SA Hub">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4><?php esc_html_e('SA Hub (Della)', 'aetherbloom'); ?></h4>
-                                        <p>Johannesburg, SA</p>
-                                        <a href="tel:+27XXXXXXXX" class="contact-link">+27 XX XXX XXXX</a>
-                                    </div>
+                                
+                                <div class="contact-item">
+                                    <h4><?php esc_html_e('SA Hub (Della):', 'aetherbloom'); ?></h4>
+                                    <p>Johannesburg, SA</p>
+                                    <a href="tel:+27XXXXXXXX">+27 XX XXX XXXX</a>
                                 </div>
                             </div>
 
@@ -172,26 +167,27 @@ get_header(); ?>
                             <div class="free-resource-card">
                                 <h3><?php esc_html_e('Free Resource', 'aetherbloom'); ?></h3>
                                 <div class="resource-content">
-                                    <div class="resource-icon">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/icon-download.svg'); ?>" alt="Free Guide">
+                                    <div class="resource-text">
+                                        <p><?php esc_html_e('"The UK Leader\'s Guide to South African Talent"', 'aetherbloom'); ?></p>
+                                        <small><?php esc_html_e('Email capture + instant download', 'aetherbloom'); ?></small>
                                     </div>
-                                    <div class="resource-info">
-                                        <h4><?php esc_html_e('The UK Leader\'s Guide to South African Talent', 'aetherbloom'); ?></h4>
-                                        <p><?php esc_html_e('Email capture + instant download', 'aetherbloom'); ?></p>
-                                        <form class="resource-form">
-                                            <input type="email" placeholder="<?php esc_attr_e('Enter your email', 'aetherbloom'); ?>" required>
-                                            <button type="submit"><?php esc_html_e('Download', 'aetherbloom'); ?></button>
-                                        </form>
+                                    <div class="resource-form">
+                                        <input type="email" class="resource-input" placeholder="<?php esc_attr_e('Your email', 'aetherbloom'); ?>">
+                                        <button type="button" class="resource-btn"><?php esc_html_e('Download', 'aetherbloom'); ?></button>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Meeting Scheduler -->
-                            <div class="scheduler-card">
+                            <div class="scheduler-card" id="scheduler">
                                 <h3><?php esc_html_e('Choose a Time That Works for Your Zone', 'aetherbloom'); ?></h3>
                                 <div class="scheduler-options">
-                                    <a href="#" class="scheduler-btn primary"><?php esc_html_e('Schedule a 15-Min Discovery Call', 'aetherbloom'); ?></a>
-                                    <p class="scheduler-guarantee"><?php esc_html_e('Get a Same-Day Response – Guaranteed.', 'aetherbloom'); ?></p>
+                                    <a href="#schedule-discovery" class="scheduler-btn">
+                                        <?php esc_html_e('Schedule a 15-Min Discovery Call →', 'aetherbloom'); ?>
+                                    </a>
+                                    <p class="scheduler-note">
+                                        <?php esc_html_e('Get a Same-Day Response – Guaranteed.', 'aetherbloom'); ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +211,7 @@ get_header(); ?>
                             <div class="step-number">2</div>
                             <div class="step-content">
                                 <h3><?php esc_html_e('Discovery Call', 'aetherbloom'); ?></h3>
-                                <p><?php esc_html_e('15-minute conversation about your needs', 'aetherbloom'); ?></p>
+                                <p><?php esc_html_e('15-minute consultation to understand your needs', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                         <div class="step-item">
@@ -228,15 +224,15 @@ get_header(); ?>
                         <div class="step-item">
                             <div class="step-number">4</div>
                             <div class="step-content">
-                                <h3><?php esc_html_e('Get Started', 'aetherbloom'); ?></h3>
-                                <p><?php esc_html_e('Begin your transformation journey', 'aetherbloom'); ?></p>
+                                <h3><?php esc_html_e('Quick Start', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Team operational within 48-72 hours', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <?php get_footer(); ?>
         </div>
     </main>
 </div>
-
-<?php get_footer(); ?>

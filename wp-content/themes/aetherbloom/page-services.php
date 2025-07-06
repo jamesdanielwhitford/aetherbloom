@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/page-services.php
 
 /**
- * Template for Services page
+ * Template for Services page - Updated to match homepage structure
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -20,14 +20,15 @@ get_header(); ?>
     </div>
     
     <main class="site-main services-page" id="main">
-        <div class="page-header">
-            <div class="container">
-                <h1 class="page-title"><?php esc_html_e('Our Services', 'aetherbloom'); ?></h1>
-                <p class="page-subtitle"><?php esc_html_e('Comprehensive BPO Solutions for Your Business', 'aetherbloom'); ?></p>
-            </div>
-        </div>
-
         <div class="content-wrapper">
+            <!-- Page Header Section - Moved inside content-wrapper -->
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><?php esc_html_e('Our Services', 'aetherbloom'); ?></h1>
+                    <p class="page-subtitle"><?php esc_html_e('Comprehensive BPO Solutions for Your Business', 'aetherbloom'); ?></p>
+                </div>
+            </section>
+
             <!-- Services Overview Section -->
             <section class="services-overview-section">
                 <div class="container">
@@ -75,7 +76,7 @@ get_header(); ?>
 
                         <div class="service-card">
                             <div class="service-icon">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/service-tech-support.svg'); ?>" alt="Technical Support">
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/service-technical-support.svg'); ?>" alt="Technical Support">
                             </div>
                             <h3><?php esc_html_e('Technical Support', 'aetherbloom'); ?></h3>
                             <p class="service-subtitle"><?php esc_html_e('Expert Problem Solving', 'aetherbloom'); ?></p>
@@ -97,73 +98,81 @@ get_header(); ?>
                     <h2><?php esc_html_e('Additional Services', 'aetherbloom'); ?></h2>
                     <div class="additional-services-grid">
                         <div class="additional-service-item">
-                            <h4><?php esc_html_e('HR Support', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                            <h3><?php esc_html_e('Digital Marketing Support', 'aetherbloom'); ?></h3>
+                            <p>Social media management, content creation, and campaign assistance to boost your online presence.</p>
                         </div>
                         <div class="additional-service-item">
-                            <h4><?php esc_html_e('Virtual Admin', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                            <h3><?php esc_html_e('Quality Assurance', 'aetherbloom'); ?></h3>
+                            <p>Comprehensive testing and quality control processes to ensure excellence in service delivery.</p>
                         </div>
                         <div class="additional-service-item">
-                            <h4><?php esc_html_e('Bookkeeping & Accounting', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                            <h3><?php esc_html_e('Business Analytics', 'aetherbloom'); ?></h3>
+                            <p>Data analysis and reporting services to help you make informed business decisions.</p>
                         </div>
                         <div class="additional-service-item">
-                            <h4><?php esc_html_e('Data Analysis', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
-                        </div>
-                        <div class="additional-service-item">
-                            <h4><?php esc_html_e('Business Coaching', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
-                        </div>
-                        <div class="additional-service-item">
-                            <h4><?php esc_html_e('Website Design', 'aetherbloom'); ?></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                            <h3><?php esc_html_e('Training & Development', 'aetherbloom'); ?></h3>
+                            <p>Customized training programs for your team and our staff to ensure optimal performance.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Why Choose Section -->
+            <!-- Why Choose Us Section -->
             <section class="why-choose-section">
                 <div class="container">
-                    <h2><?php esc_html_e('Why Clients Choose Aetherbloom', 'aetherbloom'); ?></h2>
+                    <h2><?php esc_html_e('Why Choose Aetherbloom?', 'aetherbloom'); ?></h2>
                     <div class="reasons-grid">
                         <div class="reason-card">
-                            <h3><?php esc_html_e('Ethical Outsourcing', 'aetherbloom'); ?></h3>
-                            <p>Your support powers real employment for women in South Africa.</p>
+                            <div class="reason-icon">
+                                ⚡
+                            </div>
+                            <h3><?php esc_html_e('Lightning Fast Setup', 'aetherbloom'); ?></h3>
+                            <p>Get your team operational within 48 hours with our streamlined onboarding process.</p>
                         </div>
                         <div class="reason-card">
-                            <h3><?php esc_html_e('Culturally Aligned', 'aetherbloom'); ?></h3>
-                            <p>Our teams are fluent in UK business standards & tone.</p>
+                            <div class="reason-icon">
+                                🛡️
+                            </div>
+                            <h3><?php esc_html_e('GDPR Compliant', 'aetherbloom'); ?></h3>
+                            <p>Full compliance with UK and EU data protection regulations ensures your data security.</p>
                         </div>
                         <div class="reason-card">
-                            <h3><?php esc_html_e('Tool Integration', 'aetherbloom'); ?></h3>
-                            <p>We work with Zendesk, HubSpot, Shopify & more.</p>
+                            <div class="reason-icon">
+                                💰
+                            </div>
+                            <h3><?php esc_html_e('Cost Effective', 'aetherbloom'); ?></h3>
+                            <p>Reduce operational costs by up to 60% while maintaining premium service quality.</p>
                         </div>
                         <div class="reason-card">
-                            <h3><?php esc_html_e('Fast Setup', 'aetherbloom'); ?></h3>
-                            <p>Get up and running in as little as 7 days.</p>
+                            <div class="reason-icon">
+                                🎯
+                            </div>
+                            <h3><?php esc_html_e('UK-Trained Teams', 'aetherbloom'); ?></h3>
+                            <p>All staff receive comprehensive UK compliance and cultural training before deployment.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- CTA Section -->
+            <!-- Services CTA Section -->
             <section class="services-cta-section">
                 <div class="container">
                     <div class="cta-content">
-                        <h2><?php esc_html_e('Ready to Get Started?', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('Transform your business with our expert BPO solutions', 'aetherbloom'); ?></p>
+                        <h2><?php esc_html_e('Ready to Transform Your Business?', 'aetherbloom'); ?></h2>
+                        <p>Get started with a free consultation and discover how Aetherbloom can help streamline your operations and boost your bottom line.</p>
                         <div class="cta-buttons">
-                            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="cta-primary"><?php esc_html_e('Contact Us Today', 'aetherbloom'); ?></a>
-                            <a href="<?php echo esc_url(home_url('/#pricing')); ?>" class="cta-secondary"><?php esc_html_e('View Pricing', 'aetherbloom'); ?></a>
+                            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="cta-primary">
+                                <?php esc_html_e('Get Started Today', 'aetherbloom'); ?>
+                            </a>
+                            <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-secondary">
+                                <?php esc_html_e('Learn More About Us', 'aetherbloom'); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <?php get_footer(); ?>
         </div>
     </main>
 </div>
-
-<?php get_footer(); ?>
