@@ -364,8 +364,7 @@ get_header(); ?>
                 </div>
             </section>
 
+            <?php get_footer(); ?>
         </div>
     </main>
 </div>
-
-<?php get_footer(); ?>

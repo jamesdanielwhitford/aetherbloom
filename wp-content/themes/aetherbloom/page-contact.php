@@ -424,6 +424,7 @@ get_header(); ?>
                 </div>
             </section>
 
+            <?php get_footer(); ?>
         </div>
     </main>
 </div>
@@ -495,5 +496,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 </script>
-
-<?php get_footer(); ?>
