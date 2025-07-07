@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
                         <a href="<?php echo esc_url(home_url('/about')); ?>" class="nav-link">About</a>
                         <a href="<?php echo esc_url(home_url('/services')); ?>" class="nav-link">Services</a>
                         <a href="<?php echo esc_url(home_url('/impact')); ?>" class="nav-link">Impact</a>
-                        <a href="<?php echo esc_url(home_url('/careers')); ?>" class="nav-link">Careers</a>
+                        <a href="https://app.dover.com/jobs/aetherbloom" target="_blank" class="nav-link">Careers</a>
                         <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-link">Contact</a>
                         <?php
                     }
