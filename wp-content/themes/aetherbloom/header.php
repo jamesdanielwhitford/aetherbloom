@@ -51,12 +51,11 @@ if (!defined('ABSPATH')) {
                             'theme_location' => 'primary',
                             'menu_id'        => 'primary-menu',
                             'container'      => false,
-                            'items_wrap'     => '%3$s',
+                            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                             'link_before'    => '',
                             'link_after'     => '',
                         ));
                     } else {
-                        // Fallback navigation - Updated for separate pages
                         ?>
                         <a href="<?php echo esc_url(home_url('/about')); ?>" class="nav-link">About</a>
                         <a href="<?php echo esc_url(home_url('/services')); ?>" class="nav-link">Services</a>

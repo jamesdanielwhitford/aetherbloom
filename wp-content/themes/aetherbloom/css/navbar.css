@@ -73,6 +73,25 @@
   justify-content: center;
 }
 
+/* WordPress Menu Styling - Remove bullets and style properly */
+.nav-links ul {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a,
 .nav-link {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
@@ -86,8 +105,10 @@
   overflow: hidden;
   white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: block;
 }
 
+.nav-links li a::before,
 .nav-link::before {
   content: '';
   position: absolute;
@@ -103,15 +124,24 @@
   z-index: -1;
 }
 
+.nav-links li a:hover,
 .nav-link:hover {
   color: #ffffff;
   transform: translateY(-1px);
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
 }
 
+.nav-links li a:hover::before,
 .nav-link:hover::before {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Current page/active state styling */
+.nav-links li.current-menu-item a,
+.nav-links li.current_page_item a {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
 .nav-actions {
@@ -257,10 +287,12 @@
     gap: 0.75rem;
   }
   
-  .nav-links {
+  .nav-links,
+  .nav-links ul {
     gap: 1.5rem;
   }
   
+  .nav-links li a,
   .nav-link {
     font-size: 0.9rem;
     padding: 0.3rem 0.7rem;
@@ -352,6 +384,7 @@
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   .navbar,
+  .nav-links li a,
   .nav-link,
   .get-started-btn,
   .pricing-btn,
@@ -364,12 +397,14 @@
     display: none;
   }
   
+  .nav-links li a::before,
   .nav-link::before {
     display: none;
   }
 }
 
 /* Focus states for accessibility */
+.nav-links li a:focus,
 .nav-link:focus,
 .get-started-btn:focus,
 .pricing-btn:focus,
@@ -385,6 +420,7 @@
     border-color: #ffffff;
   }
   
+  .nav-links li a,
   .nav-link,
   .brand-name {
     color: #ffffff;
