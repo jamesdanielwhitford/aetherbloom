@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/page-impact.php
 
 /**
- * Template for Impact page - Cinematic story-driven redesign with video and dynamic layouts
+ * Template for Impact page - Complete content update with foundation programs and impact statistics
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -36,385 +36,386 @@ get_header(); ?>
                 </div>
             </section>
 
-            <!-- Why We Do What We Do - Split-Screen Video Feature -->
-            <section class="mission-video-section">
+            <!-- Why We Do What We Do Section -->
+            <section class="mission-section">
                 <div class="container">
-                    <div class="section-intro">
+                    <div class="section-header">
                         <h2><?php esc_html_e('Why We Do What We Do', 'aetherbloom'); ?></h2>
-                        <p class="section-subtitle">Two Challenges, One Solution</p>
+                        <p class="mission-tagline"><?php esc_html_e('Two Challenges, One Solution', 'aetherbloom'); ?></p>
                     </div>
                     
-                    <div class="video-container">
-                        <div class="split-screen-video">
-                            <!-- Placeholder for split-screen video -->
-                            <div class="video-placeholder">
-                                <div class="video-side uk-side">
-                                    <div class="video-label">UK Client Team Meeting</div>
-                                    <div class="video-frame">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/uk-team-meeting.jpg'); ?>" alt="UK client team meeting">
-                                        <div class="play-button">
-                                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.9)"/>
-                                                <polygon points="10,8 16,12 10,16" fill="#d84e28"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="video-divider">
-                                    <div class="connection-line"></div>
-                                    <div class="connection-icon">
-                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16Z" stroke="currentColor" stroke-width="2"/>
-                                            <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="video-side sa-side">
-                                    <div class="video-label">South African Women in Training</div>
-                                    <div class="video-frame">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-training.jpg'); ?>" alt="South African women in training">
-                                        <div class="play-button">
-                                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.9)"/>
-                                                <polygon points="10,8 16,12 10,16" fill="#d84e28"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="mission-grid">
+                        <div class="mission-card uk-business">
+                            <div class="mission-icon">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2"/>
+                                </svg>
                             </div>
+                            <h3><?php esc_html_e('For UK Businesses:', 'aetherbloom'); ?></h3>
+                            <p><?php esc_html_e('Agile, affordable teams trained in UK compliance and cultural fluency.', 'aetherbloom'); ?></p>
+                        </div>
+                        
+                        <div class="mission-card south-africa">
+                            <div class="mission-icon">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3><?php esc_html_e('For South Africa:', 'aetherbloom'); ?></h3>
+                            <p><?php esc_html_e('Sustainable careers for women overcoming systemic barriers: domestic violence, poverty, and unemployment.', 'aetherbloom'); ?></p>
                         </div>
                     </div>
                     
-                    <div class="mission-explanation">
-                        <div class="explanation-grid">
-                            <div class="explanation-side">
-                                <h3>For UK Businesses</h3>
-                                <p>Agile, affordable teams trained in UK compliance and cultural fluency.</p>
-                            </div>
-                            <div class="explanation-center">
-                                <div class="mission-quote">
-                                    <p>"Your efficiency fuels their empowerment."</p>
-                                </div>
-                            </div>
-                            <div class="explanation-side">
-                                <h3>For South Africa</h3>
-                                <p>Sustainable careers for women overcoming systemic barriers: domestic violence, poverty, and unemployment.</p>
-                            </div>
-                        </div>
+                    <div class="mission-quote">
+                        <p><?php esc_html_e('"Your efficiency fuels their empowerment."', 'aetherbloom'); ?></p>
                     </div>
                     
-                    <div class="mission-story">
-                        <p>South Africa is a nation brimming with untapped potential. Behind the statistics are millions of capable women held back by systemic barriers, gender discrimination, lack of access to digital tools and cycles of poverty that feel impossible to escape. At Aetherbloom, we don't just believe in change; we're building the infrastructure to make it happen.</p>
+                    <div class="mission-description">
+                        <p><?php esc_html_e('South Africa is a nation brimming with untapped potential. Behind the statistics are millions of capable women held back by systemic barriers, gender discrimination, lack of access to digital tools and cycles of poverty that feel impossible to escape. At Aetherbloom, we don\'t just believe in change; we\'re building the infrastructure to make it happen.', 'aetherbloom'); ?></p>
                     </div>
                 </div>
             </section>
 
-            <!-- The Stark Reality - Infographic Style -->
-            <section class="reality-infographic">
+            <!-- The Stark Reality - Statistics Section -->
+            <section class="stark-reality-section">
                 <div class="container">
-                    <h2 class="section-title"><?php esc_html_e('The Stark Reality', 'aetherbloom'); ?></h2>
+                    <div class="section-header">
+                        <h2><?php esc_html_e('The Stark Reality', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('By the Numbers', 'aetherbloom'); ?></p>
+                    </div>
                     
-                    <div class="reality-layout">
-                        <div class="reality-image">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-community.jpg'); ?>" alt="South African community" class="community-image">
-                            <div class="image-overlay">
-                                <div class="overlay-text">
-                                    <h3>The Human Cost</h3>
-                                    <p>These aren't just numbers, they represent:</p>
-                                    <div class="cost-points">
-                                        <div class="cost-point">Talented graduates forced into informal work</div>
-                                        <div class="cost-point">Single mothers choosing between rent and school fees</div>
-                                        <div class="cost-point">Young women with dreams but no pathways</div>
-                                    </div>
-                                </div>
+                    <div class="statistics-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">46%</div>
+                            <div class="stat-description">
+                                <p><?php esc_html_e('of South African women aged 25-34 are unemployed', 'aetherbloom'); ?></p>
+                                <span class="stat-source"><?php esc_html_e('(Stats SA 2023)', 'aetherbloom'); ?></span>
                             </div>
                         </div>
                         
-                        <div class="reality-stats">
-                            <h3>By the Numbers</h3>
-                            <div class="floating-stats">
-                                <div class="stat-float stat-1">
-                                    <div class="stat-number" data-count="46">46%</div>
-                                    <div class="stat-text">
-                                        <p>of South African women aged 25-34 are unemployed</p>
-                                        <span class="stat-source">(Stats SA 2023)</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="stat-float stat-2">
-                                    <div class="stat-number">1 in 3</div>
-                                    <div class="stat-text">
-                                        <p>single mothers struggles to afford basic nutrition</p>
-                                        <span class="stat-source">(UN Women)</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="stat-float stat-3">
-                                    <div class="stat-number" data-count="28">28%</div>
-                                    <div class="stat-text">
-                                        <p>of rural women have access to digital skills training</p>
-                                        <span class="stat-source">(World Bank)</span>
-                                    </div>
-                                </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1 in 3</div>
+                            <div class="stat-description">
+                                <p><?php esc_html_e('single mothers struggles to afford basic nutrition', 'aetherbloom'); ?></p>
+                                <span class="stat-source"><?php esc_html_e('(UN Women)', 'aetherbloom'); ?></span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-number">28%</div>
+                            <div class="stat-description">
+                                <p><?php esc_html_e('Only 28% of rural women have access to digital skills training', 'aetherbloom'); ?></p>
+                                <span class="stat-source"><?php esc_html_e('(World Bank)', 'aetherbloom'); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="human-cost-section">
+                        <h3><?php esc_html_e('The Human Cost', 'aetherbloom'); ?></h3>
+                        <p><?php esc_html_e('These aren\'t just numbers, they represent:', 'aetherbloom'); ?></p>
+                        <div class="human-cost-grid">
+                            <div class="cost-item">
+                                <div class="cost-icon">💼</div>
+                                <p><?php esc_html_e('Talented graduates forced into informal work', 'aetherbloom'); ?></p>
+                            </div>
+                            <div class="cost-item">
+                                <div class="cost-icon">👩‍👧</div>
+                                <p><?php esc_html_e('Single mothers choosing between rent and school fees', 'aetherbloom'); ?></p>
+                            </div>
+                            <div class="cost-item">
+                                <div class="cost-icon">🌟</div>
+                                <p><?php esc_html_e('Young women with dreams but no pathways', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Breaking the Cycle - Narrative Flow -->
-            <section class="cycle-narrative">
+            <!-- Breaking the Cycle Section -->
+            <section class="breaking-cycle-section">
                 <div class="container">
-                    <h2 class="section-title"><?php esc_html_e('How We\'re Breaking the Cycle', 'aetherbloom'); ?></h2>
-                    <p class="section-subtitle">More Than Jobs, Dignity Through Work</p>
-                    
-                    <div class="narrative-flow">
-                        <div class="narrative-intro">
-                            <p class="intro-text">Every role we create provides:</p>
-                        </div>
-                        
-                        <div class="transformation-timeline">
-                            <div class="timeline-stage">
-                                <div class="stage-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/before-transformation.jpg'); ?>" alt="Before transformation">
-                                </div>
-                                <div class="stage-content">
-                                    <h3>Before</h3>
-                                    <p>Systemic barriers preventing economic participation</p>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-text">Through Aetherbloom</div>
-                            </div>
-                            
-                            <div class="timeline-stage">
-                                <div class="stage-content">
-                                    <h3>Living wages that transform households</h3>
-                                    <p>Providing economic stability that breaks generational poverty cycles</p>
-                                </div>
-                                <div class="stage-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-development.jpg'); ?>" alt="Skills development">
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-text">Leading to</div>
-                            </div>
-                            
-                            <div class="timeline-stage">
-                                <div class="stage-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/empowered-women.jpg'); ?>" alt="Empowered women">
-                                </div>
-                                <div class="stage-content">
-                                    <h3>Confidence to reimagine what's possible</h3>
-                                    <p>Empowering women to envision and achieve bigger dreams</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="section-header">
+                        <h2><?php esc_html_e('How We\'re Breaking the Cycle', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('More Than Jobs, Dignity Through Work', 'aetherbloom'); ?></p>
                     </div>
-                </div>
-            </section>
-
-            <!-- Foundation Programs - Process Visualization -->
-            <section class="foundation-workflow">
-                <div class="container">
-                    <h2 class="section-title"><?php esc_html_e('The Aetherbloom Foundation', 'aetherbloom'); ?></h2>
-                    <p class="section-subtitle">Our Visionary Commitment to Social Activism</p>
                     
-                    <div class="workflow-process">
-                        <div class="process-step step-1">
-                            <div class="step-number">1</div>
-                            <div class="step-visual">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/training-program.jpg'); ?>" alt="Training program">
-                            </div>
-                            <div class="step-content">
-                                <h3>Work-Readiness Revolution</h3>
-                                <h4>Skills for Life</h4>
-                                <p>Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.</p>
-                                <div class="step-highlight">
-                                    <p>"Graduates gain certifications recognized by UK/South African employers."</p>
-                                </div>
-                                <p class="step-note"><strong>Beyond Employment:</strong> Even if we can't hire them, we empower them.</p>
-                            </div>
-                        </div>
+                    <div class="cycle-content">
+                        <p class="cycle-intro"><?php esc_html_e('Every role we create provides:', 'aetherbloom'); ?></p>
                         
-                        <div class="workflow-arrow">
-                            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 20H50M50 20L40 10M50 20L40 30" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="process-step step-2">
-                            <div class="step-number">2</div>
-                            <div class="step-visual">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-donation.jpg'); ?>" alt="Tech donation">
-                            </div>
-                            <div class="step-content">
-                                <h3>Second-Life Tech Initiative</h3>
-                                <h4>Sustainability Meets Inclusion</h4>
-                                <p>Donate or sell your decommissioned laptops, headsets, and phones. We refurbish equipment for our staff and trainees, reducing e-waste while bridging the digital divide.</p>
-                                <div class="step-highlight">
-                                    <p>"Every device donated supports a woman's access to work opportunities."</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="workflow-arrow">
-                            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 20H50M50 20L40 10M50 20L40 30" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="process-step step-3">
-                            <div class="step-number">3</div>
-                            <div class="step-visual">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnership.jpg'); ?>" alt="Community partnership">
-                            </div>
-                            <div class="step-content">
-                                <h3>NGO & Community Partnerships</h3>
-                                <h4>Collaborate With Us</h4>
-                                <p>Refer candidates from underserved groups for free training and employment opportunities. Co-design CSR projects (e.g., childcare subsidies, mental health workshops).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Business Impact - Split Content + Trust Section -->
-            <section class="business-impact">
-                <div class="container">
-                    <h2 class="section-title"><?php esc_html_e('Why UK Businesses Choose Aetherbloom', 'aetherbloom'); ?></h2>
-                    <p class="section-subtitle">Align Profit with Purpose</p>
-                    
-                    <div class="impact-split">
-                        <div class="impact-benefits">
-                            <div class="benefit-large">
-                                <div class="benefit-icon">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3C7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                        <div class="transformation-grid">
+                            <div class="transformation-card">
+                                <div class="transformation-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <h3>Meet CSR & ESG Goals</h3>
-                                <p>Quantify your impact: "£1 saved through outsourcing = £0.60 reinvested in women's upliftment."</p>
-                                <ul class="benefit-list">
-                                    <li>Annual impact reports detail your carbon footprint reduction (via tech recycling) and social ROI</li>
-                                    <li>Audited fair wages, safe workspaces, and upskilling opportunities</li>
-                                    <li>B-BBEE Level 1 compliant (South Africa's empowerment standard)</li>
+                                <h4><?php esc_html_e('Living wages that transform households', 'aetherbloom'); ?></h4>
+                                <p><?php esc_html_e('Providing stable income that breaks cycles of poverty and creates financial security for families.', 'aetherbloom'); ?></p>
+                            </div>
+                            
+                            <div class="transformation-card">
+                                <div class="transformation-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h4><?php esc_html_e('Skills development for lifelong employability', 'aetherbloom'); ?></h4>
+                                <p><?php esc_html_e('Comprehensive training programs that build marketable skills and open doors to future opportunities.', 'aetherbloom'); ?></p>
+                            </div>
+                            
+                            <div class="transformation-card">
+                                <div class="transformation-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h4><?php esc_html_e('Confidence to reimagine what\'s possible', 'aetherbloom'); ?></h4>
+                                <p><?php esc_html_e('Empowering women to envision and achieve bigger dreams for themselves and their families.', 'aetherbloom'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aetherbloom Foundation Section -->
+            <section class="foundation-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('The Aetherbloom Foundation', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('Our Visionary Commitment to Social Activism', 'aetherbloom'); ?></p>
+                    </div>
+                    
+                    <div class="foundation-programs">
+                        <!-- Work-Readiness Revolution -->
+                        <div class="program-card work-readiness">
+                            <div class="program-number">1</div>
+                            <div class="program-content">
+                                <div class="program-header">
+                                    <h3><?php esc_html_e('Work-Readiness Revolution', 'aetherbloom'); ?></h3>
+                                    <h4><?php esc_html_e('Skills for Life', 'aetherbloom'); ?></h4>
+                                </div>
+                                <div class="program-description">
+                                    <p><?php esc_html_e('Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.', 'aetherbloom'); ?></p>
+                                    <div class="program-highlight">
+                                        <p><?php esc_html_e('"Graduates gain certifications recognized by UK/South African employers."', 'aetherbloom'); ?></p>
+                                    </div>
+                                    <p><strong><?php esc_html_e('Beyond Employment:', 'aetherbloom'); ?></strong> <?php esc_html_e('Even if we can\'t hire them, we empower them.', 'aetherbloom'); ?></p>
+                                </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.jpg'); ?>" alt="Skills training program">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second-Life Tech Initiative -->
+                        <div class="program-card tech-initiative">
+                            <div class="program-number">2</div>
+                            <div class="program-content">
+                                <div class="program-header">
+                                    <h3><?php esc_html_e('Second-Life Tech Initiative', 'aetherbloom'); ?></h3>
+                                    <h4><?php esc_html_e('Sustainability Meets Inclusion', 'aetherbloom'); ?></h4>
+                                </div>
+                                <div class="program-description">
+                                    <p><?php esc_html_e('Donate or sell your decommissioned laptops, headsets, and phones. We refurbish equipment for our staff and trainees, reducing e-waste while bridging the digital divide.', 'aetherbloom'); ?></p>
+                                    <div class="program-highlight">
+                                        <p><?php esc_html_e('"Every device donated supports a woman\'s access to work opportunities."', 'aetherbloom'); ?></p>
+                                    </div>
+                                </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.jpg'); ?>" alt="Technology refurbishment">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NGO & Community Partnerships -->
+                        <div class="program-card ngo-partnerships">
+                            <div class="program-number">3</div>
+                            <div class="program-content">
+                                <div class="program-header">
+                                    <h3><?php esc_html_e('NGO & Community Partnerships', 'aetherbloom'); ?></h3>
+                                    <h4><?php esc_html_e('Collaborate With Us', 'aetherbloom'); ?></h4>
+                                </div>
+                                <div class="program-description">
+                                    <ul>
+                                        <li><?php esc_html_e('Refer candidates from underserved groups for free training and employment opportunities.', 'aetherbloom'); ?></li>
+                                        <li><?php esc_html_e('Co-design CSR projects (e.g., childcare subsidies, mental health workshops).', 'aetherbloom'); ?></li>
+                                    </ul>
+                                </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="Community partnerships">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why UK Businesses Choose Aetherbloom Section -->
+            <section class="business-benefits-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('Why UK Businesses Choose Aetherbloom', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('Align Profit with Purpose', 'aetherbloom'); ?></p>
+                    </div>
+                    
+                    <div class="benefits-layout">
+                        <div class="benefit-large csr-goals">
+                            <div class="benefit-icon">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3><?php esc_html_e('Meet CSR & ESG Goals', 'aetherbloom'); ?></h3>
+                            <div class="benefit-details">
+                                <div class="impact-metric">
+                                    <span class="metric-highlight"><?php esc_html_e('£1 saved through outsourcing = £0.60 reinvested in women\'s upliftment.', 'aetherbloom'); ?></span>
+                                </div>
+                                <ul>
+                                    <li><?php esc_html_e('Annual impact reports detail your carbon footprint reduction (via tech recycling) and social ROI.', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('B-BBEE Level 1 compliant (South Africa\'s empowerment standard).', 'aetherbloom'); ?></li>
                                 </ul>
                             </div>
                         </div>
                         
-                        <div class="impact-visual">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/business-impact.jpg'); ?>" alt="Business impact visualization">
-                            <div class="visual-overlay">
-                                <div class="storytelling-advantage">
-                                    <h3>Storytelling Advantage</h3>
-                                    <p>Showcase your partnership in marketing campaigns and feature employee volunteer opportunities (e.g., virtual mentorship).</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Trust Badges Section -->
-                    <div class="trust-credentials">
-                        <h3>Trusted Certifications</h3>
-                        <div class="credentials-grid">
-                            <div class="credential-badge">
-                                <div class="badge-icon">
-                                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3C7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="badge-content">
-                                    <h4>B-BBEE Level 1</h4>
-                                    <p>South Africa Empowerment Standard</p>
-                                </div>
+                        <div class="benefit-cards">
+                            <div class="benefit-card">
+                                <h4><?php esc_html_e('Ethical Supply Chain Assurance', 'aetherbloom'); ?></h4>
+                                <ul>
+                                    <li><?php esc_html_e('Audited fair wages, safe workspaces, and upskilling opportunities.', 'aetherbloom'); ?></li>
+                                </ul>
                             </div>
                             
-                            <div class="credential-badge">
-                                <div class="badge-icon">
-                                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2L13.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="badge-content">
-                                    <h4>Carbon Trust Certification</h4>
-                                    <p>Environmental Impact Verified</p>
-                                </div>
-                            </div>
-                            
-                            <div class="credential-badge">
-                                <div class="badge-icon">
-                                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="badge-content">
-                                    <h4>NGO Partner Network</h4>
-                                    <p>Community Collaboration Verified</p>
-                                </div>
+                            <div class="benefit-card">
+                                <h4><?php esc_html_e('Storytelling Advantage', 'aetherbloom'); ?></h4>
+                                <ul>
+                                    <li><?php esc_html_e('Showcase your partnership in marketing campaigns.', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Feature employee volunteer opportunities (e.g., virtual mentorship).', 'aetherbloom'); ?></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Join Movement - Action Hero Section -->
-            <section class="join-action-hero">
-                <div class="action-background">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/partnership-action.jpg'); ?>" alt="Partnership in action" class="action-bg-image">
-                    <div class="action-overlay"></div>
-                </div>
-                
+            <!-- Join the Movement Section -->
+            <section class="join-movement-section">
                 <div class="container">
-                    <div class="action-content">
+                    <div class="section-header">
                         <h2><?php esc_html_e('Join the Movement', 'aetherbloom'); ?></h2>
-                        
-                        <div class="action-options">
-                            <div class="action-path">
-                                <div class="path-icon">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M8 21L12 17L16 21" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M12 17V21" stroke="currentColor" stroke-width="2"/>
+                        <p><?php esc_html_e('How You Can Be Part of This Story', 'aetherbloom'); ?></p>
+                    </div>
+                    
+                    <div class="movement-options">
+                        <div class="movement-card partner-business">
+                            <div class="movement-icon">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3><?php esc_html_e('Partner Through Business', 'aetherbloom'); ?></h3>
+                            <div class="partnership-flow">
+                                <div class="flow-item">
+                                    <span class="flow-text"><?php esc_html_e('Outsource tasks', 'aetherbloom'); ?></span>
+                                    <span class="flow-arrow">→</span>
+                                    <span class="flow-result"><?php esc_html_e('Create stable jobs', 'aetherbloom'); ?></span>
+                                </div>
+                                <div class="flow-item">
+                                    <span class="flow-text"><?php esc_html_e('Hire our team', 'aetherbloom'); ?></span>
+                                    <span class="flow-arrow">→</span>
+                                    <span class="flow-result"><?php esc_html_e('Fund training programs', 'aetherbloom'); ?></span>
+                                </div>
+                                <div class="flow-item">
+                                    <span class="flow-text"><?php esc_html_e('Scale with us', 'aetherbloom'); ?></span>
+                                    <span class="flow-arrow">→</span>
+                                    <span class="flow-result"><?php esc_html_e('Expand our impact together', 'aetherbloom'); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-section">
+                        <div class="action-grid">
+                            <div class="action-card donate-equipment">
+                                <div class="action-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <h3>Donate Equipment</h3>
-                                <p>Get a tax receipt + sustainability certificate</p>
-                                <a href="mailto:support@aetherbloom.co.uk" class="action-cta primary">Email Della to Donate Equipment</a>
+                                <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Get a tax receipt + sustainability certificate.', 'aetherbloom'); ?></p>
+                                <a href="mailto:support@aetherbloom.co.uk" class="action-cta primary">
+                                    <?php esc_html_e('Email Della to Donate Equipment', 'aetherbloom'); ?>
+                                </a>
                             </div>
                             
-                            <div class="action-divider">
-                                <span>or</span>
-                            </div>
-                            
-                            <div class="action-path">
-                                <div class="path-icon">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div class="action-card partner-impact">
+                                <div class="action-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
                                         <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
                                         <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
                                         <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <h3>Partner for Impact</h3>
-                                <p>Co-branded CSR initiatives</p>
-                                <a href="mailto:partnerships@aetherbloom.co.za" class="action-cta secondary">Partner with Grace on CSR Strategy</a>
+                                <h3><?php esc_html_e('Partner for Impact', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Co-branded CSR initiatives', 'aetherbloom'); ?></p>
+                                <a href="mailto:partnerships@aetherbloom.co.za" class="action-cta secondary">
+                                    <?php esc_html_e('Partner with Grace on CSR Strategy', 'aetherbloom'); ?>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Footer Tagline -->
-                <div class="impact-footer-tagline">
-                    <div class="container">
-                        <p class="tagline-text">"Outsource with intention. Transform with action."</p>
+            </section>
+
+            <!-- Trust Badges & Certifications -->
+            <section class="trust-certifications-section">
+                <div class="container">
+                    <div class="certifications-grid">
+                        <div class="cert-badge">
+                            <div class="cert-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h4><?php esc_html_e('B-BBEE Level 1', 'aetherbloom'); ?></h4>
+                            <p><?php esc_html_e('Contributor Certified', 'aetherbloom'); ?></p>
+                        </div>
+                        
+                        <div class="cert-badge">
+                            <div class="cert-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h4><?php esc_html_e('Carbon Trust', 'aetherbloom'); ?></h4>
+                            <p><?php esc_html_e('Certification', 'aetherbloom'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer Tagline -->
+            <section class="impact-footer-tagline">
+                <div class="container">
+                    <div class="tagline-content">
+                        <h2 class="tagline-text"><?php esc_html_e('"Outsource with intention. Transform with action."', 'aetherbloom'); ?></h2>
+                        <div class="tagline-cta">
+                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="btn btn-primary btn-large">
+                                <?php esc_html_e('Start Your Impact Journey', 'aetherbloom'); ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
