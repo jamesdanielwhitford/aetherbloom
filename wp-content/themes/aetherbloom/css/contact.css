@@ -49,12 +49,8 @@
    =========================================== */
 .contact-hero-section {
   padding: 120px 0 80px;
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.2), rgba(76, 175, 80, 0.15));
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   margin: 2rem;
   border-radius: 32px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
 }

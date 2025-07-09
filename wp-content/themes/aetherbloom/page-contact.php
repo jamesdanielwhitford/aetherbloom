@@ -299,13 +299,10 @@ get_header(); ?>
                                 <div class="contact-info">
                                     <div class="contact-item">
                                         <h4><?php esc_html_e('UK Office', 'aetherbloom'); ?></h4>
-                                        <p><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
-                                        <a href="tel:+44XXXXXXXXX" class="phone-link">+44 XXXX XXX XXX</a>
+                                        <a href="tel:+44208 0507 881" class="phone-link">+44 208 0507 881</a>
                                         <span class="office-hours"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
                                     </div>
-                                </div>
-                                
-                                <p class="privacy-note"><?php esc_html_e('We respect your privacy. Unsubscribe anytime.', 'aetherbloom'); ?></p>
+                                </div>                                
                             </div>
                         </div>
                     </div>
