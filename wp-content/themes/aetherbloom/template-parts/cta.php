@@ -3,8 +3,7 @@
 
 // Get custom field values with defaults
 $cta_title = get_theme_mod('cta_title', 'Ready to Transform Your Business?');
-$cta_subtitle = get_theme_mod('cta_subtitle', 'Join hundreds of UK businesses already saving up to 70% on operational costs while maintaining exceptional quality standards.');
-$cta_assessment_text = get_theme_mod('cta_assessment_text', 'Discover exactly how much you could save with a personalized assessment. Our team will analyze your current operations and provide a detailed cost-benefit analysis within 24 hours.');
+$cta_subtitle = get_theme_mod('cta_assessment_text', 'Discover exactly how much you could save with a personalized assessment. Our team will analyze your current operations and provide a detailed cost-benefit analysis within 24 hours.');
 $cta_email = get_theme_mod('cta_email', 'info@aetherbloom.co.za');
 $cta_phone = get_theme_mod('cta_phone', '+44 20 7123 4567');
 $form_title = get_theme_mod('cta_form_title', 'Start Your Free Assessment');
@@ -25,13 +24,6 @@ $form_button_text = get_theme_mod('cta_form_button', 'Claim Your Free Session');
             <?php echo esc_html($cta_subtitle); ?>
           </p>
         </div>
-
-        <div class="cta-additional-info">
-          <p class="cta-assessment-text">
-            <?php echo esc_html($cta_assessment_text); ?>
-          </p>
-        </div>
-
         <div class="cta-contact-info">
           <div class="cta-contact-item">
             <a href="mailto:<?php echo esc_attr($cta_email); ?>" class="cta-contact-link">
@@ -77,15 +69,6 @@ $form_button_text = get_theme_mod('cta_form_button', 'Claim Your Free Session');
             <span class="cta-button-text"><?php echo esc_html($form_button_text); ?></span>
             <span class="cta-button-arrow">→</span>
           </button>
-
-          <div class="cta-form-messages">
-            <div class="form-success" id="form-success">
-              Your message has been sent successfully. We'll get back to you within 24 hours.
-            </div>
-            <div class="form-error" id="form-error">
-              Sorry, there was an error sending your message. Please try again or contact us directly.
-            </div>
-          </div>
         </form>
       </div>
     </div>

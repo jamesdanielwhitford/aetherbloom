@@ -52,9 +52,6 @@ get_header(); ?>
                     <div class="section-header">
                         <h2><strong>Digital Customer Success Packages</strong></h2>
                         <p>Scalable, remote-first support to manage customer interactions, drive satisfaction and ease operational pressure without the overhead.</p>
-                        <div class="section-note">
-                            <em>* Please see examples of what your bespoke Aetherbloom package could look like *</em>
-                        </div>
                     </div>
                     
                     <div class="services-grid">
@@ -404,17 +401,6 @@ get_header(); ?>
                             </div>
                             <h3>Tool Integration</h3>
                             <p>We work with Zendesk, HubSpot, Shopify and more.</p>
-                        </div>
-                        
-                        <div class="benefit-card">
-                            <div class="benefit-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <h3>Fast Setup</h3>
-                            <p>Get up and running in as little as 7 days.</p>
                         </div>
                     </div>
                 </div>

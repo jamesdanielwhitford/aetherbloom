@@ -1,12 +1,25 @@
 /* File: /wp-content/themes/aetherbloom/css/footer.css */
 
 .site-footer {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
   position: relative;
   overflow: hidden;
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  transform-origin: center center;
+  will-change: transform, opacity, background-color;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .site-footer {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .site-footer::before {
@@ -224,6 +237,99 @@
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.4;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: fit-content;
+}
+
+.newsletter {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  width: 100%;
+}
+
+.newsletter-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.newsletter-description {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.newsletter-input {
+  flex: none; /* Remove flex: 1 to allow explicit width */
+  width: 100%; /* Make it take full width */
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: #a8d8a8;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(168, 216, 168, 0.3);
+}
+
+.newsletter-button {
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #334238 0%, #5a7a5a 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Make it take full width */
+}
+
+.newsletter-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(51, 66, 56, 0.4);
+  background: linear-gradient(135deg, #5a7a5a 0%, #334238 100%);
 }
 
 /* Newsletter Section */

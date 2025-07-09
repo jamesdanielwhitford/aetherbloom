@@ -101,7 +101,7 @@
 }
 
 .cta-contact-link:hover {
-  color: #ff9340;
+  color: #ffffff;
   text-decoration: underline;
 }
 
@@ -206,8 +206,8 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #d84e28 0%, #ff9340 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  color: #d84e28;
   border: none;
   border-radius: 12px;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -223,7 +223,8 @@
 .cta-submit-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(216, 78, 40, 0.4);
-  background: linear-gradient(135deg, #ff9340 0%, #d84e28 100%);
+  background: linear-gradient(135deg, #d84e28 0%, #d84e28 100%);
+  color: #ffffff;
 }
 
 .cta-submit-button:active {
