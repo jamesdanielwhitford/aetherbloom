@@ -80,13 +80,14 @@ $default_tier = 'enterprise';
               
               <!-- Role Selection Dropdown -->
               <div class="dropdown" id="role-dropdown">
-                <button class="dropdown-trigger" id="role-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                <button class="dropdown-trigger" id="role-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
                   <span class="dropdown-label" id="role-label"><?php echo esc_html($default_role); ?></span>
                   <span class="dropdown-arrow" id="role-arrow">▼</span>
                 </button>
                 <div class="dropdown-menu" id="role-dropdown-menu" role="menu" aria-hidden="true">
                   <?php foreach ($role_options as $index => $role) : ?>
                     <button class="dropdown-option<?php echo $role['name'] === $default_role ? ' selected' : ''; ?>" 
+                            type="button"
                             data-role="<?php echo esc_attr($role['name']); ?>" 
                             data-salary="<?php echo esc_attr($role['salary']); ?>"
                             role="menuitem">
@@ -106,7 +107,7 @@ $default_tier = 'enterprise';
               </div>
               <div class="breakdown-item">
                 <span class="breakdown-label">Employer NI</span>
-                <span class="breakdown-value" id="uk-employer-ni">£2,576</span>
+                <span class="breakdown-value" id="uk-employer-ni">£3,588</span>
               </div>
               <div class="breakdown-item">
                 <span class="breakdown-label">Pension</span>
@@ -114,7 +115,7 @@ $default_tier = 'enterprise';
               </div>
               <div class="breakdown-item">
                 <span class="breakdown-label">Holiday pay</span>
-                <span class="breakdown-value" id="uk-holiday">£2,000</span>
+                <span class="breakdown-value" id="uk-holiday">£2,002</span>
               </div>
               <div class="breakdown-item">
                 <span class="breakdown-label">Training</span>
@@ -133,8 +134,8 @@ $default_tier = 'enterprise';
                 <span class="breakdown-value" id="uk-insurance">£534</span>
               </div>
               <div class="breakdown-item total-breakdown">
-                <span class="breakdown-label">Total cost</span>
-                <span class="breakdown-value total-cost" id="uk-total-cost">£38,990</span>
+                <span class="breakdown-label">Total annual cost</span>
+                <span class="breakdown-value total-cost" id="uk-total-cost">£40,004</span>
               </div>
             </div>
           </div>
@@ -148,20 +149,21 @@ $default_tier = 'enterprise';
               
               <!-- Service Tier Selection Dropdown -->
               <div class="dropdown" id="tier-dropdown">
-                <button class="dropdown-trigger" id="tier-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                <button class="dropdown-trigger" id="tier-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
                   <span class="dropdown-label" id="tier-label">Digital Enterprise</span>
                   <span class="dropdown-arrow" id="tier-arrow">▼</span>
                 </button>
                 <div class="dropdown-menu" id="tier-dropdown-menu" role="menu" aria-hidden="true">
                   <?php foreach ($tier_options as $index => $tier) : ?>
                     <button class="dropdown-option<?php echo $tier['id'] === $default_tier ? ' selected' : ''; ?>" 
-                            data-tier="<?php echo esc_attr($tier['id']); ?>" 
+                            type="button"
+                            data-tier="<?php echo esc_attr($tier['id']); ?>"
                             data-cost="<?php echo esc_attr($tier['cost']); ?>"
-                            data-hours="<?php echo esc_attr($tier['hours']); ?>"
-                            data-monthly="<?php echo esc_attr($tier['monthly']); ?>"
                             role="menuitem">
-                      <span class="option-name"><?php echo esc_html($tier['name']); ?></span>
-                      <span class="option-details"><?php echo esc_html($tier['hours']); ?></span>
+                      <div>
+                        <div class="option-name"><?php echo esc_html($tier['name']); ?></div>
+                        <div class="option-details"><?php echo esc_html($tier['hours']); ?> • <?php echo esc_html($tier['monthly']); ?></div>
+                      </div>
                     </button>
                   <?php endforeach; ?>
                 </div>
@@ -169,30 +171,55 @@ $default_tier = 'enterprise';
             </div>
             
             <div class="aetherbloom-right">
-              <!-- Service Fee -->
+              <!-- Service Fee Breakdown -->
               <div class="breakdown-item">
                 <span class="breakdown-label">Service fee</span>
                 <span class="breakdown-value" id="aetherbloom-service-fee">£8,760</span>
               </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Recruitment</span>
+                <span class="breakdown-value">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Training</span>
+                <span class="breakdown-value">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Management</span>
+                <span class="breakdown-value">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Equipment</span>
+                <span class="breakdown-value">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Office space</span>
+                <span class="breakdown-value">Included</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-label">Insurance</span>
+                <span class="breakdown-value">Included</span>
+              </div>
               <div class="breakdown-item total-breakdown">
-                <span class="breakdown-label">Total cost</span>
+                <span class="breakdown-label">Total annual cost</span>
                 <span class="breakdown-value total-cost" id="aetherbloom-total-cost">£8,760</span>
               </div>
               
               <!-- Savings Display -->
-              <div class="savings-display" id="savings-display">
+              <div class="savings-display">
                 <div class="savings-amount">
-                  <span class="savings-label">You save</span>
-                  <span class="savings-value" id="savings-amount">£30,230</span>
+                  <span class="savings-label">Annual savings</span>
+                  <span class="savings-value" id="savings-amount">£31,244</span>
                 </div>
                 <div class="percentage-container">
-                  <span class="percentage-value" id="savings-percentage">77%</span>
-                  <span class="percentage-label">savings</span>
+                  <span class="percentage-label">Savings percentage</span>
+                  <span class="percentage-value" id="savings-percentage">78%</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -203,8 +230,7 @@ $default_tier = 'enterprise';
 window.aetherbloomPricingData = {
     roleOptions: <?php echo json_encode($role_options); ?>,
     tierOptions: <?php echo json_encode($tier_options); ?>,
-    defaultRole: '<?php echo esc_js($default_role); ?>',
-    defaultTier: '<?php echo esc_js($default_tier); ?>',
-    sectionSelector: '.calculator-section'
+    defaultRole: <?php echo json_encode($default_role); ?>,
+    defaultTier: <?php echo json_encode($default_tier); ?>
 };
 </script>

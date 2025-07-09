@@ -155,15 +155,19 @@
     function initDropdowns() {
         // Role dropdown
         if (pricingElements.roleDropdownTrigger) {
-            pricingElements.roleDropdownTrigger.addEventListener('click', () => {
+            pricingElements.roleDropdownTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 toggleRoleDropdown();
             });
         }
         
-        // Role options
+        // Role options - FIXED: Use correct data attribute
         pricingElements.roleOptions.forEach(option => {
             option.addEventListener('click', (e) => {
-                const roleName = e.currentTarget.dataset.roleName;
+                e.preventDefault();
+                e.stopPropagation();
+                const roleName = e.currentTarget.dataset.role; // Changed from dataset.roleName
                 selectRole(roleName);
                 closeRoleDropdown();
             });
@@ -171,15 +175,19 @@
         
         // Tier dropdown
         if (pricingElements.tierDropdownTrigger) {
-            pricingElements.tierDropdownTrigger.addEventListener('click', () => {
+            pricingElements.tierDropdownTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 toggleTierDropdown();
             });
         }
         
-        // Tier options
+        // Tier options - FIXED: Use correct data attribute
         pricingElements.tierOptions.forEach(option => {
             option.addEventListener('click', (e) => {
-                const tierId = e.currentTarget.dataset.tierId;
+                e.preventDefault();
+                e.stopPropagation();
+                const tierId = e.currentTarget.dataset.tier; // Changed from dataset.tierId
                 selectTier(tierId);
                 closeTierDropdown();
             });
@@ -206,6 +214,8 @@
         if (pricingData.isRoleDropdownOpen) {
             closeRoleDropdown();
         } else {
+            // Close tier dropdown if open
+            closeTierDropdown();
             openRoleDropdown();
         }
     }
@@ -214,6 +224,8 @@
         pricingData.isRoleDropdownOpen = true;
         if (pricingElements.roleDropdownMenu) {
             pricingElements.roleDropdownMenu.style.display = 'block';
+            // Force reflow to ensure proper positioning
+            pricingElements.roleDropdownMenu.offsetHeight;
         }
         if (pricingElements.roleArrow) {
             pricingElements.roleArrow.classList.add('open');
@@ -241,6 +253,8 @@
         if (pricingData.isTierDropdownOpen) {
             closeTierDropdown();
         } else {
+            // Close role dropdown if open
+            closeRoleDropdown();
             openTierDropdown();
         }
     }
@@ -249,6 +263,8 @@
         pricingData.isTierDropdownOpen = true;
         if (pricingElements.tierDropdownMenu) {
             pricingElements.tierDropdownMenu.style.display = 'block';
+            // Force reflow to ensure proper positioning
+            pricingElements.tierDropdownMenu.offsetHeight;
         }
         if (pricingElements.tierArrow) {
             pricingElements.tierArrow.classList.add('open');
@@ -271,8 +287,10 @@
         }
     }
     
-    // Selection functions
+    // Selection functions - FIXED: Better data handling
     function selectRole(roleName) {
+        if (!roleName) return;
+        
         pricingData.selectedRole = roleName;
         
         // Update label
@@ -282,7 +300,7 @@
         
         // Update option states
         pricingElements.roleOptions.forEach(option => {
-            if (option.dataset.roleName === roleName) {
+            if (option.dataset.role === roleName) {
                 option.classList.add('selected');
             } else {
                 option.classList.remove('selected');
@@ -294,18 +312,21 @@
     }
     
     function selectTier(tierId) {
+        if (!tierId) return;
+        
         pricingData.selectedTier = tierId;
         
-        // Find tier data
-        const tierData = pricingData.tierOptions.find(tier => tier.id === tierId);
+        // Find tier data from options in DOM
+        const tierOption = pricingElements.tierOptions.find(option => option.dataset.tier === tierId);
         
-        if (tierData && pricingElements.tierLabel) {
-            pricingElements.tierLabel.textContent = `Aetherbloom ${tierData.name}`;
+        if (tierOption && pricingElements.tierLabel) {
+            const tierName = tierOption.querySelector('.option-name')?.textContent || tierId;
+            pricingElements.tierLabel.textContent = tierName;
         }
         
         // Update option states
         pricingElements.tierOptions.forEach(option => {
-            if (option.dataset.tierId === tierId) {
+            if (option.dataset.tier === tierId) {
                 option.classList.add('selected');
             } else {
                 option.classList.remove('selected');
@@ -318,22 +339,31 @@
     
     // Update all calculations and display
     function updateCalculations() {
-        const selectedRoleData = pricingData.roleOptions.find(role => role.name === pricingData.selectedRole);
-        const selectedTierData = pricingData.tierOptions.find(tier => tier.id === pricingData.selectedTier);
+        // Get selected role data from DOM
+        const selectedRoleOption = pricingElements.roleOptions.find(option => 
+            option.dataset.role === pricingData.selectedRole
+        );
         
-        if (!selectedRoleData || !selectedTierData) {
+        // Get selected tier data from DOM
+        const selectedTierOption = pricingElements.tierOptions.find(option => 
+            option.dataset.tier === pricingData.selectedTier
+        );
+        
+        if (!selectedRoleOption || !selectedTierOption) {
             return;
         }
         
+        const baseSalary = parseInt(selectedRoleOption.dataset.salary) || 26000;
+        const aetherbloomCost = parseInt(selectedTierOption.dataset.cost) || 8760;
+        
         // Calculate UK costs
-        const ukCosts = calculateUKCosts(selectedRoleData.salary);
-        const aetherbloomCost = selectedTierData.cost;
+        const ukCosts = calculateUKCosts(baseSalary);
         const savings = ukCosts.total - aetherbloomCost;
         const savingsPercentage = Math.round((savings / ukCosts.total) * 100);
         
         // Update UK cost displays
         if (pricingElements.ukBaseSalary) {
-            pricingElements.ukBaseSalary.textContent = formatCurrency(selectedRoleData.salary);
+            pricingElements.ukBaseSalary.textContent = formatCurrency(baseSalary);
         }
         if (pricingElements.ukEmployerNi) {
             pricingElements.ukEmployerNi.textContent = formatCurrency(ukCosts.employerNi);
@@ -380,12 +410,12 @@
     // Calculate UK employment costs
     function calculateUKCosts(baseSalary) {
         const employerNi = Math.round(baseSalary * 0.138); // 13.8% employer NI
-        const pension = Math.round(baseSalary * 0.03); // 3% pension contribution
-        const holiday = Math.round(baseSalary * 0.1077); // 10.77% holiday pay (28 days)
-        const training = 1500; // Fixed training cost
-        const office = 3600; // Fixed office cost per year
-        const equipment = 1200; // Fixed equipment cost
-        const insurance = 600; // Fixed insurance cost
+        const pension = Math.round(baseSalary * 0.03); // 3% employer pension contribution
+        const holiday = Math.round(baseSalary * 0.077); // 7.7% holiday pay (20 days + 8 bank holidays)
+        const training = 1500; // Annual training costs
+        const office = 4800; // Annual office space costs
+        const equipment = 800; // Annual equipment costs
+        const insurance = 534; // Annual insurance costs
         
         const total = baseSalary + employerNi + pension + holiday + training + office + equipment + insurance;
         
@@ -417,24 +447,6 @@
         // Close any open dropdowns
         closeRoleDropdown();
         closeTierDropdown();
-        
-        // Remove event listeners
-        if (pricingElements.roleDropdownTrigger) {
-            pricingElements.roleDropdownTrigger.removeEventListener('click', () => {});
-        }
-        if (pricingElements.tierDropdownTrigger) {
-            pricingElements.tierDropdownTrigger.removeEventListener('click', () => {});
-        }
-        
-        pricingElements.roleOptions.forEach(option => {
-            option.removeEventListener('click', () => {});
-        });
-        
-        pricingElements.tierOptions.forEach(option => {
-            option.removeEventListener('click', () => {});
-        });
-        
-        document.removeEventListener('click', () => {});
     }
     
     // Handle reduced motion preferences

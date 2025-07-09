@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible to prevent dropdown clipping */
   padding: 2rem 0;
 }
 
@@ -60,20 +60,22 @@
   margin: 0 auto;
 }
 
-/* SIDE-BY-SIDE LAYOUT */
+/* SIDE-BY-SIDE LAYOUT - IMPROVED */
 .comparison-grid {
   display: flex;
-  flex-direction: row; /* Changed from column to row for side-by-side */
-  height: calc(100vh - 300px); /* Controlled height for proper fit */
+  flex-direction: row;
+  height: auto; /* Changed from fixed height to auto */
+  min-height: 500px; /* Added minimum height */
   flex: 1;
   gap: 2rem;
   padding: 0 4rem;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
+  align-items: stretch; /* Ensure equal height sections */
 }
 
-/* GLASSMORPHIC UK SECTION */
+/* GLASSMORPHIC UK SECTION - IMPROVED */
 .uk-section {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -81,7 +83,7 @@
   -webkit-backdrop-filter: blur(25px);
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   width: 50%;
   padding: 2rem;
   border-radius: 20px;
@@ -89,7 +91,7 @@
     0 8px 32px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible */
 }
 
 .uk-section::before {
@@ -105,9 +107,10 @@
 .uk-content {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   justify-content: space-between;
   height: 100%;
+  min-height: 400px; /* Added minimum height */
 }
 
 .uk-left {
@@ -125,7 +128,7 @@
   flex: 1;
 }
 
-/* GLASSMORPHIC AETHERBLOOM SECTION */
+/* GLASSMORPHIC AETHERBLOOM SECTION - IMPROVED */
 .aetherbloom-section {
   background: rgba(45, 90, 74, 0.15);
   border: 1px solid rgba(45, 90, 74, 0.3);
@@ -134,7 +137,7 @@
   color: white;
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   width: 50%;
   padding: 2rem;
   border-radius: 20px;
@@ -142,7 +145,7 @@
     0 8px 32px rgba(45, 90, 74, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible */
 }
 
 .aetherbloom-section::before {
@@ -158,9 +161,10 @@
 .aetherbloom-content {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   justify-content: space-between;
   height: 100%;
+  min-height: 400px; /* Added minimum height */
 }
 
 .aetherbloom-left {
@@ -178,17 +182,28 @@
   flex: 1;
 }
 
-/* ENHANCED DROPDOWN STYLES */
+/* SECTION LABELS - IMPROVED */
+.section-label {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+/* ENHANCED DROPDOWN STYLES - MAJOR IMPROVEMENTS */
 .dropdown {
   position: relative;
   margin-bottom: 1rem;
+  z-index: 10; /* Added z-index */
 }
 
 .dropdown-trigger {
   width: 100%;
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 0.5rem 0; /* Added padding for better click area */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -199,12 +214,14 @@
 
 .dropdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.8rem;
-  font-weight: 400;
+  font-size: 1.4rem; /* Reduced from 1.8rem for better fit */
+  font-weight: 500; /* Increased weight for better visibility */
   color: #ffffff;
   text-align: left;
-  line-height: 1.2;
+  line-height: 1.3;
   margin-right: 1rem;
+  flex: 1; /* Allow label to expand */
+  word-break: break-word; /* Handle long text */
 }
 
 .aetherbloom-section .dropdown-label {
@@ -212,9 +229,10 @@
 }
 
 .dropdown-arrow {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Reduced size */
   color: #ffffff;
   transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .aetherbloom-section .dropdown-arrow {
@@ -225,27 +243,30 @@
   transform: rotate(180deg);
 }
 
-/* IMPROVED DROPDOWN MENU - WHITE BACKGROUND WITH ORANGE TEXT */
+/* IMPROVED DROPDOWN MENU - FIXED POSITIONING */
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem); /* Added gap from trigger */
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95); /* White background for readability */
-  border: 1px solid rgba(255, 147, 64, 0.3);
+  background: rgba(255, 255, 255, 0.98); /* Increased opacity for better readability */
+  border: 2px solid rgba(255, 147, 64, 0.4); /* Stronger border */
   border-radius: 12px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  max-height: 280px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  z-index: 1000; /* High z-index to ensure visibility */
+  max-height: 300px; /* Increased max height */
   overflow-y: auto;
   animation: slideDown 0.3s ease;
+  display: none; /* Hidden by default */
 }
 
 .aetherbloom-section .dropdown-menu {
-  background: rgba(255, 255, 255, 0.95); /* Same white background for consistency */
-  border-color: rgba(255, 147, 64, 0.3);
+  background: rgba(255, 255, 255, 0.98); /* Same white background for consistency */
+  border-color: rgba(255, 147, 64, 0.4);
 }
 
 @keyframes slideDown {
@@ -274,11 +295,11 @@
 }
 
 .dropdown-option:hover {
-  background: rgba(255, 147, 64, 0.1);
+  background: rgba(255, 147, 64, 0.15); /* Stronger hover effect */
 }
 
 .dropdown-option.selected {
-  background: rgba(255, 147, 64, 0.2);
+  background: rgba(255, 147, 64, 0.25); /* Stronger selection effect */
 }
 
 .dropdown-option:last-child {
@@ -288,31 +309,31 @@
 .option-name {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
-  font-weight: 500;
-  color: #ff9340; /* Orange text for readability */
+  font-weight: 600; /* Increased weight */
+  color: #d84e28; /* Darker orange for better readability */
 }
 
 .option-salary,
 .option-details {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.85rem;
-  color: #d84e28; /* Darker orange for secondary text */
-  font-weight: 400;
+  color: #b8421e; /* Even darker for secondary text */
+  font-weight: 500; /* Increased weight */
 }
 
-/* Breakdown Items */
+/* Breakdown Items - IMPROVED SPACING */
 .breakdown-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  min-height: 2rem;
-  padding: 0.2rem 0;
+  min-height: 2.5rem; /* Increased height */
+  padding: 0.3rem 0; /* Increased padding */
 }
 
 .breakdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Increased from 0.9rem */
   color: #ffffff;
   font-weight: 400;
 }
@@ -323,9 +344,9 @@
 
 .breakdown-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Increased from 0.9rem */
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 600; /* Increased weight */
 }
 
 .aetherbloom-section .breakdown-value {
@@ -334,8 +355,8 @@
 
 .total-breakdown {
   border-top: 2px solid rgba(255, 255, 255, 0.3);
-  padding-top: 0.5rem;
-  margin-top: 0.5rem;
+  padding-top: 0.75rem; /* Increased padding */
+  margin-top: 0.75rem; /* Increased margin */
   font-weight: 600;
 }
 
@@ -345,14 +366,14 @@
 
 .total-breakdown .breakdown-label,
 .total-breakdown .breakdown-value {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700; /* Increased weight */
+  font-size: 1.1rem; /* Increased size */
 }
 
 .total-cost {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 700; /* Increased weight */
   color: #ffffff;
   line-height: 1;
 }
@@ -361,13 +382,14 @@
   color: #ffffff;
 }
 
-/* Savings Display */
+/* Savings Display - IMPROVED */
 .savings-display {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding-top: 0;
+  gap: 0.75rem; /* Increased gap */
+  margin-top: 1rem; /* Increased margin */
+  padding-top: 0.75rem; /* Increased padding */
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .savings-amount {
@@ -386,7 +408,7 @@
 
 .savings-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Increased size */
   font-weight: 700;
   color: #00ff88;
   text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
@@ -401,7 +423,7 @@
 
 .percentage-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem; /* Increased size */
   font-weight: 700;
   color: #ff9340;
   text-shadow: 0 2px 15px rgba(255, 147, 64, 0.4);
@@ -417,23 +439,24 @@
 
 /* Custom scrollbar for dropdown menus */
 .dropdown-menu::-webkit-scrollbar {
-  width: 4px;
+  width: 6px; /* Increased width */
 }
 
 .dropdown-menu::-webkit-scrollbar-track {
   background: #f1f3f4;
+  border-radius: 3px;
 }
 
 .dropdown-menu::-webkit-scrollbar-thumb {
   background: #d84e28;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .dropdown-menu::-webkit-scrollbar-thumb:hover {
   background: #ff9340;
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN - IMPROVED */
 @media (max-width: 1200px) {
   .calculator-header-section {
     padding: 1.5rem 2rem 2rem 2rem;
@@ -454,7 +477,7 @@
   }
   
   .dropdown-label {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
   
   .total-cost {
@@ -484,46 +507,46 @@
   .comparison-grid {
     flex-direction: column;
     padding: 0 1.5rem;
-    gap: 1rem;
+    gap: 1.5rem; /* Increased gap */
     height: auto;
   }
 
   .uk-section,
   .aetherbloom-section {
     width: 100%;
-    padding: 1.5rem;
+    padding: 2rem; /* Increased padding */
     flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    justify-content: center;
+    text-align: left; /* Changed from center to left */
+    gap: 1.5rem; /* Increased gap */
+    justify-content: flex-start; /* Changed alignment */
     min-height: auto;
   }
   
   .uk-content,
   .aetherbloom-content {
     flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    gap: 1.5rem; /* Increased gap */
+    text-align: left; /* Changed from center to left */
   }
   
   .uk-left,
   .aetherbloom-left {
-    gap: 1rem;
+    gap: 1.5rem; /* Increased gap */
   }
   
   .uk-right,
   .aetherbloom-right {
-    text-align: center;
-    gap: 0.5rem;
+    text-align: left; /* Changed from center to left */
+    gap: 0.75rem; /* Increased gap */
   }
   
   .breakdown-item {
-    min-height: 1.8rem;
-    padding: 0.15rem 0;
+    min-height: 2rem; /* Increased height */
+    padding: 0.2rem 0;
   }
   
   .dropdown-label {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   
   .total-cost {
@@ -531,20 +554,20 @@
   }
   
   .savings-display {
-    margin-top: 0.5rem;
-    padding-top: 0;
-    gap: 0.4rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    gap: 0.6rem;
   }
   
   .savings-amount,
   .percentage-container {
-    text-align: center;
-    padding: 0.2rem 0;
+    text-align: left; /* Changed from center to left */
+    padding: 0.3rem 0;
   }
   
   .total-breakdown {
-    padding-top: 0.4rem;
-    margin-top: 0.5rem;
+    padding-top: 0.6rem;
+    margin-top: 0.75rem;
   }
 }
 
@@ -567,32 +590,32 @@
 
   .comparison-grid {
     padding: 0 1rem;
-    gap: 0.8rem;
+    gap: 1rem;
   }
 
   .uk-section,
   .aetherbloom-section {
-    padding: 1rem;
-    gap: 0.8rem;
+    padding: 1.5rem; /* Increased padding */
+    gap: 1rem;
   }
   
   .uk-left,
   .aetherbloom-left {
-    gap: 0.8rem;
+    gap: 1rem;
   }
   
   .uk-right,
   .aetherbloom-right {
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
   
   .breakdown-item {
-    min-height: 1.5rem;
-    padding: 0.1rem 0;
+    min-height: 1.8rem;
+    padding: 0.15rem 0;
   }
   
   .dropdown-label {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .total-cost {
@@ -600,25 +623,25 @@
   }
   
   .savings-value {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .percentage-value {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .breakdown-label,
   .breakdown-value {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   
   .savings-display {
-    gap: 0.3rem;
+    gap: 0.5rem;
   }
   
   .savings-amount,
   .percentage-container {
-    padding: 0.15rem 0;
+    padding: 0.2rem 0;
   }
 }
 
