@@ -1,188 +1,196 @@
 // File: /wp-content/themes/aetherbloom/js/services.js
 
+/**
+ * Interactive Services Section JavaScript - Fixed for improved card interactions
+ * 
+ * @package Aetherbloom
+ * @version 2.0.0
+ */
+
 (function() {
     'use strict';
     
-    // Global variables for services functionality
-    let servicesData = {
+    // Global variables
+    let servicesData = window.aetherbloomServicesData || {
         services: [],
         activeService: 0,
-        isVisible: false,
-        mousePosition: { x: 0, y: 0, rotateX: 0, rotateY: 0 },
-        isHovering: false
+        sectionSelector: '.services-section'
     };
     
-    // DOM elements cache
-    let servicesElements = {
-        section: null,
-        content: null,
-        menu: null,
-        menuItems: [],
-        card: null,
-        cardContent: null,
-        cardNumber: null,
-        cardTitle: null,
-        cardSubtitle: null,
-        cardDescription: null,
-        featuresList: null
-    };
+    let servicesElements = {};
+    let mouseTimeout;
+    let isHovering = false;
     
-    // Initialize services functionality
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initServices);
+    } else {
+        initServices();
+    }
+    
     function initServices() {
-        // Get data from PHP if available
-        if (window.aetherbloomServicesData) {
-            servicesData.services = window.aetherbloomServicesData.services;
-            servicesData.activeService = window.aetherbloomServicesData.activeService;
-        }
-        
-        // Cache DOM elements
-        cacheElements();
-        
-        if (!servicesElements.section) {
+        // Find services section and elements
+        const servicesSection = document.querySelector(servicesData.sectionSelector);
+        if (!servicesSection) {
             console.warn('Services section not found');
             return;
         }
         
-        // Initialize intersection observer
-        initIntersectionObserver();
+        // Cache DOM elements
+        servicesElements = {
+            section: servicesSection,
+            content: servicesSection.querySelector('.services-content'),
+            menuItems: servicesSection.querySelectorAll('.service-menu-item'),
+            arrows: servicesSection.querySelectorAll('.service-arrow'),
+            cardContent: servicesSection.querySelector('#service-card-content'),
+            cardNumber: servicesSection.querySelector('#card-number'),
+            cardTitle: servicesSection.querySelector('#card-title'),
+            cardSubtitle: servicesSection.querySelector('#card-subtitle'),
+            cardDescription: servicesSection.querySelector('#card-description'),
+            featuresList: servicesSection.querySelector('#features-list')
+        };
         
-        // Initialize mouse tracking for card
-        initMouseTracking();
+        // Verify required elements exist
+        if (!servicesElements.content || !servicesElements.menuItems.length) {
+            console.warn('Required services elements not found');
+            return;
+        }
         
-        // Initialize service menu interactions
+        // Initialize components
         initServiceMenu();
+        initScrollAnimation();
+        initCardInteractions();
         
-        // Update initial service display
-        updateServiceDisplay();
+        // Set initial active service
+        setActiveService(servicesData.activeService);
         
-        // Handle mobile optimization
-        handleMobileOptimization();
-        
-        // Handle reduced motion preferences
-        handleReducedMotion();
+        console.log('Services section initialized successfully');
     }
     
-    // Cache all DOM elements
-    function cacheElements() {
-        servicesElements.section = document.querySelector('.services-section');
-        servicesElements.content = document.getElementById('services-content');
-        servicesElements.menu = document.getElementById('services-menu');
-        servicesElements.menuItems = Array.from(document.querySelectorAll('.service-menu-item'));
-        servicesElements.card = document.querySelector('.service-card');
-        servicesElements.cardContent = document.getElementById('service-card-content');
-        servicesElements.cardNumber = document.getElementById('card-number');
-        servicesElements.cardTitle = document.getElementById('card-title');
-        servicesElements.cardSubtitle = document.getElementById('card-subtitle');
-        servicesElements.cardDescription = document.getElementById('card-description');
-        servicesElements.featuresList = document.getElementById('features-list');
-    }
-    
-    // Setup intersection observer for section visibility
-    function initIntersectionObserver() {
+    // Initialize scroll-based animations
+    function initScrollAnimation() {
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.2,
             rootMargin: '-50px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                servicesData.isVisible = entry.isIntersecting;
-                updateSectionVisibility();
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
             });
         }, observerOptions);
         
-        observer.observe(servicesElements.section);
-    }
-    
-    // Update section visibility classes
-    function updateSectionVisibility() {
         if (servicesElements.content) {
-            if (servicesData.isVisible) {
-                servicesElements.content.classList.add('visible');
-            } else {
-                servicesElements.content.classList.remove('visible');
-            }
+            observer.observe(servicesElements.content);
         }
     }
     
-    // Initialize mouse tracking for card 3D effects
-    function initMouseTracking() {
-        const handleMouseMove = (e) => {
-            if (servicesElements.cardContent && servicesElements.section) {
-                const section = servicesElements.section;
-                const card = servicesElements.cardContent;
-                const sectionRect = section.getBoundingClientRect();
-                const cardRect = card.getBoundingClientRect();
-                
-                // Get mouse position relative to the card center
-                const cardCenterX = cardRect.left + cardRect.width / 2;
-                const cardCenterY = cardRect.top + cardRect.height / 2;
-                
-                const deltaX = e.clientX - cardCenterX;
-                const deltaY = e.clientY - cardCenterY;
-                
-                // Normalize the values based on card size - reduced intensity for smoother effect
-                const rotateX = (deltaY / cardRect.height) * -8; // Max 8 degrees
-                const rotateY = (deltaX / cardRect.width) * 8;   // Max 8 degrees
-                const translateX = (deltaX / cardRect.width) * 8; // Max 8px movement
-                const translateY = (deltaY / cardRect.height) * 8; // Max 8px movement
-                
-                servicesData.mousePosition = {
-                    x: Math.max(-8, Math.min(8, translateX)),
-                    y: Math.max(-8, Math.min(8, translateY)),
-                    rotateX: Math.max(-8, Math.min(8, rotateX)),
-                    rotateY: Math.max(-8, Math.min(8, rotateY))
-                };
-                
-                updateCardTransform();
-            }
-        };
+    // Initialize card 3D hover interactions
+    function initCardInteractions() {
+        if (!servicesElements.cardContent) return;
         
-        const handleMouseEnter = () => {
-            servicesData.isHovering = true;
-        };
+        const card = servicesElements.cardContent;
         
-        const handleMouseLeave = () => {
-            servicesData.isHovering = false;
-            servicesData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
-            updateCardTransform();
-        };
+        // Add mouse move handler for 3D effect
+        card.addEventListener('mouseenter', handleCardMouseEnter);
+        card.addEventListener('mousemove', handleCardMouseMove);
+        card.addEventListener('mouseleave', handleCardMouseLeave);
         
-        if (servicesElements.section) {
-            servicesElements.section.addEventListener('mousemove', handleMouseMove);
-            servicesElements.section.addEventListener('mouseenter', handleMouseEnter);
-            servicesElements.section.addEventListener('mouseleave', handleMouseLeave);
-        }
+        // Add touch support for mobile
+        card.addEventListener('touchstart', handleCardTouchStart, { passive: true });
+        card.addEventListener('touchend', handleCardTouchEnd, { passive: true });
     }
     
-    // Update card transform based on mouse position
-    function updateCardTransform() {
-        if (servicesElements.cardContent) {
-            const { x, y, rotateX, rotateY } = servicesData.mousePosition;
-            
-            if (servicesData.isHovering) {
-                // OPTION 1 FIX: Always include translateZ(0) to maintain GPU layer for backdrop-filter
+    function handleCardMouseEnter() {
+        isHovering = true;
+        clearTimeout(mouseTimeout);
+    }
+    
+    function handleCardMouseMove(e) {
+        if (!isHovering) return;
+        
+        const card = servicesElements.cardContent;
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+        
+        const rotateX = (mouseY / rect.height) * -10;
+        const rotateY = (mouseX / rect.width) * 10;
+        
+        const x = (mouseX / rect.width) * 20;
+        const y = (mouseY / rect.height) * 20;
+        
+        // Apply transform with improved performance
+        requestAnimationFrame(() => {
+            if (isHovering && servicesElements.cardContent) {
                 const transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${x}px) translateY(${y}px) translateZ(0) scale(1.02)`;
                 servicesElements.cardContent.style.transform = transform;
                 servicesElements.cardContent.style.transition = 'transform 0.1s ease-out';
-            } else {
-                // OPTION 1 FIX: Always include translateZ(0) to maintain GPU layer for backdrop-filter
+            }
+        });
+    }
+    
+    function handleCardMouseLeave() {
+        isHovering = false;
+        
+        // Reset transform with smooth transition
+        mouseTimeout = setTimeout(() => {
+            if (servicesElements.cardContent && !isHovering) {
                 servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
                 servicesElements.cardContent.style.transition = 'transform 0.3s ease-out';
             }
+        }, 50);
+    }
+    
+    function handleCardTouchStart(e) {
+        // Prevent default to avoid conflicts
+        e.preventDefault();
+        isHovering = true;
+    }
+    
+    function handleCardTouchEnd() {
+        isHovering = false;
+        if (servicesElements.cardContent) {
+            servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
+            servicesElements.cardContent.style.transition = 'transform 0.3s ease-out';
         }
     }
     
     // Initialize service menu interactions
     function initServiceMenu() {
         servicesElements.menuItems.forEach((item, index) => {
+            // Add hover handlers
             item.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) { // Only on desktop
+                    setActiveService(index);
+                }
+            });
+            
+            // Add click handlers for all devices
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
                 setActiveService(index);
             });
             
-            item.addEventListener('click', () => {
-                setActiveService(index);
+            // Add keyboard support
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveService(index);
+                }
             });
+            
+            // Make focusable
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+            item.setAttribute('aria-label', `View ${servicesData.services[index]?.title || 'service'} details`);
         });
     }
     
@@ -208,7 +216,7 @@
             servicesElements.cardNumber.textContent = String(servicesData.activeService + 1).padStart(2, '0');
         }
         
-        // Update card title
+        // Update card title with safe HTML handling
         if (servicesElements.cardTitle) {
             servicesElements.cardTitle.textContent = service.title;
         }
@@ -225,108 +233,91 @@
         
         // Update features list
         if (servicesElements.featuresList && service.features) {
-            servicesElements.featuresList.innerHTML = '';
-            
-            service.features.forEach(feature => {
-                const li = document.createElement('li');
-                li.className = 'feature-item';
-                li.innerHTML = `
+            const featuresHTML = service.features.map(feature => `
+                <li class="feature-item">
                     <span class="feature-icon">✓</span>
-                    ${feature}
-                `;
-                servicesElements.featuresList.appendChild(li);
-            });
+                    ${escapeHtml(feature)}
+                </li>
+            `).join('');
+            
+            servicesElements.featuresList.innerHTML = featuresHTML;
+        }
+        
+        // Add subtle animation to card content
+        if (servicesElements.cardContent) {
+            servicesElements.cardContent.style.opacity = '0.8';
+            servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(0.98)';
+            
+            setTimeout(() => {
+                if (servicesElements.cardContent) {
+                    servicesElements.cardContent.style.opacity = '1';
+                    servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
+                }
+            }, 100);
         }
     }
     
     // Update menu item active states
     function updateMenuItemStates() {
         servicesElements.menuItems.forEach((item, index) => {
-            const arrow = item.querySelector('.service-arrow');
+            const isActive = index === servicesData.activeService;
             
-            if (index === servicesData.activeService) {
+            // Update active class
+            if (isActive) {
                 item.classList.add('active');
-                if (arrow) {
-                    arrow.classList.add('visible');
-                }
+                item.setAttribute('aria-selected', 'true');
             } else {
                 item.classList.remove('active');
-                if (arrow) {
+                item.setAttribute('aria-selected', 'false');
+            }
+            
+            // Update arrow visibility
+            const arrow = servicesElements.arrows[index];
+            if (arrow) {
+                if (isActive) {
+                    arrow.classList.add('visible');
+                } else {
                     arrow.classList.remove('visible');
                 }
             }
         });
     }
     
-    // Handle mobile optimization
-    function handleMobileOptimization() {
-        const isMobile = window.innerWidth <= 768;
-        
-        if (isMobile && servicesElements.cardContent) {
-            // OPTION 1 FIX: Disable 3D effects on mobile but preserve translateZ(0) for backdrop-filter
-            servicesElements.cardContent.style.transform = 'translateZ(0) !important';
-            servicesElements.cardContent.style.transition = 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important';
-        }
+    // Utility function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
     
-    // Handle reduced motion preferences
-    function handleReducedMotion() {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        if (prefersReducedMotion) {
-            // OPTION 1 FIX: Disable transforms and transitions but preserve translateZ(0)
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Reset card transform on resize
             if (servicesElements.cardContent) {
-                servicesElements.cardContent.style.transform = 'translateZ(0) !important';
-                servicesElements.cardContent.style.transition = 'none !important';
+                servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
             }
-            
-            if (servicesElements.content) {
-                // OPTION 1 FIX: For reduced motion, show content immediately without scale animation
-                servicesElements.content.style.transform = 'translateY(0) scale(1)';
+        }, 250);
+    });
+    
+    // Performance optimization: pause animations when tab is not visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isHovering = false;
+            clearTimeout(mouseTimeout);
+            if (servicesElements.cardContent) {
+                servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
             }
         }
-    }
+    });
     
-    // Cleanup function
-    function cleanup() {
-        if (servicesElements.section) {
-            servicesElements.section.removeEventListener('mousemove', () => {});
-            servicesElements.section.removeEventListener('mouseenter', () => {});
-            servicesElements.section.removeEventListener('mouseleave', () => {});
-        }
-        
-        servicesElements.menuItems.forEach(item => {
-            item.removeEventListener('mouseenter', () => {});
-            item.removeEventListener('click', () => {});
-        });
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initServices);
-    } else {
-        initServices();
-    }
-    
-    // Handle resize events
-    window.addEventListener('resize', handleMobileOptimization);
-    
-    // Handle reduced motion changes
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    reducedMotionQuery.addListener(handleReducedMotion);
-    handleReducedMotion(); // Initial check
-    
-    // Initial mobile check
-    handleMobileOptimization();
-    
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', cleanup);
-    
-    // Expose functions for external access if needed
+    // Expose functions for debugging (remove in production)
     window.aetherbloomServices = {
-        init: initServices,
-        setActiveService: setActiveService,
-        cleanup: cleanup
+        setActiveService,
+        updateServiceDisplay,
+        servicesData
     };
     
 })();

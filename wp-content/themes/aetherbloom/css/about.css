@@ -160,13 +160,13 @@
 .foundation-card.active {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 147, 64, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 .foundation-card .card-icon {
   margin-bottom: 1.5rem;
-  color: #ff9340;
+  color: #ffffff;
 }
 
 .foundation-card h3 {
@@ -229,7 +229,7 @@
 .value-item h4 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #ff9340;
+  color: #ffffff;
   margin-bottom: 1rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -320,7 +320,7 @@
 .founder-title {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #ff9340;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -335,7 +335,7 @@
 .founder-tagline h4 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #d84e28;
+  color: #ffffff;
   margin-bottom: 1rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -419,7 +419,7 @@
 .ally-role {
   font-size: 1rem;
   font-weight: 500;
-  color: #ff9340;
+  color: #ffffff;
   margin-bottom: 1rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
