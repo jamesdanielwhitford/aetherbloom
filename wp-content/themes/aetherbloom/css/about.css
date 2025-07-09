@@ -64,7 +64,7 @@
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== HERO SECTION - FULL BACKGROUND WITH OVERLAY ===== */
+/* ===== HERO SECTION - VIDEO BACKGROUND WITH OVERLAY ===== */
 .about-hero-section {
   position: relative;
   height: 100vh;
@@ -77,104 +77,150 @@
   justify-content: center;
 }
 
-.hero-background-image {
+.hero-background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    rgba(216, 78, 40, 0.9), 
-    rgba(255, 147, 64, 0.8)), 
+    rgba(109, 109, 109, 0.2), 
+    rgba(88, 88, 88, 0.2));
+  z-index: 2;
+}
+
+.video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(216, 78, 40, 0), 
+    rgba(255, 147, 64, 0)), 
     url('../assets/images/aetherbloom-hero-bg.jpg') center/cover;
   background-attachment: fixed;
 }
 
 .hero-overlay {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .hero-title {
   font-size: 4.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
 }
 
 .hero-description {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== MISSION, VISION & VALUES CONSOLIDATED SECTION ===== */
+.hero-description p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== MISSION, VISION & VALUES SECTION ===== */
 .mission-vision-values-section {
+  min-height: 100vh;
   padding: 100px 0;
-  background: transparent;
-  min-height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
+  position: relative;
 }
 
 .foundation-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .foundation-card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
-  transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .foundation-card:hover,
 .foundation-card.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.foundation-card .card-icon {
-  margin-bottom: 1.5rem;
-  color: #ffffff;
+.card-icon {
+  color: #d84e28;
+  margin-bottom: 1rem;
 }
 
 .foundation-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.8rem;
   color: #ffffff;
-  margin: 0;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.foundation-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .foundation-content {
@@ -352,117 +398,36 @@
   margin: 0;
 }
 
-/* ===== STRATEGIC ALLIES SECTION - 2X2 GRID ===== */
-.strategic-allies-section {
-  padding: 100px 0;
-  background: transparent;
-  min-height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.allies-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  margin-bottom: 4rem;
-}
-
-.ally-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.ally-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 147, 64, 0.3);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
-.ally-image {
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.ally-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.ally-card:hover .ally-photo {
-  transform: scale(1.1);
-}
-
-.ally-name {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-.ally-role {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.ally-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.allies-cta {
-  text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== BUTTON STYLES ===== */
+/* ===== BUTTONS ===== */
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  background: linear-gradient(135deg, #d84e28, #ff9340);
+  color: white;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-weight: 600;
   transition: all 0.3s ease;
-  cursor: pointer;
   border: 2px solid transparent;
-  text-shadow: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(216, 78, 40, 0.3);
 }
 
-.btn-primary {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.btn-primary:hover {
+.btn:hover {
   background: #ffffff;
   color: #d84e28;
   border-color: #ffffff;
@@ -486,7 +451,11 @@
   }
   
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .hero-description p {
+    font-size: 1.1rem;
   }
   
   .section-header h2 {
@@ -503,19 +472,13 @@
     gap: 2rem;
   }
   
-  .allies-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
   .values-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
   .mission-vision-values-section,
-  .founders-section,
-  .strategic-allies-section {
+  .founders-section {
     min-height: auto;
     padding: 80px 0;
   }
@@ -527,12 +490,21 @@
     margin: 1rem;
   }
   
+  .hero-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+  }
+  
+  .hero-description p {
+    font-size: 1rem;
   }
   
   .section-header h2 {
@@ -563,7 +535,8 @@
   }
   
   .founder-image {
-    height: 250px;
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -572,12 +545,21 @@
     padding: 0 1rem;
   }
   
+  .hero-content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
   .hero-title {
     font-size: 2rem;
   }
   
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .hero-description p {
+    font-size: 0.9rem;
   }
   
   .section-header h2 {
@@ -603,7 +585,8 @@
   }
   
   .founder-image {
-    height: 200px;
+    width: 120px;
+    height: 120px;
   }
   
   .ally-image {
