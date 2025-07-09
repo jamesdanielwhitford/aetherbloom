@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
                     <?php if (has_custom_logo()) : ?>
                         <?php the_custom_logo(); ?>
                     <?php else : ?>
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link" rel="home">
+                        <a href="<?php echo esc_url(home_url('/test.php')); ?>" class="brand-link" rel="home">
                             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon">
                             <span class="brand-name"><?php bloginfo('name'); ?></span>
                         </a>

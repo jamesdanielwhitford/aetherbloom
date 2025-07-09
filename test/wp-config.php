@@ -95,8 +95,14 @@ define( 'WP_DEBUG_LOG',   true );
 define( 'SCRIPT_DEBUG',   true );
 
 // Tell WordPress our local URL (including port) so it stops redirecting:
-define( 'WP_HOME',    'http://localhost:8000' );
-define( 'WP_SITEURL', 'http://localhost:8000' );
+if ( $_SERVER['HTTP_HOST'] == 'localhost:8000' ) {
+    define( 'WP_HOME', 'http://localhost:8000/test' );
+    define( 'WP_SITEURL', 'http://localhost:8000/test' );
+} else {
+    define( 'WP_HOME', 'https://www.aetherbloom.co.uk/test' );
+    define( 'WP_SITEURL', 'https://www.aetherbloom.co.uk/test' );
+}
+
 
 
 
