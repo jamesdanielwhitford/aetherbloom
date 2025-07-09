@@ -1,10 +1,10 @@
 /* File: /wp-content/themes/aetherbloom/css/about.css */
 
 /**
- * About Page Styles - Complete Redesign with Story-Driven Layouts
+ * About Page Styles - Updated with consolidated sections and improved layout
  * 
  * @package Aetherbloom
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 /* ===== GENERAL ABOUT PAGE LAYOUT ===== */
@@ -128,165 +128,189 @@
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== MISSION & VISION SECTION ===== */
-.mission-vision-section {
+/* ===== MISSION, VISION & VALUES CONSOLIDATED SECTION ===== */
+.mission-vision-values-section {
   padding: 100px 0;
   background: transparent;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
 }
 
-.mission-vision-grid {
+.foundation-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: stretch;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-.mission-card,
-.vision-card {
+.foundation-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 3rem;
+  border-radius: 16px;
+  padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.foundation-card:hover,
+.foundation-card.active {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 147, 64, 0.5);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.mission-card:hover,
-.vision-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
-}
-
-.card-icon {
-  margin-bottom: 2rem;
+.foundation-card .card-icon {
+  margin-bottom: 1.5rem;
   color: #ff9340;
 }
 
-.mission-card h3,
-.vision-card h3 {
-  font-size: 2rem;
+.foundation-card h3 {
+  font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin: 0;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-.mission-card p,
-.vision-card p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== CORE VALUES SECTION ===== */
-.core-values-section {
-  padding: 100px 0;
-  background: transparent;
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.value-card {
+.foundation-content {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
+  padding: 3rem;
+  min-height: 300px;
+}
+
+.content-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.content-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.content-panel p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.value-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.value-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.12);
+.value-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 147, 64, 0.3);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.value-card h4 {
-  font-size: 1.5rem;
+.value-item h4 {
+  font-size: 1.3rem;
   font-weight: 600;
   color: #ff9340;
   margin-bottom: 1rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.value-card p {
+.value-item p {
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
 }
 
-/* ===== FOUNDERS SECTION - ASYMMETRICAL SPLIT LAYOUT ===== */
+/* ===== FOUNDERS SECTION - SIDE BY SIDE LAYOUT ===== */
 .founders-section {
-  padding: 120px 0;
-  margin: 0 2rem;
-  position: relative;
+  padding: 100px 0;
+  background: transparent;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: stretch;
 }
 
 .founder-profile {
-  margin-bottom: 6rem;
-}
-
-.founder-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
-  padding: 3rem;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
   transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.founder-content:hover {
+.founder-profile:hover {
   transform: translateY(-5px);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
 }
 
-.founder-grace .founder-content {
-  grid-template-columns: 1fr 1fr;
+.founder-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .founder-image {
-  position: relative;
+  width: 100%;
+  height: 300px;
   overflow: hidden;
   border-radius: 16px;
+  margin-bottom: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .founder-photo {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   transition: transform 0.3s ease;
 }
 
-.founder-content:hover .founder-photo {
+.founder-profile:hover .founder-photo {
   transform: scale(1.05);
 }
 
 .founder-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
 .founder-name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.5rem;
@@ -294,7 +318,7 @@
 }
 
 .founder-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #ff9340;
   margin-bottom: 0.5rem;
@@ -302,68 +326,45 @@
 }
 
 .founder-location {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .founder-tagline h4 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #d84e28;
   margin-bottom: 1rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
+.founder-description {
+  flex: 1;
+}
+
 .founder-description p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.founder-achievements h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ff9340;
-  margin-bottom: 1rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.founder-achievements ul {
-  list-style: none;
-  padding: 0;
-}
-
-.founder-achievements li {
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  position: relative;
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
 }
 
-.founder-achievements li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #ff9340;
-  font-weight: 600;
-}
-
-/* ===== STRATEGIC ALLIES SECTION ===== */
+/* ===== STRATEGIC ALLIES SECTION - 2X2 GRID ===== */
 .strategic-allies-section {
   padding: 100px 0;
   background: transparent;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
 }
 
 .allies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
   margin-bottom: 4rem;
 }
 
@@ -389,8 +390,8 @@
   margin-bottom: 1.5rem;
   overflow: hidden;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin: 0 auto 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
@@ -408,7 +409,7 @@
 }
 
 .ally-name {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.5rem;
@@ -427,195 +428,17 @@
   font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
-  font-style: italic;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .allies-cta {
   text-align: center;
-  padding: 3rem;
+  padding: 2rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.allies-tagline {
-  font-size: 1.3rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  font-style: italic;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== COMPANY TIMELINE SECTION ===== */
-.company-timeline-section {
-  padding: 100px 0;
-  background: transparent;
-}
-
-.timeline-container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 3rem;
-  padding-left: 3rem;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 60px;
-  width: 2px;
-  height: calc(100% + 2rem);
-  background: linear-gradient(to bottom, #ff9340, #d84e28);
-}
-
-.timeline-item:last-child::before {
-  display: none;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #d84e28, #ff9340);
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(216, 78, 40, 0.4);
-  z-index: 2;
-}
-
-.timeline-content {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
-.timeline-content h4 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #ff9340;
-  margin-bottom: 1rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== TRUST BADGES SECTION ===== */
-.trust-badges-section {
-  padding: 80px 0;
-  background: transparent;
-}
-
-.badges-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.badge-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.badge-item:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
-.badge-icon {
-  color: #ff9340;
-  flex-shrink: 0;
-}
-
-.badge-info h4 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.badge-info p {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== FINAL CTA SECTION ===== */
-.about-cta-section {
-  padding: 100px 0;
-  background: linear-gradient(135deg, rgba(216, 78, 40, 0.1), rgba(255, 147, 64, 0.08));
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 2rem;
-  border-radius: 24px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
-.cta-content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.cta-content h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-.cta-content p {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 3rem;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 /* ===== BUTTON STYLES ===== */
@@ -625,37 +448,26 @@
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: all 0.3s ease;
-  text-align: center;
-  border: 2px solid transparent;
   cursor: pointer;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  text-shadow: none;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #d84e28, #ff9340);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  box-shadow: 0 15px 30px rgba(216, 78, 40, 0.4);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(216, 78, 40, 0.6);
-}
-
-.btn-outline {
-  background: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  color: #d84e28;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-large {
@@ -681,24 +493,31 @@
     font-size: 2.5rem;
   }
   
-  .mission-vision-grid {
+  .foundation-cards {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
-  .founder-content {
+  .founders-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-    text-align: center;
   }
   
   .allies-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .mission-vision-values-section,
+  .founders-section,
+  .strategic-allies-section {
+    min-height: auto;
+    padding: 80px 0;
   }
 }
 
@@ -720,45 +539,31 @@
     font-size: 2rem;
   }
   
+  .mission-vision-values-section,
   .founders-section,
-  .strategic-allies-section,
-  .company-timeline-section,
-  .mission-vision-section,
-  .core-values-section {
+  .strategic-allies-section {
     padding: 60px 0;
-  }
-  
-  .founder-profile {
-    margin-bottom: 4rem;
-  }
-  
-  .founder-content {
-    padding: 2rem;
   }
   
   .founder-name {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
-  .values-grid {
-    grid-template-columns: 1fr;
+  .founder-title {
+    font-size: 1rem;
   }
   
-  .allies-grid {
-    grid-template-columns: 1fr;
+  .foundation-card,
+  .ally-card {
+    padding: 1.5rem;
   }
   
-  .badges-grid {
-    grid-template-columns: 1fr;
+  .founder-profile {
+    padding: 1.5rem;
   }
   
-  .cta-content h2 {
-    font-size: 2.5rem;
-  }
-  
-  .about-cta-section {
-    margin: 1rem;
-    padding: 60px 0;
+  .founder-image {
+    height: 250px;
   }
 }
 
@@ -780,31 +585,30 @@
   }
   
   .founder-name {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   
   .founder-title {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   
-  .mission-card,
-  .vision-card,
-  .value-card,
-  .ally-card {
-    padding: 1.5rem;
+  .foundation-card,
+  .ally-card,
+  .founder-profile {
+    padding: 1rem;
   }
   
-  .timeline-item {
-    padding-left: 2rem;
+  .foundation-content {
+    padding: 2rem;
   }
   
-  .timeline-marker {
-    width: 30px;
-    height: 30px;
+  .founder-image {
+    height: 200px;
   }
   
-  .cta-content h2 {
-    font-size: 2rem;
+  .ally-image {
+    width: 100px;
+    height: 100px;
   }
   
   .btn {
@@ -815,5 +619,13 @@
   .btn-large {
     padding: 1rem 2rem;
     font-size: 1.1rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .value-item {
+    padding: 1.5rem;
   }
 }

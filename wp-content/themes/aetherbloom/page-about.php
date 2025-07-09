@@ -2,10 +2,10 @@
 // File: /wp-content/themes/aetherbloom/page-about.php
 
 /**
- * Template for About page - Complete content update with founder profiles and strategic allies
+ * Template for About page - Updated with consolidated sections and improved layout
  *
  * @package Aetherbloom
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 get_header(); ?>
@@ -38,66 +38,83 @@ get_header(); ?>
                 </div>
             </section>
 
-            <!-- Mission & Vision Section -->
-            <section class="mission-vision-section">
+            <!-- Mission, Vision & Values Consolidated Section -->
+            <section class="mission-vision-values-section">
                 <div class="container">
-                    <div class="mission-vision-grid">
-                        <div class="mission-card">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('Our Foundation', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('The mission, vision and values that drive everything we do', 'aetherbloom'); ?></p>
+                    </div>
+                    
+                    <div class="foundation-cards">
+                        <div class="foundation-card active" data-target="mission">
                             <div class="card-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 2L2 7V12C2 17.55 5.84 22.54 9.35 23.85C10.15 24.05 11.15 24.05 12 24C12.85 24.05 13.85 24.05 14.65 23.85C18.16 22.54 22 17.55 22 12V7L12 2Z" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('Our Mission', 'aetherbloom'); ?></h3>
-                            <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions while driving real impact across borders.', 'aetherbloom'); ?></p>
                         </div>
-                        <div class="vision-card">
+                        
+                        <div class="foundation-card" data-target="vision">
                             <div class="card-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M1 12S4 5 12 5S23 12 23 12S20 19 12 19S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <h3><?php esc_html_e('Vision', 'aetherbloom'); ?></h3>
-                            <p><?php esc_html_e('To be the leading force in UK-South Africa business partnerships, globally recognised for pioneering a model of exceptional outsourcing that not only drives client success but also ignites transformative and lasting socio-economic growth in South African communities.', 'aetherbloom'); ?></p>
+                            <h3><?php esc_html_e('Our Vision', 'aetherbloom'); ?></h3>
+                        </div>
+                        
+                        <div class="foundation-card" data-target="values">
+                            <div class="card-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 14C19 18.4 15.4 22 11 22C6.6 22 3 18.4 3 14C3 10.6 6.6 7 11 7C15.4 7 19 10.6 19 14Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3><?php esc_html_e('Our Values', 'aetherbloom'); ?></h3>
+                        </div>
+                    </div>
+                    
+                    <div class="foundation-content">
+                        <div class="content-panel active" id="mission">
+                            <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions whilst driving real impact across borders.', 'aetherbloom'); ?></p>
+                        </div>
+                        
+                        <div class="content-panel" id="vision">
+                            <p><?php esc_html_e('To become the leading bridge between UK businesses and exceptional global talent, recognised for our ethical approach, innovative solutions, and positive impact on communities. We envision a future where geographical boundaries no longer limit access to skilled professionals, and where every partnership creates meaningful opportunities for growth and development on both sides.', 'aetherbloom'); ?></p>
+                        </div>
+                        
+                        <div class="content-panel" id="values">
+                            <div class="values-grid">
+                                <div class="value-item">
+                                    <h4><?php esc_html_e('Integrity', 'aetherbloom'); ?></h4>
+                                    <p><?php esc_html_e('We operate with complete transparency and honesty in all our dealings. Trust is earned through consistent, reliable actions and open communication.', 'aetherbloom'); ?></p>
+                                </div>
+                                <div class="value-item">
+                                    <h4><?php esc_html_e('Respect', 'aetherbloom'); ?></h4>
+                                    <p><?php esc_html_e('We value diversity, embrace different perspectives, and treat every individual with dignity. Mutual respect is the foundation of every relationship we build.', 'aetherbloom'); ?></p>
+                                </div>
+                                <div class="value-item">
+                                    <h4><?php esc_html_e('Accountability', 'aetherbloom'); ?></h4>
+                                    <p><?php esc_html_e('We take ownership of our actions and responsibilities. Every team member is committed to delivering on promises and contributing to shared success.', 'aetherbloom'); ?></p>
+                                </div>
+                                <div class="value-item">
+                                    <h4><?php esc_html_e('Excellence', 'aetherbloom'); ?></h4>
+                                    <p><?php esc_html_e('We don\'t settle. We strive to exceed expectations through innovation, high standards, and a genuine drive to deliver world-class service.', 'aetherbloom'); ?></p>
+                                </div>
+                                <div class="value-item">
+                                    <h4><?php esc_html_e('Empowerment', 'aetherbloom'); ?></h4>
+                                    <p><?php esc_html_e('We believe in the power of opportunity to transform lives. By investing in people, celebrating differences, and amplifying every voice, we unlock potential—for our team and for yours.', 'aetherbloom'); ?></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Core Values Section -->
-            <section class="core-values-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2><?php esc_html_e('Core Values', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('The principles that guide everything we do', 'aetherbloom'); ?></p>
-                    </div>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <h4><?php esc_html_e('Integrity', 'aetherbloom'); ?></h4>
-                            <p><?php esc_html_e('We operate with honesty, transparency, and a deep commitment to ethical practices—in how we treat our clients, our team, and the communities we serve.', 'aetherbloom'); ?></p>
-                        </div>
-                        <div class="value-card">
-                            <h4><?php esc_html_e('Respect', 'aetherbloom'); ?></h4>
-                            <p><?php esc_html_e('We value diversity, listen actively, and treat everyone with fairness and dignity. Mutual respect is the foundation of every relationship we build.', 'aetherbloom'); ?></p>
-                        </div>
-                        <div class="value-card">
-                            <h4><?php esc_html_e('Accountability', 'aetherbloom'); ?></h4>
-                            <p><?php esc_html_e('We take ownership of our actions and responsibilities. Every team member is committed to delivering on promises and contributing to shared success.', 'aetherbloom'); ?></p>
-                        </div>
-                        <div class="value-card">
-                            <h4><?php esc_html_e('Excellence', 'aetherbloom'); ?></h4>
-                            <p><?php esc_html_e('We don\'t settle. We strive to exceed expectations through innovation, high standards, and a genuine drive to deliver world-class service.', 'aetherbloom'); ?></p>
-                        </div>
-                        <div class="value-card">
-                            <h4><?php esc_html_e('Empowerment', 'aetherbloom'); ?></h4>
-                            <p><?php esc_html_e('We believe in the power of opportunity to transform lives. By investing in people, celebrating differences, and amplifying every voice, we unlock potential—for our team and for yours.', 'aetherbloom'); ?></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Founders Section - Split Screen Asymmetrical Layout -->
+            <!-- Founders Section - Side by Side Layout -->
             <section class="founders-section">
                 <div class="container">
                     <div class="section-header">
@@ -105,67 +122,51 @@ get_header(); ?>
                         <p><?php esc_html_e('Co-founded by industry leaders bridging opportunity and excellence across continents', 'aetherbloom'); ?></p>
                     </div>
                     
-                    <!-- Della's Profile -->
-                    <div class="founder-profile founder-della">
-                        <div class="founder-content">
-                            <div class="founder-image">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-potgieter.jpg'); ?>" alt="Della Potgieter" class="founder-photo">
-                            </div>
-                            <div class="founder-info">
-                                <div class="founder-header">
-                                    <h3 class="founder-name"><?php esc_html_e('Della Potgieter', 'aetherbloom'); ?></h3>
-                                    <p class="founder-title"><?php esc_html_e('Co-Founder & Operations Director, Regional Leadership', 'aetherbloom'); ?></p>
-                                    <p class="founder-location"><?php esc_html_e('Based in Johannesburg, South Africa', 'aetherbloom'); ?></p>
+                    <div class="founders-grid">
+                        <!-- Della's Profile -->
+                        <div class="founder-profile">
+                            <div class="founder-content">
+                                <div class="founder-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-blackwood.jpg'); ?>" alt="Della Blackwood" class="founder-photo">
                                 </div>
-                                <div class="founder-tagline">
-                                    <h4><?php esc_html_e('The Architect of High-Performing Teams', 'aetherbloom'); ?></h4>
-                                </div>
-                                <div class="founder-description">
-                                    <p><?php esc_html_e('With 10+ years in HR leadership across London\'s competitive corporate sector, Della spearheads Aetherbloom\'s South African operations. She handpicks talent ensuring every hire is rigorously trained in UK business practices, technical certifications, and cultural alignment.', 'aetherbloom'); ?></p>
-                                </div>
-                                <div class="founder-achievements">
-                                    <h5><?php esc_html_e('Key Achievements:', 'aetherbloom'); ?></h5>
-                                    <ul>
-                                        <li><?php esc_html_e('Designed Aetherbloom\'s proprietary "UK-Ready" training program, bridging SA talent with SME needs.', 'aetherbloom'); ?></li>
-                                        <li><?php esc_html_e('Advocates for women\'s empowerment: 65% of Aetherbloom\'s SA workforce are upskilled from disadvantaged backgrounds.', 'aetherbloom'); ?></li>
-                                    </ul>
+                                <div class="founder-info">
+                                    <h3 class="founder-name"><?php esc_html_e('Della Blackwood', 'aetherbloom'); ?></h3>
+                                    <p class="founder-title"><?php esc_html_e('Co-Founder & Managing Director, People & Operations', 'aetherbloom'); ?></p>
+                                    <p class="founder-location"><?php esc_html_e('Based in Cape Town, South Africa', 'aetherbloom'); ?></p>
+                                    <div class="founder-tagline">
+                                        <h4><?php esc_html_e('Your Compliance Guardian & Growth Partner', 'aetherbloom'); ?></h4>
+                                    </div>
+                                    <div class="founder-description">
+                                        <p><?php esc_html_e('With years as a Civil Service Senior HR Lead, our co-founder has mastered the art of building high-performing teams within strict compliance frameworks. This expertise ensures Aetherbloom delivers rigorous quality control, ethical staffing practices, and seamless scalability critical for UK clients navigating complex labour markets.', 'aetherbloom'); ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Grace's Profile -->
-                    <div class="founder-profile founder-grace">
-                        <div class="founder-content">
-                            <div class="founder-info">
-                                <div class="founder-header">
+                        <!-- Grace's Profile -->
+                        <div class="founder-profile">
+                            <div class="founder-content">
+                                <div class="founder-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-bernard-broadreck.jpg'); ?>" alt="Grace Bernard-Broadreck" class="founder-photo">
+                                </div>
+                                <div class="founder-info">
                                     <h3 class="founder-name"><?php esc_html_e('Grace Bernard-Broadreck, MSc', 'aetherbloom'); ?></h3>
                                     <p class="founder-title"><?php esc_html_e('Co-Founder & Managing Director, Client Strategy & Global Growth', 'aetherbloom'); ?></p>
                                     <p class="founder-location"><?php esc_html_e('Based in London, United Kingdom', 'aetherbloom'); ?></p>
+                                    <div class="founder-tagline">
+                                        <h4><?php esc_html_e('Your Strategic Growth Architect', 'aetherbloom'); ?></h4>
+                                    </div>
+                                    <div class="founder-description">
+                                        <p><?php esc_html_e('Based in the UK, Grace architects Aetherbloom\'s client strategy and drives our global growth, bringing a diverse background in strategic leadership, hospitality and recruitment. Grace provides a unique perspective on understanding client needs, building strong and lasting relationships. She merges her recruitment experience with data science from her previous roles to create a talent-matching engine powered by precision.', 'aetherbloom'); ?></p>
+                                    </div>
                                 </div>
-                                <div class="founder-tagline">
-                                    <h4><?php esc_html_e('Your Compliance Guardian & Growth Partner', 'aetherbloom'); ?></h4>
-                                </div>
-                                <div class="founder-description">
-                                    <p><?php esc_html_e('A former Recruitment consultant and civil service lead data analyst, Grace combines public-sector rigor with private-sector agility. She oversees client strategy, ensuring Aetherbloom\'s solutions are GDPR-compliant, cost-transparent, and tailored to UK SMEs.', 'aetherbloom'); ?></p>
-                                </div>
-                                <div class="founder-achievements">
-                                    <h5><?php esc_html_e('Key Achievements:', 'aetherbloom'); ?></h5>
-                                    <ul>
-                                        <li><?php esc_html_e('Scaled Aetherbloom\'s client base through data-driven talent matching.', 'aetherbloom'); ?></li>
-                                        <li><?php esc_html_e('Pioneered the dual-hub model, enabling real-time collaboration between UK clients and SA teams.', 'aetherbloom'); ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="founder-image">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-bernard-broadreck.jpg'); ?>" alt="Grace Bernard-Broadreck" class="founder-photo">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Strategic Allies Section -->
+            <!-- Strategic Allies Section - 2x2 Grid -->
             <section class="strategic-allies-section">
                 <div class="container">
                     <div class="section-header">
@@ -181,7 +182,7 @@ get_header(); ?>
                             <div class="ally-info">
                                 <h4 class="ally-name"><?php esc_html_e('James Daniel Witford', 'aetherbloom'); ?></h4>
                                 <p class="ally-role"><?php esc_html_e('Software Developer & UX Specialist', 'aetherbloom'); ?></p>
-                                <p class="ally-description"><?php esc_html_e('"Code. Design. Strategy. James brings it all together to power Aetherbloom\'s future with seamless, user-friendly tech."', 'aetherbloom'); ?></p>
+                                <p class="ally-description"><?php esc_html_e('Code. Design. Strategy. James brings it all together to power Aetherbloom\'s future with seamless, user-friendly tech.', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                         
@@ -191,47 +192,13 @@ get_header(); ?>
                             </div>
                             <div class="ally-info">
                                 <h4 class="ally-name"><?php esc_html_e('Sally Jones', 'aetherbloom'); ?></h4>
-                                <p class="ally-role"><?php esc_html_e('Business Strategy Advisor', 'aetherbloom'); ?></p>
-                                <p class="ally-description"><?php esc_html_e('"Architecting scalable cross-continent growth frameworks for UK-South Africa alignment."', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="ally-card">
-                            <div class="ally-image">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/gugulethu-motsei.jpg'); ?>" alt="Gugulethu Motsei" class="ally-photo">
-                            </div>
-                            <div class="ally-info">
-                                <h4 class="ally-name"><?php esc_html_e('Gugulethu Motsei', 'aetherbloom'); ?></h4>
-                                <p class="ally-role"><?php esc_html_e('International Finance Manager', 'aetherbloom'); ?></p>
-                                <p class="ally-description"><?php esc_html_e('"Navigating currency, tax, and compliance for seamless UK-SA financial operations."', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="ally-card">
-                            <div class="ally-image">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/aaron-hayle.jpg'); ?>" alt="Aaron Hayle" class="ally-photo">
-                            </div>
-                            <div class="ally-info">
-                                <h4 class="ally-name"><?php esc_html_e('Aaron Hayle', 'aetherbloom'); ?></h4>
-                                <p class="ally-role"><?php esc_html_e('Business Coach & Leadership Consultant', 'aetherbloom'); ?></p>
-                                <p class="ally-description"><?php esc_html_e('"Optimising team resilience and performance in hybrid UK/SA workforce models."', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="ally-card">
-                            <div class="ally-image">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/karen-placeholder.jpg'); ?>" alt="Karen" class="ally-photo">
-                            </div>
-                            <div class="ally-info">
-                                <h4 class="ally-name"><?php esc_html_e('Karen', 'aetherbloom'); ?></h4>
-                                <p class="ally-role"><?php esc_html_e('TBA', 'aetherbloom'); ?></p>
-                                <p class="ally-description"><?php esc_html_e('Strategic partner role to be announced.', 'aetherbloom'); ?></p>
+                                <p class="ally-role"><?php esc_html_e('Business Strategy Adviser', 'aetherbloom'); ?></p>
+                                <p class="ally-description"><?php esc_html_e('Architecting scalable cross-continent growth frameworks for UK-South Africa alignment.', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="allies-cta">
-                        <p class="allies-tagline"><?php esc_html_e('"Your vision, our collective expertise – no borders, no barriers."', 'aetherbloom'); ?></p>
                         <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="btn btn-primary">
                             <?php esc_html_e('Want to connect with our experts? Schedule an intro', 'aetherbloom'); ?>
                         </a>
@@ -239,91 +206,6 @@ get_header(); ?>
                 </div>
             </section>
 
-            <!-- Company Timeline Section -->
-            <section class="company-timeline-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2><?php esc_html_e('Our Journey', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('From vision to transformation', 'aetherbloom'); ?></p>
-                    </div>
-                    
-                    <div class="timeline-container">
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h4><?php esc_html_e('Foundation', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('Founded by UK Civil Service expertise meeting South African talent', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h4><?php esc_html_e('Growth', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('Scaled through data-driven talent matching', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h4><?php esc_html_e('Impact', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('65% women from disadvantaged backgrounds empowered', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Trust Badges Section -->
-            <section class="trust-badges-section">
-                <div class="container">
-                    <div class="badges-grid">
-                        <div class="badge-item">
-                            <div class="badge-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L2 7V12C2 17.55 5.84 22.54 9.35 23.85C10.15 24.05 11.15 24.05 12 24C12.85 24.05 13.85 24.05 14.65 23.85C18.16 22.54 22 17.55 22 12V7L12 2Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <div class="badge-info">
-                                <h4><?php esc_html_e('UK Company', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('Reg. No: XXXXXXXX', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="badge-item">
-                            <div class="badge-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <div class="badge-info">
-                                <h4><?php esc_html_e('Level 1 B-BBEE', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('Contributor', 'aetherbloom'); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Final CTA Section -->
-            <section class="about-cta-section">
-                <div class="container">
-                    <div class="cta-content">
-                        <h2><?php esc_html_e('Ready to Transform Your Business?', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('Join the UK businesses already scaling with Aetherbloom\'s strategic outsourcing solutions.', 'aetherbloom'); ?></p>
-                        <div class="cta-buttons">
-                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="btn btn-primary btn-large">
-                                <?php esc_html_e('Claim Your Free Strategy Session', 'aetherbloom'); ?>
-                            </a>
-                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>" class="btn btn-outline btn-large">
-                                <?php esc_html_e('Explore Our Services', 'aetherbloom'); ?>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
             <?php get_footer(); ?>
         </div>
     </main>
