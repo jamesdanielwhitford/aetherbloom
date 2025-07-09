@@ -50,7 +50,7 @@ get_header(); ?>
             <section class="digital-services-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>1. Digital Customer Success Packages</h2>
+                        <h2><strong>Digital Customer Success Packages</strong></h2>
                         <p>Scalable, remote-first support to manage customer interactions, drive satisfaction and ease operational pressure without the overhead.</p>
                         <div class="section-note">
                             <em>* Please see examples of what your bespoke Aetherbloom package could look like *</em>
@@ -61,7 +61,9 @@ get_header(); ?>
                         <!-- Essentials Tier -->
                         <div class="service-tier essentials-tier">
                             <div class="tier-header">
-                                <div class="tier-badge">Most Popular</div>
+                                <div class="tier-badge">
+                                    <span class="badge-text">Most Popular</span>
+                                </div>
                                 <h3 class="tier-name">Essentials Tier</h3>
                                 <div class="tier-pricing">
                                     <span class="price">£360</span>
@@ -83,106 +85,111 @@ get_header(); ?>
                                     <h4>Order & Account Management</h4>
                                     <ul>
                                         <li>Order processing/tracking</li>
-                                        <li>CRM updates (e.g. address changes)</li>
+                                        <li>CRM updates (e.g. HubSpot, Salesforce)</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="feature-group">
-                                    <h4>Billing Support</h4>
+                                    <h4>Reporting & Quality</h4>
                                     <ul>
-                                        <li>Invoice explanations</li>
-                                        <li>Payment status follow-ups</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="tier-deliverables">
-                                    <h4>Deliverables:</h4>
-                                    <ul>
-                                        <li>Response time: Within 12 hours</li>
-                                        <li>85% first-contact resolution target</li>
+                                        <li>Weekly performance dashboards</li>
+                                        <li>Response time monitoring</li>
                                     </ul>
                                 </div>
                             </div>
+                            
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                            </div>
                         </div>
-
+                        
                         <!-- Growth Tier -->
                         <div class="service-tier growth-tier">
                             <div class="tier-header">
+                                <div class="tier-badge">
+                                    <span class="badge-text">Popular</span>
+                                </div>
                                 <h3 class="tier-name">Growth Tier</h3>
                                 <div class="tier-pricing">
-                                    <span class="price">£500</span>
-                                    <span class="period">30hrs/month</span>
+                                    <span class="price">£720</span>
+                                    <span class="period">40hrs/month</span>
                                 </div>
-                                <p class="tier-ideal">Ideal for: Scaling businesses that want consistent, proactive customer care</p>
+                                <p class="tier-ideal">Ideal for: Growing businesses needing comprehensive support</p>
                             </div>
                             
                             <div class="tier-features">
                                 <div class="feature-group">
-                                    <h4>All Essentials features plus:</h4>
-                                </div>
-                                
-                                <div class="feature-group">
-                                    <h4>Advanced Query Handling</h4>
+                                    <h4>Enhanced Customer Care</h4>
                                     <ul>
-                                        <li>Returns & refund processing</li>
+                                        <li>Multi-channel support (email, chat, phone)</li>
+                                        <li>Advanced query handling</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="feature-group">
-                                    <h4>Customer Retention Support</h4>
+                                    <h4>Process Management</h4>
                                     <ul>
-                                        <li>Post-purchase check-ins</li>
-                                        <li>Basic survey/feedback collection</li>
+                                        <li>Returns & refunds processing</li>
+                                        <li>Complaint resolution</li>
                                     </ul>
                                 </div>
                                 
-                                <div class="tier-deliverables">
-                                    <h4>Deliverables:</h4>
+                                <div class="feature-group">
+                                    <h4>Analytics & Insights</h4>
                                     <ul>
-                                        <li>Response time: Within 8 hours</li>
-                                        <li>90% satisfaction score target</li>
+                                        <li>Customer satisfaction tracking</li>
+                                        <li>Performance optimisation</li>
                                     </ul>
                                 </div>
+                            </div>
+                            
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
                             </div>
                         </div>
-
-                        <!-- Enterprise Tier -->
-                        <div class="service-tier enterprise-tier">
+                        
+                        <!-- Scale Tier -->
+                        <div class="service-tier scale-tier">
                             <div class="tier-header">
-                                <div class="tier-badge">Premium</div>
-                                <h3 class="tier-name">Enterprise Tier</h3>
-                                <div class="tier-pricing">
-                                    <span class="price">£730</span>
-                                    <span class="period">50hrs/month</span>
+                                <div class="tier-badge">
+                                    <span class="badge-text">Premium</span>
                                 </div>
-                                <p class="tier-ideal">Ideal for: High-volume teams needing dedicated, data-driven support</p>
+                                <h3 class="tier-name">Scale Tier</h3>
+                                <div class="tier-pricing">
+                                    <span class="price">£1,440</span>
+                                    <span class="period">80hrs/month</span>
+                                </div>
+                                <p class="tier-ideal">Ideal for: Established businesses requiring dedicated teams</p>
                             </div>
                             
                             <div class="tier-features">
                                 <div class="feature-group">
-                                    <h4>All Growth features plus:</h4>
-                                </div>
-                                
-                                <div class="feature-group">
-                                    <h4>Premium Features</h4>
+                                    <h4>Dedicated Team</h4>
                                     <ul>
-                                        <li>Custom workflows & templates</li>
-                                        <li>Priority ticket handling</li>
-                                        <li>Monthly performance reports</li>
+                                        <li>Dedicated account manager</li>
+                                        <li>Specialised team training</li>
                                     </ul>
                                 </div>
                                 
-                                <div class="tier-deliverables">
-                                    <h4>Deliverables:</h4>
+                                <div class="feature-group">
+                                    <h4>Advanced Operations</h4>
                                     <ul>
-                                        <li>Response time: Within 4 hours</li>
-                                        <li>Dedicated account manager included</li>
+                                        <li>Custom workflow development</li>
+                                        <li>Integration management</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="feature-group">
+                                    <h4>Strategic Support</h4>
+                                    <ul>
+                                        <li>Monthly strategy reviews</li>
+                                        <li>Continuous improvement</li>
                                     </ul>
                                 </div>
                             </div>
                             
-                            <div class="uk-equivalent">
-                                <strong>UK Equivalent Cost: £1,800–£2,500/month</strong>
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -193,89 +200,33 @@ get_header(); ?>
             <section class="call-centre-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>2. Call Centre Solutions</h2>
-                        <p>Voice-first support for businesses needing inbound, outbound, and sales-focused customer engagement.</p>
+                        <h2><strong>Call Centre Solutions</strong></h2>
+                        <p>Professional phone support with UK-trained agents</p>
                     </div>
                     
-                    <div class="services-grid">
-                        <!-- Reception Tier -->
-                        <div class="service-tier reception-tier">
-                            <div class="tier-header">
-                                <h3 class="tier-name">Reception Tier</h3>
-                                <div class="tier-pricing">
-                                    <span class="price">£12</span>
-                                    <span class="period">per hour</span>
-                                </div>
-                                <div class="tier-monthly">20hrs/month</div>
-                                <p class="tier-ideal">Ideal for: Small businesses needing a friendly voice on the line</p>
-                            </div>
-                            
-                            <div class="tier-features">
-                                <div class="feature-group">
-                                    <h4>Inbound Call Handling</h4>
-                                    <ul>
-                                        <li>Call answering & routing</li>
-                                        <li>CRM updates & call logging</li>
-                                        <li>Appointment scheduling</li>
-                                        <li>Standard FAQs</li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="call-centre-grid">
+                        <div class="call-centre-card">
+                            <h3>Inbound Support</h3>
+                            <ul>
+                                <li>Customer enquiries</li>
+                                <li>Technical support</li>
+                                <li>Order assistance</li>
+                                <li>UK phone numbers</li>
+                            </ul>
+                            <div class="pricing">From £15/hour</div>
+                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="call-centre-cta">Learn More</a>
                         </div>
-
-                        <!-- Engagement Tier -->
-                        <div class="service-tier engagement-tier">
-                            <div class="tier-header">
-                                <div class="tier-badge">Recommended</div>
-                                <h3 class="tier-name">Engagement Tier</h3>
-                                <div class="tier-pricing">
-                                    <span class="price">£1,600</span>
-                                    <span class="period">per month</span>
-                                </div>
-                                <div class="tier-monthly">40hrs/week</div>
-                                <p class="tier-ideal">Ideal for: Medium-sized businesses ready for full-time call coverage</p>
-                            </div>
-                            
-                            <div class="tier-features">
-                                <div class="feature-group">
-                                    <h4>All Reception features plus:</h4>
-                                    <ul>
-                                        <li>Outbound follow-ups & courtesy calls</li>
-                                        <li>Upselling (optional commission model)</li>
-                                        <li>Basic complaint handling</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sales Accelerator Tier -->
-                        <div class="service-tier sales-tier">
-                            <div class="tier-header">
-                                <div class="tier-badge">Enterprise</div>
-                                <h3 class="tier-name">Sales Accelerator Tier</h3>
-                                <div class="tier-pricing">
-                                    <span class="price">£5,000</span>
-                                    <span class="period">per month</span>
-                                </div>
-                                <div class="tier-monthly">3 agents with shift coverage</div>
-                                <p class="tier-ideal">Ideal for: Businesses focused on lead generation & sales growth</p>
-                            </div>
-                            
-                            <div class="tier-features">
-                                <div class="feature-group">
-                                    <h4>All Engagement features plus:</h4>
-                                    <ul>
-                                        <li>Cold calling & lead qualification</li>
-                                        <li>Custom scripts & campaign management</li>
-                                        <li>Live dashboards & call QA</li>
-                                        <li>Priority escalation management</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="uk-equivalent">
-                                <strong>UK Equivalent Cost: £3,500–£7,000/month</strong>
-                            </div>
+                        
+                        <div class="call-centre-card">
+                            <h3>Outbound Campaigns</h3>
+                            <ul>
+                                <li>Lead generation</li>
+                                <li>Customer surveys</li>
+                                <li>Appointment booking</li>
+                                <li>Follow-up calls</li>
+                            </ul>
+                            <div class="pricing">From £15/hour</div>
+                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="call-centre-cta">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -285,8 +236,8 @@ get_header(); ?>
             <section class="service-comparison-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>3. Which Is Right for You?</h2>
-                        <p>Compare our digital and call centre solutions at a glance</p>
+                        <h2><strong>Aetherbloom vs Traditional Outsourcing</strong></h2>
+                        <p>See the difference ethical outsourcing makes</p>
                     </div>
                     
                     <div class="comparison-table">
@@ -294,35 +245,35 @@ get_header(); ?>
                             <thead>
                                 <tr>
                                     <th>Feature</th>
-                                    <th>Digital Customer Success</th>
-                                    <th>Call Centre Solutions</th>
+                                    <th>Aetherbloom</th>
+                                    <th>Traditional BPO</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Channels</strong></td>
-                                    <td>Email, Chat</td>
-                                    <td>Phone, Voice</td>
+                                    <td>Cultural Alignment</td>
+                                    <td>UK-focused training</td>
+                                    <td>Generic approach</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Speed</strong></td>
-                                    <td>Hours</td>
-                                    <td>Real-time (Minutes)</td>
+                                    <td>Setup Time</td>
+                                    <td>7 days</td>
+                                    <td>4-6 weeks</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Style</strong></td>
-                                    <td>Reactive + Proactive</td>
-                                    <td>Reactive + Sales</td>
+                                    <td>Quality Standards</td>
+                                    <td>UK compliance certified</td>
+                                    <td>Variable</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Suited For</strong></td>
-                                    <td>Order/account support</td>
-                                    <td>High-touch engagement</td>
+                                    <td>Social Impact</td>
+                                    <td>Empowering women</td>
+                                    <td>Minimal</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Pricing Model</strong></td>
-                                    <td>Monthly tiered</td>
-                                    <td>Hourly / Dedicated Teams</td>
+                                    <td>Transparency</td>
+                                    <td>Full visibility</td>
+                                    <td>Limited</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -334,7 +285,7 @@ get_header(); ?>
             <section class="addon-services-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>Add-On Services (From £8/hour)</h2>
+                        <h2><strong>Add-On Services</strong> (From £8/hour)</h2>
                         <p>Specialist support to scale your operations, bespoke packages available upon request.</p>
                     </div>
                     
@@ -363,29 +314,30 @@ get_header(); ?>
                                 </svg>
                             </div>
                             <h4>Virtual Admin</h4>
-                            <p>Data entry, calendar management, and administrative tasks</p>
+                            <p>Diary management, inbox organisation, and task coordination</p>
                         </div>
                         
                         <div class="addon-card">
                             <div class="addon-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 1L21 5V10C21 16 16.5 21 12 22C7.5 21 3 16 3 10V5L12 1Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h4>Book-keeping & Accounting</h4>
-                            <p>Financial record keeping, invoicing, and basic accounting support</p>
+                            <p>Invoice processing, expense tracking, and financial administration</p>
                         </div>
                         
                         <div class="addon-card">
                             <div class="addon-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 3V21H21" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M9 9L12 6L16 10L21 5" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M3 3V21H21V3H3Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M3 9H21" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 21V9" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h4>Data Analysis</h4>
-                            <p>Business intelligence, reporting, and data-driven insights</p>
+                            <p>Custom reporting, insights generation, and business intelligence</p>
                         </div>
                         
                         <div class="addon-card">
@@ -395,7 +347,7 @@ get_header(); ?>
                                 </svg>
                             </div>
                             <h4>Business Coaching</h4>
-                            <p>Strategic guidance, process optimization, and growth planning</p>
+                            <p>Strategic guidance, process optimisation, and growth planning</p>
                         </div>
                         
                         <div class="addon-card">
@@ -417,7 +369,7 @@ get_header(); ?>
             <section class="why-choose-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>Why Clients Choose Aetherbloom</h2>
+                        <h2><strong>Why Clients Choose Aetherbloom</strong></h2>
                         <p>What sets us apart in the outsourcing landscape</p>
                     </div>
                     
@@ -435,23 +387,23 @@ get_header(); ?>
                         <div class="benefit-card">
                             <div class="benefit-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3>Culturally Aligned</h3>
-                            <p>Our teams are fluent in UK business standards & tone.</p>
+                            <p>Our teams are fluent in UK business standards and tone.</p>
                         </div>
                         
                         <div class="benefit-card">
                             <div class="benefit-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14.7 6.3C15.1 5.9 15.1 5.3 14.7 4.9C14.3 4.5 13.7 4.5 13.3 4.9L5 13.2L1.7 9.9C1.3 9.5 0.7 9.5 0.3 9.9C-0.1 10.3 -0.1 10.9 0.3 11.3L4.3 15.3C4.7 15.7 5.3 15.7 5.7 15.3L14.7 6.3Z" fill="currentColor"/>
-                                    <path d="M21.7 6.3C22.1 5.9 22.1 5.3 21.7 4.9C21.3 4.5 20.7 4.5 20.3 4.9L12 13.2L8.7 9.9C8.3 9.5 7.7 9.5 7.3 9.9C6.9 10.3 6.9 10.9 7.3 11.3L11.3 15.3C11.7 15.7 12.3 15.7 12.7 15.3L21.7 6.3Z" fill="currentColor"/>
+                                    <path d="M3 3H21V21H3V3Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M3 9H21" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 3V21" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3>Tool Integration</h3>
-                            <p>We work with Zendesk, HubSpot, Shopify & more.</p>
+                            <p>We work with Zendesk, HubSpot, Shopify and more.</p>
                         </div>
                         
                         <div class="benefit-card">
@@ -470,9 +422,10 @@ get_header(); ?>
 
             <!-- Next Steps Section -->
             <section class="next-steps-section">
+                <div class="next-steps-background"></div>
                 <div class="container">
                     <div class="next-steps-content">
-                        <h2>Next Steps</h2>
+                        <h2><strong>Next Steps</strong></h2>
                         <p>Ready to get started?</p>
                         
                         <div class="steps-grid">
@@ -486,7 +439,7 @@ get_header(); ?>
                             <div class="step-card">
                                 <div class="step-number">2</div>
                                 <h3>Start Small</h3>
-                                <p>14-day pilot program available to test our services</p>
+                                <p>14-day pilot programme available to test our services</p>
                                 <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="step-cta">Start Pilot</a>
                             </div>
                         </div>
@@ -498,3 +451,41 @@ get_header(); ?>
         </div>
     </main>
 </div>
+
+<script>
+// Services page JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation links
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add hover effects to cards
+    const cards = document.querySelectorAll('.service-tier, .addon-card, .benefit-card, .step-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+</script>
+
+<?php wp_footer(); ?>
