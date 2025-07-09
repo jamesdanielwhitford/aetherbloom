@@ -1,0 +1,627 @@
+/* File: /wp-content/themes/aetherbloom/css/navbar.css */
+
+.navbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1400px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 60px;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  
+  /* Safari-specific optimizations */
+  -webkit-transform: translateX(-50%);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  transform-origin: center center;
+  will-change: transform, opacity, background-color;
+  
+  /* GPU acceleration for Safari */
+  transform: translateX(-50%) translateZ(0);
+  -webkit-transform: translateX(-50%) translateZ(0);
+  
+  /* Fallback for Safari backdrop-filter issues */
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Add backdrop filter with Safari fallback */
+@supports (backdrop-filter: blur(10px)) {
+  .navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Safari-specific backdrop filter fix */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .navbar {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 15px 50px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  
+  /* Safari optimizations for scrolled state */
+  -webkit-transform: translateX(-50%) translateZ(0);
+  transform: translateX(-50%) translateZ(0);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 2rem;
+  height: 100%;
+  position: relative;
+  
+  /* Safari optimization */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  
+  /* Safari optimizations */
+  -webkit-transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, color;
+  transform-origin: left center;
+}
+
+.brand-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px) translateZ(0);
+  -webkit-transform: translateY(-1px) translateZ(0);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.brand-icon {
+  height: 1.6rem;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+  
+  /* Safari optimizations */
+  -webkit-transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, filter;
+}
+
+.brand-name {
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  /* Safari optimization */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.nav-links ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links li a,
+.nav-link {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: block;
+  
+  /* Safari optimizations */
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, color, background-color;
+  transform-origin: center center;
+}
+
+.nav-links li a::before,
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  opacity: 0;
+  transform: scale(0.8) translateZ(0);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+  
+  /* Safari optimizations */
+  -webkit-transform: scale(0.8) translateZ(0);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+}
+
+.nav-links li a:hover,
+.nav-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px) translateZ(0);
+  -webkit-transform: translateY(-1px) translateZ(0);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.nav-links li a:hover::before,
+.nav-link:hover::before {
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+  -webkit-transform: scale(1) translateZ(0);
+}
+
+/* Current page/active state styling */
+.nav-links li.current-menu-item a,
+.nav-links li.current_page_item a {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.nav-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
+  
+  /* Safari optimization */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.pricing-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.5rem;
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 40px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(76, 175, 80, 0.1),
+    inset 0 0 0 1px rgba(76, 175, 80, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  
+  /* Safari optimizations */
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, background-color, border-color, box-shadow;
+  transform-origin: center center;
+  
+  /* Fallback for Safari backdrop-filter issues */
+  background: rgba(76, 175, 80, 0.2);
+}
+
+/* Add backdrop filter with Safari fallback for pricing button */
+@supports (backdrop-filter: blur(8px)) {
+  .pricing-btn {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(76, 175, 80, 0.15);
+  }
+}
+
+.pricing-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.3), transparent);
+  transition: left 0.5s ease;
+  
+  /* Safari optimizations */
+  -webkit-transition: left 0.5s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.pricing-btn:hover {
+  transform: translateY(-2px) scale(1.01) translateZ(0);
+  -webkit-transform: translateY(-2px) scale(1.01) translateZ(0);
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.2),
+    inset 0 0 0 1px rgba(76, 175, 80, 0.3);
+  background: rgba(76, 175, 80, 0.25);
+  border-color: rgba(76, 175, 80, 0.6);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.pricing-btn:hover::before {
+  left: 100%;
+}
+
+.get-started-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.8rem;
+  background: rgba(216, 78, 40, 0.15);
+  border: 1px solid rgba(216, 78, 40, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 40px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 15px rgba(216, 78, 40, 0.1),
+    inset 0 0 0 1px rgba(216, 78, 40, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  
+  /* Safari optimizations */
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, background-color, border-color, box-shadow;
+  transform-origin: center center;
+  
+  /* Fallback for Safari backdrop-filter issues */
+  background: rgba(216, 78, 40, 0.2);
+}
+
+/* Add backdrop filter with Safari fallback for get started button */
+@supports (backdrop-filter: blur(8px)) {
+  .get-started-btn {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(216, 78, 40, 0.15);
+  }
+}
+
+.get-started-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(216, 78, 40, 0.3), transparent);
+  transition: left 0.5s ease;
+  
+  /* Safari optimizations */
+  -webkit-transition: left 0.5s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.get-started-btn:hover {
+  transform: translateY(-2px) scale(1.01) translateZ(0);
+  -webkit-transform: translateY(-2px) scale(1.01) translateZ(0);
+  box-shadow: 
+    0 0 25px rgba(216, 78, 40, 0.2),
+    inset 0 0 0 1px rgba(216, 78, 40, 0.3);
+  background: rgba(216, 78, 40, 0.25);
+  border-color: rgba(216, 78, 40, 0.6);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.get-started-btn:hover::before {
+  left: 100%;
+}
+
+.get-started-btn:active,
+.pricing-btn:active {
+  transform: translateY(-1px) scale(1.005) translateZ(0);
+  -webkit-transform: translateY(-1px) scale(1.005) translateZ(0);
+}
+
+/* Mobile Menu Toggle (hidden for now, can be implemented later) */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  
+  /* Safari optimization */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.mobile-menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: #d84e28;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  display: block;
+  
+  /* Safari optimization */
+  -webkit-transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navbar {
+    width: calc(100% - 2rem);
+  }
+  
+  .nav-container {
+    padding: 0.35rem 1.5rem;
+  }
+  
+  .nav-actions {
+    margin-right: 0.75rem;
+    gap: 0.75rem;
+  }
+  
+  .nav-links,
+  .nav-links ul {
+    gap: 1.5rem;
+  }
+  
+  .nav-links li a,
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem;
+  }
+  
+  .pricing-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .get-started-btn {
+    padding: 0.5rem 1.3rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 1rem);
+    top: 0.5rem;
+  }
+  
+  .nav-container {
+    padding: 0.3rem 1rem;
+  }
+  
+  .nav-actions {
+    margin-right: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .nav-links {
+    display: none; /* Hide navigation links on mobile - can implement mobile menu later */
+  }
+  
+  .brand-link {
+    font-size: 1.2rem;
+  }
+  
+  .brand-icon {
+    height: 1.4rem;
+  }
+  
+  .pricing-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .get-started-btn {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 0.5rem);
+    top: 0.25rem;
+  }
+  
+  .nav-container {
+    padding: 0.25rem 0.75rem;
+  }
+  
+  .nav-actions {
+    margin-right: 0.25rem;
+    gap: 0.4rem;
+  }
+  
+  .brand-link {
+    font-size: 1.1rem;
+  }
+  
+  .brand-icon {
+    height: 1.2rem;
+  }
+  
+  .pricing-btn {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .get-started-btn {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .nav-links li a,
+  .nav-link,
+  .get-started-btn,
+  .pricing-btn,
+  .brand-link,
+  .nav-links li a::before,
+  .nav-link::before,
+  .get-started-btn::before,
+  .pricing-btn::before {
+    transition: none !important;
+    -webkit-transition: none !important;
+  }
+  
+  .get-started-btn::before,
+  .pricing-btn::before {
+    display: none;
+  }
+  
+  .nav-links li a::before,
+  .nav-link::before {
+    display: none;
+  }
+  
+  * {
+    will-change: auto !important;
+  }
+}
+
+/* Focus states for accessibility */
+.nav-links li a:focus,
+.nav-link:focus,
+.get-started-btn:focus,
+.pricing-btn:focus,
+.brand-link:focus {
+  outline: 2px solid rgba(216, 78, 40, 0.8);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .navbar {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: #ffffff;
+  }
+  
+  .nav-links li a,
+  .nav-link,
+  .brand-name {
+    color: #ffffff;
+  }
+  
+  .get-started-btn {
+    background: rgba(216, 78, 40, 0.9);
+    border-color: #D84E28;
+  }
+  
+  .pricing-btn {
+    background: rgba(76, 175, 80, 0.9);
+    border-color: #4CAF50;
+  }
+}
+
+/* Safari-specific performance optimizations */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .navbar,
+    .nav-container,
+    .brand-link,
+    .nav-links li a,
+    .nav-link,
+    .pricing-btn,
+    .get-started-btn {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .navbar {
+      -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
+      transform: translateX(-50%) translate3d(0, 0, 0);
+    }
+    
+    .brand-link:hover {
+      -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
+      transform: translateY(-1px) translate3d(0, 0, 0);
+    }
+    
+    .nav-links li a:hover,
+    .nav-link:hover {
+      -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
+      transform: translateY(-1px) translate3d(0, 0, 0);
+    }
+    
+    .pricing-btn:hover {
+      -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
+      transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
+    }
+    
+    .get-started-btn:hover {
+      -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
+      transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
+    }
+  }
+}

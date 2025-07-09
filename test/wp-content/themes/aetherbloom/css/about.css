@@ -1,0 +1,614 @@
+/* File: /wp-content/themes/aetherbloom/css/about.css */
+
+/**
+ * About Page Styles - Updated with consolidated sections and improved layout
+ * 
+ * @package Aetherbloom
+ * @version 2.1.0
+ */
+
+/* ===== GENERAL ABOUT PAGE LAYOUT ===== */
+.about-page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove snap scroll behavior from About page */
+.about-page .site-main {
+  scroll-snap-type: none !important;
+  overflow-y: auto;
+}
+
+/* Remove snap scroll from content wrapper on About page */
+.about-page .content-wrapper {
+  background: transparent;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 3;
+  scroll-snap-align: none !important;
+  height: auto;
+  overflow-y: visible;
+}
+
+/* Ensure smooth scrolling without snap */
+.about-page .site-main,
+.about-page .content-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== HERO SECTION - VIDEO BACKGROUND WITH OVERLAY ===== */
+.about-hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  margin: 2rem 2rem 0 2rem;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(109, 109, 109, 0.2), 
+    rgba(88, 88, 88, 0.2));
+  z-index: 2;
+}
+
+.video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(216, 78, 40, 0), 
+    rgba(255, 147, 64, 0)), 
+    url('../assets/images/aetherbloom-hero-bg.jpg') center/cover;
+  background-attachment: fixed;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.hero-description {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-description p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== MISSION, VISION & VALUES SECTION ===== */
+.mission-vision-values-section {
+  min-height: 100vh;
+  padding: 100px 0;
+  position: relative;
+}
+
+.foundation-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.foundation-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.foundation-card:hover,
+.foundation-card.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  color: #d84e28;
+  margin-bottom: 1rem;
+}
+
+.foundation-card h3 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.foundation-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.foundation-content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 3rem;
+  min-height: 300px;
+}
+
+.content-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.content-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.content-panel p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.value-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 147, 64, 0.3);
+}
+
+.value-item h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.value-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+/* ===== FOUNDERS SECTION - SIDE BY SIDE LAYOUT ===== */
+.founders-section {
+  padding: 100px 0;
+  background: transparent;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+.founder-profile {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.founder-profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+.founder-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.founder-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.founder-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.founder-profile:hover .founder-photo {
+  transform: scale(1.05);
+}
+
+.founder-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.founder-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.founder-location {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.founder-tagline h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.founder-description {
+  flex: 1;
+}
+
+.founder-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #d84e28, #ff9340);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(216, 78, 40, 0.3);
+}
+
+.btn:hover {
+  background: #ffffff;
+  color: #d84e28;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.2rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .hero-description p {
+    font-size: 1.1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .foundation-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .founders-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .mission-vision-values-section,
+  .founders-section {
+    min-height: auto;
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero-section {
+    height: 80vh;
+    margin: 1rem;
+  }
+  
+  .hero-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .hero-description p {
+    font-size: 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .mission-vision-values-section,
+  .founders-section,
+  .strategic-allies-section {
+    padding: 60px 0;
+  }
+  
+  .founder-name {
+    font-size: 1.8rem;
+  }
+  
+  .founder-title {
+    font-size: 1rem;
+  }
+  
+  .foundation-card,
+  .ally-card {
+    padding: 1.5rem;
+  }
+  
+  .founder-profile {
+    padding: 1.5rem;
+  }
+  
+  .founder-image {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-description p {
+    font-size: 0.9rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .founder-name {
+    font-size: 1.5rem;
+  }
+  
+  .founder-title {
+    font-size: 0.9rem;
+  }
+  
+  .foundation-card,
+  .ally-card,
+  .founder-profile {
+    padding: 1rem;
+  }
+  
+  .foundation-content {
+    padding: 2rem;
+  }
+  
+  .founder-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .ally-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .value-item {
+    padding: 1.5rem;
+  }
+}

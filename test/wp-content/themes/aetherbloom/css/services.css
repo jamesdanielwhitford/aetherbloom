@@ -1,0 +1,513 @@
+/* File: /wp-content/themes/aetherbloom/css/services.css */
+
+.services-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/images/services-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.services-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.services-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.services-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  height: 80vh;
+  align-items: center;
+  /* OPTION 1 FIX: Remove opacity transition, use scale instead */
+  opacity: 1;
+  transform: translateY(40px) scale(0.99);
+  transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.services-content.visible {
+  /* OPTION 1 FIX: Animate scale and translateY, keep opacity: 1 */
+  transform: translateY(0) scale(1);
+}
+
+/* Left Side - Services List */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.services-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.services-section-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.services-section-subtitle {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.service-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.6, 1);
+  padding: 1rem 0;
+  position: relative;
+}
+
+.service-menu-item:hover,
+.service-menu-item.active {
+  transform: translateX(10px);
+}
+
+.service-arrow {
+  font-size: 1.5rem;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  font-weight: 300;
+  flex-shrink: 0;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-arrow.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.service-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.2;
+  transition: all 0.4s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.service-menu-item:hover .service-title,
+.service-menu-item.active .service-title {
+  color: #ffffff;
+  font-weight: 400;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Right Side - Service Card */
+.service-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 3rem;
+  /* OPTION 1 FIX: Backdrop-filter is always active, no transition */
+  backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 500px;
+  height: 550px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  /* OPTION 1 FIX: Only transition properties that don't affect backdrop-filter */
+  transition: 
+    transform 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    background 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    border-color 0.5s cubic-bezier(0.4, 0.0, 0.6, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  /* OPTION 1 FIX: Force backdrop-filter to establish immediately */
+  will-change: transform;
+  /* OPTION 1 FIX: Ensure it's on its own GPU layer */
+  transform: translateZ(0);
+}
+
+.card-content:hover {
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.card-number {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 3rem;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1;
+}
+
+.card-title-group {
+  flex: 1;
+}
+
+.card-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.card-subtitle {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-description {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.card-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Allow flex child to shrink */
+}
+
+.features-title {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.feature-item {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature-icon {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Custom scrollbar for card content */
+.card-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.card-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Custom scrollbar for features list */
+.features-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.features-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.features-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.features-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .services-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    height: auto;
+    padding: 3rem 0;
+  }
+  
+  .services-list {
+    height: auto;
+  }
+  
+  .services-section-title {
+    font-size: 3rem;
+  }
+  
+  .service-card {
+    height: auto;
+  }
+  
+  .card-content {
+    height: 500px; /* Slightly smaller on tablet */
+  }
+  
+  .service-title {
+    font-size: 2rem;
+  }
+  
+  .services-menu {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-container {
+    padding: 0 1.5rem;
+  }
+  
+  .services-content {
+    gap: 2rem;
+    /* OPTION 1 FIX: Mobile scale animation */
+    transform: translateY(20px) scale(0.9);
+  }
+  
+  .services-content.visible {
+    transform: translateY(0) scale(1);
+  }
+  
+  .services-section-title {
+    font-size: 2.5rem;
+  }
+  
+  .service-menu-item {
+    padding: 0.5rem 0;
+    justify-content: flex-start;
+  }
+  
+  .service-menu-item:hover,
+  .service-menu-item.active {
+    transform: translateY(-5px);
+  }
+  
+  .service-arrow {
+    display: flex;
+  }
+  
+  .card-content {
+    padding: 2rem;
+    height: 450px; /* Smaller on mobile */
+    /* Disable 3D effects on mobile */
+    transform: none !important;
+    /* OPTION 1 FIX: Maintain backdrop-filter, only transition safe properties */
+    transition: 
+      background 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease !important;
+  }
+  
+  .card-content:hover {
+    transform: none !important;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.7rem;
+  }
+  
+  .service-title {
+    font-size: 1.8rem;
+  }
+  
+  .services-menu {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-container {
+    padding: 0 1rem;
+  }
+  
+  .services-content {
+    /* OPTION 1 FIX: Smaller scale on mobile */
+    transform: translateY(15px) scale(0.95);
+  }
+  
+  .services-section-title {
+    font-size: 2rem;
+  }
+  
+  .service-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+    height: 400px; /* Even smaller on small mobile */
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-description {
+    font-size: 1rem;
+  }
+  
+  .services-menu {
+    gap: 1rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .service-menu-item,
+  .service-arrow,
+  .card-content,
+  .services-content {
+    transition: none !important;
+  }
+  
+  .services-content {
+    /* OPTION 1 FIX: No animations for reduced motion */
+    transform: translateY(0) scale(1) !important;
+  }
+  
+  .service-menu-item:hover,
+  .service-menu-item.active {
+    transform: none;
+  }
+  
+  .card-content {
+    transform: translateZ(0) !important;
+    will-change: auto;
+  }
+  
+  .card-content:hover {
+    transform: translateZ(0) !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: #ffffff;
+  }
+  
+  .service-title {
+    color: #ffffff;
+  }
+  
+  .card-title,
+  .features-title {
+    color: #ffffff;
+  }
+}
