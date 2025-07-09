@@ -51,14 +51,15 @@
   width: 100%;
   height: 80vh;
   align-items: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /* OPTION 1 FIX: Remove opacity transition, use scale instead */
+  opacity: 1;
+  transform: translateY(40px) scale(0.9);
+  transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 
 .services-content.visible {
-  opacity: 1;
-  transform: translateY(0);
+  /* OPTION 1 FIX: Animate scale and translateY, keep opacity: 1 */
+  transform: translateY(0) scale(1);
 }
 
 /* Left Side - Services List */
@@ -166,6 +167,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   padding: 3rem;
+  /* OPTION 1 FIX: Backdrop-filter is always active, no transition */
   backdrop-filter: blur(20px);
   width: 100%;
   max-width: 500px;
@@ -174,10 +176,18 @@
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /* OPTION 1 FIX: Only transition properties that don't affect backdrop-filter */
+  transition: 
+    transform 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    background 0.5s cubic-bezier(0.4, 0.0, 0.6, 1),
+    border-color 0.5s cubic-bezier(0.4, 0.0, 0.6, 1);
   transform-style: preserve-3d;
   cursor: pointer;
+  /* OPTION 1 FIX: Force backdrop-filter to establish immediately */
   will-change: transform;
+  /* OPTION 1 FIX: Ensure it's on its own GPU layer */
+  transform: translateZ(0);
 }
 
 .card-content:hover {
@@ -359,6 +369,12 @@
   
   .services-content {
     gap: 2rem;
+    /* OPTION 1 FIX: Mobile scale animation */
+    transform: translateY(20px) scale(0.9);
+  }
+  
+  .services-content.visible {
+    transform: translateY(0) scale(1);
   }
   
   .services-section-title {
@@ -384,7 +400,11 @@
     height: 450px; /* Smaller on mobile */
     /* Disable 3D effects on mobile */
     transform: none !important;
-    transition: all 0.3s ease !important;
+    /* OPTION 1 FIX: Maintain backdrop-filter, only transition safe properties */
+    transition: 
+      background 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease !important;
   }
   
   .card-content:hover {
@@ -413,6 +433,11 @@
 @media (max-width: 480px) {
   .services-container {
     padding: 0 1rem;
+  }
+  
+  .services-content {
+    /* OPTION 1 FIX: Smaller scale on mobile */
+    transform: translateY(15px) scale(0.95);
   }
   
   .services-section-title {
@@ -451,8 +476,8 @@
   }
   
   .services-content {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    /* OPTION 1 FIX: No animations for reduced motion */
+    transform: translateY(0) scale(1) !important;
   }
   
   .service-menu-item:hover,
@@ -461,12 +486,12 @@
   }
   
   .card-content {
-    transform: none !important;
+    transform: translateZ(0) !important;
     will-change: auto;
   }
   
   .card-content:hover {
-    transform: none !important;
+    transform: translateZ(0) !important;
   }
 }
 

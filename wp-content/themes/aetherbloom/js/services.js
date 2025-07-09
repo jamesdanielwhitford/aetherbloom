@@ -54,6 +54,12 @@
         
         // Update initial service display
         updateServiceDisplay();
+        
+        // Handle mobile optimization
+        handleMobileOptimization();
+        
+        // Handle reduced motion preferences
+        handleReducedMotion();
     }
     
     // Cache all DOM elements
@@ -155,11 +161,13 @@
             const { x, y, rotateX, rotateY } = servicesData.mousePosition;
             
             if (servicesData.isHovering) {
-                const transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${x}px) translateY(${y}px) scale(1.02)`;
+                // OPTION 1 FIX: Always include translateZ(0) to maintain GPU layer for backdrop-filter
+                const transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${x}px) translateY(${y}px) translateZ(0) scale(1.02)`;
                 servicesElements.cardContent.style.transform = transform;
                 servicesElements.cardContent.style.transition = 'transform 0.1s ease-out';
             } else {
-                servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
+                // OPTION 1 FIX: Always include translateZ(0) to maintain GPU layer for backdrop-filter
+                servicesElements.cardContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0) scale(1)';
                 servicesElements.cardContent.style.transition = 'transform 0.3s ease-out';
             }
         }
@@ -255,9 +263,9 @@
         const isMobile = window.innerWidth <= 768;
         
         if (isMobile && servicesElements.cardContent) {
-            // Disable 3D effects on mobile
-            servicesElements.cardContent.style.transform = 'none !important';
-            servicesElements.cardContent.style.transition = 'all 0.3s ease !important';
+            // OPTION 1 FIX: Disable 3D effects on mobile but preserve translateZ(0) for backdrop-filter
+            servicesElements.cardContent.style.transform = 'translateZ(0) !important';
+            servicesElements.cardContent.style.transition = 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important';
         }
     }
     
@@ -266,15 +274,15 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         if (prefersReducedMotion) {
-            // Disable transforms and transitions
+            // OPTION 1 FIX: Disable transforms and transitions but preserve translateZ(0)
             if (servicesElements.cardContent) {
-                servicesElements.cardContent.style.transform = 'none !important';
+                servicesElements.cardContent.style.transform = 'translateZ(0) !important';
                 servicesElements.cardContent.style.transition = 'none !important';
             }
             
             if (servicesElements.content) {
-                servicesElements.content.style.opacity = '1';
-                servicesElements.content.style.transform = 'translateY(0)';
+                // OPTION 1 FIX: For reduced motion, show content immediately without scale animation
+                servicesElements.content.style.transform = 'translateY(0) scale(1)';
             }
         }
     }
