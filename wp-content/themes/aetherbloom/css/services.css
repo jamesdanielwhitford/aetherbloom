@@ -53,7 +53,7 @@
   align-items: center;
   /* OPTION 1 FIX: Remove opacity transition, use scale instead */
   opacity: 1;
-  transform: translateY(40px) scale(0.9);
+  transform: translateY(40px) scale(0.99);
   transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 
