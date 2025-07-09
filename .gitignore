@@ -61,3 +61,5 @@ wp-content/uploads/
 dbs*.sql
 *.zip
 *.tar.gz
+
+.opcache

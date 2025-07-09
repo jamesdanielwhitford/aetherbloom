@@ -20,16 +20,19 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wp_local' );
-
-/** Database username */
-define( 'DB_USER', 'root' );
-
-/** Database password */
-define( 'DB_PASSWORD', 'BullyYeezusPablo3!' );
-
-/** Database hostname */
-define( 'DB_HOST', 'localhost' );
+if ( $_SERVER['HTTP_HOST'] === 'localhost:8000' ) {
+    // 🖥️ Local development DB settings
+    define( 'DB_NAME',     'wp_local' );
+    define( 'DB_USER',     'root' );
+    define( 'DB_PASSWORD', 'BullyYeezusPablo3!' );
+    define( 'DB_HOST',     'localhost' );
+} else {
+    // 🌐 IONOS live server DB settings
+    define( 'DB_NAME',     'dbs14012032' ); // Usually same as the DB user on IONOS
+    define( 'DB_USER',     'dbu2755019' );
+    define( 'DB_PASSWORD', '2025@!ABG' ); // Replace with real password
+    define( 'DB_HOST',     'db5017467053.hosting-data.io' );
+}
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
