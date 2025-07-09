@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/page-contact.php
 
 /**
- * Template for Contact page - Complete content update with multi-path contact and live chat
+ * Template for Contact page - Complete content update with multi-path contact
  *
  * @package Aetherbloom
  * @version 1.0.0
@@ -33,27 +33,35 @@ get_header(); ?>
                         </div>
                         
                         <div class="hero-right">
-                            <div class="live-chat-simulation">
-                                <div class="chat-header">
-                                    <div class="chat-status">
-                                        <span class="status-indicator online"></span>
-                                        <span class="status-text"><?php esc_html_e('UK Team Online', 'aetherbloom'); ?></span>
-                                    </div>
-                                    <span class="chat-time"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
+                            <div class="contact-options">
+                                <div class="contact-option-header">
+                                    <h3><?php esc_html_e('Get In Touch', 'aetherbloom'); ?></h3>
+                                    <p><?php esc_html_e('Choose how you\'d like to connect with us', 'aetherbloom'); ?></p>
                                 </div>
-                                <div class="chat-messages">
-                                    <div class="chat-message">
-                                        <div class="message-avatar">
-                                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-avatar.jpg'); ?>" alt="Grace">
+                                
+                                <div class="contact-buttons">
+                                    <button class="contact-btn email-btn" onclick="window.location.href='mailto:info@aetherbloom.co.uk'">
+                                        <div class="btn-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
                                         </div>
-                                        <div class="message-bubble">
-                                            <?php esc_html_e('Hi! I\'m Grace from Aetherbloom. How can I help you reduce costs while scaling your team?', 'aetherbloom'); ?>
+                                        <?php esc_html_e('Email Us', 'aetherbloom'); ?>
+                                    </button>
+                                    
+                                    <button class="contact-btn appointment-btn" onclick="window.open('https://calendly.com/aetherbloom', '_blank')">
+                                        <div class="btn-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
                                         </div>
-                                    </div>
+                                        <?php esc_html_e('Book An Appointment', 'aetherbloom'); ?>
+                                    </button>
                                 </div>
-                                <button class="chat-start-btn" onclick="startLiveChat()">
-                                    <?php esc_html_e('Chat Now with Our UK Team', 'aetherbloom'); ?>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -75,28 +83,48 @@ get_header(); ?>
                                         <label class="option-card">
                                             <input type="radio" name="challenge" value="customer-support">
                                             <div class="option-content">
-                                                <div class="option-icon">📞</div>
+                                                <div class="option-icon">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M22 16.92V19a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h2.09a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9a16 16 0 006 6l.36-.36a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/>
+                                                    </svg>
+                                                </div>
                                                 <span><?php esc_html_e('Customer Support Overload', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="challenge" value="admin-tasks">
                                             <div class="option-content">
-                                                <div class="option-icon">📋</div>
+                                                <div class="option-icon">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2"/>
+                                                    </svg>
+                                                </div>
                                                 <span><?php esc_html_e('Admin Tasks Taking Too Much Time', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="challenge" value="scaling-team">
                                             <div class="option-content">
-                                                <div class="option-icon">👥</div>
+                                                <div class="option-icon">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
+                                                        <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
+                                                    </svg>
+                                                </div>
                                                 <span><?php esc_html_e('Need to Scale Team Quickly', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="challenge" value="high-costs">
                                             <div class="option-content">
-                                                <div class="option-icon">💰</div>
+                                                <div class="option-icon">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                                                        <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2"/>
+                                                    </svg>
+                                                </div>
                                                 <span><?php esc_html_e('High Operational Costs', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
@@ -109,25 +137,25 @@ get_header(); ?>
                                         <label class="option-card">
                                             <input type="radio" name="team_size" value="1-10">
                                             <div class="option-content">
-                                                <span><?php esc_html_e('1-10 employees', 'aetherbloom'); ?></span>
+                                                <span><?php esc_html_e('1-10 people', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="team_size" value="11-50">
                                             <div class="option-content">
-                                                <span><?php esc_html_e('11-50 employees', 'aetherbloom'); ?></span>
+                                                <span><?php esc_html_e('11-50 people', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="team_size" value="51-200">
                                             <div class="option-content">
-                                                <span><?php esc_html_e('51-200 employees', 'aetherbloom'); ?></span>
+                                                <span><?php esc_html_e('51-200 people', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                         <label class="option-card">
                                             <input type="radio" name="team_size" value="200+">
                                             <div class="option-content">
-                                                <span><?php esc_html_e('200+ employees', 'aetherbloom'); ?></span>
+                                                <span><?php esc_html_e('200+ people', 'aetherbloom'); ?></span>
                                             </div>
                                         </label>
                                     </div>
@@ -144,19 +172,9 @@ get_header(); ?>
                         </div>
                         
                         <div class="assessment-right">
-                            <div class="trust-signals">
-                                <div class="trust-item">
-                                    <div class="trust-number">7</div>
-                                    <div class="trust-label"><?php esc_html_e('Days Average Setup', 'aetherbloom'); ?></div>
-                                </div>
-                                <div class="trust-item">
-                                    <div class="trust-number">92%</div>
-                                    <div class="trust-label"><?php esc_html_e('English Fluency Rate', 'aetherbloom'); ?></div>
-                                </div>
-                                <div class="trust-item">
-                                    <div class="trust-number">50+</div>
-                                    <div class="trust-label"><?php esc_html_e('UK SMEs Trust Us', 'aetherbloom'); ?></div>
-                                </div>
+                            <div class="assessment-suggestion" id="assessment-suggestion">
+                                <h4><?php esc_html_e('Our Recommendation', 'aetherbloom'); ?></h4>
+                                <p><?php esc_html_e('Complete the assessment to see personalized recommendations for your business needs.', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
@@ -171,187 +189,123 @@ get_header(); ?>
                     <div class="contact-paths">
                         <!-- Path 1: Quick Start -->
                         <div class="contact-path quick-start">
-                            <div class="path-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                            <div class="path-header">
+                                <h3><?php esc_html_e('Quick Start', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Perfect for immediate needs', 'aetherbloom'); ?></p>
                             </div>
-                            <h3><?php esc_html_e('Quick Start', 'aetherbloom'); ?></h3>
-                            <p><?php esc_html_e('Get up and running in 7 days with our proven onboarding process', 'aetherbloom'); ?></p>
-                            <ul class="path-features">
-                                <li><?php esc_html_e('Free 14-day pilot program', 'aetherbloom'); ?></li>
-                                <li><?php esc_html_e('Pre-trained UK-compliant team', 'aetherbloom'); ?></li>
-                                <li><?php esc_html_e('Same-day response guaranteed', 'aetherbloom'); ?></li>
-                            </ul>
-                            <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Start Your Pilot', 'aetherbloom'); ?></a>
+                            <div class="path-content">
+                                <div class="path-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3><?php esc_html_e('Immediate Support', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Get started within 48 hours with our ready-to-deploy talent pool', 'aetherbloom'); ?></p>
+                                <ul class="path-features">
+                                    <li><?php esc_html_e('Same-day consultation', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Pre-vetted candidates', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Flexible contracts', 'aetherbloom'); ?></li>
+                                </ul>
+                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Start Now', 'aetherbloom'); ?></a>
+                            </div>
                         </div>
-
-                        <!-- Path 2: Strategic Partnership -->
-                        <div class="contact-path strategic">
-                            <div class="path-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
-                                </svg>
+                        
+                        <!-- Path 2: Custom Solution -->
+                        <div class="contact-path custom-solution">
+                            <div class="path-header">
+                                <h3><?php esc_html_e('Custom Solution', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Tailored to your specific needs', 'aetherbloom'); ?></p>
                             </div>
-                            <h3><?php esc_html_e('Strategic Partnership', 'aetherbloom'); ?></h3>
-                            <p><?php esc_html_e('Long-term growth with dedicated teams and custom solutions', 'aetherbloom'); ?></p>
-                            <ul class="path-features">
-                                <li><?php esc_html_e('Dedicated account manager', 'aetherbloom'); ?></li>
-                                <li><?php esc_html_e('Custom workflows & processes', 'aetherbloom'); ?></li>
-                                <li><?php esc_html_e('Scalable team structure', 'aetherbloom'); ?></li>
-                            </ul>
-                            <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Discuss Partnership', 'aetherbloom'); ?></a>
+                            <div class="path-content">
+                                <div class="path-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L2 7V17C2 17.5304 2.21071 18.0391 2.58579 18.4142C2.96086 18.7893 3.46957 19 4 19H20C20.5304 19 21.0391 18.7893 21.4142 18.4142C21.7893 18.0391 22 17.5304 22 17V7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                        <polyline points="8,9 12,13 16,9" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3><?php esc_html_e('Tailored Integration', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Comprehensive needs analysis and custom team building', 'aetherbloom'); ?></p>
+                                <ul class="path-features">
+                                    <li><?php esc_html_e('In-depth consultation', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Custom recruitment process', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Ongoing support', 'aetherbloom'); ?></li>
+                                </ul>
+                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Let\'s Plan', 'aetherbloom'); ?></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Path 3: Strategic Partnership -->
+                        <div class="contact-path strategic-partnership">
+                            <div class="path-header">
+                                <h3><?php esc_html_e('Strategic Partnership', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Long-term growth partnership', 'aetherbloom'); ?></p>
+                            </div>
+                            <div class="path-content">
+                                <div class="path-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3><?php esc_html_e('Strategic Partnership', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Long-term growth with dedicated teams and custom solutions', 'aetherbloom'); ?></p>
+                                <ul class="path-features">
+                                    <li><?php esc_html_e('Dedicated account manager', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Custom workflows & processes', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Scalable team structure', 'aetherbloom'); ?></li>
+                                </ul>
+                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Discuss Partnership', 'aetherbloom'); ?></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Main Contact Form Section -->
+            <!-- Get Started Section -->
             <section class="contact-form-section" id="main-contact-form">
                 <div class="container">
                     <div class="form-wrapper">
                         <div class="form-left">
                             <h2><?php esc_html_e('Get Started in Just 2 Minutes', 'aetherbloom'); ?></h2>
-                            <p><?php esc_html_e('Fill out the form below and a member of our team will be in touch within 48 hours', 'aetherbloom'); ?></p>
+                            <p><?php esc_html_e('Enter your email and we\'ll send you a personalized assessment form', 'aetherbloom'); ?></p>
                             
-                            <form class="contact-form" id="main-contact-form-element" method="post" action="">
-                                <?php wp_nonce_field('aetherbloom_contact_form', 'contact_nonce'); ?>
-                                
-                                <!-- Your Details Section -->
-                                <div class="form-section">
-                                    <h3><?php esc_html_e('Your Details', 'aetherbloom'); ?></h3>
-                                    
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="full_name"><?php esc_html_e('Full Name', 'aetherbloom'); ?> <span class="required">*</span></label>
-                                            <input type="text" id="full_name" name="full_name" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="company_name"><?php esc_html_e('Company Name', 'aetherbloom'); ?></label>
-                                            <input type="text" id="company_name" name="company_name">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="email_address"><?php esc_html_e('Email Address', 'aetherbloom'); ?> <span class="required">*</span></label>
-                                            <input type="email" id="email_address" name="email_address" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="phone_number"><?php esc_html_e('Phone Number', 'aetherbloom'); ?></label>
-                                            <input type="tel" id="phone_number" name="phone_number">
-                                        </div>
-                                    </div>
+                            <div class="email-capture-form">
+                                <div class="form-group">
+                                    <input type="email" id="email_capture" name="email" class="form-input" placeholder="Enter your email address" required>
                                 </div>
-
-                                <!-- Business Requirements Section -->
-                                <div class="form-section">
-                                    <h3><?php esc_html_e('Business Requirements', 'aetherbloom'); ?></h3>
-                                    
-                                    <div class="form-group">
-                                        <label for="services_interested"><?php esc_html_e('Services You\'re Interested In', 'aetherbloom'); ?></label>
-                                        <select id="services_interested" name="services_interested">
-                                            <option value=""><?php esc_html_e('Select a service...', 'aetherbloom'); ?></option>
-                                            <option value="digital-customer-success"><?php esc_html_e('Digital Customer Success', 'aetherbloom'); ?></option>
-                                            <option value="call-centre-solutions"><?php esc_html_e('Call Centre Solutions', 'aetherbloom'); ?></option>
-                                            <option value="add-on-services"><?php esc_html_e('Add-On Services', 'aetherbloom'); ?></option>
-                                            <option value="not-sure"><?php esc_html_e('Not sure - need consultation', 'aetherbloom'); ?></option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="current_team_size"><?php esc_html_e('Current Team Size', 'aetherbloom'); ?></label>
-                                        <select id="current_team_size" name="current_team_size">
-                                            <option value=""><?php esc_html_e('Select team size...', 'aetherbloom'); ?></option>
-                                            <option value="1-10"><?php esc_html_e('1-10 employees', 'aetherbloom'); ?></option>
-                                            <option value="11-50"><?php esc_html_e('11-50 employees', 'aetherbloom'); ?></option>
-                                            <option value="51-200"><?php esc_html_e('51-200 employees', 'aetherbloom'); ?></option>
-                                            <option value="200+"><?php esc_html_e('200+ employees', 'aetherbloom'); ?></option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="project_timeline"><?php esc_html_e('When do you need to start?', 'aetherbloom'); ?></label>
-                                        <select id="project_timeline" name="project_timeline">
-                                            <option value=""><?php esc_html_e('Select timeline...', 'aetherbloom'); ?></option>
-                                            <option value="asap"><?php esc_html_e('ASAP', 'aetherbloom'); ?></option>
-                                            <option value="1-month"><?php esc_html_e('Within 1 month', 'aetherbloom'); ?></option>
-                                            <option value="3-months"><?php esc_html_e('Within 3 months', 'aetherbloom'); ?></option>
-                                            <option value="exploring"><?php esc_html_e('Just exploring options', 'aetherbloom'); ?></option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="project_details"><?php esc_html_e('Tell us about your project and requirements', 'aetherbloom'); ?></label>
-                                        <textarea id="project_details" name="project_details" rows="4" placeholder="<?php esc_attr_e('Describe your business challenges, what you hope to achieve, and any specific requirements...', 'aetherbloom'); ?>"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-submit">
-                                    <button type="submit" class="submit-btn">
-                                        <?php esc_html_e('Submit Form → We\'ll respond within 48 hours', 'aetherbloom'); ?>
-                                    </button>
-                                    <p class="form-footer">
-                                        <?php esc_html_e('Prefer to talk?', 'aetherbloom'); ?> 
-                                        <a href="#direct-contact" class="book-call-link"><?php esc_html_e('Contact us directly', 'aetherbloom'); ?></a>
-                                    </p>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="form-right">
-                            <!-- Free Resource Download -->
-                            <div class="resource-download">
-                                <div class="resource-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M16 13H8" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M16 17H8" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M10 9H8" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h4><?php esc_html_e('Free Resource', 'aetherbloom'); ?></h4>
-                                <h5><?php esc_html_e('"The UK Leader\'s Guide to South African Talent"', 'aetherbloom'); ?></h5>
-                                <p><?php esc_html_e('Download our comprehensive guide to understanding and leveraging South African talent for UK businesses.', 'aetherbloom'); ?></p>
-                                
-                                <form class="resource-form" id="resource-download-form">
-                                    <div class="resource-input-group">
-                                        <input type="email" id="resource_email" name="resource_email" placeholder="<?php esc_attr_e('Enter your email for instant download', 'aetherbloom'); ?>" required>
-                                        <button type="submit" class="resource-btn"><?php esc_html_e('Download Free Guide', 'aetherbloom'); ?></button>
-                                    </div>
-                                    <p class="resource-note"><?php esc_html_e('No spam. Unsubscribe anytime.', 'aetherbloom'); ?></p>
-                                </form>
+                                <button type="button" class="hubspot-form-btn" onclick="openHubSpotForm()">
+                                    <?php esc_html_e('Get My Assessment', 'aetherbloom'); ?>
+                                </button>
                             </div>
-
-                            <!-- Direct Contact Cards -->
-                            <div class="contact-cards" id="direct-contact">
-                                <div class="contact-card uk-office">
-                                    <div class="card-flag">🇬🇧</div>
-                                    <h4><?php esc_html_e('UK Office (Grace)', 'aetherbloom'); ?></h4>
-                                    <p class="office-location"><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
-                                    <a href="tel:+44XXXXXXXXX" class="phone-link">+44 XXXX XXX XXX</a>
-                                    <span class="office-hours"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
-                                    <div class="contact-speciality">
-                                        <small><?php esc_html_e('Client Strategy & Growth', 'aetherbloom'); ?></small>
+                        </div>
+                        
+                        <div class="form-right">
+                            <div class="resource-download">
+                                <h3><?php esc_html_e('Free Resource', 'aetherbloom'); ?></h3>
+                                <p><?php esc_html_e('Download our guide: "The UK Leader\'s Guide to South African Talent"', 'aetherbloom'); ?></p>
+                                
+                                <div class="resource-form">
+                                    <div class="resource-input-group">
+                                        <input type="email" id="resource-email" name="resource_email" class="resource-input" placeholder="Enter your email" required>
+                                        <button type="button" class="resource-btn" onclick="downloadResource()">
+                                            <?php esc_html_e('Download Now', 'aetherbloom'); ?>
+                                        </button>
                                     </div>
                                 </div>
                                 
-                                <div class="contact-card sa-office">
-                                    <div class="card-flag">🇿🇦</div>
-                                    <h4><?php esc_html_e('SA Hub (Della)', 'aetherbloom'); ?></h4>
-                                    <p class="office-location"><?php esc_html_e('Johannesburg, SA', 'aetherbloom'); ?></p>
-                                    <a href="tel:+27XXXXXXXX" class="phone-link">+27 XX XXX XXXX</a>
-                                    <span class="office-hours"><?php esc_html_e('Mon-Fri, 7 AM – 5 PM SAST', 'aetherbloom'); ?></span>
-                                    <div class="contact-speciality">
-                                        <small><?php esc_html_e('Operations & Talent Management', 'aetherbloom'); ?></small>
+                                <div class="contact-info">
+                                    <div class="contact-item">
+                                        <h4><?php esc_html_e('UK Office', 'aetherbloom'); ?></h4>
+                                        <p><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
+                                        <a href="tel:+44XXXXXXXXX" class="phone-link">+44 XXXX XXX XXX</a>
+                                        <span class="office-hours"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
                                     </div>
                                 </div>
+                                
+                                <p class="privacy-note"><?php esc_html_e('We respect your privacy. Unsubscribe anytime.', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
@@ -379,19 +333,10 @@ get_header(); ?>
                         <div class="method-card">
                             <div class="method-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 16.92V19.92C22 20.42 21.72 20.87 21.31 21.11C20.9 21.35 20.4 21.35 20 21.11L12 17.03L4 21.11C3.6 21.35 3.1 21.35 2.69 21.11C2.28 20.87 2 20.42 2 19.92V16.92C2 16.42 2.28 15.97 2.69 15.73L12 10.73L21.31 15.73C21.72 15.97 22 16.42 22 16.92Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <h3><?php esc_html_e('LinkedIn', 'aetherbloom'); ?></h3>
-                            <p><?php esc_html_e('Connect with our founders', 'aetherbloom'); ?></p>
-                            <a href="https://linkedin.com/company/aetherbloom" class="method-link" target="_blank"><?php esc_html_e('Follow us on LinkedIn', 'aetherbloom'); ?></a>
-                        </div>
-                        
-                        <div class="method-card">
-                            <div class="method-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('Schedule a Call', 'aetherbloom'); ?></h3>
@@ -414,6 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const assessmentForm = document.getElementById('assessment-form');
     const assessmentResult = document.getElementById('assessment-result');
     const recommendationContent = document.getElementById('recommendation-content');
+    const assessmentSuggestion = document.getElementById('assessment-suggestion');
     
     if (assessmentForm) {
         const radioButtons = assessmentForm.querySelectorAll('input[type="radio"]');
@@ -445,38 +391,40 @@ document.addEventListener('DOMContentLoaded', function() {
             if (teamSize === '200+') {
                 recommendation = '<h4>Strategic Partnership</h4><p>Custom enterprise solutions with dedicated teams and account management for large organizations.</p>';
             } else {
-                recommendation = '<h4>Digital Customer Success - Growth Tier</h4><p>Scalable solution perfect for growing businesses. 30hrs/month for £500.</p>';
+                recommendation = '<h4>Digital Customer Success - Growth Tier</h4><p>Scalable solution perfect for growing businesses. 40hrs/week for £1,200/month.</p>';
             }
         } else if (challenge === 'high-costs') {
-            recommendation = '<h4>Cost Optimization Analysis</h4><p>Let us analyze your current operations and show you how to save 40%+ on operational costs.</p>';
+            recommendation = '<h4>Cost Optimization Assessment</h4><p>Let us analyze your current operations and show you exactly how much you can save with our solutions.</p>';
         }
         
-        recommendationContent.innerHTML = recommendation;
-        assessmentResult.style.display = 'block';
-        assessmentResult.scrollIntoView({ behavior: 'smooth' });
-    }
-    
-    // Live chat simulation
-    window.startLiveChat = function() {
-        alert('Live chat feature coming soon! For now, please use the contact form below or call us directly.');
-    };
-    
-    // Scheduler function
-    window.openScheduler = function() {
-        alert('Scheduling system integration coming soon! Please contact us directly to book a call.');
-    };
-    
-    // Resource download form
-    const resourceForm = document.getElementById('resource-download-form');
-    if (resourceForm) {
-        resourceForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('resource_email').value;
-            if (email) {
-                alert('Thank you! Your download link has been sent to ' + email);
-                resourceForm.reset();
-            }
-        });
+        if (recommendation) {
+            recommendationContent.innerHTML = recommendation;
+            assessmentSuggestion.innerHTML = '<h4>Perfect Match Found!</h4>' + recommendation;
+        }
     }
 });
+
+function openHubSpotForm() {
+    const email = document.getElementById('email_capture').value;
+    if (email) {
+        // Open HubSpot form with pre-filled email
+        window.open(`https://share.hsforms.com/your-form-id?email=${encodeURIComponent(email)}`, '_blank');
+    } else {
+        alert('Please enter your email address first.');
+    }
+}
+
+function downloadResource() {
+    const email = document.getElementById('resource-email').value;
+    if (email) {
+        // Handle resource download
+        window.location.href = 'mailto:info@aetherbloom.co.uk?subject=Resource Download Request&body=Please send me the UK Leader\'s Guide to South African Talent. Email: ' + email;
+    } else {
+        alert('Please enter your email address first.');
+    }
+}
+
+function openScheduler() {
+    window.open('https://calendly.com/aetherbloom', '_blank');
+}
 </script>

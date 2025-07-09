@@ -1,7 +1,7 @@
 // File: /wp-content/themes/aetherbloom/js/contact.js
 
 /**
- * Contact Page JavaScript
+ * Contact Page JavaScript - Updated for new functionality
  * Handles contact form interactions and validations
  * 
  * @package Aetherbloom
@@ -17,475 +17,306 @@
     });
 
     function initContactPage() {
-        const contactForm = document.querySelector('.contact-form');
-        const resourceForm = document.querySelector('.resource-form');
-        
-        if (contactForm) {
-            setupContactForm(contactForm);
-        }
-        
-        if (resourceForm) {
-            setupResourceForm(resourceForm);
-        }
-        
+        setupAssessmentForm();
+        setupEmailCapture();
+        setupResourceDownload();
         setupFormEnhancements();
     }
 
     /**
-     * Setup main contact form
+     * Setup assessment form functionality
      */
-    function setupContactForm(form) {
-        const submitBtn = form.querySelector('.submit-btn');
-        const requiredFields = form.querySelectorAll('[required]');
+    function setupAssessmentForm() {
+        const assessmentForm = document.getElementById('assessment-form');
+        const assessmentSuggestion = document.getElementById('assessment-suggestion');
         
-        // Form submission handler
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+        if (assessmentForm && assessmentSuggestion) {
+            const radioButtons = assessmentForm.querySelectorAll('input[type="radio"]');
             
-            if (validateForm(form)) {
-                handleFormSubmission(form, submitBtn);
-            }
-        });
-
-        // Real-time validation
-        requiredFields.forEach(field => {
-            field.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
-            field.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
-
-        // Service selection enhancement
-        const primaryService = form.querySelector('#primary_service');
-        const addonServices = form.querySelector('.checkbox-group');
-        
-        if (primaryService && addonServices) {
-            primaryService.addEventListener('change', function() {
-                updateAddonServicesVisibility(this.value, addonServices);
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const challenge = assessmentForm.querySelector('input[name="challenge"]:checked')?.value;
+                    const teamSize = assessmentForm.querySelector('input[name="team_size"]:checked')?.value;
+                    
+                    if (challenge && teamSize) {
+                        showRecommendation(challenge, teamSize, assessmentSuggestion);
+                    }
+                });
             });
         }
     }
 
     /**
-     * Setup resource download form
+     * Show recommendation based on assessment
      */
-    function setupResourceForm(form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const emailInput = form.querySelector('input[type="email"]');
-            const submitBtn = form.querySelector('button');
-            
-            if (emailInput && emailInput.value && isValidEmail(emailInput.value)) {
-                handleResourceDownload(emailInput.value, submitBtn);
+    function showRecommendation(challenge, teamSize, suggestionElement) {
+        let recommendation = '';
+        let title = 'Perfect Match Found!';
+        
+        if (challenge === 'customer-support') {
+            if (['1-10', '11-50'].includes(teamSize)) {
+                recommendation = '<h4>Digital Customer Success - Essentials Tier</h4><p>Perfect for startups needing reliable customer support foundation. Start with 20hrs/month for £360.</p>';
             } else {
-                showFieldError(emailInput, 'Please enter a valid email address');
+                recommendation = '<h4>Call Centre Solutions - Engagement Tier</h4><p>Full-time call coverage ideal for medium to large businesses. 40hrs/week for £1,600/month.</p>';
             }
-        });
-    }
-
-    /**
-     * Validate entire form
-     */
-    function validateForm(form) {
-        let isValid = true;
-        const requiredFields = form.querySelectorAll('[required]');
-        
-        requiredFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
+        } else if (challenge === 'admin-tasks') {
+            recommendation = '<h4>Add-On Services - Virtual Admin</h4><p>Streamline your administrative tasks with our virtual admin support starting from £8/hour.</p>';
+        } else if (challenge === 'scaling-team') {
+            if (teamSize === '200+') {
+                recommendation = '<h4>Strategic Partnership</h4><p>Custom enterprise solutions with dedicated teams and account management for large organizations.</p>';
+            } else {
+                recommendation = '<h4>Digital Customer Success - Growth Tier</h4><p>Scalable solution perfect for growing businesses. 40hrs/week for £1,200/month.</p>';
             }
-        });
-        
-        return isValid;
-    }
-
-    /**
-     * Validate individual field
-     */
-    function validateField(field) {
-        const value = field.value.trim();
-        const fieldType = field.type;
-        const fieldName = field.name;
-        
-        // Clear previous errors
-        clearFieldError(field);
-        
-        // Check if required field is empty
-        if (field.hasAttribute('required') && !value) {
-            showFieldError(field, 'This field is required');
-            return false;
+        } else if (challenge === 'high-costs') {
+            recommendation = '<h4>Cost Optimization Assessment</h4><p>Let us analyze your current operations and show you exactly how much you can save with our solutions.</p>';
         }
         
-        // Type-specific validation
-        if (value) {
-            switch (fieldType) {
-                case 'email':
-                    if (!isValidEmail(value)) {
-                        showFieldError(field, 'Please enter a valid email address');
-                        return false;
-                    }
-                    break;
-                    
-                case 'tel':
-                    if (!isValidPhone(value)) {
-                        showFieldError(field, 'Please enter a valid phone number');
-                        return false;
-                    }
-                    break;
-                    
-                case 'url':
-                    if (!isValidUrl(value)) {
-                        showFieldError(field, 'Please enter a valid URL');
-                        return false;
-                    }
-                    break;
-            }
-        }
-        
-        return true;
-    }
-
-    /**
-     * Show field error
-     */
-    function showFieldError(field, message) {
-        field.classList.add('error');
-        
-        // Remove existing error message
-        const existingError = field.parentNode.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-        
-        // Add new error message
-        const errorElement = document.createElement('span');
-        errorElement.className = 'error-message';
-        errorElement.textContent = message;
-        errorElement.style.color = '#d84e28';
-        errorElement.style.fontSize = '0.85rem';
-        errorElement.style.marginTop = '0.25rem';
-        errorElement.style.display = 'block';
-        
-        field.parentNode.appendChild(errorElement);
-    }
-
-    /**
-     * Clear field error
-     */
-    function clearFieldError(field) {
-        field.classList.remove('error');
-        
-        const errorMessage = field.parentNode.querySelector('.error-message');
-        if (errorMessage) {
-            errorMessage.remove();
+        if (recommendation) {
+            suggestionElement.innerHTML = `<h4>${title}</h4>${recommendation}`;
+            suggestionElement.style.display = 'block';
+            
+            // Add a CTA button
+            const ctaButton = document.createElement('a');
+            ctaButton.href = '#main-contact-form';
+            ctaButton.className = 'cta-primary';
+            ctaButton.textContent = 'Get Your Custom Quote';
+            ctaButton.style.marginTop = '1rem';
+            ctaButton.style.display = 'inline-block';
+            suggestionElement.appendChild(ctaButton);
         }
     }
 
     /**
-     * Handle form submission
+     * Setup email capture functionality
      */
-    function handleFormSubmission(form, submitBtn) {
-        const originalText = submitBtn.textContent;
+    function setupEmailCapture() {
+        const emailInput = document.getElementById('email_capture');
+        const hubspotBtn = document.querySelector('.hubspot-form-btn');
         
-        // Show loading state
-        submitBtn.textContent = 'Submitting...';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
-        
-        // Collect form data
-        const formData = new FormData(form);
-        const data = {};
-        
-        for (let [key, value] of formData.entries()) {
-            if (data[key]) {
-                // Handle multiple values (like checkboxes)
-                if (Array.isArray(data[key])) {
-                    data[key].push(value);
+        if (emailInput && hubspotBtn) {
+            hubspotBtn.addEventListener('click', function() {
+                const email = emailInput.value.trim();
+                if (validateEmail(email)) {
+                    openHubSpotForm(email);
                 } else {
-                    data[key] = [data[key], value];
+                    showError(emailInput, 'Please enter a valid email address');
                 }
-            } else {
-                data[key] = value;
-            }
+            });
+            
+            // Clear error on input
+            emailInput.addEventListener('input', function() {
+                clearError(this);
+            });
         }
-        
-        // Simulate form submission (replace with actual submission logic)
-        setTimeout(() => {
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            showSuccessMessage(form);
-            
-            // Reset form
-            form.reset();
-            
-            // Restore button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            
-        }, 2000);
     }
 
     /**
-     * Handle resource download
+     * Setup resource download functionality
      */
-    function handleResourceDownload(email, submitBtn) {
-        const originalText = submitBtn.textContent;
+    function setupResourceDownload() {
+        const resourceEmail = document.getElementById('resource-email');
+        const resourceBtn = document.querySelector('.resource-btn');
         
-        // Show loading state
-        submitBtn.textContent = 'Downloading...';
-        submitBtn.disabled = true;
-        
-        // Simulate download process
-        setTimeout(() => {
-            console.log('Resource download requested for:', email);
-            
-            // Show success message
-            showNotification('Download link sent to your email!', 'success');
-            
-            // Restore button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-        }, 1500);
-    }
-
-    /**
-     * Show success message
-     */
-    function showSuccessMessage(form) {
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.innerHTML = `
-            <div style="background: #4caf50; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
-                <strong>Thank you!</strong> Your message has been sent. We'll respond within 48 hours.
-            </div>
-        `;
-        
-        form.appendChild(successMessage);
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successMessage.remove();
-        }, 5000);
-        
-        // Scroll to success message
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    /**
-     * Show notification
-     */
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${type === 'success' ? '#4caf50' : '#2196f3'};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-        `;
-        notification.textContent = message;
-        
-        document.body.appendChild(notification);
-        
-        // Animate in
-        setTimeout(() => {
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Remove after 4 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        }, 4000);
-    }
-
-    /**
-     * Update addon services visibility based on primary service selection
-     */
-    function updateAddonServicesVisibility(primaryService, addonContainer) {
-        const allAddons = addonContainer.querySelectorAll('.checkbox-item');
-        
-        // Show/hide relevant addon services based on primary selection
-        allAddons.forEach(addon => {
-            const checkbox = addon.querySelector('input');
-            const label = addon.querySelector('label');
-            
-            // Reset
-            addon.style.display = 'flex';
-            addon.style.opacity = '1';
-            
-            // Add subtle highlighting for recommended addons
-            if (primaryService === 'digital_customer_success') {
-                if (checkbox.value === 'virtual_admin' || checkbox.value === 'data_analysis') {
-                    addon.style.background = 'rgba(76, 175, 80, 0.05)';
-                    addon.style.borderRadius = '6px';
-                    addon.style.padding = '0.5rem';
+        if (resourceEmail && resourceBtn) {
+            resourceBtn.addEventListener('click', function() {
+                const email = resourceEmail.value.trim();
+                if (validateEmail(email)) {
+                    downloadResource(email);
+                } else {
+                    showError(resourceEmail, 'Please enter a valid email address');
                 }
-            } else if (primaryService === 'call_centre') {
-                if (checkbox.value === 'hr_support' || checkbox.value === 'virtual_admin') {
-                    addon.style.background = 'rgba(76, 175, 80, 0.05)';
-                    addon.style.borderRadius = '6px';
-                    addon.style.padding = '0.5rem';
-                }
-            }
-        });
+            });
+            
+            // Clear error on input
+            resourceEmail.addEventListener('input', function() {
+                clearError(this);
+            });
+        }
     }
 
     /**
      * Setup form enhancements
      */
     function setupFormEnhancements() {
-        // Add floating labels effect
-        const formInputs = document.querySelectorAll('.form-group input, .form-group textarea, .form-group select');
-        
+        // Add floating labels for better UX
+        const formInputs = document.querySelectorAll('.form-input, .resource-input');
         formInputs.forEach(input => {
-            // Add floating label class when input has value
-            function updateFloatingLabel() {
-                const label = input.previousElementSibling;
-                if (label && label.tagName === 'LABEL') {
-                    if (input.value.trim() !== '' || input === document.activeElement) {
-                        label.classList.add('floating');
-                    } else {
-                        label.classList.remove('floating');
-                    }
-                }
-            }
-            
             input.addEventListener('focus', updateFloatingLabel);
             input.addEventListener('blur', updateFloatingLabel);
             input.addEventListener('input', updateFloatingLabel);
             
             // Initial check
-            updateFloatingLabel();
+            updateFloatingLabel.call(input);
         });
-
-        // Add character counter for textarea
-        const messageField = document.querySelector('#message');
-        if (messageField) {
-            addCharacterCounter(messageField, 500);
-        }
-
-        // Add form progress indicator
-        addFormProgressIndicator();
     }
 
     /**
-     * Add character counter to textarea
+     * Update floating label state
      */
-    function addCharacterCounter(textarea, maxLength) {
-        const counter = document.createElement('div');
-        counter.className = 'character-counter';
-        counter.style.cssText = `
-            font-size: 0.8rem;
-            color: #5a6c7d;
-            text-align: right;
-            margin-top: 0.25rem;
-        `;
+    function updateFloatingLabel() {
+        const input = this;
+        const hasValue = input.value.trim() !== '';
+        const isFocused = document.activeElement === input;
         
-        function updateCounter() {
-            const length = textarea.value.length;
-            counter.textContent = `${length}/${maxLength}`;
-            
-            if (length > maxLength * 0.9) {
-                counter.style.color = '#d84e28';
-            } else {
-                counter.style.color = '#5a6c7d';
-            }
+        if (hasValue || isFocused) {
+            input.classList.add('has-value');
+        } else {
+            input.classList.remove('has-value');
         }
-        
-        textarea.addEventListener('input', updateCounter);
-        textarea.parentNode.appendChild(counter);
-        
-        updateCounter();
     }
 
     /**
-     * Add form progress indicator
+     * Validate email address
      */
-    function addFormProgressIndicator() {
-        const form = document.querySelector('.contact-form');
-        if (!form) return;
-        
-        const requiredFields = form.querySelectorAll('[required]');
-        const progressBar = document.createElement('div');
-        progressBar.className = 'form-progress';
-        progressBar.style.cssText = `
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 2px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        `;
-        
-        const progressFill = document.createElement('div');
-        progressFill.style.cssText = `
-            height: 100%;
-            background: linear-gradient(135deg, #d84e28, #4caf50);
-            width: 0%;
-            transition: width 0.3s ease;
-        `;
-        
-        progressBar.appendChild(progressFill);
-        form.insertBefore(progressBar, form.firstChild);
-        
-        function updateProgress() {
-            let filledFields = 0;
-            requiredFields.forEach(field => {
-                if (field.value.trim() !== '') {
-                    filledFields++;
-                }
-            });
-            
-            const progress = (filledFields / requiredFields.length) * 100;
-            progressFill.style.width = progress + '%';
-        }
-        
-        requiredFields.forEach(field => {
-            field.addEventListener('input', updateProgress);
-        });
-        
-        updateProgress();
-    }
-
-    /**
-     * Validation helper functions
-     */
-    function isValidEmail(email) {
+    function validateEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    function isValidPhone(phone) {
-        // Basic phone validation - adjust regex as needed
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
-        return phoneRegex.test(cleanPhone);
+    /**
+     * Show error message
+     */
+    function showError(input, message) {
+        clearError(input);
+        
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        errorElement.style.cssText = `
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            animation: fadeIn 0.3s ease;
+        `;
+        
+        input.style.borderColor = '#ff6b6b';
+        input.parentNode.appendChild(errorElement);
+        
+        // Remove error after 5 seconds
+        setTimeout(() => {
+            clearError(input);
+        }, 5000);
     }
 
-    function isValidUrl(url) {
-        try {
-            new URL(url);
-            return true;
-        } catch {
-            return false;
+    /**
+     * Clear error message
+     */
+    function clearError(input) {
+        const errorElement = input.parentNode.querySelector('.error-message');
+        if (errorElement) {
+            errorElement.remove();
         }
+        input.style.borderColor = '';
     }
+
+    /**
+     * Open HubSpot form
+     */
+    function openHubSpotForm(email) {
+        // Replace with your actual HubSpot form URL
+        const hubspotFormUrl = `https://share.hsforms.com/your-form-id?email=${encodeURIComponent(email)}`;
+        window.open(hubspotFormUrl, '_blank');
+        
+        // Show success message
+        showSuccessMessage('Assessment form will open in a new window');
+    }
+
+    /**
+     * Handle resource download
+     */
+    function downloadResource(email) {
+        // Create mailto link for resource request
+        const subject = encodeURIComponent('Resource Download Request - UK Leader\'s Guide to South African Talent');
+        const body = encodeURIComponent(`Please send me the UK Leader's Guide to South African Talent.\n\nEmail: ${email}\n\nThank you!`);
+        const mailtoLink = `mailto:info@aetherbloom.co.uk?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        showSuccessMessage('Resource request email has been prepared');
+    }
+
+    /**
+     * Show success message
+     */
+    function showSuccessMessage(message) {
+        const successElement = document.createElement('div');
+        successElement.className = 'success-message';
+        successElement.textContent = message;
+        successElement.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideInRight 0.3s ease;
+        `;
+        
+        document.body.appendChild(successElement);
+        
+        // Remove success message after 3 seconds
+        setTimeout(() => {
+            successElement.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => {
+                successElement.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    /**
+     * Open calendar scheduler
+     */
+    window.openScheduler = function() {
+        window.open('https://calendly.com/aetherbloom', '_blank');
+    };
+
+    /**
+     * Handle contact button clicks
+     */
+    window.handleContactClick = function(type) {
+        if (type === 'email') {
+            window.location.href = 'mailto:info@aetherbloom.co.uk';
+        } else if (type === 'appointment') {
+            window.open('https://calendly.com/aetherbloom', '_blank');
+        }
+    };
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        .form-input.has-value,
+        .resource-input.has-value {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .error-message {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-message {
+            animation: slideInRight 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
 
 })();

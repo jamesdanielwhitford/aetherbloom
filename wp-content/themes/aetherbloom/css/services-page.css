@@ -196,7 +196,7 @@
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 3rem;
     align-items: stretch;
 }
@@ -211,17 +211,38 @@
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.6, 1);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     position: relative;
-    min-height: 500px;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
+    margin-top: 2rem;
 }
 
 .service-tier:hover {
     transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 147, 64, 0.4);
+    background: #ffffff;
+    border-color: #d84e28;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    color: #d84e28;
+}
+
+.service-tier:hover .tier-name,
+.service-tier:hover .tier-description,
+.service-tier:hover .price,
+.service-tier:hover .price-note,
+.service-tier:hover .tier-features li,
+.service-tier:hover .badge-text {
+    color: #d84e28;
+}
+
+.service-tier:hover .tier-features li:before {
+    color: #d84e28;
+}
+
+.service-tier:hover .tier-button {
+    background: #d84e28;
+    color: #ffffff;
+    border-color: #d84e28;
 }
 
 .tier-header {
@@ -230,8 +251,11 @@
 }
 
 .tier-badge {
-    display: inline-block;
-    margin-bottom: 1.5rem;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 .badge-text {
@@ -283,7 +307,7 @@
 }
 
 .tier-features {
-    flex-shrink: 0;
+    flex-grow: 1;
     margin-bottom: 2rem;
 }
 
@@ -306,8 +330,12 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: #4CAF50;
+    color: #ffffff;
     font-weight: 600;
+}
+
+.tier-cta {
+    margin-top: auto;
 }
 
 .tier-button {
