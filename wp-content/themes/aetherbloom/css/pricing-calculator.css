@@ -1,30 +1,30 @@
 /* File: /wp-content/themes/aetherbloom/css/pricing-calculator.css */
 
+/* MAIN CALCULATOR SECTION - BASE SETUP */
 .calculator-section {
-  min-height: calc(100vh - 140px); /* Adjust for navbar height */
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 3rem 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   position: relative;
-  overflow: visible; /* Changed from hidden to visible to prevent dropdown clipping */
-  padding: 2rem 0;
+  overflow-x: hidden;
 }
 
 .calculator-container {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .calculator-wrapper {
+  width: 100%;
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.6, 1);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
 .calculator-wrapper.visible {
@@ -32,165 +32,90 @@
   transform: translateY(0);
 }
 
-/* Header Section */
+/* HEADER SECTION - ENHANCED STYLING */
 .calculator-header-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 4rem 3rem 4rem;
   text-align: center;
+  padding: 2rem 3rem 3rem 3rem;
+  margin-bottom: 1rem;
 }
 
 .calculator-section-title {
   font-family: 'Poppins', -apple-system, sans-serif;
   font-size: 3rem;
-  font-weight: 300;
-  line-height: 1.2;
+  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .calculator-section-subtitle {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  line-height: 1.6;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
-  max-width: 600px;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-/* SIDE-BY-SIDE LAYOUT - IMPROVED */
+/* COMPARISON GRID - IMPROVED LAYOUT */
 .comparison-grid {
   display: flex;
-  flex-direction: row;
-  height: auto; /* Changed from fixed height to auto */
-  min-height: 500px; /* Added minimum height */
-  flex: 1;
   gap: 2rem;
-  padding: 0 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  align-items: stretch; /* Ensure equal height sections */
+  padding: 0 3rem;
+  align-items: stretch;
+  height: auto;
+  min-height: 600px;
 }
 
-/* GLASSMORPHIC UK SECTION - COMPLETELY REDESIGNED */
-.uk-section {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* Changed to vertical layout */
-  width: 50%;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: visible; /* Changed from hidden to visible */
-}
-
-.uk-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-}
-
-/* VERTICAL LAYOUT - NO MORE LEFT/RIGHT SPLIT */
-.uk-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* Changed to vertical layout */
-  gap: 2rem; /* Increased gap between header area and breakdown */
-  height: 100%;
-}
-
-/* Header area (section label + dropdown) */
-.uk-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%; /* Full width instead of flex: 1 */
-}
-
-/* Breakdown area */
-.uk-right {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Improved spacing between breakdown items */
-  width: 100%; /* Full width instead of flex: 1 */
-}
-
-/* GLASSMORPHIC AETHERBLOOM SECTION - COMPLETELY REDESIGNED */
+.uk-section,
 .aetherbloom-section {
-  background: rgba(45, 90, 74, 0.15);
-  border: 1px solid rgba(45, 90, 74, 0.3);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  color: white;
   flex: 1;
-  display: flex;
-  flex-direction: column; /* Changed to vertical layout */
-  width: 50%;
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  box-shadow: 
-    0 8px 32px rgba(45, 90, 74, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: visible; /* Changed from hidden to visible */
-}
-
-.aetherbloom-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-}
-
-/* VERTICAL LAYOUT - NO MORE LEFT/RIGHT SPLIT */
-.aetherbloom-content {
-  width: 100%;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column; /* Changed to vertical layout */
-  gap: 2rem; /* Increased gap between header area and breakdown */
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 600px;
+}
+
+.uk-content,
+.aetherbloom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   height: 100%;
 }
 
-/* Header area (section label + dropdown) */
+.uk-left,
 .aetherbloom-left {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 100%; /* Full width instead of flex: 1 */
 }
 
-/* Breakdown area */
+.uk-right,
 .aetherbloom-right {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Improved spacing between breakdown items */
-  width: 100%; /* Full width instead of flex: 1 */
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 /* SECTION LABELS - IMPROVED TYPOGRAPHY */
 .section-label {
   font-family: 'Poppins', -apple-system, sans-serif;
-  font-size: 2rem; /* Increased from 1.8rem */
-  font-weight: 600; /* Increased weight */
+  font-size: 2rem;
+  font-weight: 600;
   color: #ffffff;
-  margin: 0; /* Removed margin */
+  margin: 0;
   text-align: left;
   line-height: 1.2;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
@@ -199,7 +124,7 @@
 /* ENHANCED DROPDOWN STYLES - IMPROVED LAYOUT */
 .dropdown {
   position: relative;
-  z-index: 10; /* Added z-index */
+  z-index: 10;
 }
 
 .dropdown-trigger {
@@ -207,7 +132,7 @@
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  padding: 1rem 1.5rem; /* Increased padding */
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -235,13 +160,13 @@
 
 .dropdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.1rem; /* Optimized size */
-  font-weight: 500; /* Increased weight for better visibility */
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #ffffff;
   text-align: left;
   line-height: 1.3;
-  flex: 1; /* Allow label to expand */
-  word-break: break-word; /* Handle long text */
+  flex: 1;
+  word-break: break-word;
 }
 
 .aetherbloom-section .dropdown-label {
@@ -249,10 +174,10 @@
 }
 
 .dropdown-arrow {
-  font-size: 0.9rem; /* Slightly reduced size */
+  font-size: 0.9rem;
   color: #ffffff;
   transition: transform 0.3s ease;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
   margin-left: 1rem;
 }
 
@@ -264,30 +189,30 @@
   transform: rotate(180deg);
 }
 
-/* IMPROVED DROPDOWN MENU - ENHANCED STYLING */
+/* IMPROVED DROPDOWN MENU - UPDATED STYLING */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem); /* Added gap from trigger */
+  top: calc(100% + 0.5rem);
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98); /* Increased opacity for better readability */
-  border: 2px solid rgba(255, 147, 64, 0.4); /* Stronger border */
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.2),
-    0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
-  z-index: 1000; /* High z-index to ensure visibility */
-  max-height: 300px; /* Increased max height */
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 400px;
   overflow-y: auto;
   animation: slideDown 0.3s ease;
-  display: none; /* Hidden by default */
+  display: none;
 }
 
 .aetherbloom-section .dropdown-menu {
-  background: rgba(255, 255, 255, 0.98); /* Same white background for consistency */
-  border-color: rgba(255, 147, 64, 0.4);
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 @keyframes slideDown {
@@ -301,6 +226,30 @@
   }
 }
 
+/* DROPDOWN HEADERS - UPDATED STYLING */
+.dropdown-header {
+  padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dropdown-header:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* DROPDOWN OPTIONS - UPDATED STYLING */
 .dropdown-option {
   width: 100%;
   padding: 1rem 1.5rem;
@@ -308,7 +257,7 @@
   background: transparent;
   text-align: left;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 147, 64, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: background-color 0.2s ease;
   display: flex;
   justify-content: space-between;
@@ -316,149 +265,173 @@
 }
 
 .dropdown-option:hover {
-  background: rgba(255, 147, 64, 0.15); /* Stronger hover effect */
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-option.selected {
-  background: rgba(255, 147, 64, 0.25); /* Stronger selection effect */
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .dropdown-option:last-child {
   border-bottom: none;
 }
 
+.option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
 .option-name {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
-  font-weight: 600; /* Increased weight */
-  color: #d84e28; /* Darker orange for better readability */
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.2;
 }
 
 .option-salary,
 .option-details {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.85rem;
-  color: #b8421e; /* Even darker for secondary text */
-  font-weight: 500; /* Increased weight */
+  color: #666666;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-/* BREAKDOWN ITEMS - COMPLETELY REDESIGNED FOR BETTER READABILITY */
+/* BREAKDOWN LAYOUT - NEW STRUCTURE */
+.breakdown-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  min-height: 320px;
+}
+
+.breakdown-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.breakdown-total-section {
+  flex: 0 0 auto;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.total-cost-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total-cost-value {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(255, 255, 255, 0.2);
+  line-height: 1.1;
+}
+
+/* BREAKDOWN ITEMS - UPDATED FOR NEW LAYOUT */
 .breakdown-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  min-height: 2.8rem; /* Increased height for better spacing */
-  padding: 0.5rem 0; /* Increased padding */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle separator */
+  min-height: 2.2rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .breakdown-item:last-child {
-  border-bottom: none; /* Remove border from last item unless it's total */
+  border-bottom: none;
 }
 
 .breakdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.05rem; /* Increased from 1rem */
-  color: #ffffff;
-  font-weight: 500; /* Increased weight */
-  line-height: 1.4;
-}
-
-.aetherbloom-section .breakdown-label {
-  color: #ffffff;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
 }
 
 .breakdown-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.05rem; /* Increased from 1rem */
-  color: #ffffff;
-  font-weight: 600; /* Increased weight */
-  line-height: 1.4;
-  text-align: right;
-}
-
-.aetherbloom-section .breakdown-value {
-  color: #ffffff;
-}
-
-/* TOTAL BREAKDOWN - ENHANCED STYLING */
-.total-breakdown {
-  border-top: 2px solid rgba(255, 255, 255, 0.4); /* Stronger border */
-  border-bottom: none !important; /* Ensure no bottom border */
-  padding-top: 1rem; /* Increased padding */
-  margin-top: 1rem; /* Increased margin */
+  font-size: 0.95rem;
   font-weight: 600;
-}
-
-.aetherbloom-section .total-breakdown {
-  border-top-color: rgba(255, 255, 255, 0.4);
-}
-
-.total-breakdown .breakdown-label,
-.total-breakdown .breakdown-value {
-  font-weight: 700; /* Increased weight */
-  font-size: 1.2rem; /* Increased size */
+  color: #ffffff;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .total-cost {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 2.2rem; /* Slightly reduced for better fit */
-  font-weight: 700; /* Increased weight */
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #ffffff;
-  line-height: 1;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 15px rgba(255, 255, 255, 0.2);
 }
 
-.aetherbloom-section .total-cost {
-  color: #ffffff;
+/* SAVINGS SUMMARY - UPDATED STYLING */
+.savings-summary {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* SAVINGS DISPLAY - ENHANCED STYLING */
-.savings-display {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Increased gap */
-  margin-top: 1.5rem; /* Increased margin */
-  padding-top: 1rem; /* Increased padding */
-  border-top: 2px solid rgba(255, 255, 255, 0.4);
-}
-
-.savings-amount {
+.savings-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3rem 0;
+  margin-bottom: 1rem;
 }
 
 .savings-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.05rem;
-  color: #ffffff;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
 
 .savings-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.4rem; /* Increased size */
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #00ff88;
-  text-shadow: 0 2px 15px rgba(0, 255, 136, 0.4);
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(255, 255, 255, 0.2);
 }
 
-.percentage-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.3rem 0;
+.percentage-savings {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .percentage-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.6rem; /* Increased size */
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #ff9340;
-  text-shadow: 0 2px 15px rgba(255, 147, 64, 0.4);
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(255, 255, 255, 0.2);
 }
 
 .percentage-label {
@@ -471,7 +444,7 @@
 
 /* Custom scrollbar for dropdown menus */
 .dropdown-menu::-webkit-scrollbar {
-  width: 6px; /* Increased width */
+  width: 6px;
 }
 
 .dropdown-menu::-webkit-scrollbar-track {
@@ -480,12 +453,12 @@
 }
 
 .dropdown-menu::-webkit-scrollbar-thumb {
-  background: #d84e28;
+  background: #999999;
   border-radius: 3px;
 }
 
 .dropdown-menu::-webkit-scrollbar-thumb:hover {
-  background: #ff9340;
+  background: #666666;
 }
 
 /* RESPONSIVE DESIGN - IMPROVED */
@@ -543,31 +516,47 @@
   .comparison-grid {
     flex-direction: column;
     padding: 0 1.5rem;
-    gap: 1.5rem; /* Increased gap */
+    gap: 1.5rem;
     height: auto;
   }
 
   .uk-section,
   .aetherbloom-section {
     width: 100%;
-    padding: 2rem; /* Maintained padding */
-    gap: 1.5rem; /* Increased gap */
+    padding: 2rem;
+    gap: 1.5rem;
     min-height: auto;
   }
   
   .uk-content,
   .aetherbloom-content {
-    gap: 1.5rem; /* Increased gap */
+    gap: 1.5rem;
   }
   
   .uk-left,
   .aetherbloom-left {
-    gap: 1.5rem; /* Increased gap */
+    gap: 1.5rem;
   }
   
   .uk-right,
   .aetherbloom-right {
-    gap: 0.8rem; /* Slightly increased gap */
+    gap: 0.8rem;
+  }
+  
+  /* Mobile breakdown layout */
+  .breakdown-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+  
+  .breakdown-total-section {
+    min-width: auto;
+    padding: 1.5rem 1rem;
+  }
+  
+  .total-cost-value {
+    font-size: 1.8rem;
   }
   
   .breakdown-item {
@@ -580,154 +569,26 @@
   }
   
   .dropdown-label {
-    font-size: 1rem;
-  }
-  
-  .total-cost {
-    font-size: 1.8rem;
-  }
-  
-  .savings-value {
-    font-size: 1.2rem;
-  }
-  
-  .percentage-value {
-    font-size: 1.4rem;
-  }
-  
-  .breakdown-label,
-  .breakdown-value {
-    font-size: 1rem;
-  }
-  
-  .savings-display {
-    gap: 0.8rem;
-  }
-  
-  .savings-amount,
-  .percentage-container {
-    padding: 0.2rem 0;
-  }
-  
-  .total-breakdown {
-    padding-top: 0.8rem;
-    margin-top: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .calculator-section {
-    padding: 0.5rem 0;
-  }
-
-  .calculator-header-section {
-    padding: 0.5rem 1rem 1rem 1rem;
-  }
-
-  .calculator-section-title {
-    font-size: 1.8rem;
-  }
-
-  .calculator-section-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .comparison-grid {
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  .uk-section,
-  .aetherbloom-section {
-    padding: 1.5rem; /* Maintained reasonable padding */
-    gap: 1rem;
-  }
-  
-  .uk-left,
-  .aetherbloom-left {
-    gap: 1rem;
-  }
-  
-  .uk-right,
-  .aetherbloom-right {
-    gap: 0.6rem;
-  }
-  
-  .breakdown-item {
-    min-height: 2.2rem;
-    padding: 0.3rem 0;
-  }
-  
-  .section-label {
-    font-size: 1.4rem;
-  }
-  
-  .dropdown-label {
     font-size: 0.95rem;
   }
   
-  .total-cost {
-    font-size: 1.6rem;
-  }
-  
-  .savings-value {
-    font-size: 1.1rem;
-  }
-  
-  .percentage-value {
-    font-size: 1.2rem;
-  }
-  
-  .breakdown-label,
-  .breakdown-value {
+  .breakdown-label {
     font-size: 0.9rem;
   }
   
-  .savings-display {
-    gap: 0.5rem;
+  .breakdown-value {
+    font-size: 0.95rem;
   }
   
-  .savings-amount,
-  .percentage-container {
-    padding: 0.2rem 0;
-  }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .calculator-wrapper,
-  .dropdown-arrow,
-  .dropdown-option {
-    transition: none !important;
+  .total-cost {
+    font-size: 1.4rem;
   }
   
-  .dropdown-menu {
-    animation: none !important;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .uk-section {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #ffffff;
+  .savings-value {
+    font-size: 1.2rem;
   }
   
-  .aetherbloom-section {
-    background: rgba(45, 90, 74, 0.8);
-    border: 2px solid #ffffff;
-  }
-  
-  .total-breakdown {
-    border-top-color: #ffffff;
-  }
-  
-  .aetherbloom-section .total-breakdown {
-    border-top-color: #ffffff;
-  }
-  
-  .dropdown-menu {
-    background: #ffffff;
-    border: 2px solid #ff9340;
+  .percentage-value {
+    font-size: 1.4rem;
   }
 }
