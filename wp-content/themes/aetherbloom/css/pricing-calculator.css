@@ -75,7 +75,7 @@
   align-items: stretch; /* Ensure equal height sections */
 }
 
-/* GLASSMORPHIC UK SECTION - IMPROVED */
+/* GLASSMORPHIC UK SECTION - COMPLETELY REDESIGNED */
 .uk-section {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -83,9 +83,9 @@
   -webkit-backdrop-filter: blur(25px);
   flex: 1;
   display: flex;
-  align-items: flex-start; /* Changed from center to flex-start */
+  flex-direction: column; /* Changed to vertical layout */
   width: 50%;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
@@ -104,31 +104,32 @@
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
+/* VERTICAL LAYOUT - NO MORE LEFT/RIGHT SPLIT */
 .uk-content {
   width: 100%;
   display: flex;
-  align-items: flex-start; /* Changed from center to flex-start */
-  justify-content: space-between;
+  flex-direction: column; /* Changed to vertical layout */
+  gap: 2rem; /* Increased gap between header area and breakdown */
   height: 100%;
-  min-height: 400px; /* Added minimum height */
 }
 
+/* Header area (section label + dropdown) */
 .uk-left {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  flex: 1;
+  width: 100%; /* Full width instead of flex: 1 */
 }
 
+/* Breakdown area */
 .uk-right {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  text-align: right;
-  flex: 1;
+  gap: 1rem; /* Improved spacing between breakdown items */
+  width: 100%; /* Full width instead of flex: 1 */
 }
 
-/* GLASSMORPHIC AETHERBLOOM SECTION - IMPROVED */
+/* GLASSMORPHIC AETHERBLOOM SECTION - COMPLETELY REDESIGNED */
 .aetherbloom-section {
   background: rgba(45, 90, 74, 0.15);
   border: 1px solid rgba(45, 90, 74, 0.3);
@@ -137,9 +138,9 @@
   color: white;
   flex: 1;
   display: flex;
-  align-items: flex-start; /* Changed from center to flex-start */
+  flex-direction: column; /* Changed to vertical layout */
   width: 50%;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 
     0 8px 32px rgba(45, 90, 74, 0.1),
@@ -158,68 +159,87 @@
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
+/* VERTICAL LAYOUT - NO MORE LEFT/RIGHT SPLIT */
 .aetherbloom-content {
   width: 100%;
   display: flex;
-  align-items: flex-start; /* Changed from center to flex-start */
-  justify-content: space-between;
+  flex-direction: column; /* Changed to vertical layout */
+  gap: 2rem; /* Increased gap between header area and breakdown */
   height: 100%;
-  min-height: 400px; /* Added minimum height */
 }
 
+/* Header area (section label + dropdown) */
 .aetherbloom-left {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  flex: 1;
+  width: 100%; /* Full width instead of flex: 1 */
 }
 
+/* Breakdown area */
 .aetherbloom-right {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  text-align: right;
-  flex: 1;
+  gap: 1rem; /* Improved spacing between breakdown items */
+  width: 100%; /* Full width instead of flex: 1 */
 }
 
-/* SECTION LABELS - IMPROVED */
+/* SECTION LABELS - IMPROVED TYPOGRAPHY */
 .section-label {
   font-family: 'Poppins', -apple-system, sans-serif;
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 2rem; /* Increased from 1.8rem */
+  font-weight: 600; /* Increased weight */
   color: #ffffff;
-  margin: 0 0 1rem 0;
+  margin: 0; /* Removed margin */
   text-align: left;
+  line-height: 1.2;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* ENHANCED DROPDOWN STYLES - MAJOR IMPROVEMENTS */
+/* ENHANCED DROPDOWN STYLES - IMPROVED LAYOUT */
 .dropdown {
   position: relative;
-  margin-bottom: 1rem;
   z-index: 10; /* Added z-index */
 }
 
 .dropdown-trigger {
   width: 100%;
-  background: transparent;
-  border: none;
-  padding: 0.5rem 0; /* Added padding for better click area */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.5rem; /* Increased padding */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
 }
 
+.dropdown-trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.aetherbloom-section .dropdown-trigger {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.aetherbloom-section .dropdown-trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 .dropdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.4rem; /* Reduced from 1.8rem for better fit */
+  font-size: 1.1rem; /* Optimized size */
   font-weight: 500; /* Increased weight for better visibility */
   color: #ffffff;
   text-align: left;
   line-height: 1.3;
-  margin-right: 1rem;
   flex: 1; /* Allow label to expand */
   word-break: break-word; /* Handle long text */
 }
@@ -229,10 +249,11 @@
 }
 
 .dropdown-arrow {
-  font-size: 1rem; /* Reduced size */
+  font-size: 0.9rem; /* Slightly reduced size */
   color: #ffffff;
   transition: transform 0.3s ease;
   flex-shrink: 0; /* Prevent shrinking */
+  margin-left: 1rem;
 }
 
 .aetherbloom-section .dropdown-arrow {
@@ -243,7 +264,7 @@
   transform: rotate(180deg);
 }
 
-/* IMPROVED DROPDOWN MENU - FIXED POSITIONING */
+/* IMPROVED DROPDOWN MENU - ENHANCED STYLING */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 0.5rem); /* Added gap from trigger */
@@ -321,21 +342,27 @@
   font-weight: 500; /* Increased weight */
 }
 
-/* Breakdown Items - IMPROVED SPACING */
+/* BREAKDOWN ITEMS - COMPLETELY REDESIGNED FOR BETTER READABILITY */
 .breakdown-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  min-height: 2.5rem; /* Increased height */
-  padding: 0.3rem 0; /* Increased padding */
+  min-height: 2.8rem; /* Increased height for better spacing */
+  padding: 0.5rem 0; /* Increased padding */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle separator */
+}
+
+.breakdown-item:last-child {
+  border-bottom: none; /* Remove border from last item unless it's total */
 }
 
 .breakdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1rem; /* Increased from 0.9rem */
+  font-size: 1.05rem; /* Increased from 1rem */
   color: #ffffff;
-  font-weight: 400;
+  font-weight: 500; /* Increased weight */
+  line-height: 1.4;
 }
 
 .aetherbloom-section .breakdown-label {
@@ -344,86 +371,91 @@
 
 .breakdown-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1rem; /* Increased from 0.9rem */
+  font-size: 1.05rem; /* Increased from 1rem */
   color: #ffffff;
   font-weight: 600; /* Increased weight */
+  line-height: 1.4;
+  text-align: right;
 }
 
 .aetherbloom-section .breakdown-value {
   color: #ffffff;
 }
 
+/* TOTAL BREAKDOWN - ENHANCED STYLING */
 .total-breakdown {
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  padding-top: 0.75rem; /* Increased padding */
-  margin-top: 0.75rem; /* Increased margin */
+  border-top: 2px solid rgba(255, 255, 255, 0.4); /* Stronger border */
+  border-bottom: none !important; /* Ensure no bottom border */
+  padding-top: 1rem; /* Increased padding */
+  margin-top: 1rem; /* Increased margin */
   font-weight: 600;
 }
 
 .aetherbloom-section .total-breakdown {
-  border-top-color: rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 0.4);
 }
 
 .total-breakdown .breakdown-label,
 .total-breakdown .breakdown-value {
   font-weight: 700; /* Increased weight */
-  font-size: 1.1rem; /* Increased size */
+  font-size: 1.2rem; /* Increased size */
 }
 
 .total-cost {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* Slightly reduced for better fit */
   font-weight: 700; /* Increased weight */
   color: #ffffff;
   line-height: 1;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
 .aetherbloom-section .total-cost {
   color: #ffffff;
 }
 
-/* Savings Display - IMPROVED */
+/* SAVINGS DISPLAY - ENHANCED STYLING */
 .savings-display {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; /* Increased gap */
-  margin-top: 1rem; /* Increased margin */
-  padding-top: 0.75rem; /* Increased padding */
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  gap: 1rem; /* Increased gap */
+  margin-top: 1.5rem; /* Increased margin */
+  padding-top: 1rem; /* Increased padding */
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .savings-amount {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 0;
+  padding: 0.3rem 0;
 }
 
 .savings-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #ffffff;
   font-weight: 500;
 }
 
 .savings-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.3rem; /* Increased size */
+  font-size: 1.4rem; /* Increased size */
   font-weight: 700;
   color: #00ff88;
-  text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
+  text-shadow: 0 2px 15px rgba(0, 255, 136, 0.4);
 }
 
 .percentage-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 0;
+  padding: 0.3rem 0;
 }
 
 .percentage-value {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1.5rem; /* Increased size */
+  font-size: 1.6rem; /* Increased size */
   font-weight: 700;
   color: #ff9340;
   text-shadow: 0 2px 15px rgba(255, 147, 64, 0.4);
@@ -431,7 +463,7 @@
 
 .percentage-label {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #ffffff;
   font-weight: 500;
   text-transform: capitalize;
@@ -469,15 +501,19 @@
   
   .uk-section,
   .aetherbloom-section {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
   .calculator-section-title {
     font-size: 2.5rem;
   }
   
+  .section-label {
+    font-size: 1.8rem;
+  }
+  
   .dropdown-label {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   
   .total-cost {
@@ -514,19 +550,14 @@
   .uk-section,
   .aetherbloom-section {
     width: 100%;
-    padding: 2rem; /* Increased padding */
-    flex-direction: column;
-    text-align: left; /* Changed from center to left */
+    padding: 2rem; /* Maintained padding */
     gap: 1.5rem; /* Increased gap */
-    justify-content: flex-start; /* Changed alignment */
     min-height: auto;
   }
   
   .uk-content,
   .aetherbloom-content {
-    flex-direction: column;
     gap: 1.5rem; /* Increased gap */
-    text-align: left; /* Changed from center to left */
   }
   
   .uk-left,
@@ -536,38 +567,51 @@
   
   .uk-right,
   .aetherbloom-right {
-    text-align: left; /* Changed from center to left */
-    gap: 0.75rem; /* Increased gap */
+    gap: 0.8rem; /* Slightly increased gap */
   }
   
   .breakdown-item {
-    min-height: 2rem; /* Increased height */
-    padding: 0.2rem 0;
+    min-height: 2.5rem;
+    padding: 0.4rem 0;
+  }
+  
+  .section-label {
+    font-size: 1.6rem;
   }
   
   .dropdown-label {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .total-cost {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .savings-value {
+    font-size: 1.2rem;
+  }
+  
+  .percentage-value {
+    font-size: 1.4rem;
+  }
+  
+  .breakdown-label,
+  .breakdown-value {
+    font-size: 1rem;
   }
   
   .savings-display {
-    margin-top: 1rem;
-    padding-top: 0.75rem;
-    gap: 0.6rem;
+    gap: 0.8rem;
   }
   
   .savings-amount,
   .percentage-container {
-    text-align: left; /* Changed from center to left */
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
   }
   
   .total-breakdown {
-    padding-top: 0.6rem;
-    margin-top: 0.75rem;
+    padding-top: 0.8rem;
+    margin-top: 0.8rem;
   }
 }
 
@@ -595,7 +639,7 @@
 
   .uk-section,
   .aetherbloom-section {
-    padding: 1.5rem; /* Increased padding */
+    padding: 1.5rem; /* Maintained reasonable padding */
     gap: 1rem;
   }
   
@@ -610,16 +654,20 @@
   }
   
   .breakdown-item {
-    min-height: 1.8rem;
-    padding: 0.15rem 0;
+    min-height: 2.2rem;
+    padding: 0.3rem 0;
+  }
+  
+  .section-label {
+    font-size: 1.4rem;
   }
   
   .dropdown-label {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
   
   .total-cost {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
   .savings-value {

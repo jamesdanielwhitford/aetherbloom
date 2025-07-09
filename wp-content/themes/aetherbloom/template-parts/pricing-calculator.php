@@ -75,6 +75,8 @@ $default_tier = 'enterprise';
         <!-- UK Costs Section (Left Side) -->
         <div class="uk-section">
           <div class="uk-content">
+            
+            <!-- Header Area: Section Title & Dropdown -->
             <div class="uk-left">
               <h3 class="section-label">UK Costs</h3>
               
@@ -99,8 +101,8 @@ $default_tier = 'enterprise';
               </div>
             </div>
             
+            <!-- Breakdown Area: Cost Breakdown -->
             <div class="uk-right">
-              <!-- Cost Breakdown -->
               <div class="breakdown-item">
                 <span class="breakdown-label">Base salary</span>
                 <span class="breakdown-value" id="uk-base-salary">£26,000</span>
@@ -144,6 +146,8 @@ $default_tier = 'enterprise';
         <!-- Aetherbloom Costs Section (Right Side) -->
         <div class="aetherbloom-section">
           <div class="aetherbloom-content">
+            
+            <!-- Header Area: Section Title & Dropdown -->
             <div class="aetherbloom-left">
               <h3 class="section-label">Aetherbloom</h3>
               
@@ -170,8 +174,8 @@ $default_tier = 'enterprise';
               </div>
             </div>
             
+            <!-- Breakdown Area: Service Fee Breakdown -->
             <div class="aetherbloom-right">
-              <!-- Service Fee Breakdown -->
               <div class="breakdown-item">
                 <span class="breakdown-label">Service fee</span>
                 <span class="breakdown-value" id="aetherbloom-service-fee">£8,760</span>
