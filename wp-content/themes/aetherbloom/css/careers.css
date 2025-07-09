@@ -9,8 +9,8 @@
 
 /* CSS Variables */
 :root {
-  --brand-color: #d84e28;
-  --brand-color-light: #ff9340;
+  --brand-color: white;
+  --brand-color-light: white;
   --success-color: #2ecc71;
   --danger-color: #e74c3c;
   --info-color: #3498db;
@@ -383,7 +383,7 @@
 
 .btn-primary {
   background: var(--brand-color);
-  color: white;
+  color: #d84e28;
   box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
 }
 
