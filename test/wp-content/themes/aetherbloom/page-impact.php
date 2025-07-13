@@ -202,7 +202,7 @@ get_header(); ?>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.', 'aetherbloom'); ?></p>
                                     <div class="program-highlight">
-                                        <p><?php esc_html_e('"Graduates gain certifications recognized by UK/South African employers."', 'aetherbloom'); ?></p>
+                                        <p><?php esc_html_e('"Graduates gain certifications recognised by UK/South African employers."', 'aetherbloom'); ?></p>
                                     </div>
                                     <p><strong><?php esc_html_e('Beyond Employment:', 'aetherbloom'); ?></strong> <?php esc_html_e('Even if we can\'t hire them, we empower them.', 'aetherbloom'); ?></p>
                                 </div>

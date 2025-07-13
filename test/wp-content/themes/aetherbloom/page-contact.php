@@ -174,7 +174,7 @@ get_header(); ?>
                         <div class="assessment-right">
                             <div class="assessment-suggestion" id="assessment-suggestion">
                                 <h4><?php esc_html_e('Our Recommendation', 'aetherbloom'); ?></h4>
-                                <p><?php esc_html_e('Complete the assessment to see personalized recommendations for your business needs.', 'aetherbloom'); ?></p>
+                                <p><?php esc_html_e('Complete the assessment to see personalised recommendations for your business needs.', 'aetherbloom'); ?></p>
                             </div>
                         </div>
                     </div>
@@ -270,7 +270,7 @@ get_header(); ?>
                     <div class="form-wrapper">
                         <div class="form-left">
                             <h2><?php esc_html_e('Get Started in Just 2 Minutes', 'aetherbloom'); ?></h2>
-                            <p><?php esc_html_e('Enter your email and we\'ll send you a personalized assessment form', 'aetherbloom'); ?></p>
+                            <p><?php esc_html_e('Enter your email and we\'ll send you a personalised assessment form', 'aetherbloom'); ?></p>
                             
                             <div class="email-capture-form">
                                 <div class="form-group">
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 recommendation = '<h4>Digital Customer Success - Growth Tier</h4><p>Scalable solution perfect for growing businesses. 40hrs/week for £1,200/month.</p>';
             }
         } else if (challenge === 'high-costs') {
-            recommendation = '<h4>Cost Optimization Assessment</h4><p>Let us analyze your current operations and show you exactly how much you can save with our solutions.</p>';
+            recommendation = '<h4>Cost Optimisation Assessment</h4><p>Let us analyse your current operations and show you exactly how much you can save with our solutions.</p>';
         }
         
         if (recommendation) {
