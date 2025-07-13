@@ -198,7 +198,7 @@ get_header(); ?>
                 <div class="container">
                     <div class="section-header">
                         <h2><strong>Call Centre Solutions</strong></h2>
-                        <p>Voice-first support for businesses needing inbound, outbound, and sales-focused customer engagement.</p>
+                        <p>Voice-first support for businesses needing inbound, outbound, <br/>and sales-focused customer engagement.</p>
                     </div>
                     
                     <div class="services-grid">
@@ -342,7 +342,7 @@ get_header(); ?>
                 <div class="container">
                     <div class="section-header">
                         <h2><strong>Add-On Services</strong> (From £8/hour)</h2>
-                        <p>Specialist support to scale your operations, bespoke packages available upon request.</p>
+                        <p>Specialist support to scale your operations, <br/>bespoke packages available upon request.</p>
                     </div>
                     
                     <div class="addon-grid">
@@ -369,7 +369,7 @@ get_header(); ?>
                                     <path d="M10 9H8" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <h4>Virtual Admin</h4>
+                            <h4>Virtual Administration</h4>
                             <p>Diary management, inbox organisation, and task coordination</p>
                         </div>
                         
@@ -392,8 +392,8 @@ get_header(); ?>
                                     <path d="M9 21V9" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <h4>Data Analysis</h4>
-                            <p>Custom reporting, insights generation, and business intelligence</p>
+                            <h4>Custom reporting & insights</h4>
+                            <p>We also build PowerApps to help automate your workflow using Microsoft 365</p>
                         </div>
                         
                         <div class="addon-card">
