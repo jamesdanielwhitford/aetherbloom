@@ -353,7 +353,7 @@ get_header(); ?>
                                 </div>
                                 <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
                                 <p><?php esc_html_e('Get a tax receipt + sustainability certificate.', 'aetherbloom'); ?></p>
-                                <a href="mailto:support@aetherbloom.co.uk" class="action-cta primary">
+                                <a href="mailto:partnerships@aetherbloom.co.uk" class="action-cta primary">
                                     <?php esc_html_e('Email Della to Donate Equipment', 'aetherbloom'); ?>
                                 </a>
                             </div>
