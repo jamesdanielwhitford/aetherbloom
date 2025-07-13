@@ -171,7 +171,7 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <div class="assessment-right">
+                        <div class="form-right">
                             <div class="assessment-suggestion" id="assessment-suggestion">
                                 <h4><?php esc_html_e('Our Recommendation', 'aetherbloom'); ?></h4>
                                 <p><?php esc_html_e('Complete the assessment to see personalised recommendations for your business needs.', 'aetherbloom'); ?></p>
@@ -298,8 +298,10 @@ get_header(); ?>
                                 
                                 <div class="contact-info">
                                     <div class="contact-item">
-                                        <h4><?php esc_html_e('UK Office', 'aetherbloom'); ?></h4>
-                                        <a href="tel:+44208 0507 881" class="phone-link">+44 208 0507 881</a>
+                                        <div class="contact-details">
+                                            <h4><?php esc_html_e('UK Office', 'aetherbloom'); ?></h4>
+                                            <a href="tel:+44208 0507 881" class="phone-link">+44 208 0507 881</a>
+                                        </div>
                                         <span class="office-hours"><?php esc_html_e('Mon-Fri, 8 AM – 6 PM GMT', 'aetherbloom'); ?></span>
                                     </div>
                                 </div>                                
