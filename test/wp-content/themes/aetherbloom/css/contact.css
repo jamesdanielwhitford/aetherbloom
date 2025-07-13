@@ -374,8 +374,30 @@
 }
 
 .contact-path:hover {
+  background: white;
+  color: #d84e28;
   transform: translateY(-10px);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+.contact-path:hover .path-header h3,
+.contact-path:hover .path-header p,
+.contact-path:hover .path-content h3,
+.contact-path:hover .path-content p,
+.contact-path:hover .path-features li,
+.contact-path:hover .path-icon {
+  color: #d84e28;
+  text-shadow: none;
+}
+
+.contact-path:hover .path-features li::before {
+  color: #d84e28;
+}
+
+.contact-path:hover .path-cta {
+  background-color: #d84e28;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .path-header {
@@ -398,7 +420,7 @@
 }
 
 .path-content {
-  text-align: center;
+  text-align: left;
 }
 
 .path-icon {
@@ -425,6 +447,7 @@
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
+  text-align: left;
 }
 
 .path-features li {
@@ -432,13 +455,16 @@
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
 }
 
 .path-features li::before {
   content: '✓';
-  color: #4CAF50;
+  color: white;
   font-weight: bold;
   margin-right: 0.5rem;
+  line-height: 1.5;
 }
 
 .path-cta {
