@@ -89,16 +89,12 @@
   transition: all 0.3s ease;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   
-  /* Safari optimizations */
-  -webkit-transition: all 0.3s ease;
+  /* Safari optimization */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  will-change: transform, color;
-  transform-origin: left center;
 }
 
 .brand-link:hover {
-  color: #ffffff;
   transform: translateY(-1px) translateZ(0);
   -webkit-transform: translateY(-1px) translateZ(0);
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
@@ -107,27 +103,26 @@
 .brand-icon {
   height: 1.6rem;
   width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: brightness(0) invert(1);
   transition: all 0.3s ease;
   
-  /* Safari optimizations */
-  -webkit-transition: all 0.3s ease;
+  /* Safari optimization */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  will-change: transform, filter;
 }
 
 .brand-name {
   color: #ffffff;
-  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
+  gap: 2rem;
+  align-items: center;
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -136,23 +131,21 @@
 
 .nav-links ul {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
+  gap: 2rem;
+  align-items: center;
 }
 
 .nav-links li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  position: relative;
 }
 
 .nav-links li a,
 .nav-link {
   display: inline-block;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 0.8rem;
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -162,16 +155,13 @@
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  display: block;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   
   /* Safari optimizations */
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: transform, color, background-color;
-  transform-origin: center center;
 }
 
 .nav-links li a::before,
@@ -180,19 +170,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   opacity: 0;
   transform: scale(0.8) translateZ(0);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: -1;
-  
-  /* Safari optimizations */
   -webkit-transform: scale(0.8) translateZ(0);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, opacity;
+  z-index: -1;
 }
 
 .nav-links li a:hover,
@@ -235,8 +222,8 @@
   display: inline-flex;
   align-items: center;
   padding: 0.6rem 1.5rem;
-  background: rgba(76, 175, 80, 0.15);
-  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: rgba(11, 61, 46, 0.15);
+  border: 1px solid rgba(11, 61, 46, 0.4);
   color: #ffffff;
   text-decoration: none;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -247,8 +234,8 @@
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 0 10px rgba(76, 175, 80, 0.1),
-    inset 0 0 0 1px rgba(76, 175, 80, 0.2);
+    0 0 10px rgba(11, 61, 46, 0.1),
+    inset 0 0 0 1px rgba(11, 61, 46, 0.2);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   
   /* Safari optimizations */
@@ -259,7 +246,7 @@
   transform-origin: center center;
   
   /* Fallback for Safari backdrop-filter issues */
-  background: rgba(76, 175, 80, 0.2);
+  background: rgba(11, 61, 46, 0.2);
 }
 
 /* Add backdrop filter with Safari fallback for pricing button */
@@ -267,7 +254,7 @@
   .pricing-btn {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    background: rgba(76, 175, 80, 0.15);
+    background: rgba(11, 61, 46, 0.15);
   }
 }
 
@@ -278,7 +265,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(11, 61, 46, 0.3), transparent);
   transition: left 0.5s ease;
   
   /* Safari optimizations */
@@ -292,10 +279,10 @@
   transform: translateY(-2px) scale(1.01) translateZ(0);
   -webkit-transform: translateY(-2px) scale(1.01) translateZ(0);
   box-shadow: 
-    0 0 20px rgba(76, 175, 80, 0.2),
-    inset 0 0 0 1px rgba(76, 175, 80, 0.3);
-  background: rgba(76, 175, 80, 0.25);
-  border-color: rgba(76, 175, 80, 0.6);
+    0 0 20px rgba(11, 61, 46, 0.2),
+    inset 0 0 0 1px rgba(11, 61, 46, 0.3);
+  background: rgba(11, 61, 46, 0.25);
+  border-color: rgba(11, 61, 46, 0.6);
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
 }
 
@@ -579,8 +566,8 @@
   }
   
   .pricing-btn {
-    background: rgba(76, 175, 80, 0.9);
-    border-color: #4CAF50;
+    background: rgba(11, 61, 46, 0.9);
+    border-color: #0b3d2e;
   }
 }
 
