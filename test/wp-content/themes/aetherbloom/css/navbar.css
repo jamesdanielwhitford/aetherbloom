@@ -68,9 +68,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 2rem;
+  padding: 0.5rem 2rem; /* FIXED: Increased vertical padding for better centering */
   height: 100%;
   position: relative;
+  min-height: 60px; /* ADDED: Ensure consistent minimum height */
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -123,6 +124,7 @@
   padding: 0;
   gap: 2rem;
   align-items: center;
+  height: 100%; /* ADDED: Ensure full height for centering */
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -136,16 +138,20 @@
   padding: 0;
   gap: 2rem;
   align-items: center;
+  height: 100%; /* ADDED: Ensure full height for centering */
 }
 
 .nav-links li {
   position: relative;
+  display: flex; /* ADDED: Ensure flex display */
+  align-items: center; /* ADDED: Center links vertically */
 }
 
 .nav-links li a,
 .nav-link {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
+  display: inline-flex; /* CHANGED: from inline-block to inline-flex */
+  align-items: center; /* ADDED: Center content vertically */
+  padding: 0.5rem 0.8rem; /* FIXED: Consistent vertical padding */
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -211,7 +217,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-right: 0; /* UPDATED: Removed margin to bring buttons closer to right edge */
+  margin-right: 0;
+  height: 100%; /* ADDED: Ensure full height for centering */
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -221,7 +228,8 @@
 .pricing-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 1.5rem;
+  justify-content: center; /* ADDED: Center content horizontally */
+  padding: 0.7rem 1.5rem; /* FIXED: Consistent vertical padding */
   background: rgba(26, 95, 71, 0.25);
   border: 1px solid #1a5f47;
   color: #ffffff;
@@ -237,6 +245,7 @@
     0 0 10px rgba(26, 95, 71, 0.2),
     inset 0 0 0 1px rgba(26, 95, 71, 0.3);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  line-height: 1; /* ADDED: Consistent line height */
   
   /* Safari optimizations */
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -290,7 +299,8 @@
 .get-started-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 1.8rem;
+  justify-content: center; /* ADDED: Center content horizontally */
+  padding: 0.7rem 1.8rem; /* FIXED: Consistent vertical padding */
   background: rgba(216, 78, 40, 0.25);
   border: 1px solid #D84E28;
   color: #ffffff;
@@ -306,6 +316,7 @@
     0 0 15px rgba(216, 78, 40, 0.2),
     inset 0 0 0 1px rgba(216, 78, 40, 0.3);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  line-height: 1; /* ADDED: Consistent line height */
   
   /* Safari optimizations */
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -398,11 +409,11 @@
   }
   
   .nav-container {
-    padding: 0.35rem 1.5rem;
+    padding: 0.45rem 1.5rem; /* FIXED: Consistent vertical padding */
   }
   
   .nav-actions {
-    margin-right: 0; /* UPDATED: Keep consistent with desktop */
+    margin-right: 0;
     gap: 0.75rem;
   }
   
@@ -414,16 +425,16 @@
   .nav-links li a,
   .nav-link {
     font-size: 0.9rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.4rem 0.7rem; /* FIXED: Consistent vertical padding */
   }
   
   .pricing-btn {
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.2rem; /* FIXED: Consistent vertical padding */
     font-size: 0.85rem;
   }
   
   .get-started-btn {
-    padding: 0.5rem 1.3rem;
+    padding: 0.6rem 1.3rem; /* FIXED: Consistent vertical padding */
     font-size: 0.9rem;
   }
 }
@@ -435,11 +446,11 @@
   }
   
   .nav-container {
-    padding: 0.3rem 1rem;
+    padding: 0.4rem 1rem; /* FIXED: Consistent vertical padding */
   }
   
   .nav-actions {
-    margin-right: 0; /* UPDATED: Keep consistent */
+    margin-right: 0;
     gap: 0.5rem;
   }
   
@@ -456,12 +467,12 @@
   }
   
   .pricing-btn {
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1rem; /* FIXED: Consistent vertical padding */
     font-size: 0.8rem;
   }
   
   .get-started-btn {
-    padding: 0.45rem 1.1rem;
+    padding: 0.5rem 1.1rem; /* FIXED: Consistent vertical padding */
     font-size: 0.85rem;
   }
 }
@@ -473,11 +484,11 @@
   }
   
   .nav-container {
-    padding: 0.25rem 0.75rem;
+    padding: 0.35rem 0.75rem; /* FIXED: Consistent vertical padding */
   }
   
   .nav-actions {
-    margin-right: 0; /* UPDATED: Keep consistent */
+    margin-right: 0;
     gap: 0.4rem;
   }
   
@@ -490,12 +501,12 @@
   }
   
   .pricing-btn {
-    padding: 0.35rem 0.8rem;
+    padding: 0.45rem 0.8rem; /* FIXED: Consistent vertical padding */
     font-size: 0.75rem;
   }
   
   .get-started-btn {
-    padding: 0.4rem 0.9rem;
+    padding: 0.45rem 0.9rem; /* FIXED: Consistent vertical padding */
     font-size: 0.8rem;
   }
 }
