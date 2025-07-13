@@ -211,7 +211,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-right: 1rem;
+  margin-right: 0; /* UPDATED: Removed margin to bring buttons closer to right edge */
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -402,7 +402,7 @@
   }
   
   .nav-actions {
-    margin-right: 0.75rem;
+    margin-right: 0; /* UPDATED: Keep consistent with desktop */
     gap: 0.75rem;
   }
   
@@ -439,7 +439,7 @@
   }
   
   .nav-actions {
-    margin-right: 0.5rem;
+    margin-right: 0; /* UPDATED: Keep consistent */
     gap: 0.5rem;
   }
   
@@ -477,7 +477,7 @@
   }
   
   .nav-actions {
-    margin-right: 0.25rem;
+    margin-right: 0; /* UPDATED: Keep consistent */
     gap: 0.4rem;
   }
   
