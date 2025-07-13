@@ -30,16 +30,16 @@ if (!defined('ABSPATH')) {
                         </p>
                     </div>
                     <div class="contact-email">
-                        <a href="mailto:info@aetherbloom.co.za" class="contact-link">
-                            info@aetherbloom.co.za
+                        <a href="mailto:info@aetherbloom.co.uk" class="contact-link">
+                            info@aetherbloom.co.uk
                         </a>
                     </div>
                     <div class="social-links">
                         <?php
                         $social_links = array(
                             array('name' => 'LinkedIn', 'href' => 'https://www.linkedin.com/company/aetherbloom', 'platform' => 'linkedin'),
-                            array('name' => 'Facebook', 'href' => 'https://www.facebook.com/aetherbloom', 'platform' => 'facebook'),
-                            array('name' => 'Instagram', 'href' => 'https://www.instagram.com/aetherbloom', 'platform' => 'instagram')
+                            array('name' => 'Facebook', 'href' => 'https://web.facebook.com/people/Aetherbloom/61573177293499/', 'platform' => 'facebook'),
+                            array('name' => 'Instagram', 'href' => 'https://www.instagram.com/aetherbloom.group/', 'platform' => 'instagram')
                         );
                         
                         foreach ($social_links as $social) :
@@ -145,14 +145,13 @@ if (!defined('ABSPATH')) {
                             <div class="address-group">
                                 <strong><?php esc_html_e('UK Office:', 'aetherbloom'); ?></strong>
                                 <div class="address-line">London, UK</div>
-                                <div class="address-line">+44 XXXX XXX XXX</div>
+                                <div class="address-line">+44 208 0507 881</div>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="address-group">
                                 <strong><?php esc_html_e('SA Hub:', 'aetherbloom'); ?></strong>
                                 <div class="address-line">Johannesburg, SA</div>
-                                <div class="address-line">+27 XX XXX XXXX</div>
                             </div>
                         </div>
                     </div>
