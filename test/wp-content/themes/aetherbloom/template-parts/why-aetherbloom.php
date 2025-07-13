@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/template-parts/why-aetherbloom.php
 
 // Get custom field values with defaults
-$section_title = get_theme_mod('why_section_title', 'This is Aetherbloom.<br>How can we help you?');
+$section_title = get_theme_mod('why_section_title', '<strong>This is Aetherbloom:</strong><br><strong>How can we help you?</strong>');
 $section_description = get_theme_mod('why_section_description', 'High-quality, ethical outsourcing<br>that streamline your business processes.');
 
 // Default card data - can be made customizable through WordPress admin
