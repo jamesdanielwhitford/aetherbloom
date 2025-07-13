@@ -631,7 +631,7 @@ function aetherbloom_customize_register($wp_customize) {
     ));
     
     $wp_customize->add_setting('aetherbloom_email', array(
-        'default' => 'info@aetherbloom.co.uk',
+        'default' => 'hello@aetherbloom.co.uk',
         'sanitize_callback' => 'sanitize_email',
     ));
     

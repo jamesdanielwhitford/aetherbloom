@@ -228,7 +228,7 @@
         // Create mailto link for resource request
         const subject = encodeURIComponent('Resource Download Request - UK Leader\'s Guide to South African Talent');
         const body = encodeURIComponent(`Please send me the UK Leader's Guide to South African Talent.\n\nEmail: ${email}\n\nThank you!`);
-        const mailtoLink = `mailto:info@aetherbloom.co.uk?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:hello@aetherbloom.co.uk?subject=${subject}&body=${body}`;
         
         window.location.href = mailtoLink;
         
@@ -279,7 +279,7 @@
      */
     window.handleContactClick = function(type) {
         if (type === 'email') {
-            window.location.href = 'mailto:info@aetherbloom.co.uk';
+            window.location.href = 'mailto:hello@aetherbloom.co.uk';
         } else if (type === 'appointment') {
             window.open('https://calendly.com/aetherbloom', '_blank');
         }

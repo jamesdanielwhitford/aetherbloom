@@ -150,7 +150,7 @@ get_header(); ?>
                                 </div>
                                 <div class="contact-details">
                                     <h4><?php esc_html_e('Email Us', 'aetherbloom'); ?></h4>
-                                    <a href="mailto:info@aetherbloom.co.uk" class="contact-link">info@aetherbloom.co.uk</a>
+                                    <a href="mailto:hello@aetherbloom.co.uk" class="contact-link">hello@aetherbloom.co.uk</a>
                                     <p><?php esc_html_e('For general inquiries and applications', 'aetherbloom'); ?></p>
                                 </div>
                             </div>

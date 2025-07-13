@@ -40,7 +40,7 @@ get_header(); ?>
                                 </div>
                                 
                                 <div class="contact-buttons">
-                                    <button class="contact-btn email-btn" onclick="window.location.href='mailto:info@aetherbloom.co.uk'">
+                                    <button class="contact-btn email-btn" onclick="window.location.href='mailto:hello@aetherbloom.co.uk'">
                                         <div class="btn-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
@@ -324,7 +324,7 @@ get_header(); ?>
                             </div>
                             <h3><?php esc_html_e('Email Us', 'aetherbloom'); ?></h3>
                             <p><?php esc_html_e('General inquiries and support', 'aetherbloom'); ?></p>
-                            <a href="mailto:info@aetherbloom.co.uk" class="method-link">info@aetherbloom.co.uk</a>
+                            <a href="mailto:hello@aetherbloom.co.uk" class="method-link">hello@aetherbloom.co.uk</a>
                         </div>
                         
                         <div class="method-card">
@@ -415,7 +415,7 @@ function downloadResource() {
     const email = document.getElementById('resource-email').value;
     if (email) {
         // Handle resource download
-        window.location.href = 'mailto:info@aetherbloom.co.uk?subject=Resource Download Request&body=Please send me the UK Leader\'s Guide to South African Talent. Email: ' + email;
+        window.location.href = 'mailto:hello@aetherbloom.co.uk?subject=Resource Download Request&body=Please send me the UK Leader\'s Guide to South African Talent. Email: ' + email;
     } else {
         alert('Please enter your email address first.');
     }

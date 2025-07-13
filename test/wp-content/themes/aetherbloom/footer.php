@@ -30,8 +30,8 @@ if (!defined('ABSPATH')) {
                         </p>
                     </div>
                     <div class="contact-email">
-                        <a href="mailto:info@aetherbloom.co.uk" class="contact-link">
-                            info@aetherbloom.co.uk
+                        <a href="mailto:hello@aetherbloom.co.uk" class="contact-link">
+                            hello@aetherbloom.co.uk
                         </a>
                     </div>
                     <div class="social-links">
