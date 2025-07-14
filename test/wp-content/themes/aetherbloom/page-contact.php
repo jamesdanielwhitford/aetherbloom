@@ -51,12 +51,24 @@ get_header(); ?>
                                     </button>
                                     
                                     <button class="contact-btn phone-btn" onclick="window.location.href='tel:+442080507881'">
+                                         <div class="btn-icon">
+                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                 <path d="M5 4H9L11 9L8 11C9.5 14.5 12.5 17.5 16 19L18 16L23 18V22C23 22.5523 22.5523 23 22 23H18C9.71573 23 3 16.2843 3 8V4C3 3.44772 3.44772 3 4 3H8C8.55228 3 9 3.44772 9 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                             </svg>
+                                         </div>
+                                         <span><?php esc_html_e('Call Us', 'aetherbloom'); ?></span>
+                                     </button>
+                                    
+                                    <button class="contact-btn book-btn" onclick="openBookingForm()">
                                         <div class="btn-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M22 16.92V19.92C22 20.51 21.76 21.06 21.35 21.42C20.94 21.78 20.4 21.92 19.86 21.86C16.43 21.53 13.13 20.39 10.32 18.55C7.75 16.89 5.64 14.78 3.98 12.21C2.14 9.39 1 6.08 0.67 2.64C0.61 2.1 0.75 1.56 1.11 1.15C1.47 0.74 2.02 0.5 2.61 0.5H5.61C6.48 0.49 7.22 1.16 7.31 2.02C7.49 3.75 7.89 5.44 8.5 7.07C8.74 7.65 8.63 8.32 8.2 8.79L6.85 10.14C8.44 12.87 10.83 15.26 13.56 16.85L14.91 15.5C15.38 15.07 16.05 14.96 16.63 15.2C18.26 15.81 19.95 16.21 21.68 16.39C22.55 16.48 23.22 17.23 23.21 18.1L22 16.92Z" stroke="currentColor" stroke-width="2"/>
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
                                             </svg>
                                         </div>
-                                        <span><?php esc_html_e('Call Us', 'aetherbloom'); ?></span>
+                                        <span><?php esc_html_e('Book a Meeting', 'aetherbloom'); ?></span>
                                     </button>
                                 </div>
                             </div>

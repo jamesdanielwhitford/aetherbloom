@@ -116,7 +116,7 @@
 }
 
 .contact-option-header h3 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: white;
   margin-bottom: 0.5rem;
@@ -136,17 +136,30 @@
 }
 
 .contact-btn {
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  background: white;
+  color: #d84e28;
+  text-decoration: none;
   border-radius: 8px;
-  color: white;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  font-size: 1.2rem; /* Larger font size */
+  width: 300px;
+  margin: 0 auto;
+  white-space: nowrap;
+  min-height: 56px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  text-decoration: none;
+  justify-content: center; /* Center the text horizontally */
+  position: relative; /* For absolute positioning of the icon */
+}
+
+.contact-btn span {
+  /* No flex: 1 here, text is centered by justify-content on parent */
+  text-align: center;
 }
 
 .contact-btn:hover {
@@ -157,6 +170,10 @@
 
 .btn-icon {
   color: #d84e28;
+  position: absolute;
+  left: 1.5rem; /* Adjust as needed for spacing from the left edge */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* ===========================================
