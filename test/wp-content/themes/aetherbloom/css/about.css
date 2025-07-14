@@ -329,19 +329,20 @@
 }
 
 .founder-image {
-  width: 100%;
-  height: 300px;
+  width: fit-content; /* Container width adapts to image's scaled width */
+  height: 300px; /* Fixed height for the container */
   overflow: hidden;
   border-radius: 16px;
   margin-bottom: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  margin: 0 auto 2rem auto; /* Center the container horizontally */
+  background-color: white; /* Set background to white */
 }
 
 .founder-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain; /* Ensure the entire image (height and width) fits within the container */
   transition: transform 0.3s ease;
 }
 
