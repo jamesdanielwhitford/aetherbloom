@@ -780,9 +780,9 @@
 
 .contact-methods {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
   gap: 2rem;
-  max-width: 800px;
+  /* Removed max-width to allow cards to spread out */
   margin: 0 auto;
 }
 
