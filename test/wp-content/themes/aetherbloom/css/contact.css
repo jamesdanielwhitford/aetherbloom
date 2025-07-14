@@ -107,16 +107,16 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .contact-option-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .contact-option-header h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: white;
   margin-bottom: 0.5rem;
@@ -124,7 +124,7 @@
 }
 
 .contact-option-header p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -136,44 +136,52 @@
 }
 
 .contact-btn {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
   background: white;
   color: #d84e28;
-  border: none;
-  border-radius: 12px;
+  text-decoration: none;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  width: 100%;
+  border: none;
+  font-size: 1.2rem; /* Larger font size */
+  width: 300px;
+  margin: 0 auto;
+  white-space: nowrap;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text horizontally */
+  position: relative; /* For absolute positioning of the icon */
+}
+
+.contact-btn span {
+  /* No flex: 1 here, text is centered by justify-content on parent */
+  text-align: center;
 }
 
 .contact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.contact-btn .btn-icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.contact-btn .btn-icon svg {
-  width: 100%;
-  height: 100%;
+.btn-icon {
+  color: #d84e28;
+  position: absolute;
+  left: 1.5rem; /* Adjust as needed for spacing from the left edge */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* ===========================================
-   BUSINESS ASSESSMENT SECTION - Updated Layout
+   BUSINESS ASSESSMENT SECTION
    =========================================== */
 .business-assessment-section {
   padding: 100px 0;
-  background: transparent;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(46, 204, 113, 0.03));
 }
 
 .assessment-content {
@@ -183,39 +191,27 @@
   align-items: start;
 }
 
-.assessment-left h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-}
-
-.assessment-left > p {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
 .assessment-form {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 20px;
+  padding: 2.5rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.assessment-question {
-  margin-bottom: 2rem;
-}
-
-.assessment-question h3 {
-  font-size: 1.3rem;
+.assessment-form h3 {
+  font-size: 1.5rem;
   font-weight: 600;
   color: white;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.assessment-form > p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -223,15 +219,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .option-card {
   position: relative;
-  cursor: pointer;
-  display: block;
 }
 
-.option-card input[type="radio"] {
+.option-card input {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -374,8 +369,30 @@
 }
 
 .contact-path:hover {
+  background: white;
+  color: #d84e28;
   transform: translateY(-10px);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+.contact-path:hover .path-header h3,
+.contact-path:hover .path-header p,
+.contact-path:hover .path-content h3,
+.contact-path:hover .path-content p,
+.contact-path:hover .path-features li,
+.contact-path:hover .path-icon {
+  color: #d84e28;
+  text-shadow: none;
+}
+
+.contact-path:hover .path-features li::before {
+  color: #d84e28;
+}
+
+.contact-path:hover .path-cta {
+  background-color: #d84e28;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .path-header {
@@ -398,7 +415,7 @@
 }
 
 .path-content {
-  text-align: center;
+  text-align: left;
 }
 
 .path-icon {
@@ -425,6 +442,7 @@
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
+  text-align: left;
 }
 
 .path-features li {
@@ -432,13 +450,16 @@
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
 }
 
 .path-features li::before {
   content: '✓';
-  color: #4CAF50;
+  color: white;
   font-weight: bold;
   margin-right: 0.5rem;
+  line-height: 1.5;
 }
 
 .path-cta {
@@ -476,7 +497,7 @@
 }
 
 /* ===========================================
-   CONTACT FORM SECTION - Updated
+   CONTACT FORM SECTION - Updated with method-card styling
    =========================================== */
 .contact-form-section {
   padding: 100px 0;
@@ -487,28 +508,41 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: stretch;
 }
 
+/* Get Started in 2 Minutes Section - Apply method-card styling */
 .form-left {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 2.5rem;
+  text-align: center; /* Center alignment like method-card */
+  transition: all 0.3s ease;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  height: 100%; /* Ensure equal height */
+  display: flex;
+  flex-direction: column;
 }
 
+.form-left:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Make heading large like current get started font size */
 .form-left h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.2rem; /* Keep current large size */
+  font-weight: 600;
   color: white;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Apply method-card paragraph styling */
 .form-left > p {
-  font-size: 1.1rem;
+  font-size: 1rem; /* Match method-card p size */
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -518,6 +552,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: center; /* Center buttons */
+  margin-top: auto; /* Push to bottom */
 }
 
 .form-group {
@@ -546,16 +582,24 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Update button styling to match method-link */
 .hubspot-form-btn {
-  padding: 1rem 2rem;
+  display: block; /* Changed to block for centering */
+  padding: 1rem 2rem; /* Match method-link padding */
   background: white;
   color: #d84e28;
-  border: none;
+  text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  font-size: 1rem; /* Match method-card button font size */
+  width: 250px; /* Fixed width */
+  margin: 0 auto; /* Center the button */
+  white-space: nowrap; /* Ensure text stays on one line */
+  min-height: 56px; /* Set a minimum height for consistency */
 }
 
 .hubspot-form-btn:hover {
@@ -564,44 +608,70 @@
 }
 
 /* Resource Download */
+.form-right {
+  display: flex;
+}
+
+/* Free Resource Cards - Apply method-card styling */
 .resource-download {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 2.5rem;
+  text-align: center; /* Center alignment like method-card */
+  transition: all 0.3s ease;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  flex: 1;
+  height: 100%; /* Ensure equal height */
+  display: flex;
+  flex-direction: column;
 }
 
+.resource-download:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Make heading large like get started font size */
 .resource-download h3 {
-  font-size: 1.5rem;
+  font-size: 2.2rem; /* Match large get started heading size */
   font-weight: 600;
   color: white;
   margin-bottom: 1rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Apply method-card paragraph styling */
 .resource-download > p {
-  font-size: 1rem;
+  font-size: 1rem; /* Match method-card p size */
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.resource-input-group {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+.resource-form {
+  margin-top: auto; /* Push to bottom */
 }
 
+/* Make email input above button (vertical layout) */
+.resource-input-group {
+  display: flex;
+  flex-direction: column; /* Change from horizontal to vertical */
+  gap: 1rem;
+  /* Removed margin-bottom to align buttons */
+  align-items: center; /* Center buttons */
+}
+
+/* Update input styling */
 .resource-input {
-  flex: 1;
-  padding: 0.75rem;
+  width: 100%;
+  padding: 1rem; /* Match form-input padding */
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -615,8 +685,10 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Update button styling to match method-link */
 .resource-btn {
-  padding: 0.75rem 1.5rem;
+  display: block; /* Changed to block for centering */
+  padding: 1rem 2rem; /* Match method-link padding */
   background: white;
   color: #d84e28;
   border: none;
@@ -625,7 +697,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-size: 1rem; /* Match method-card button font size */
   white-space: nowrap;
+  width: 250px; /* Fixed width */
+  margin: 0 auto; /* Center the button */
+  min-height: 56px; /* Set a minimum height for consistency */
 }
 
 .resource-btn:hover {
@@ -638,11 +714,20 @@
 }
 
 .contact-item {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   margin-bottom: 1rem;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
 }
 
 .contact-item h4 {
@@ -651,6 +736,7 @@
   color: white;
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }
 
 .contact-item p {
@@ -661,13 +747,13 @@
 }
 
 .phone-link {
-  display: block;
   font-size: 1.1rem;
   color: white;
   text-decoration: none;
   font-weight: 600;
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }
 
 .phone-link:hover {
@@ -675,9 +761,13 @@
 }
 
 .office-hours {
+  display: block;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .privacy-note {
@@ -707,9 +797,9 @@
 
 .contact-methods {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
   gap: 2rem;
-  max-width: 800px;
+  /* Removed max-width to allow cards to spread out */
   margin: 0 auto;
 }
 
@@ -763,9 +853,36 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.method-link:hover {
+  .method-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Add spacing between social media buttons */
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; /* Set a fixed width for consistency */  height: 56px; /* Set a fixed height for consistency */
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #d84e28;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: white;
+}
+
+.social-link svg {
+  width: 28px; /* Slightly larger icons */
+  height: 28px; /* Slightly larger icons */
 }
 
 /* ===========================================
@@ -842,13 +959,13 @@
     padding: 2rem;
   }
   
-  .form-left h2 {
-    font-size: 2rem;
+  .form-left h2,
+  .resource-download h3 {
+    font-size: 2rem; /* Slightly smaller on mobile */
   }
   
   .resource-input-group {
-    flex-direction: column;
-    gap: 1rem;
+    gap: 1rem; /* Maintain gap on mobile */
   }
 }
 
@@ -883,12 +1000,9 @@
     padding: 1.5rem;
   }
   
-  .form-left h2 {
-    font-size: 1.8rem;
-  }
-  
-  .resource-input-group {
-    gap: 0.75rem;
+  .form-left h2,
+  .resource-download h3 {
+    font-size: 1.8rem; /* Even smaller on small mobile */
   }
   
   .hubspot-form-btn,
@@ -898,6 +1012,10 @@
   .method-link {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  .resource-input-group {
+    gap: 0.75rem;
   }
 }
 

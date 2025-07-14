@@ -25,15 +25,17 @@ get_header(); ?>
             <!-- Hero Section -->
             <section class="careers-hero">
                 <div class="hero-background">
-                    <div class="hero-overlay"></div>
+                    <div class="hero-background-overlay"></div>
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/careers-hero-bg.png'); ?>" alt="Join our team" class="hero-bg-image">
                 </div>
-                <div class="hero-content">
+                <div class="hero-overlay">
                     <div class="container">
-                        <h1 class="hero-title"><?php esc_html_e('Join Aetherbloom', 'aetherbloom'); ?></h1>
-                        <p class="hero-subtitle"><?php esc_html_e('Where Talent Meets Global Opportunity', 'aetherbloom'); ?></p>
-                        <div class="hero-description">
-                            <p><?php esc_html_e('Build your career with us and make a real impact while serving UK clients from South Africa', 'aetherbloom'); ?></p>
+                        <div class="hero-content">
+                            <h1 class="hero-title"><?php esc_html_e('Join Aetherbloom', 'aetherbloom'); ?></h1>
+                            <p class="hero-subtitle"><?php esc_html_e('Where Talent Meets Global Opportunity', 'aetherbloom'); ?></p>
+                            <div class="hero-description">
+                                <p><?php esc_html_e('Build your career with us and make a real impact while serving UK clients from South Africa', 'aetherbloom'); ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,7 +152,7 @@ get_header(); ?>
                                 </div>
                                 <div class="contact-details">
                                     <h4><?php esc_html_e('Email Us', 'aetherbloom'); ?></h4>
-                                    <a href="mailto:info@aetherbloom.co.uk" class="contact-link">info@aetherbloom.co.uk</a>
+                                    <a href="mailto:hello@aetherbloom.co.uk" class="contact-link">hello@aetherbloom.co.uk</a>
                                     <p><?php esc_html_e('For general inquiries and applications', 'aetherbloom'); ?></p>
                                 </div>
                             </div>
@@ -171,7 +173,7 @@ get_header(); ?>
                         
                         <div class="contact-cta">
                             <button onclick="openScheduler()" class="btn btn-primary btn-large">
-                                <?php esc_html_e('Schedule a Career Chat', 'aetherbloom'); ?>
+                                <?php esc_html_e('Join Our Talent Pool', 'aetherbloom'); ?>
                             </button>
                             <p class="cta-note"><?php esc_html_e('Book a 15-minute call to discuss opportunities and learn more about our team', 'aetherbloom'); ?></p>
                         </div>

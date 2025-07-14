@@ -3,7 +3,7 @@
 
 // Get custom field values with defaults
 $cta_title = get_theme_mod('cta_title', 'Ready to Transform Your Business?');
-$cta_subtitle = get_theme_mod('cta_assessment_text', 'Discover exactly how much you could save with a personalized assessment. Our team will analyze your current operations and provide a detailed cost-benefit analysis within 24 hours.');
+$cta_subtitle = get_theme_mod('cta_assessment_text', 'Discover exactly how much you could save with a personalised assessment. Our team will analyse your current operations and provide a detailed cost-benefit analysis within 24 hours.');
 $cta_email = get_theme_mod('cta_email', 'hello@aetherbloom.co.uk');
 $cta_phone = get_theme_mod('cta_phone', '+44 208 0507 881');
 $form_title = get_theme_mod('cta_form_title', 'Start Your Free Assessment');

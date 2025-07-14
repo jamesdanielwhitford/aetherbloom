@@ -111,7 +111,7 @@ $default_tier = 'enterprise';
             </div>
             
             <!-- Breakdown Area: Cost Breakdown -->
-            <div class="uk-right">
+            <div class="uk-right two-column-grid">
               <div class="breakdown-item">
                 <span class="breakdown-label" id="uk-salary-label">Base salary</span>
                 <span class="breakdown-value" id="uk-base-salary">£26,000</span>
@@ -154,106 +154,106 @@ $default_tier = 'enterprise';
         
         <!-- Aetherbloom Costs Section (Right Side) -->
         <div class="aetherbloom-section">
-          <div class="aetherbloom-content">
-            
-            <!-- Header Area: Section Title & Dropdown -->
-            <div class="aetherbloom-left">
-              <h3 class="section-label">Aetherbloom</h3>
-              
-              <!-- Service Tier Selection Dropdown -->
-              <div class="dropdown" id="tier-dropdown">
-                <button class="dropdown-trigger" id="tier-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
-                  <span class="dropdown-label" id="tier-label">Digital Enterprise</span>
-                  <span class="dropdown-arrow" id="tier-arrow">▼</span>
-                </button>
-                <div class="dropdown-menu" id="tier-dropdown-menu" role="menu" aria-hidden="true">
-                  
-                  <!-- Digital Customer Success Services Header -->
-                  <div class="dropdown-header">Digital Customer Success Services</div>
-                  
-                  <?php 
-                  // First, output Digital services
-                  foreach ($tier_options as $index => $tier) : 
-                    if ($tier['category'] === 'digital') :
-                  ?>
-                    <button class="dropdown-option<?php echo $tier['id'] === $default_tier ? ' selected' : ''; ?>" 
-                            type="button"
-                            data-tier="<?php echo esc_attr($tier['id']); ?>" 
-                            data-cost="<?php echo esc_attr($tier['cost']); ?>"
-                            data-hours="<?php echo esc_attr($tier['hours']); ?>"
-                            data-monthly="<?php echo esc_attr($tier['monthly']); ?>"
-                            data-category="<?php echo esc_attr($tier['category']); ?>"
-                            <?php if (isset($tier['is_multi_agent']) && $tier['is_multi_agent']) : ?>
-                            data-multi-agent="true"
-                            data-agent-count="<?php echo esc_attr($tier['agent_count']); ?>"
-                            <?php endif; ?>
-                            role="menuitem">
-                      <div class="option-content">
-                        <span class="option-name"><?php echo esc_html($tier['name']); ?></span>
-                        <span class="option-details"><?php echo esc_html($tier['hours']); ?> | <?php echo esc_html($tier['monthly']); ?></span>
-                      </div>
-                    </button>
-                  <?php 
-                    endif;
-                  endforeach; 
-                  ?>
-                  
-                  <!-- Call Centre Solutions Header -->
-                  <div class="dropdown-header">Call Centre Solutions</div>
-                  
-                  <?php 
-                  // Then, output Call Centre services
-                  foreach ($tier_options as $index => $tier) : 
-                    if ($tier['category'] === 'callcentre') :
-                  ?>
-                    <button class="dropdown-option<?php echo $tier['id'] === $default_tier ? ' selected' : ''; ?>" 
-                            type="button"
-                            data-tier="<?php echo esc_attr($tier['id']); ?>" 
-                            data-cost="<?php echo esc_attr($tier['cost']); ?>"
-                            data-hours="<?php echo esc_attr($tier['hours']); ?>"
-                            data-monthly="<?php echo esc_attr($tier['monthly']); ?>"
-                            data-category="<?php echo esc_attr($tier['category']); ?>"
-                            <?php if (isset($tier['is_multi_agent']) && $tier['is_multi_agent']) : ?>
-                            data-multi-agent="true"
-                            data-agent-count="<?php echo esc_attr($tier['agent_count']); ?>"
-                            <?php endif; ?>
-                            role="menuitem">
-                      <div class="option-content">
-                        <span class="option-name"><?php echo esc_html($tier['name']); ?></span>
-                        <span class="option-details"><?php echo esc_html($tier['hours']); ?> | <?php echo esc_html($tier['monthly']); ?></span>
-                      </div>
-                    </button>
-                  <?php 
-                    endif;
-                  endforeach; 
-                  ?>
-                  
+          <!-- Card 1: Aetherbloom Calculator -->
+          <div class="aetherbloom-card aetherbloom-card-calculator">
+            <div class="aetherbloom-content">
+              <!-- Header Area: Section Title & Dropdown -->
+              <div class="aetherbloom-left">
+                <h3 class="section-label">Aetherbloom</h3>
+                
+                <!-- Service Tier Selection Dropdown -->
+                <div class="dropdown" id="tier-dropdown">
+                  <button class="dropdown-trigger" id="tier-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+                    <span class="dropdown-label" id="tier-label">Digital Enterprise</span>
+                    <span class="dropdown-arrow" id="tier-arrow">▼</span>
+                  </button>
+                  <div class="dropdown-menu" id="tier-dropdown-menu" role="menu" aria-hidden="true">
+                    
+                    <!-- Digital Customer Success Services Header -->
+                    <div class="dropdown-header">Digital Customer Success Services</div>
+                    
+                    <?php 
+                    // First, output Digital services
+                    foreach ($tier_options as $index => $tier) : 
+                      if ($tier['category'] === 'digital') :
+                    ?>
+                      <button class="dropdown-option<?php echo $tier['id'] === $default_tier ? ' selected' : ''; ?>" 
+                              type="button"
+                              data-tier="<?php echo esc_attr($tier['id']); ?>" 
+                              data-cost="<?php echo esc_attr($tier['cost']); ?>"
+                              data-hours="<?php echo esc_attr($tier['hours']); ?>"
+                              data-monthly="<?php echo esc_attr($tier['monthly']); ?>"
+                              data-category="<?php echo esc_attr($tier['category']); ?>"
+                              <?php if (isset($tier['is_multi_agent']) && $tier['is_multi_agent']) : ?>
+                              data-multi-agent="true"
+                              data-agent-count="<?php echo esc_attr($tier['agent_count']); ?>"
+                              <?php endif; ?>
+                              role="menuitem">
+                        <div class="option-content">
+                          <span class="option-name"><?php echo esc_html($tier['name']); ?></span>
+                          <span class="option-details"><?php echo esc_html($tier['hours']); ?> | <?php echo esc_html($tier['monthly']); ?></span>
+                        </div>
+                      </button>
+                    <?php 
+                      endif;
+                    endforeach; 
+                    ?>
+                    
+                    <!-- Call Centre Solutions Header -->
+                    <div class="dropdown-header">Call Centre Solutions</div>
+                    
+                    <?php 
+                    // Then, output Call Centre services
+                    foreach ($tier_options as $index => $tier) : 
+                      if ($tier['category'] === 'callcentre') :
+                    ?>
+                      <button class="dropdown-option<?php echo $tier['id'] === $default_tier ? ' selected' : ''; ?>" 
+                              type="button"
+                              data-tier="<?php echo esc_attr($tier['id']); ?>" 
+                              data-cost="<?php echo esc_attr($tier['cost']); ?>"
+                              data-hours="<?php echo esc_attr($tier['hours']); ?>"
+                              data-monthly="<?php echo esc_attr($tier['monthly']); ?>"
+                              data-category="<?php echo esc_attr($tier['category']); ?>"
+                              <?php if (isset($tier['is_multi_agent']) && $tier['is_multi_agent']) : ?>
+                              data-multi-agent="true"
+                              data-agent-count="<?php echo esc_attr($tier['agent_count']); ?>"
+                              <?php endif; ?>
+                              role="menuitem">
+                        <div class="option-content">
+                          <span class="option-name"><?php echo esc_html($tier['name']); ?></span>
+                          <span class="option-details"><?php echo esc_html($tier['hours']); ?> | <?php echo esc_html($tier['monthly']); ?></span>
+                        </div>
+                      </button>
+                    <?php 
+                      endif;
+                    endforeach; 
+                    ?>
+                    
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <!-- Cost Summary Area -->
-            <div class="aetherbloom-right">
-              <div class="breakdown-item">
-                <span class="breakdown-label">Service fee</span>
-                <span class="breakdown-value" id="aetherbloom-service-fee">£8,760</span>
-              </div>
-              <div class="breakdown-item total-breakdown">
-                <span class="breakdown-label">Total annual cost</span>
-                <span class="breakdown-value total-cost" id="aetherbloom-total-cost">£8,760</span>
               </div>
               
-              <!-- Savings Summary -->
-              <div class="savings-summary">
-                <div class="savings-item">
-                  <span class="savings-label">Annual savings</span>
-                  <span class="savings-value" id="savings-amount">£31,244</span>
+              <!-- Cost Summary Area -->
+              <div class="aetherbloom-right">
+                <div class="breakdown-item service-fee-item">
+                  <span class="breakdown-label">Service fee</span>
+                  <span class="breakdown-value" id="aetherbloom-service-fee">£8,760</span>
                 </div>
-                <div class="percentage-savings">
-                  <span class="percentage-value" id="savings-percentage">78%</span>
-                  <span class="percentage-label">cost reduction</span>
+                <div class="spacing-element"></div>
+                <div class="breakdown-item total-breakdown total-annual-cost-item">
+                  <span class="breakdown-label">Total annual cost</span>
+                  <span class="breakdown-value total-cost" id="aetherbloom-total-cost">£8,760</span>
+                </div>
+                <div class="breakdown-item total-breakdown">
+                  <span class="breakdown-label">Annual savings</span>
+                  <span class="breakdown-value savings-value-highlight" id="savings-amount">£31,244</span>
+                </div>
+                <div class="breakdown-item total-breakdown">
+                  <span class="breakdown-label">Cost reduction</span>
+                  <span class="breakdown-value savings-value-highlight" id="savings-percentage">78%</span>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>

@@ -20,14 +20,23 @@
   display: flex;
   align-items: center;
   padding-top: 5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /* Updated padding to align with navbar content */
+  padding-left: calc(50vw - 700px + 2rem);
+  padding-right: calc(50vw - 700px + 2rem);
+}
+
+/* Ensure proper alignment on smaller screens */
+@media (max-width: 1400px) {
+  .hero-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .hero-text {
   max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -128,8 +137,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem 2rem;
-  background: rgba(216, 78, 40, 0.2);
-  border: 2px solid #D84E28;
+  background: rgba(216, 78, 40, 0.25);
+  border: 1px solid #D84E28;
   color: #ffffff;
   text-decoration: none;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -140,16 +149,17 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(216, 78, 40, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 147, 64, 0.3);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .learn-more-btn:hover {
-  background: rgba(216, 78, 40, 0.3);
-  border-color: #ff9340;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #D84E28;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(216, 78, 40, 0.4);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+  text-shadow: none;
 }
 
 .hero-pricing-btn {
@@ -157,8 +167,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem 2rem;
-  background: rgba(76, 175, 80, 0.2);
-  border: 2px solid #4CAF50;
+  background: rgba(26, 95, 71, 0.25);
+  border: 2px solid #1a5f47;
   color: #ffffff;
   text-decoration: none;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -169,16 +179,17 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 4px 20px rgba(26, 95, 71, 0.3);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .hero-pricing-btn:hover {
-  background: rgba(76, 175, 80, 0.3);
-  border-color: #66BB6A;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #1a5f47;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+  text-shadow: none;
 }
 
 /* Responsive Design */

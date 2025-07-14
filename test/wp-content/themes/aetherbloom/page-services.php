@@ -24,23 +24,14 @@ get_header(); ?>
             
             <!-- Hero Section - Full width background with overlay text -->
             <section class="services-hero">
-                <div class="hero-background"></div>
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h1 class="hero-title">Aetherbloom Business Support Services</h1>
-                    <p class="hero-subtitle">Scalable, Ethical Outsourcing for UK Businesses</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">40%+</span>
-                            <span class="stat-label">Cost Reduction</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Support Available</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">7</span>
-                            <span class="stat-label">Days Setup</span>
+                <div class="hero-overlay">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title"><?php esc_html_e('Aetherbloom Business Support Services', 'aetherbloom'); ?></h1>
+                            <h2 class="hero-subtitle"><?php esc_html_e('Scalable, Ethical Outsourcing for UK Businesses', 'aetherbloom'); ?></h2>
+                            <div class="hero-description">
+                                <p><?php esc_html_e('We provide comprehensive business support services, connecting UK businesses with highly skilled professionals in South Africa to deliver agile, high-quality, and ethically driven outsourcing solutions.', 'aetherbloom'); ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -194,36 +185,95 @@ get_header(); ?>
             </section>
 
             <!-- Call Centre Solutions Section -->
-            <section class="call-centre-section">
+            <section class="digital-services-section">
                 <div class="container">
                     <div class="section-header">
                         <h2><strong>Call Centre Solutions</strong></h2>
-                        <p>Professional phone support with UK-trained agents</p>
+                        <p>Voice-first support for businesses needing inbound, outbound, <br/>and sales-focused customer engagement.</p>
                     </div>
                     
-                    <div class="call-centre-grid">
-                        <div class="call-centre-card">
-                            <h3>Inbound Support</h3>
-                            <ul>
-                                <li>Customer enquiries</li>
-                                <li>Technical support</li>
-                                <li>Order assistance</li>
-                                <li>UK phone numbers</li>
-                            </ul>
-                            <div class="pricing">From £15/hour</div>
-                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="call-centre-cta">Learn More</a>
+                    <div class="services-grid">
+                        <!-- Reception Tier -->
+                        <div class="service-tier essentials-tier">
+                            <div class="tier-header">
+                                <h3 class="tier-name">Reception <br/>Tier</h3>
+                                <div class="tier-pricing">
+                                    <span class="price">£12/hr</span>
+                                    <span class="period">20hrs/month</span>
+                                </div>
+                                <p class="tier-ideal">Ideal for: Small businesses needing a friendly voice on the line</p>
+                            </div>
+                            
+                            <div class="tier-features">
+                                <div class="feature-group">
+                                    <h4>Inbound Call Handling</h4>
+                                    <ul>
+                                        <li>Call answering & routing</li>
+                                        <li>CRM updates & call logging</li>
+                                        <li>Appointment scheduling</li>
+                                        <li>Standard FAQs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                            </div>
                         </div>
                         
-                        <div class="call-centre-card">
-                            <h3>Outbound Campaigns</h3>
-                            <ul>
-                                <li>Lead generation</li>
-                                <li>Customer surveys</li>
-                                <li>Appointment booking</li>
-                                <li>Follow-up calls</li>
-                            </ul>
-                            <div class="pricing">From £15/hour</div>
-                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="call-centre-cta">Learn More</a>
+                        <!-- Engagement Tier -->
+                        <div class="service-tier growth-tier">
+                            <div class="tier-header">
+                                <h3 class="tier-name">Engagement <br/>Tier</h3>
+                                <div class="tier-pricing">
+                                    <span class="price">£1,600</span>
+                                    <span class="period">40hrs/week</span>
+                                </div>
+                                <p class="tier-ideal">Ideal for: Medium-sized businesses ready for full-time call coverage</p>
+                            </div>
+                            
+                            <div class="tier-features">
+                                <div class="feature-group">
+                                    <h4>All Reception features</h4>
+                                    <ul>
+                                        <li>Outbound follow-ups & courtesy calls</li>
+                                        <li>Upselling (optional commission model)</li>
+                                        <li>Basic complaint handling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Sales Accelerator Tier -->
+                        <div class="service-tier scale-tier">
+                            <div class="tier-header">
+                                <h3 class="tier-name">Sales Accelerator Tier</h3>
+                                <div class="tier-pricing">
+                                    <span class="price">£5,000</span>
+                                </div>
+                                <p class="period">3 agents with shift coverage</p>
+                                <p class="tier-ideal">Ideal for: Businesses focused on lead generation & sales growth</p>
+                            </div>
+                            
+                            <div class="tier-features">
+                                <div class="feature-group">
+                                    <h4>All Engagement features</h4>
+                                    <ul>
+                                        <li>Cold calling & lead qualification</li>
+                                        <li>Custom scripts & campaign management</li>
+                                        <li>Live dashboards & call QA</li>
+                                        <li>Priority escalation management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="tier-cta">
+                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,7 +333,7 @@ get_header(); ?>
                 <div class="container">
                     <div class="section-header">
                         <h2><strong>Add-On Services</strong> (From £8/hour)</h2>
-                        <p>Specialist support to scale your operations, bespoke packages available upon request.</p>
+                        <p>Specialist support to scale your operations, <br/>bespoke packages available upon request.</p>
                     </div>
                     
                     <div class="addon-grid">
@@ -310,7 +360,7 @@ get_header(); ?>
                                     <path d="M10 9H8" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <h4>Virtual Admin</h4>
+                            <h4>Virtual Administration</h4>
                             <p>Diary management, inbox organisation, and task coordination</p>
                         </div>
                         
@@ -333,8 +383,8 @@ get_header(); ?>
                                     <path d="M9 21V9" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <h4>Data Analysis</h4>
-                            <p>Custom reporting, insights generation, and business intelligence</p>
+                            <h4>Custom reporting & insights</h4>
+                            <p>We also build PowerApps to help automate your workflow using Microsoft 365</p>
                         </div>
                         
                         <div class="addon-card">
