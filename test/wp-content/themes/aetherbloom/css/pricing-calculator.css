@@ -61,7 +61,8 @@
 
 /* COMPARISON GRID - IMPROVED LAYOUT */
 .comparison-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 2rem;
   padding: 0 3rem;
   align-items: stretch;
@@ -69,7 +70,6 @@
 }
 
 .uk-section {
-  flex: 1;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 2.5rem;
@@ -90,7 +90,6 @@
 }
 
 .aetherbloom-section {
-  flex: 1;
 }
 
 .aetherbloom-card {
@@ -158,11 +157,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 1rem 6rem; /* Row gap, column gap */
+  overflow: hidden; /* Hide overflowing content */
 }
 
 .uk-right.two-column-grid .breakdown-item {
   border-bottom: none; /* Remove individual item borders */
   padding: 0; /* Remove individual item padding */
+  min-width: 0; /* Allow items to shrink */
 }
 
 /* Adjust total breakdown item to span two columns */
@@ -450,8 +451,9 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
-  flex: 1;
+  flex: 1 1 0%; /* Allow it to grow, shrink, and have a base of 0 */
   text-align: left;
+  word-break: break-word;
 }
 
 .breakdown-value {
@@ -460,7 +462,7 @@
   font-weight: 600;
   color: #ffffff;
   text-align: right;
-  flex-shrink: 0;
+  flex-shrink: 1; /* Allow it to shrink */
 }
 
 .total-breakdown {
