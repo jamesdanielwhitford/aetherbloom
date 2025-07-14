@@ -48,8 +48,8 @@ get_header(); ?>
                         <div class="mission-card uk-business">
                             <div class="mission-icon">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#39564F" stroke-width="2"/>
+                                    <path d="M9 22V12H15V22" stroke="#39564F" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('For UK Businesses:', 'aetherbloom'); ?></h3>
@@ -59,8 +59,8 @@ get_header(); ?>
                         <div class="mission-card south-africa">
                             <div class="mission-icon">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#39564F" stroke-width="2"/>
+                                    <circle cx="12" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('For South Africa:', 'aetherbloom'); ?></h3>
@@ -119,9 +119,9 @@ get_header(); ?>
                             <div class="cost-item">
                                 <div class="cost-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 4H8C6.89543 4 6 4.89543 6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6C18 4.89543 17.1046 4 16 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 8H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 16V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 4H8C6.89543 4 6 4.89543 6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6C18 4.89543 17.1046 4 16 4Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 8H8" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 16V8" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                                 <p><?php esc_html_e('Talented graduates forced into informal work', 'aetherbloom'); ?></p>
@@ -129,10 +129,10 @@ get_header(); ?>
                             <div class="cost-item">
                                 <div class="cost-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 18C17 15.7909 15.2091 14 13 14H5C2.79086 14 1 15.7909 1 18V20H17V18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="9" cy="6" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M23 20V18C23 16.1362 21.7252 14.5701 20 14.126" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 4.12598C17.7252 4.56992 19 6.13616 19 8C19 9.86384 17.7252 11.4301 16 11.874" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M17 18C17 15.7909 15.2091 14 13 14H5C2.79086 14 1 15.7909 1 18V20H17V18Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="9" cy="6" r="4" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M23 20V18C23 16.1362 21.7252 14.5701 20 14.126" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 4.12598C17.7252 4.56992 19 6.13616 19 8C19 9.86384 17.7252 11.4301 16 11.874" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                                 <p><?php esc_html_e('Single mothers choosing between rent and school fees', 'aetherbloom'); ?></p>
@@ -140,7 +140,7 @@ get_header(); ?>
                             <div class="cost-item">
                                 <div class="cost-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                                 <p><?php esc_html_e('Young women with dreams but no pathways', 'aetherbloom'); ?></p>
@@ -165,9 +165,9 @@ get_header(); ?>
                             <div class="transformation-card">
                                 <div class="transformation-icon">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="10" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M12 17H12.01" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <h4><?php esc_html_e('Living wages that transform households', 'aetherbloom'); ?></h4>
@@ -177,8 +177,8 @@ get_header(); ?>
                             <div class="transformation-card">
                                 <div class="transformation-icon">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <h4><?php esc_html_e('Skills development for lifelong employability', 'aetherbloom'); ?></h4>
@@ -188,7 +188,7 @@ get_header(); ?>
                             <div class="transformation-card">
                                 <div class="transformation-icon">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <h4><?php esc_html_e('Confidence to reimagine what\'s possible', 'aetherbloom'); ?></h4>
@@ -284,7 +284,7 @@ get_header(); ?>
                         <div class="benefit-large csr-goals">
                             <div class="benefit-icon">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M22 12H18L15 21L9 3L6 12H2" stroke="#39564F" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('Meet CSR & ESG Goals', 'aetherbloom'); ?></h3>
@@ -331,10 +331,10 @@ get_header(); ?>
                         <div class="movement-card partner-business">
                             <div class="movement-icon">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
+                                    <circle cx="8.5" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
+                                    <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="#39564F" stroke-width="2"/>
+                                    <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('Partner Through Business', 'aetherbloom'); ?></h3>
@@ -363,9 +363,9 @@ get_header(); ?>
                             <div class="action-card donate-equipment">
                                 <div class="action-icon">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
-                                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
-                                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="#39564F" stroke-width="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21" stroke="#39564F" stroke-width="2"/>
+                                        <line x1="12" y1="17" x2="12" y2="21" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
@@ -378,10 +378,10 @@ get_header(); ?>
                             <div class="action-card partner-impact">
                                 <div class="action-icon">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
+                                        <circle cx="9" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M16 3.12598C17.7252 3.56992 19 6.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <h3><?php esc_html_e('Partner for Impact', 'aetherbloom'); ?></h3>

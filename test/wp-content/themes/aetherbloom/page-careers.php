@@ -171,7 +171,7 @@ get_header(); ?>
                         
                         <div class="contact-cta">
                             <button onclick="openScheduler()" class="btn btn-primary btn-large">
-                                <?php esc_html_e('Schedule a Career Chat', 'aetherbloom'); ?>
+                                <?php esc_html_e('Join Our Talent Pool', 'aetherbloom'); ?>
                             </button>
                             <p class="cta-note"><?php esc_html_e('Book a 15-minute call to discuss opportunities and learn more about our team', 'aetherbloom'); ?></p>
                         </div>

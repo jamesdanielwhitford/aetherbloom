@@ -836,9 +836,33 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.method-link:hover {
+  .method-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; /* Set a fixed width for consistency */
+  height: 56px; /* Set a fixed height for consistency */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.social-link svg {
+  width: 28px; /* Slightly larger icons */
+  height: 28px; /* Slightly larger icons */
 }
 
 /* ===========================================

@@ -24,23 +24,14 @@ get_header(); ?>
             
             <!-- Hero Section - Full width background with overlay text -->
             <section class="services-hero">
-                <div class="hero-background"></div>
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h1 class="hero-title">Aetherbloom Business Support Services</h1>
-                    <p class="hero-subtitle">Scalable, Ethical Outsourcing for UK Businesses</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">40%+</span>
-                            <span class="stat-label">Cost Reduction</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Support Available</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">7</span>
-                            <span class="stat-label">Days Setup</span>
+                <div class="hero-overlay">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title"><?php esc_html_e('Aetherbloom Business Support Services', 'aetherbloom'); ?></h1>
+                            <h2 class="hero-subtitle"><?php esc_html_e('Scalable, Ethical Outsourcing for UK Businesses', 'aetherbloom'); ?></h2>
+                            <div class="hero-description">
+                                <p><?php esc_html_e('We provide comprehensive business support services, connecting UK businesses with highly skilled professionals in South Africa to deliver agile, high-quality, and ethically driven outsourcing solutions.', 'aetherbloom'); ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
