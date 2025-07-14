@@ -327,68 +327,70 @@ get_header(); ?>
                         <p><?php esc_html_e('How You Can Be Part of This Story', 'aetherbloom'); ?></p>
                     </div>
                     
-                    <div class="movement-options">
-                        <div class="movement-card partner-business">
-                            <div class="movement-icon">
-                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
-                                    <circle cx="8.5" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
-                                    <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="#39564F" stroke-width="2"/>
-                                    <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <h3><?php esc_html_e('Partner Through Business', 'aetherbloom'); ?></h3>
-                            <div class="partnership-flow">
-                                <div class="flow-item">
-                                    <span class="flow-text"><?php esc_html_e('Outsource tasks', 'aetherbloom'); ?></span>
-                                    <span class="flow-arrow">→</span>
-                                    <span class="flow-result"><?php esc_html_e('Create stable jobs', 'aetherbloom'); ?></span>
+                    <div class="movement-layout">
+                        <div class="action-section">
+                            <div class="action-grid">
+                                <div class="action-card donate-equipment">
+                                    <div class="action-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="#39564F" stroke-width="2"/>
+                                            <line x1="8" y1="21" x2="16" y2="21" stroke="#39564F" stroke-width="2"/>
+                                            <line x1="12" y1="17" x2="12" y2="21" stroke="#39564F" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
+                                    <p><?php esc_html_e('Get a tax receipt + sustainability certificate.', 'aetherbloom'); ?></p>
+                                    <a href="mailto:partnerships@aetherbloom.co.uk" class="action-cta primary">
+                                        <?php esc_html_e('Email Della to Donate Equipment', 'aetherbloom'); ?>
+                                    </a>
                                 </div>
-                                <div class="flow-item">
-                                    <span class="flow-text"><?php esc_html_e('Hire our team', 'aetherbloom'); ?></span>
-                                    <span class="flow-arrow">→</span>
-                                    <span class="flow-result"><?php esc_html_e('Fund training programs', 'aetherbloom'); ?></span>
-                                </div>
-                                <div class="flow-item">
-                                    <span class="flow-text"><?php esc_html_e('Scale with us', 'aetherbloom'); ?></span>
-                                    <span class="flow-arrow">→</span>
-                                    <span class="flow-result"><?php esc_html_e('Expand our impact together', 'aetherbloom'); ?></span>
+                                
+                                <div class="action-card partner-impact">
+                                    <div class="action-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
+                                            <circle cx="9" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
+                                            <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="#39564F" stroke-width="2"/>
+                                            <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
+                                    </svg>
+                                    </div>
+                                    <h3><?php esc_html_e('Partner for Impact', 'aetherbloom'); ?></h3>
+                                    <p><?php esc_html_e('Co-branded CSR initiatives', 'aetherbloom'); ?></p>
+                                    <a href="mailto:partnerships@aetherbloom.co.za" class="action-cta secondary">
+                                        <?php esc_html_e('Partner with Grace on CSR Strategy', 'aetherbloom'); ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="action-section">
-                        <div class="action-grid">
-                            <div class="action-card donate-equipment">
-                                <div class="action-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="#39564F" stroke-width="2"/>
-                                        <line x1="8" y1="21" x2="16" y2="21" stroke="#39564F" stroke-width="2"/>
-                                        <line x1="12" y1="17" x2="12" y2="21" stroke="#39564F" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
-                                <p><?php esc_html_e('Get a tax receipt + sustainability certificate.', 'aetherbloom'); ?></p>
-                                <a href="mailto:partnerships@aetherbloom.co.uk" class="action-cta primary">
-                                    <?php esc_html_e('Email Della to Donate Equipment', 'aetherbloom'); ?>
-                                </a>
-                            </div>
-                            
-                            <div class="action-card partner-impact">
-                                <div class="action-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
-                                        <circle cx="9" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
+
+                        <div class="movement-options">
+                            <div class="movement-card partner-business">
+                                <div class="movement-icon">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="#39564F" stroke-width="2"/>
+                                        <circle cx="8.5" cy="7" r="4" stroke="#39564F" stroke-width="2"/>
                                         <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="#39564F" stroke-width="2"/>
-                                        <path d="M16 3.12598C17.7252 3.56992 19 6.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
+                                        <path d="M16 3.12598C17.7252 3.56992 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="#39564F" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <h3><?php esc_html_e('Partner for Impact', 'aetherbloom'); ?></h3>
-                                <p><?php esc_html_e('Co-branded CSR initiatives', 'aetherbloom'); ?></p>
-                                <a href="mailto:partnerships@aetherbloom.co.za" class="action-cta secondary">
-                                    <?php esc_html_e('Partner with Grace on CSR Strategy', 'aetherbloom'); ?>
-                                </a>
+                                <h3><?php esc_html_e('Partner Through Business', 'aetherbloom'); ?></h3>
+                                <div class="partnership-flow">
+                                    <div class="flow-item">
+                                        <span class="flow-text"><?php esc_html_e('Outsource tasks', 'aetherbloom'); ?></span>
+                                        <span class="flow-arrow">→</span>
+                                        <span class="flow-result"><?php esc_html_e('Create stable jobs', 'aetherbloom'); ?></span>
+                                    </div>
+                                    <div class="flow-item">
+                                        <span class="flow-text"><?php esc_html_e('Hire our team', 'aetherbloom'); ?></span>
+                                        <span class="flow-arrow">→</span>
+                                        <span class="flow-result"><?php esc_html_e('Fund training programs', 'aetherbloom'); ?></span>
+                                    </div>
+                                    <div class="flow-item">
+                                        <span class="flow-text"><?php esc_html_e('Scale with us', 'aetherbloom'); ?></span>
+                                        <span class="flow-arrow">→</span>
+                                        <span class="flow-result"><?php esc_html_e('Expand our impact together', 'aetherbloom'); ?></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
