@@ -855,6 +855,7 @@
 }
 
 .social-link:hover {
+  background: white;
 }
 
 .social-link svg {
