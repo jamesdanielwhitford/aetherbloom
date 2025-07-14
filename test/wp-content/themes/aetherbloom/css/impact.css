@@ -241,7 +241,7 @@
 .mission-quote p {
   font-size: 2rem;
   font-weight: 300;
-  color: var(--brand-color-light);
+  color: var(--text-white);
   font-style: italic;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   margin: 0;
@@ -531,7 +531,7 @@
 
 .program-highlight p {
   font-style: italic;
-  color: var(--brand-color-light);
+  color: var(--text-white);
   margin: 0;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -606,7 +606,7 @@
 .metric-highlight {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--brand-color-light);
+  color: var(--text-white);
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -692,6 +692,36 @@
   background: linear-gradient(135deg, rgba(57, 86, 79, 0.05), rgba(57, 86, 79, 0.03));
 }
 
+.movement-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Two smaller cards on left, one large on right */
+  gap: 3rem;
+  align-items: stretch; /* Make children stretch to fill height */
+}
+
+.action-section {
+  display: flex; /* Make action-section a flex container */
+  flex-direction: column; /* Stack children vertically */
+  gap: 3rem; /* Gap between the two action cards */
+  flex: 1; /* Allow action-section to grow and fill available space within the grid cell */
+}
+
+.action-grid {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow action-grid to grow and fill available space within action-section */
+}
+
+.action-card {
+  flex: 1; /* Make individual action cards grow and shrink equally to fill action-grid */
+}
+
+.movement-options {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 .movement-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
@@ -757,12 +787,12 @@
 }
 
 .action-section {
-  margin-top: 4rem;
+  /* No margin-top needed here as it's part of the grid */
 }
 
 .action-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
 }
 
@@ -835,6 +865,18 @@
 .action-cta.secondary:hover {
   transform: translateY(-3px);
   box-shadow: 0 20px 40px rgba(57, 86, 79, 0.6);
+}
+
+@media (max-width: 1024px) {
+  .movement-layout {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .action-grid {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
 }
 
 /* Trust Certifications Section */
