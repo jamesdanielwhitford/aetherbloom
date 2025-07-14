@@ -25,15 +25,17 @@ get_header(); ?>
             <!-- Hero Section -->
             <section class="careers-hero">
                 <div class="hero-background">
-                    <div class="hero-overlay"></div>
+                    <div class="hero-background-overlay"></div>
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/careers-hero-bg.png'); ?>" alt="Join our team" class="hero-bg-image">
                 </div>
-                <div class="hero-content">
+                <div class="hero-overlay">
                     <div class="container">
-                        <h1 class="hero-title"><?php esc_html_e('Join Aetherbloom', 'aetherbloom'); ?></h1>
-                        <p class="hero-subtitle"><?php esc_html_e('Where Talent Meets Global Opportunity', 'aetherbloom'); ?></p>
-                        <div class="hero-description">
-                            <p><?php esc_html_e('Build your career with us and make a real impact while serving UK clients from South Africa', 'aetherbloom'); ?></p>
+                        <div class="hero-content">
+                            <h1 class="hero-title"><?php esc_html_e('Join Aetherbloom', 'aetherbloom'); ?></h1>
+                            <p class="hero-subtitle"><?php esc_html_e('Where Talent Meets Global Opportunity', 'aetherbloom'); ?></p>
+                            <div class="hero-description">
+                                <p><?php esc_html_e('Build your career with us and make a real impact while serving UK clients from South Africa', 'aetherbloom'); ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
