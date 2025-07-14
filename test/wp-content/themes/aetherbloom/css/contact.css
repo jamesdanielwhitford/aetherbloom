@@ -841,12 +841,17 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Add spacing between social media buttons */
+}
+
 .social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px; /* Set a fixed width for consistency */
-  height: 56px; /* Set a fixed height for consistency */
+  width: 56px; /* Set a fixed width for consistency */  height: 56px; /* Set a fixed height for consistency */
   background: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
