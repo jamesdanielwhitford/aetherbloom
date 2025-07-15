@@ -587,7 +587,7 @@
                 
                 // Redirect to calendar after 2 seconds
                 setTimeout(() => {
-                    window.location.href = HUBSPOT_CONFIG.calendarUrl;
+                    window.open(HUBSPOT_CONFIG.calendarUrl, '_blank');
                 }, 2000);
                 
                 // Reset form after a delay
@@ -620,7 +620,7 @@
                     { name: "lastname", value: formData.lastname },
                     { name: "email", value: formData.email },
                     { name: "phone", value: formData.phone || "" },
-                    { name: "primary_service", value: formData.primary_service || "" },
+                    { name: "primary_service__select_one_", value: formData.primary_service || "" },
                     { name: "addon_services", value: formData.addon_services.join(", ") }
                 ],
                 context: {
