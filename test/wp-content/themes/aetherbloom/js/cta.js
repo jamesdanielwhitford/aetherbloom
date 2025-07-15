@@ -19,7 +19,9 @@
         },
         isSubmitting: false,
         ajaxUrl: '',
+        restUrl: '',
         nonce: '',
+        restNonce: '',
         currentStep: 1,
         totalSteps: 3
     };
@@ -55,9 +57,17 @@
     // Initialize CTA functionality
     function initCTA() {
         // Get data from PHP if available
-        if (window.aetherbloomCTAData) {
+        if (typeof window.aetherbloomCTAData !== 'undefined') {
             ctaData.ajaxUrl = window.aetherbloomCTAData.ajaxUrl;
+            ctaData.restUrl = window.aetherbloomCTAData.restUrl || '';
             ctaData.nonce = window.aetherbloomCTAData.nonce;
+            ctaData.restNonce = window.aetherbloomCTAData.restNonce || '';
+        } else {
+            console.warn('aetherbloomCTAData not found. Please ensure wp_localize_script is properly configured.');
+            // Fallback to WordPress AJAX URL if available
+            if (typeof ajaxurl !== 'undefined') {
+                ctaData.ajaxUrl = ajaxurl;
+            }
         }
         
         // Cache DOM elements
@@ -79,6 +89,10 @@
         
         // Initialize form validation
         initFormValidation();
+        
+        // Handle accessibility and performance
+        handleReducedMotion();
+        handleMobileOptimization();
     }
     
     // Cache all DOM elements
@@ -461,7 +475,9 @@
         const primaryServiceInput = ctaElements.formInputs.primary_service;
         
         if (!primaryServiceInput || !primaryServiceInput.value.trim()) {
-            primaryServiceInput.style.borderColor = '#ff6b6b';
+            if (primaryServiceInput) {
+                primaryServiceInput.style.borderColor = '#ff6b6b';
+            }
             showFormError('Please select a primary service.');
             return false;
         } else {
@@ -485,8 +501,8 @@
         });
     }
     
-    // Handle form submission
-    function handleFormSubmit(e) {
+    // Handle form submission with WordPress integration
+    async function handleFormSubmit(e) {
         e.preventDefault();
         
         if (ctaData.isSubmitting) return;
@@ -497,91 +513,138 @@
             return;
         }
         
+        // Validate all required data
+        const validation = validateFormData(ctaData.formData);
+        if (!validation.isValid) {
+            showFormError(validation.errors.join(' '));
+            return;
+        }
+        
         // Start submission
         ctaData.isSubmitting = true;
         updateSubmitButton(true);
         hideFormMessages();
         showLoading();
         
-        // Prepare data for HubSpot
-        const hubspotData = {
-            "fields": [
-                {
-                    "name": "company",
-                    "value": ctaData.formData.company || ''
-                },
-                {
-                    "name": "firstname", 
-                    "value": ctaData.formData.firstname || ''
-                },
-                {
-                    "name": "lastname",
-                    "value": ctaData.formData.lastname || ''
-                },
-                {
-                    "name": "email",
-                    "value": ctaData.formData.email || ''
-                },
-                {
-                    "name": "phone",
-                    "value": ctaData.formData.phone || ''
-                },
-                {
-                    "name": "primary_service",
-                    "value": ctaData.formData.primary_service || ''
-                },
-                {
-                    "name": "addon_services",
-                    "value": ctaData.formData.addon_services.join('; ')
-                }
-            ],
-            "context": {
-                "pageUri": window.location.href,
-                "pageName": document.title,
-                "pageId": "cta-form"
+        try {
+            // Try REST API first (modern approach)
+            let result;
+            if (ctaData.restUrl && ctaData.restNonce) {
+                result = await submitViaRestAPI(ctaData.formData);
+            } else {
+                // Fallback to AJAX
+                result = await submitViaAjax(ctaData.formData);
             }
-        };
+            
+            if (result.success) {
+                showFormSuccess(result.message || 'Thank you! We\'ll be in touch within 24 hours.');
+                
+                // Redirect to calendar after 2 seconds
+                setTimeout(() => {
+                    // Replace with your actual calendar booking URL
+                    const calendlyUrl = 'https://meetings.hubspot.com/your-calendar-link';
+                    window.location.href = calendlyUrl;
+                }, 2000);
+                
+                // Reset form after a delay
+                setTimeout(() => {
+                    resetForm();
+                }, 3000);
+                
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
+            
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showFormError('Something went wrong. Please try again or contact us directly.');
+        }
         
-        // Your HubSpot details
-        const portalId = "145903429";
-        const formId = "d38ffeaa-6505-4879-ac11-27619fdbb1d0";
-        
-        // HubSpot API endpoint
-        const apiUrl = `https://api.hubapi.com/submissions/v3/integration/submit/${portalId}/${formId}`;
-        
-        // Submit to HubSpot
-        fetch(apiUrl, {
+        ctaData.isSubmitting = false;
+        updateSubmitButton(false);
+        hideLoading();
+    }
+    
+    // Submit via REST API (modern approach)
+    async function submitViaRestAPI(formData) {
+        const response = await fetch(ctaData.restUrl + 'contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-WP-Nonce': ctaData.restNonce
             },
-            body: JSON.stringify(hubspotData)
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok');
-        })
-        .then(data => {
-            console.log('HubSpot submission success:', data);
-            showFormSuccess();
-            
-            // Redirect to calendar after 2 seconds
-            setTimeout(() => {
-                // Replace with your actual calendar booking URL
-                window.location.href = 'https://meetings.hubspot.com/your-calendar-link';
-            }, 2000);
-        })
-        .catch(error => {
-            console.error('HubSpot submission error:', error);
-            showFormError('Something went wrong. Please try again.');
-        })
-        .finally(() => {
-            ctaData.isSubmitting = false;
-            updateSubmitButton(false);
-            hideLoading();
+            body: JSON.stringify(formData)
         });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Network error');
+        }
+        
+        return await response.json();
+    }
+    
+    // Submit via AJAX (fallback)
+    async function submitViaAjax(formData) {
+        const body = new FormData();
+        body.append('action', 'aetherbloom_contact_form');
+        body.append('nonce', ctaData.nonce);
+        
+        // Append form data
+        Object.keys(formData).forEach(key => {
+            if (Array.isArray(formData[key])) {
+                formData[key].forEach(value => {
+                    body.append(key + '[]', value);
+                });
+            } else {
+                body.append(key, formData[key]);
+            }
+        });
+        
+        const response = await fetch(ctaData.ajaxUrl, {
+            method: 'POST',
+            body: body
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network error');
+        }
+        
+        return await response.json();
+    }
+    
+    // Validate form data
+    function validateFormData(data) {
+        const errors = [];
+        
+        if (!data.company.trim()) {
+            errors.push('Company name is required.');
+        }
+        
+        if (!data.firstname.trim()) {
+            errors.push('First name is required.');
+        }
+        
+        if (!data.lastname.trim()) {
+            errors.push('Last name is required.');
+        }
+        
+        if (!data.email.trim()) {
+            errors.push('Email address is required.');
+        } else if (!isValidEmail(data.email)) {
+            errors.push('Please enter a valid email address.');
+        }
+        
+        return {
+            isValid: errors.length === 0,
+            errors: errors
+        };
+    }
+    
+    // Email validation
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
     
     // Update submit button state
@@ -620,24 +683,34 @@
     }
     
     // Show form success message
-    function showFormSuccess() {
+    function showFormSuccess(message) {
+        hideFormMessages();
         if (ctaElements.formSuccess) {
             ctaElements.formSuccess.style.display = 'block';
-            if (ctaElements.formError) {
-                ctaElements.formError.style.display = 'none';
+            const messageElement = ctaElements.formSuccess.querySelector('p');
+            if (messageElement) {
+                messageElement.textContent = message;
             }
         }
     }
     
     // Show form error message
     function showFormError(message) {
+        hideFormMessages();
         if (ctaElements.formError) {
             ctaElements.formError.style.display = 'block';
-            ctaElements.formError.textContent = message;
-            if (ctaElements.formSuccess) {
-                ctaElements.formSuccess.style.display = 'none';
+            const messageElement = ctaElements.formError.querySelector('p');
+            if (messageElement) {
+                messageElement.textContent = message;
+            } else {
+                ctaElements.formError.textContent = message;
             }
         }
+        
+        // Auto-hide error after 8 seconds
+        setTimeout(() => {
+            hideFormMessages();
+        }, 8000);
     }
     
     // Hide form messages
@@ -667,6 +740,16 @@
         
         // Reset to first step
         showStep(1);
+        
+        // Clear any validation styling
+        Object.keys(ctaElements.formInputs).forEach(key => {
+            const input = ctaElements.formInputs[key];
+            if (input && key !== 'addon_services') {
+                input.style.borderColor = '';
+            }
+        });
+        
+        hideFormMessages();
     }
     
     // Cleanup function
@@ -712,7 +795,11 @@
     
     // Handle reduced motion changes
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    reducedMotionQuery.addListener(handleReducedMotion);
+    if (reducedMotionQuery.addListener) {
+        reducedMotionQuery.addListener(handleReducedMotion);
+    } else {
+        reducedMotionQuery.addEventListener('change', handleReducedMotion);
+    }
     handleReducedMotion(); // Initial check
     
     // Initial mobile check
@@ -729,7 +816,9 @@
         previousStep: previousStep,
         showStep: showStep,
         resetForm: resetForm,
-        getCurrentStep: () => ctaData.currentStep
+        getCurrentStep: () => ctaData.currentStep,
+        getFormData: () => ctaData.formData,
+        validateCurrentStep: validateCurrentStep
     };
     
 })();

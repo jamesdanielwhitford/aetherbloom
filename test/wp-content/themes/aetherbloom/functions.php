@@ -800,3 +800,300 @@ function aetherbloom_version_body_class($classes) {
     return $classes;
 }
 add_filter('body_class', 'aetherbloom_version_body_class');
+
+// Add this to your theme's functions.php file
+
+/**
+ * Enqueue scripts and localize AJAX data
+ */
+function aetherbloom_enqueue_form_scripts() {
+    wp_enqueue_script(
+        'aetherbloom-cta',
+        get_template_directory_uri() . '/js/cta.js',
+        array(),
+        '1.0.0',
+        true
+    );
+    
+    // Localize AJAX data for the frontend
+    wp_localize_script('aetherbloom-cta', 'aetherbloomCTAData', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('aetherbloom_cta_nonce'),
+        'restUrl' => rest_url('aetherbloom/v1/'),
+        'restNonce' => wp_create_nonce('wp_rest')
+    ));
+}
+add_action('wp_enqueue_scripts', 'aetherbloom_enqueue_form_scripts');
+
+/**
+ * AJAX Handler for Contact Form (Legacy approach)
+ */
+add_action('wp_ajax_aetherbloom_contact_form', 'aetherbloom_handle_contact_form');
+add_action('wp_ajax_nopriv_aetherbloom_contact_form', 'aetherbloom_handle_contact_form');
+
+function aetherbloom_handle_contact_form() {
+    // Security check
+    if (!wp_verify_nonce($_POST['nonce'] ?? '', 'aetherbloom_cta_nonce')) {
+        wp_send_json_error('Security verification failed.');
+    }
+    
+    // Sanitize and validate input
+    $form_data = array(
+        'company' => sanitize_text_field($_POST['company'] ?? ''),
+        'firstname' => sanitize_text_field($_POST['firstname'] ?? ''),
+        'lastname' => sanitize_text_field($_POST['lastname'] ?? ''),
+        'email' => sanitize_email($_POST['email'] ?? ''),
+        'phone' => sanitize_text_field($_POST['phone'] ?? ''),
+        'primary_service' => sanitize_text_field($_POST['primary_service'] ?? ''),
+        'addon_services' => array_map('sanitize_text_field', $_POST['addon_services'] ?? array())
+    );
+    
+    // Validate required fields
+    $errors = array();
+    
+    if (empty($form_data['company'])) {
+        $errors[] = 'Company name is required.';
+    }
+    
+    if (empty($form_data['firstname'])) {
+        $errors[] = 'First name is required.';
+    }
+    
+    if (empty($form_data['email']) || !is_email($form_data['email'])) {
+        $errors[] = 'Valid email address is required.';
+    }
+    
+    if (!empty($errors)) {
+        wp_send_json_error(implode(' ', $errors));
+    }
+    
+    // Process the form (save to database, send email, etc.)
+    $result = aetherbloom_process_contact_submission($form_data);
+    
+    if ($result) {
+        wp_send_json_success('Thank you! Your message has been sent successfully.');
+    } else {
+        wp_send_json_error('There was an error processing your request. Please try again.');
+    }
+}
+
+/**
+ * REST API Handler (Modern approach - recommended)
+ */
+add_action('rest_api_init', 'aetherbloom_register_contact_endpoint');
+
+function aetherbloom_register_contact_endpoint() {
+    register_rest_route('aetherbloom/v1', '/contact', array(
+        'methods' => 'POST',
+        'callback' => 'aetherbloom_handle_contact_rest',
+        'permission_callback' => '__return_true',
+        'args' => array(
+            'company' => array(
+                'required' => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'validate_callback' => function($param) {
+                    return !empty($param);
+                }
+            ),
+            'firstname' => array(
+                'required' => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'validate_callback' => function($param) {
+                    return !empty($param);
+                }
+            ),
+            'lastname' => array(
+                'required' => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'validate_callback' => function($param) {
+                    return !empty($param);
+                }
+            ),
+            'email' => array(
+                'required' => true,
+                'sanitize_callback' => 'sanitize_email',
+                'validate_callback' => function($param) {
+                    return is_email($param);
+                }
+            ),
+            'phone' => array(
+                'sanitize_callback' => 'sanitize_text_field'
+            ),
+            'primary_service' => array(
+                'sanitize_callback' => 'sanitize_text_field'
+            ),
+            'addon_services' => array(
+                'sanitize_callback' => function($param) {
+                    return array_map('sanitize_text_field', (array)$param);
+                }
+            )
+        )
+    ));
+}
+
+function aetherbloom_handle_contact_rest($request) {
+    // Verify nonce for extra security
+    $nonce = $request->get_header('X-WP-Nonce');
+    if (!wp_verify_nonce($nonce, 'wp_rest')) {
+        return new WP_Error('rest_forbidden', 'Invalid nonce.', array('status' => 403));
+    }
+    
+    // Get sanitized parameters (already handled by REST API)
+    $form_data = array(
+        'company' => $request['company'],
+        'firstname' => $request['firstname'],
+        'lastname' => $request['lastname'],
+        'email' => $request['email'],
+        'phone' => $request['phone'] ?? '',
+        'primary_service' => $request['primary_service'] ?? '',
+        'addon_services' => $request['addon_services'] ?? array()
+    );
+    
+    // Process the form
+    $result = aetherbloom_process_contact_submission($form_data);
+    
+    if ($result) {
+        return array(
+            'success' => true,
+            'message' => 'Thank you! Your message has been sent successfully.'
+        );
+    } else {
+        return new WP_Error('submission_failed', 'There was an error processing your request.', array('status' => 500));
+    }
+}
+
+/**
+ * Process the contact form submission
+ */
+function aetherbloom_process_contact_submission($form_data) {
+    global $wpdb;
+    
+    try {
+        // Save to custom table (create table first)
+        $table_name = $wpdb->prefix . 'aetherbloom_contacts';
+        
+        $result = $wpdb->insert(
+            $table_name,
+            array(
+                'company' => $form_data['company'],
+                'firstname' => $form_data['firstname'],
+                'lastname' => $form_data['lastname'],
+                'email' => $form_data['email'],
+                'phone' => $form_data['phone'],
+                'primary_service' => $form_data['primary_service'],
+                'addon_services' => json_encode($form_data['addon_services']),
+                'submission_date' => current_time('mysql'),
+                'ip_address' => $_SERVER['REMOTE_ADDR']
+            ),
+            array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')
+        );
+        
+        // Send notification email
+        if ($result) {
+            aetherbloom_send_contact_notification($form_data);
+        }
+        
+        return $result !== false;
+        
+    } catch (Exception $e) {
+        error_log('Contact form submission error: ' . $e->getMessage());
+        return false;
+    }
+}
+
+/**
+ * Send notification email
+ */
+function aetherbloom_send_contact_notification($form_data) {
+    $to = get_option('admin_email');
+    $subject = 'New Contact Form Submission - ' . $form_data['company'];
+    
+    $message = "New contact form submission:\n\n";
+    $message .= "Company: " . $form_data['company'] . "\n";
+    $message .= "Name: " . $form_data['firstname'] . " " . $form_data['lastname'] . "\n";
+    $message .= "Email: " . $form_data['email'] . "\n";
+    $message .= "Phone: " . $form_data['phone'] . "\n";
+    $message .= "Primary Service: " . $form_data['primary_service'] . "\n";
+    
+    if (!empty($form_data['addon_services'])) {
+        $message .= "Additional Services: " . implode(', ', $form_data['addon_services']) . "\n";
+    }
+    
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'Reply-To: ' . $form_data['email']
+    );
+    
+    wp_mail($to, $subject, $message, $headers);
+}
+
+/**
+ * Create database table on theme activation
+ */
+function aetherbloom_create_contact_table() {
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . 'aetherbloom_contacts';
+    
+    $charset_collate = $wpdb->get_charset_collate();
+    
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        company varchar(255) NOT NULL,
+        firstname varchar(100) NOT NULL,
+        lastname varchar(100) NOT NULL,
+        email varchar(100) NOT NULL,
+        phone varchar(20),
+        primary_service varchar(100),
+        addon_services text,
+        submission_date datetime DEFAULT CURRENT_TIMESTAMP,
+        ip_address varchar(45),
+        PRIMARY KEY (id)
+    ) $charset_collate;";
+    
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+
+// Create table on theme switch
+add_action('after_switch_theme', 'aetherbloom_create_contact_table');
+
+/**
+ * Add admin menu for viewing submissions
+ */
+add_action('admin_menu', 'aetherbloom_add_admin_menu');
+
+function aetherbloom_add_admin_menu() {
+    add_menu_page(
+        'Contact Submissions',
+        'Contact Forms',
+        'manage_options',
+        'aetherbloom-contacts',
+        'aetherbloom_admin_page'
+    );
+}
+
+function aetherbloom_admin_page() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'aetherbloom_contacts';
+    $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY submission_date DESC");
+    
+    echo '<div class="wrap">';
+    echo '<h1>Contact Form Submissions</h1>';
+    echo '<table class="wp-list-table widefat fixed striped">';
+    echo '<thead><tr><th>Date</th><th>Company</th><th>Name</th><th>Email</th><th>Service</th></tr></thead>';
+    echo '<tbody>';
+    
+    foreach ($submissions as $submission) {
+        echo '<tr>';
+        echo '<td>' . esc_html($submission->submission_date) . '</td>';
+        echo '<td>' . esc_html($submission->company) . '</td>';
+        echo '<td>' . esc_html($submission->firstname . ' ' . $submission->lastname) . '</td>';
+        echo '<td>' . esc_html($submission->email) . '</td>';
+        echo '<td>' . esc_html($submission->primary_service) . '</td>';
+        echo '</tr>';
+    }
+    
+    echo '</tbody></table>';
+    echo '</div>';
+}
