@@ -378,8 +378,15 @@
 
 .checkbox-group {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr); /* Change to two columns */
   gap: 0.75rem;
+}
+
+/* Existing media query for smaller screens will override this for mobile */
+@media (max-width: 768px) {
+  .checkbox-group {
+    grid-template-columns: 1fr; /* Keep as single column on small screens */
+  }
 }
 
 .checkbox-item {

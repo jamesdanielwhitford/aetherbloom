@@ -109,27 +109,27 @@ $form_button_text = get_theme_mod('cta_form_button', 'Submit');
               
               <!-- Add-On Services -->
               <div class="cta-input-group cta-addon-services">
-                <label class="addon-services-label"><?php esc_html_e('Additional Services (Optional)', 'aetherbloom'); ?></label>
+                <label class="addon-services-label"><?php esc_html_e('Additional Services', 'aetherbloom'); ?></label>
                 <div class="checkbox-group">
                   <label class="checkbox-item">
                     <input type="checkbox" name="addon_services" value="HR Support">
-                    <span class="checkbox-text"><?php esc_html_e('HR Support (Onboarding, employee records)', 'aetherbloom'); ?></span>
+                    <span class="checkbox-text"><?php esc_html_e('HR Support', 'aetherbloom'); ?></span>
                   </label>
                   <label class="checkbox-item">
                     <input type="checkbox" name="addon_services" value="Bookkeeping">
-                    <span class="checkbox-text"><?php esc_html_e('Bookkeeping (Invoicing, expense tracking)', 'aetherbloom'); ?></span>
+                    <span class="checkbox-text"><?php esc_html_e('Bookkeeping', 'aetherbloom'); ?></span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="addon_services" value="Technical Support">
+                    <span class="checkbox-text"><?php esc_html_e('Technical Support', 'aetherbloom'); ?></span>
                   </label>
                   <label class="checkbox-item">
                     <input type="checkbox" name="addon_services" value="Data Analysis">
-                    <span class="checkbox-text"><?php esc_html_e('Data Analysis (Custom reports & insights)', 'aetherbloom'); ?></span>
+                    <span class="checkbox-text"><?php esc_html_e('Data Analysis', 'aetherbloom'); ?></span>
                   </label>
                   <label class="checkbox-item">
                     <input type="checkbox" name="addon_services" value="Business Coaching">
                     <span class="checkbox-text"><?php esc_html_e('Business Coaching', 'aetherbloom'); ?></span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="addon_services" value="Technical Support">
-                    <span class="checkbox-text"><?php esc_html_e('Technical Support (website design, PowerApp development etc)', 'aetherbloom'); ?></span>
                   </label>
                 </div>
               </div>
