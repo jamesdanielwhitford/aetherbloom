@@ -164,7 +164,8 @@
     // Initialize mouse tracking for form card 3D effects
     function initMouseTracking() {
         const handleMouseMove = (e) => {
-            if (ctaElements.form && ctaElements.section) {
+            // Only update mouse position if not hovering over the form
+            if (!ctaData.isHovering && ctaElements.form && ctaElements.section) {
                 const section = ctaElements.section;
                 const card = ctaElements.form;
                 const sectionRect = section.getBoundingClientRect();
@@ -194,20 +195,22 @@
             }
         };
         
-        const handleMouseEnter = () => {
-            ctaData.isHovering = true;
-        };
-        
-        const handleMouseLeave = () => {
-            ctaData.isHovering = false;
-            ctaData.mousePosition = { x: 0, y: 0, rotateX: 0, rotateY: 0 };
-            updateCardTransform();
-        };
-        
+        // Event listeners for the section (for mouse movement)
         if (ctaElements.section) {
             ctaElements.section.addEventListener('mousemove', handleMouseMove);
-            ctaElements.section.addEventListener('mouseenter', handleMouseEnter);
-            ctaElements.section.addEventListener('mouseleave', handleMouseLeave);
+        }
+
+        // Event listeners for the form (for hover state)
+        if (ctaElements.form) {
+            ctaElements.form.addEventListener('mouseenter', () => {
+                ctaData.isHovering = true;
+                updateCardTransform(); // Reset transform to default
+            });
+            
+            ctaElements.form.addEventListener('mouseleave', () => {
+                ctaData.isHovering = false;
+                updateCardTransform(); // Re-enable mouse-following effect
+            });
         }
     }
     
@@ -216,9 +219,11 @@
         if (!ctaElements.form) return;
         
         const transform = getCardTransform();
-        const transition = ctaData.isHovering ? 
-            'transform 0.1s ease-out' : 
-            'transform 0.3s ease-out';
+        // Transition should be faster when entering/leaving hover state,
+        // and slower when moving within the non-hover state.
+        const transition = ctaData.isHovering ?
+            'transform 0.3s ease-out' : // When entering/leaving hover, transition to default
+            'transform 0.1s ease-out'; // When not hovering, follow mouse quickly
         
         ctaElements.form.style.transform = transform;
         ctaElements.form.style.transition = transition;
@@ -226,10 +231,11 @@
     
     // Calculate transform string for the form card
     function getCardTransform() {
-        if (!ctaData.isHovering) {
+        if (ctaData.isHovering) { // If hovering over the form, return default
             return 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1)';
         }
         
+        // Otherwise, apply mouse-following transform
         const { x, y, rotateX, rotateY } = ctaData.mousePosition;
         return `perspective(1000px) rotateX(${rotateX || 0}deg) rotateY(${rotateY || 0}deg) translateX(${x || 0}px) translateY(${y || 0}px) scale(1.02)`;
     }
@@ -352,6 +358,9 @@
         if (stepNumber === 3) {
             updateFormSummary();
         }
+        
+        // Repopulate form fields with stored data
+        populateFormFields();
     }
     
     // Update step indicators
@@ -445,6 +454,26 @@
         }
         
         summaryContent.innerHTML = summaryHTML;
+    }
+    
+    // Populate form fields with data from ctaData.formData
+    function populateFormFields() {
+        Object.keys(ctaElements.formInputs).forEach(key => {
+            const input = ctaElements.formInputs[key];
+            if (input) {
+                if (key === 'addon_services') {
+                    // Handle checkboxes
+                    ctaData.formData.addon_services.forEach(service => {
+                        const checkbox = Array.from(input).find(cb => cb.value === service);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    });
+                } else {
+                    input.value = ctaData.formData[key] || '';
+                }
+            }
+        });
     }
     
     // Go to next step
