@@ -449,7 +449,7 @@
 .breakdown-label {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
   font-weight: 500;
   flex: 1 1 0%; /* Allow it to grow, shrink, and have a base of 0 */
   text-align: left;
