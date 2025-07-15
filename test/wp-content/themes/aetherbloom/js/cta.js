@@ -3,6 +3,14 @@
 (function() {
     'use strict';
     
+    // HubSpot Configuration - Update these with your actual values
+    const HUBSPOT_CONFIG = {
+        portalId: '145903429', // Replace with your HubSpot portal ID
+        formId: 'd38ffeaa-6505-4879-ac11-27619fdbb1d0', // Replace with your HubSpot form ID
+        calendarUrl: 'https://meetings.hubspot.com/your-calendar-link', // Replace with your actual calendar link
+        apiEndpoint: 'https://api.hsforms.com/submissions/v3/integration/submit'
+    };
+    
     // Global variables for CTA functionality
     let ctaData = {
         isVisible: false,
@@ -63,7 +71,7 @@
             ctaData.nonce = window.aetherbloomCTAData.nonce;
             ctaData.restNonce = window.aetherbloomCTAData.restNonce || '';
         } else {
-            console.warn('aetherbloomCTAData not found. Please ensure wp_localize_script is properly configured.');
+            console.warn('aetherbloomCTAData not found. Using HubSpot direct submission.');
             // Fallback to WordPress AJAX URL if available
             if (typeof ajaxurl !== 'undefined') {
                 ctaData.ajaxUrl = ajaxurl;
@@ -339,6 +347,11 @@
         
         // Update navigation buttons
         updateNavigationButtons();
+        
+        // Update summary if on step 3
+        if (stepNumber === 3) {
+            updateFormSummary();
+        }
     }
     
     // Update step indicators
@@ -396,6 +409,45 @@
             if (btnPrevious3) btnPrevious3.style.display = 'flex';
             if (submitBtn) submitBtn.style.display = 'flex';
         }
+    }
+    
+    // Update form summary on step 3
+    function updateFormSummary() {
+        const summaryContent = document.getElementById('summary-content');
+        if (!summaryContent) return;
+        
+        updateFormData(); // Ensure we have latest data
+        
+        const { company, firstname, lastname, email, phone, primary_service, addon_services } = ctaData.formData;
+        
+        let summaryHTML = `
+            <div style="margin-bottom: 1rem;">
+                <strong>${firstname} ${lastname}</strong><br>
+                <span style="color: rgba(255,255,255,0.7);">${company}</span><br>
+                <span style="color: rgba(255,255,255,0.7);">${email}</span>
+                ${phone ? `<br><span style="color: rgba(255,255,255,0.7);">${phone}</span>` : ''}
+            </div>
+        `;
+        
+        if (primary_service) {
+            summaryHTML += `
+                <div style="margin-bottom: 1rem;">
+                    <strong>Primary Service:</strong><br>
+                    <span style="color: rgba(255,255,255,0.7);">${primary_service}</span>
+                </div>
+            `;
+        }
+        
+        if (addon_services.length > 0) {
+            summaryHTML += `
+                <div>
+                    <strong>Additional Services:</strong><br>
+                    <span style="color: rgba(255,255,255,0.7);">${addon_services.join(', ')}</span>
+                </div>
+            `;
+        }
+        
+        summaryContent.innerHTML = summaryHTML;
     }
     
     // Go to next step
@@ -501,7 +553,7 @@
         });
     }
     
-    // Handle form submission with WordPress integration
+    // Handle form submission with HubSpot integration
     async function handleFormSubmit(e) {
         e.preventDefault();
         
@@ -527,23 +579,15 @@
         showLoading();
         
         try {
-            // Try REST API first (modern approach)
-            let result;
-            if (ctaData.restUrl && ctaData.restNonce) {
-                result = await submitViaRestAPI(ctaData.formData);
-            } else {
-                // Fallback to AJAX
-                result = await submitViaAjax(ctaData.formData);
-            }
+            // Submit directly to HubSpot
+            const result = await submitToHubSpot(ctaData.formData);
             
             if (result.success) {
-                showFormSuccess(result.message || 'Thank you! We\'ll be in touch within 24 hours.');
+                showFormSuccess('Thank you! We\'ll be in touch within 24 hours.');
                 
                 // Redirect to calendar after 2 seconds
                 setTimeout(() => {
-                    // Replace with your actual calendar booking URL
-                    const calendlyUrl = 'https://meetings.hubspot.com/your-calendar-link';
-                    window.location.href = calendlyUrl;
+                    window.location.href = HUBSPOT_CONFIG.calendarUrl;
                 }, 2000);
                 
                 // Reset form after a delay
@@ -565,52 +609,57 @@
         hideLoading();
     }
     
-    // Submit via REST API (modern approach)
-    async function submitViaRestAPI(formData) {
-        const response = await fetch(ctaData.restUrl + 'contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-WP-Nonce': ctaData.restNonce
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Network error');
+    // Submit form data to HubSpot
+    async function submitToHubSpot(formData) {
+        try {
+            // Prepare data for HubSpot API
+            const hubspotData = {
+                fields: [
+                    { name: "company", value: formData.company },
+                    { name: "firstname", value: formData.firstname },
+                    { name: "lastname", value: formData.lastname },
+                    { name: "email", value: formData.email },
+                    { name: "phone", value: formData.phone || "" },
+                    { name: "primary_service", value: formData.primary_service || "" },
+                    { name: "addon_services", value: formData.addon_services.join(", ") }
+                ],
+                context: {
+                    pageUri: window.location.href,
+                    pageName: document.title,
+                    hutk: getCookie('hubspotutk') // HubSpot tracking cookie
+                }
+            };
+            
+            const url = `${HUBSPOT_CONFIG.apiEndpoint}/${HUBSPOT_CONFIG.portalId}/${HUBSPOT_CONFIG.formId}`;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(hubspotData)
+            });
+            
+            if (response.ok) {
+                return { success: true };
+            } else {
+                const errorData = await response.text();
+                console.error('HubSpot submission error:', errorData);
+                throw new Error('Failed to submit to HubSpot');
+            }
+            
+        } catch (error) {
+            console.error('HubSpot API Error:', error);
+            throw error;
         }
-        
-        return await response.json();
     }
     
-    // Submit via AJAX (fallback)
-    async function submitViaAjax(formData) {
-        const body = new FormData();
-        body.append('action', 'aetherbloom_contact_form');
-        body.append('nonce', ctaData.nonce);
-        
-        // Append form data
-        Object.keys(formData).forEach(key => {
-            if (Array.isArray(formData[key])) {
-                formData[key].forEach(value => {
-                    body.append(key + '[]', value);
-                });
-            } else {
-                body.append(key, formData[key]);
-            }
-        });
-        
-        const response = await fetch(ctaData.ajaxUrl, {
-            method: 'POST',
-            body: body
-        });
-        
-        if (!response.ok) {
-            throw new Error('Network error');
-        }
-        
-        return await response.json();
+    // Get cookie value by name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return '';
     }
     
     // Validate form data
