@@ -365,9 +365,6 @@
                 indicator.classList.add('active');
             } else if (stepNumber < ctaData.currentStep) {
                 indicator.classList.add('completed');
-                indicator.innerHTML = '✓';
-            } else {
-                indicator.innerHTML = stepNumber;
             }
         });
         

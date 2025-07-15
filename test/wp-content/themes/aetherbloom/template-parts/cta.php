@@ -41,33 +41,29 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
       <!-- Right Side - Multi-Step Contact Form -->
       <div class="cta-form-container">
         <form class="contact-form" id="contact-form" method="post" action="">
+          <!-- Step Progress Indicator -->
+            <div class="step-progress">
+              <div class="step-indicator active"></div>
+              <div class="step-connector"></div>
+              <div class="step-indicator"></div>
+              <div class="step-connector"></div>
+              <div class="step-indicator"></div>
+            </div>
+
           <div class="cta-form-header">
             <h3 class="cta-form-title">
               <?php echo esc_html($form_title); ?>
             </h3>
-            
-            <!-- Step Progress Indicator -->
-            <div class="step-progress">
-              <div class="step-indicator active">1</div>
-              <div class="step-connector"></div>
-              <div class="step-indicator">2</div>
-              <div class="step-connector"></div>
-              <div class="step-indicator">3</div>
-            </div>
           </div>
 
           <!-- Step 1: Contact Details -->
-          <div class="form-step active" id="step-1">
-            <div class="step-description">
-              <?php esc_html_e('Let\'s start with your contact information', 'aetherbloom'); ?>
-            </div>
-            
+          <div class="form-step" id="step-1">
             <div class="cta-form-grid">
               <!-- Company Name -->
               <div class="cta-input-group">
                 <input type="text" id="company-name" name="company" class="cta-form-input" placeholder="Company Name *" required>
               </div>
-              
+
               <!-- First Name -->
               <div class="cta-input-group">
                 <input type="text" id="first-name" name="firstname" class="cta-form-input" placeholder="First Name *" required>
@@ -100,9 +96,6 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
 
           <!-- Step 2: Service Selection -->
           <div class="form-step" id="step-2">
-            <div class="step-description">
-              <?php esc_html_e('Tell us about the services you\'re interested in', 'aetherbloom'); ?>
-            </div>
             
             <div class="cta-form-grid service-selection">
               <!-- Primary Service -->
@@ -158,9 +151,6 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
 
           <!-- Step 3: Review & Submit -->
           <div class="form-step" id="step-3">
-            <div class="step-description">
-              <?php esc_html_e('Ready to get your free assessment? We\'ll be in touch within 24 hours!', 'aetherbloom'); ?>
-            </div>
             
             <div class="cta-form-grid">
               <!-- Review Summary (will be populated by JavaScript) -->
