@@ -7,7 +7,7 @@ $cta_subtitle = get_theme_mod('cta_assessment_text', 'Discover exactly how much 
 $cta_email = get_theme_mod('cta_email', 'hello@aetherbloom.co.uk');
 $cta_phone = get_theme_mod('cta_phone', '+44 208 0507 881');
 $form_title = get_theme_mod('cta_form_title', 'Start Your Free Assessment');
-$form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment');
+$form_button_text = get_theme_mod('cta_form_button', 'Submit');
 ?>
 
 <section class="cta-section" id="contact" data-section="contact">
@@ -89,7 +89,6 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
             <div class="form-navigation">
               <button type="button" class="btn-next" id="btn-next-1">
                 <span class="cta-button-text"><?php esc_html_e('Next', 'aetherbloom'); ?></span>
-                <span class="cta-button-arrow">→</span>
               </button>
             </div>
           </div>
@@ -139,12 +138,10 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
             <!-- Navigation for Step 2 -->
             <div class="form-navigation">
               <button type="button" class="btn-previous" id="btn-previous-2">
-                <span class="cta-button-arrow">→</span>
                 <span class="cta-button-text"><?php esc_html_e('Previous', 'aetherbloom'); ?></span>
               </button>
               <button type="button" class="btn-next" id="btn-next-2">
                 <span class="cta-button-text"><?php esc_html_e('Review', 'aetherbloom'); ?></span>
-                <span class="cta-button-arrow">→</span>
               </button>
             </div>
           </div>
@@ -167,12 +164,10 @@ $form_button_text = get_theme_mod('cta_form_button', 'Request My Free Assessment
             <!-- Navigation for Step 3 -->
             <div class="form-navigation">
               <button type="button" class="btn-previous" id="btn-previous-3">
-                <span class="cta-button-arrow">→</span>
                 <span class="cta-button-text"><?php esc_html_e('Previous', 'aetherbloom'); ?></span>
               </button>
               <button type="submit" class="cta-submit-button" id="contact-submit">
                 <span class="cta-button-text"><?php echo esc_html($form_button_text); ?></span>
-                <span class="cta-button-arrow">→</span>
               </button>
             </div>
           </div>

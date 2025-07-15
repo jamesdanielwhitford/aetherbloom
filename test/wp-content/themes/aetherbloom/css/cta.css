@@ -257,12 +257,12 @@
 }
 
 .step-indicator.active {
-  background: #ff9340;
-  box-shadow: 0 0 0 3px rgba(255, 147, 64, 0.3);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
 .step-indicator.completed {
-  background: #4CAF50;
+  background: #39564F;
 }
 
 .step-connector {
@@ -274,7 +274,7 @@
 }
 
 .step-connector.completed {
-  background: #4CAF50;
+  background: #39564F;
 }
 
 /* Form Navigation Buttons */
@@ -316,8 +316,8 @@
 }
 
 .btn-next {
-  background: linear-gradient(135deg, #ff9340 0%, #d84e28 100%);
-  color: #ffffff;
+  background: #ffffff;
+  color: #d84e28;
   box-shadow: 0 4px 20px rgba(216, 78, 40, 0.3);
 }
 
