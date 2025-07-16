@@ -235,7 +235,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 3rem;
-  overflow: hidden; /* Ensure no overflow from this container */
+  /* overflow: hidden; */ /* Ensure no overflow from this container */
   flex: 2; /* Allow foundation-content to take up 2 parts of the available space */
 }
 
@@ -243,7 +243,7 @@
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
-  height: 100%; /* Ensure content panel fills its parent's height */
+  /* height: 100%; */ /* Ensure content panel fills its parent's height */
   overflow-y: auto; /* Add scroll if content exceeds height */
 }
 
@@ -264,7 +264,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem; /* Add gap between value items */
-  height: 100%; /* Ensure it fills the parent height */
+  height: 500px; /* Set a fixed height for the values list */
 }
 
 .value-item {
@@ -276,7 +276,7 @@
   transition: flex-grow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
   overflow: hidden;
-  flex: 1; /* Allow items to grow and shrink */
+  flex: 1 1 0%; /* Allow items to grow and shrink */
   min-height: 0; /* Allow items to shrink completely */
   display: flex;
   flex-direction: column;
@@ -288,7 +288,7 @@
 }
 
 .value-item.open {
-  flex-grow: 3 !important; /* Make the open item grow more */
+  flex-grow: 5 !important; /* Make the open item grow more */
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 147, 64, 0.3);
 }
@@ -305,7 +305,7 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0s, margin-top 0s; /* Instantaneous closing */
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out; /* Animate both opening and closing */
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
@@ -314,7 +314,7 @@
 }
 
 .value-item.open .value-description {
-  max-height: 1000px; /* Increased to prevent content cutoff */
+  max-height: 2000px; /* Increased to prevent content cutoff */
   opacity: 1;
   margin-top: 1rem;
   transition: max-height 0.3s ease-out, margin-top 0.3s ease-out; /* Original opening speed */
