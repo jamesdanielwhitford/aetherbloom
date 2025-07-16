@@ -42,47 +42,49 @@ if (!defined('ABSPATH')) {
                     <?php endif; ?>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="nav-links">
-                    <?php
-                    // Check if menu exists, otherwise show fallback
-                    if (has_nav_menu('primary')) {
-                        wp_nav_menu(array(
-                            'theme_location' => 'primary',
-                            'menu_id'        => 'primary-menu',
-                            'container'      => false,
-                            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                            'link_before'    => '',
-                            'link_after'     => '',
-                        ));
-                    } else {
-                        ?>
-                        <a href="<?php echo esc_url(home_url('/about')); ?>" class="nav-link">About</a>
-                        <a href="<?php echo esc_url(home_url('/services')); ?>" class="nav-link">Services</a>
-                        <a href="<?php echo esc_url(home_url('/impact')); ?>" class="nav-link">Impact</a>
-                        <a href="<?php echo esc_url(home_url('/careers')); ?>" class="nav-link">Careers</a>
-                        <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-link">Contact</a>
-                        <?php
-                    }
-                    ?>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="nav-actions">
-                    <a href="<?php echo esc_url(home_url('/#pricing')); ?>" class="pricing-btn">
-                        <?php esc_html_e('Pricing', 'aetherbloom'); ?>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/contact')); ?>" class="get-started-btn">
-                        <?php esc_html_e('Get Started', 'aetherbloom'); ?>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Toggle (for future implementation) -->
-                <button class="mobile-menu-toggle" aria-label="<?php esc_attr_e('Toggle navigation', 'aetherbloom'); ?>" style="display: none;">
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="<?php esc_attr_e('Toggle navigation', 'aetherbloom'); ?>">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+
+                <!-- Navigation Links and Actions (wrapped for mobile) -->
+                <div class="nav-menu-content">
+                    <div class="nav-links">
+                        <?php
+                        // Check if menu exists, otherwise show fallback
+                        if (has_nav_menu('primary')) {
+                            wp_nav_menu(array(
+                                'theme_location' => 'primary',
+                                'menu_id'        => 'primary-menu',
+                                'container'      => false,
+                                'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                'link_before'    => '',
+                                'link_after'     => '',
+                            ));
+                        } else {
+                            ?>
+                            <a href="<?php echo esc_url(home_url('/about')); ?>" class="nav-link">About</a>
+                            <a href="<?php echo esc_url(home_url('/services')); ?>" class="nav-link">Services</a>
+                            <a href="<?php echo esc_url(home_url('/impact')); ?>" class="nav-link">Impact</a>
+                            <a href="<?php echo esc_url(home_url('/careers')); ?>" class="nav-link">Careers</a>
+                            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-link">Contact</a>
+                            <?php
+                        }
+                        ?>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="nav-actions">
+                        <a href="<?php echo esc_url(home_url('/#pricing')); ?>" class="pricing-btn">
+                            <?php esc_html_e('Pricing', 'aetherbloom'); ?>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/contact')); ?>" class="get-started-btn">
+                            <?php esc_html_e('Get Started', 'aetherbloom'); ?>
+                        </a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header><!-- #masthead -->

@@ -20,7 +20,7 @@
         const navbar = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.nav-link, .pricing-btn, .get-started-btn');
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinksContainer = document.querySelector('.nav-links');
+        const navMenuContent = document.querySelector('.nav-menu-content'); // Changed to target the new wrapper
 
         if (!navbar) {
             console.warn('Navbar element not found');
@@ -30,7 +30,7 @@
         // Initialize all navbar functionality
         setupNavigation(navLinks);
         setupScrollEffects(navbar);
-        setupMobileMenu(mobileMenuToggle, navLinksContainer);
+        setupMobileMenu(mobileMenuToggle, navMenuContent); // Pass the new wrapper
         setupKeyboardNavigation(navLinks);
         setupActiveStates(navLinks);
     }
@@ -155,8 +155,8 @@
     /**
      * Setup mobile menu functionality
      */
-    function setupMobileMenu(mobileMenuToggle, navLinksContainer) {
-        if (!mobileMenuToggle || !navLinksContainer) {
+    function setupMobileMenu(mobileMenuToggle, navMenuContent) {
+        if (!mobileMenuToggle || !navMenuContent) {
             return;
         }
 
@@ -168,7 +168,7 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (isMenuOpen && !navLinksContainer.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            if (isMenuOpen && !navMenuContent.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                 closeMobileMenu();
             }
         });
@@ -188,16 +188,16 @@
             }
 
             mobileMenuToggle.classList.toggle('active', isMenuOpen);
-            navLinksContainer.classList.toggle('mobile-open', isMenuOpen);
+            navMenuContent.classList.toggle('mobile-open', isMenuOpen); // Toggle on the new wrapper
             document.body.classList.toggle('mobile-menu-open', isMenuOpen);
             
             // Update ARIA attributes
             mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen);
-            navLinksContainer.setAttribute('aria-hidden', !isMenuOpen);
+            navMenuContent.setAttribute('aria-hidden', !isMenuOpen);
             
             // Focus management
             if (isMenuOpen) {
-                const firstLink = navLinksContainer.querySelector('.nav-link');
+                const firstLink = navMenuContent.querySelector('.nav-link');
                 if (firstLink) {
                     firstLink.focus();
                 }
