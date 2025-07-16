@@ -398,12 +398,12 @@
   background: #ffffff;
   border-radius: 1px;
   transition: all 0.3s ease;
-  transform-origin: left center;
+  transform-origin: center center;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg);
-  width: 120%;
+  transform: translateY(8px) rotate(45deg);
+  width: 100%;
   background: #ffffff;
 }
 
@@ -413,8 +413,8 @@
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  width: 120%;
+  transform: translateY(-8px) rotate(-45deg);
+  width: 100%;
   background: #ffffff;
 }
 
