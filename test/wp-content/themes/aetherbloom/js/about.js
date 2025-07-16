@@ -38,19 +38,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Values section hover functionality
     const valueItems = document.querySelectorAll('.value-item');
-    let lastOpenValueItem = null; // To keep track of the last opened item
+    let lastActiveValueItem = null; // To keep track of the last actively open item
 
     valueItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
-            // Close the previously open item, if any
-            if (lastOpenValueItem && lastOpenValueItem !== this) {
-                lastOpenValueItem.classList.remove('open');
+            // If there was a previously active item and it's not the current one, close it
+            if (lastActiveValueItem && lastActiveValueItem !== this) {
+                lastActiveValueItem.classList.remove('open');
             }
-            // Open the current item
+            // Add 'open' class to the hovered item
             this.classList.add('open');
-            lastOpenValueItem = this; // Update the last opened item
+            // Update the last active item
+            lastActiveValueItem = this;
         });
     });
+
+    // Set the first value item as open by default on page load
+    if (valueItems.length > 0) {
+        valueItems[0].classList.add('open');
+        lastActiveValueItem = valueItems[0]; // Initialize lastActiveValueItem
+    }
 
     // Smooth scrolling for internal links
     const internalLinks = document.querySelectorAll('a[href^="#"]');
