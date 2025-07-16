@@ -13,28 +13,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const foundationCards = document.querySelectorAll('.foundation-card');
     const contentPanels = document.querySelectorAll('.content-panel');
     
+    let activeFoundationCard = null;
+
+    const activateFoundationCard = (card) => {
+        const target = card.getAttribute('data-target');
+
+        // Remove active class from all cards and hide all content panels
+        foundationCards.forEach(c => c.classList.remove('active'));
+        contentPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active class to the hovered card
+        card.classList.add('active');
+
+        // Show target content panel
+        const targetPanel = document.getElementById(target);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+        activeFoundationCard = card;
+    };
+
     foundationCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const target = this.getAttribute('data-target');
-            
-            // Remove active class from all cards
-            foundationCards.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked card
-            this.classList.add('active');
-            
-            // Hide all content panels
-            contentPanels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-            
-            // Show target content panel
-            const targetPanel = document.getElementById(target);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
+        card.addEventListener('mouseenter', function() {
+            activateFoundationCard(this);
         });
+
+        // Optional: Add mouseleave to hide content if no card is hovered, or revert to default
+        // For now, we'll keep the last hovered item active until another is hovered.
+        // If you want content to disappear on mouseleave, we'd need more complex logic
+        // to manage the default state or a "no selection" state.
     });
+
+    // Set the first foundation card as active by default on page load
+    if (foundationCards.length > 0) {
+        activateFoundationCard(foundationCards[0]);
+    }
     
     // Values section hover functionality
     const valueItems = document.querySelectorAll('.value-item');
