@@ -30,24 +30,26 @@ if (!defined('ABSPATH')) {
     <header id="masthead" class="site-header">
         <nav class="navbar" role="navigation" aria-label="<?php esc_attr_e('Primary navigation', 'aetherbloom'); ?>">
             <div class="nav-container">
-                <!-- Brand/Logo -->
-                <div class="brand">
-                    <?php if (has_custom_logo()) : ?>
-                        <?php the_custom_logo(); ?>
-                    <?php else : ?>
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link" rel="home">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon">
-                            <span class="brand-name"><?php bloginfo('name'); ?></span>
-                        </a>
-                    <?php endif; ?>
-                </div>
+                <div class="nav-top-bar">
+                    <!-- Brand/Logo -->
+                    <div class="brand">
+                        <?php if (has_custom_logo()) : ?>
+                            <?php the_custom_logo(); ?>
+                        <?php else : ?>
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link" rel="home">
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon">
+                                <span class="brand-name"><?php bloginfo('name'); ?></span>
+                            </a>
+                        <?php endif; ?>
+                    </div>
 
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" aria-label="<?php esc_attr_e('Toggle navigation', 'aetherbloom'); ?>">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" aria-label="<?php esc_attr_e('Toggle navigation', 'aetherbloom'); ?>">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
 
                 <!-- Navigation Links and Actions (wrapped for mobile) -->
                 <div class="nav-menu-content">

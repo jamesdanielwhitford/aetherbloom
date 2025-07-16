@@ -461,10 +461,19 @@
 }
 
 @media (max-width: 768px) {
+  .nav-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 60px; /* Set height to vertically center content */
+  }
+
   .nav-container {
     flex-wrap: wrap;
-    padding: 0.75rem 1rem;
-    align-items: center;
+    padding: 0 1rem; /* Remove vertical padding */
+    align-content: flex-start; /* Lock content to the top */
+    /* align-items: center; */ /* Removed to prevent vertical shift */
   }
 
   .brand {
