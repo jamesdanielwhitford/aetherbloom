@@ -282,11 +282,6 @@ get_header(); ?>
                     
                     <div class="benefits-layout">
                         <div class="benefit-large csr-goals">
-                            <div class="benefit-icon">
-                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 12H18L15 21L9 3L6 12H2" stroke="#39564F" stroke-width="2"/>
-                                </svg>
-                            </div>
                             <h3><?php esc_html_e('Meet CSR & ESG Goals', 'aetherbloom'); ?></h3>
                             <div class="benefit-details">
                                 <div class="impact-metric">
