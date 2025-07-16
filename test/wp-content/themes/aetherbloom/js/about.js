@@ -34,36 +34,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetPanel.classList.add('active');
             }
         });
-        
-        // Optional: Handle hover effects for desktop
-        card.addEventListener('mouseenter', function() {
-            if (window.innerWidth > 768) {
-                const target = this.getAttribute('data-target');
-                
-                // Don't change if this card is already active
-                if (this.classList.contains('active')) {
-                    return;
-                }
-                
-                // Add hover preview effect
-                this.style.transform = 'translateY(-5px)';
-                this.style.background = 'rgba(255, 255, 255, 0.12)';
-                this.style.borderColor = 'rgba(255, 147, 64, 0.3)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            if (window.innerWidth > 768) {
-                // Remove hover effects if not active
-                if (!this.classList.contains('active')) {
-                    this.style.transform = '';
-                    this.style.background = '';
-                    this.style.borderColor = '';
-                }
-            }
-        });
     });
     
+    // Values section hover functionality
+    const valueItems = document.querySelectorAll('.value-item');
+    let lastOpenValueItem = null; // To keep track of the last opened item
+
+    valueItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Close the previously open item, if any
+            if (lastOpenValueItem && lastOpenValueItem !== this) {
+                lastOpenValueItem.classList.remove('open');
+            }
+            // Open the current item
+            this.classList.add('open');
+            lastOpenValueItem = this; // Update the last opened item
+        });
+    });
+
     // Smooth scrolling for internal links
     const internalLinks = document.querySelectorAll('a[href^="#"]');
     internalLinks.forEach(link => {
