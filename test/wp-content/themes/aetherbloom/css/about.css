@@ -329,10 +329,10 @@
 }
 
 .founder-image {
-  width: fit-content; /* Container width adapts to image's scaled width */
+  width: 300px; /* Fixed width for perfect circle */
   height: 300px; /* Fixed height for the container */
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 50%;
   margin-bottom: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   margin: 0 auto 2rem auto; /* Center the container horizontally */
@@ -342,7 +342,8 @@
 .founder-photo {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensure the entire image (height and width) fits within the container */
+  object-fit: cover; /* Ensure the entire image (height and width) fits within the container */
+  object-position: top;
   transition: transform 0.3s ease;
 }
 
