@@ -476,33 +476,27 @@
   }
 
   .nav-menu-content {
-    position: absolute;
-    top: calc(100% + 0.5rem); /* Position below navbar */
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 0 1rem;
     flex-basis: 100%;
-    visibility: hidden;
+    width: 100%;
+    display: none;
     flex-direction: column;
-    transition: max-height 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out, padding 0.4s ease-out;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out, margin-top 0.4s ease-out, padding 0.4s ease-out;
     overflow: hidden;
     max-height: 0;
     opacity: 0;
     pointer-events: none;
+    margin-top: 0;
+    padding: 0;
   }
 
   .nav-menu-content.mobile-open {
+    display: flex;
     visibility: visible;
     max-height: 500px;
     opacity: 1;
     pointer-events: all;
-    padding: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    padding-top: 1rem;
   }
 
   .nav-links {
