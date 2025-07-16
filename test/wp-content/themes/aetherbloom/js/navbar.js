@@ -188,13 +188,20 @@
             }
 
             mobileMenuToggle.classList.toggle('active', isMenuOpen);
-            navMenuContent.classList.toggle('mobile-open', isMenuOpen); // Toggle on the new wrapper
+            navMenuContent.classList.toggle('mobile-open', isMenuOpen);
             document.body.classList.toggle('mobile-menu-open', isMenuOpen);
             
             // Update ARIA attributes
             mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen);
             navMenuContent.setAttribute('aria-hidden', !isMenuOpen);
             
+            // Set max-height for smooth transition
+            if (isMenuOpen) {
+                navMenuContent.style.maxHeight = navMenuContent.scrollHeight + "px";
+            } else {
+                navMenuContent.style.maxHeight = "0";
+            }
+
             // Focus management
             if (isMenuOpen) {
                 const firstLink = navMenuContent.querySelector('.nav-link');

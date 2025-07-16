@@ -503,11 +503,12 @@
   .nav-menu-content.mobile-open {
     display: flex;
     visibility: visible;
-    max-height: auto; /* Changed from 500px to auto */
+    max-height: 500px; /* Set a large enough max-height for transition */
     opacity: 1;
     pointer-events: all;
     margin-top: 0; /* Changed from 1rem to 0 */
     padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .nav-links {
@@ -551,7 +552,6 @@
     flex-direction: column;
     width: 100%;
     gap: 0.75rem;
-    margin-top: 1rem;
   }
 
   .pricing-btn,
