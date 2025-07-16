@@ -132,38 +132,42 @@ get_header(); ?>
                     <div class="founders-grid">
                         <div class="founder-profile">
                             <div class="founder-content">
-                                <div class="founder-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-headshot.jpg'); ?>" alt="<?php esc_attr_e('Della - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                <div class="founder-header">
+                                    <div class="founder-details">
+                                        <h3 class="founder-name"><?php esc_html_e('Della', 'aetherbloom'); ?></h3>
+                                        <p class="founder-title"><?php esc_html_e('Co-founder', 'aetherbloom'); ?></p>
+                                        <p class="founder-location"><?php esc_html_e('Cape Town, South Africa', 'aetherbloom'); ?></p>
+                                    </div>
+                                    <div class="founder-image">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-headshot.jpg'); ?>" alt="<?php esc_attr_e('Della - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                    </div>
                                 </div>
-                                <div class="founder-info">
-                                    <h3 class="founder-name"><?php esc_html_e('Della', 'aetherbloom'); ?></h3>
-                                    <p class="founder-title"><?php esc_html_e('Co-founder', 'aetherbloom'); ?></p>
-                                    <p class="founder-location"><?php esc_html_e('Cape Town, South Africa', 'aetherbloom'); ?></p>
-                                    <div class="founder-tagline">
-                                        <h4><?php esc_html_e('Della\'s Leadership Legacy', 'aetherbloom'); ?></h4>
-                                    </div>
-                                    <div class="founder-description">
-                                        <p><?php esc_html_e('With years as a Civil Service Senior HR Lead, our co-founder has mastered the art of building high-performing teams within strict compliance frameworks. This expertise ensures Aetherbloom delivers rigorous quality control, ethical staffing practices, and seamless scalability critical for UK clients navigating complex labor markets.', 'aetherbloom'); ?></p>
-                                    </div>
+                                <div class="founder-tagline">
+                                    <h4><?php esc_html_e('Della\'s Leadership Legacy', 'aetherbloom'); ?></h4>
+                                </div>
+                                <div class="founder-description">
+                                    <p><?php esc_html_e('With years as a Civil Service Senior HR Lead, our co-founder has mastered the art of building high-performing teams within strict compliance frameworks. This expertise ensures Aetherbloom delivers rigorous quality control, ethical staffing practices, and seamless scalability critical for UK clients navigating complex labor markets.', 'aetherbloom'); ?></p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="founder-profile">
                             <div class="founder-content">
-                                <div class="founder-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-headshot.jpg'); ?>" alt="<?php esc_attr_e('Grace - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                <div class="founder-header">
+                                    <div class="founder-details">
+                                        <h3 class="founder-name"><?php esc_html_e('Grace', 'aetherbloom'); ?></h3>
+                                        <p class="founder-title"><?php esc_html_e('Co-founder', 'aetherbloom'); ?></p>
+                                        <p class="founder-location"><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
+                                    </div>
+                                    <div class="founder-image">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-headshot.jpg'); ?>" alt="<?php esc_attr_e('Grace - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                    </div>
                                 </div>
-                                <div class="founder-info">
-                                    <h3 class="founder-name"><?php esc_html_e('Grace', 'aetherbloom'); ?></h3>
-                                    <p class="founder-title"><?php esc_html_e('Co-founder', 'aetherbloom'); ?></p>
-                                    <p class="founder-location"><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
-                                    <div class="founder-tagline">
-                                        <h4><?php esc_html_e('Grace\'s Analytical Edge', 'aetherbloom'); ?></h4>
-                                    </div>
-                                    <div class="founder-description">
-                                        <p><?php esc_html_e('Based in the UK, Grace architects Aetherbloom\'s client strategy and drives our global growth, bringing a diverse background in strategic leadership, hospitality and recruitment. Grace provides a unique perspective on understanding client needs, building strong and lasting relationships. She merges her recruitment experience with data science from her previous roles to create a talent-matching engine powered by precision. By analysing workforce trends, cultural fit and performance metrics, we guarantee staff who excel in both skill and alignment with your brand values.', 'aetherbloom'); ?></p>
-                                    </div>
+                                <div class="founder-tagline">
+                                    <h4><?php esc_html_e('Grace\'s Analytical Edge', 'aetherbloom'); ?></h4>
+                                </div>
+                                <div class="founder-description">
+                                    <p><?php esc_html_e('Based in the UK, Grace architects Aetherbloom\'s client strategy and drives our global growth, bringing a diverse background in strategic leadership, hospitality and recruitment. Grace provides a unique perspective on understanding client needs, building strong and lasting relationships. She merges her recruitment experience with data science from her previous roles to create a talent-matching engine powered by precision. By analysing workforce trends, cultural fit and performance metrics, we guarantee staff who excel in both skill and alignment with your brand values.', 'aetherbloom'); ?></p>
                                 </div>
                             </div>
                         </div>

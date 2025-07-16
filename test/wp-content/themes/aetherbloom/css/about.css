@@ -328,21 +328,31 @@
   height: 100%;
 }
 
+.founder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
 .founder-image {
-  width: 300px; /* Fixed width for perfect circle */
-  height: 300px; /* Fixed height for the container */
+  width: 200px; /* Larger size for founders' headshots */
+  height: 200px;
+  aspect-ratio: 1/1; /* Ensure a perfect square aspect ratio */
   overflow: hidden;
   border-radius: 50%;
-  margin-bottom: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  margin: 0 auto 2rem auto; /* Center the container horizontally */
-  background-color: white; /* Set background to white */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevent shrinking */
+  background-color: white;
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .founder-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the entire image (height and width) fits within the container */
+  object-fit: cover;
   object-position: top;
   transition: transform 0.3s ease;
 }
@@ -351,10 +361,11 @@
   transform: scale(1.05);
 }
 
-.founder-info {
-  flex: 1;
+.founder-details {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .founder-name {
@@ -376,7 +387,7 @@
 .founder-location {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Removed margin-bottom as it's now part of founder-details */
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -537,8 +548,8 @@
   }
   
   .founder-image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 }
 
@@ -587,8 +598,8 @@
   }
   
   .founder-image {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
   
   .ally-image {
