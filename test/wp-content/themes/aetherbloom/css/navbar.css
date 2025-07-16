@@ -9,7 +9,7 @@
   max-width: 1400px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 60px;
+  border-radius: 40px;
   z-index: 100;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 
@@ -68,10 +68,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 2rem; /* FIXED: Increased vertical padding for better centering */
+  padding: 0.5rem 2rem;
   height: 100%;
   position: relative;
-  min-height: 60px; /* ADDED: Ensure consistent minimum height */
+  min-height: 60px; 
   
   /* Safari optimization */
   -webkit-transform: translateZ(0);
@@ -501,10 +501,10 @@
   .nav-menu-content.mobile-open {
     display: flex;
     visibility: visible;
-    max-height: 500px;
+    max-height: auto; /* Changed from 500px to auto */
     opacity: 1;
     pointer-events: all;
-    margin-top: 1rem;
+    margin-top: 0; /* Changed from 1rem to 0 */
     padding-top: 1rem;
   }
 
@@ -512,14 +512,14 @@
     flex-direction: column;
     width: 100%;
     gap: 0.5rem;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .nav-links ul {
     flex-direction: column;
     width: 100%;
     gap: 0.5rem;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .nav-links li,
@@ -585,6 +585,7 @@
   .navbar {
     width: calc(100% - 1rem);
     top: 0.5rem;
+    border-radius: 60px;
   }
 
   body.mobile-menu-open .navbar {
@@ -597,15 +598,15 @@
     width: calc(100% - 0.5rem);
     top: 0.25rem;
   }
-  
+
   .nav-container {
     padding: 0.35rem 0.75rem;
   }
-  
+
   .brand-link {
     font-size: 1.1rem;
   }
-  
+
   .brand-icon {
     height: 1.2rem;
   }
@@ -627,17 +628,17 @@
     transition: none !important;
     -webkit-transition: none !important;
   }
-  
+
   .get-started-btn::before,
   .pricing-btn::before {
     display: none;
   }
-  
+
   .nav-links li a::before,
   .nav-link::before {
     display: none;
   }
-  
+
   * {
     will-change: auto !important;
   }
@@ -660,18 +661,18 @@
     background: rgba(0, 0, 0, 0.9);
     border-color: #ffffff;
   }
-  
+
   .nav-links li a,
   .nav-link,
   .brand-name {
     color: #ffffff;
   }
-  
+
   .get-started-btn {
     background: rgba(216, 78, 40, 0.9);
     border-color: #D84E28;
   }
-  
+
   .pricing-btn {
     background: rgba(11, 61, 46, 0.9);
     border-color: #0b3d2e;
@@ -712,158 +713,28 @@
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
     }
-    
+
     .navbar {
       -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
       transform: translateX(-50%) translate3d(0, 0, 0);
     }
-    
+
     .brand-link:hover {
       -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
       transform: translateY(-1px) translate3d(0, 0, 0);
     }
-    
+
     .nav-links li a:hover,
     .nav-link:hover {
       -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
       transform: translateY(-1px) translate3d(0, 0, 0);
     }
-    
+
     .pricing-btn:hover {
       -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
       transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
     }
-    
-    .get-started-btn:hover {
-      -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
-      transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
-    }
-  }
-}
 
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .navbar,
-  .nav-links li a,
-  .nav-link,
-  .get-started-btn,
-  .pricing-btn,
-  .brand-link,
-  .nav-links li a::before,
-  .nav-link::before,
-  .get-started-btn::before,
-  .pricing-btn::before,
-  .nav-menu-content {
-    transition: none !important;
-    -webkit-transition: none !important;
-  }
-  
-  .get-started-btn::before,
-  .pricing-btn::before {
-    display: none;
-  }
-  
-  .nav-links li a::before,
-  .nav-link::before {
-    display: none;
-  }
-  
-  * {
-    will-change: auto !important;
-  }
-}
-
-/* Focus states for accessibility */
-.nav-links li a:focus,
-.nav-link:focus,
-.get-started-btn:focus,
-.pricing-btn:focus,
-.brand-link:focus,
-.mobile-menu-toggle:focus {
-  outline: 2px solid rgba(216, 78, 40, 0.8);
-  outline-offset: 2px;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .navbar {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: #ffffff;
-  }
-  
-  .nav-links li a,
-  .nav-link,
-  .brand-name {
-    color: #ffffff;
-  }
-  
-  .get-started-btn {
-    background: rgba(216, 78, 40, 0.9);
-    border-color: #D84E28;
-  }
-  
-  .pricing-btn {
-    background: rgba(11, 61, 46, 0.9);
-    border-color: #0b3d2e;
-  }
-
-  .nav-menu-content {
-    background: rgba(0, 0, 0, 0.98);
-    border-color: #ffffff;
-  }
-
-  .nav-links li a,
-  .nav-link {
-    color: #ffffff;
-  }
-
-  .pricing-btn {
-    background: #1a5f47;
-    color: #ffffff;
-  }
-
-  .get-started-btn {
-    background: #D84E28;
-    color: #ffffff;
-  }
-}
-
-/* Safari-specific performance optimizations */
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    .navbar,
-    .nav-container,
-    .brand-link,
-    .nav-links li a,
-    .nav-link,
-    .pricing-btn,
-    .get-started-btn,
-    .nav-menu-content {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-    
-    .navbar {
-      -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
-      transform: translateX(-50%) translate3d(0, 0, 0);
-    }
-    
-    .brand-link:hover {
-      -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
-      transform: translateY(-1px) translate3d(0, 0, 0);
-    }
-    
-    .nav-links li a:hover,
-    .nav-link:hover {
-      -webkit-transform: translateY(-1px) translate3d(0, 0, 0);
-      transform: translateY(-1px) translate3d(0, 0, 0);
-    }
-    
-    .pricing-btn:hover {
-      -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
-      transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
-    }
-    
     .get-started-btn:hover {
       -webkit-transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
       transform: translateY(-2px) scale(1.01) translate3d(0, 0, 0);
