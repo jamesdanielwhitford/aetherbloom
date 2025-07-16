@@ -13,57 +13,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const foundationCards = document.querySelectorAll('.foundation-card');
     const contentPanels = document.querySelectorAll('.content-panel');
     
+    let activeFoundationCard = null;
+
+    const activateFoundationCard = (card) => {
+        const target = card.getAttribute('data-target');
+
+        // Remove active class from all cards and hide all content panels
+        foundationCards.forEach(c => c.classList.remove('active'));
+        contentPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active class to the hovered card
+        card.classList.add('active');
+
+        // Show target content panel
+        const targetPanel = document.getElementById(target);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+        activeFoundationCard = card;
+    };
+
     foundationCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const target = this.getAttribute('data-target');
-            
-            // Remove active class from all cards
-            foundationCards.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked card
-            this.classList.add('active');
-            
-            // Hide all content panels
-            contentPanels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-            
-            // Show target content panel
-            const targetPanel = document.getElementById(target);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
-        });
-        
-        // Optional: Handle hover effects for desktop
         card.addEventListener('mouseenter', function() {
-            if (window.innerWidth > 768) {
-                const target = this.getAttribute('data-target');
-                
-                // Don't change if this card is already active
-                if (this.classList.contains('active')) {
-                    return;
-                }
-                
-                // Add hover preview effect
-                this.style.transform = 'translateY(-5px)';
-                this.style.background = 'rgba(255, 255, 255, 0.12)';
-                this.style.borderColor = 'rgba(255, 147, 64, 0.3)';
-            }
+            activateFoundationCard(this);
         });
-        
-        card.addEventListener('mouseleave', function() {
-            if (window.innerWidth > 768) {
-                // Remove hover effects if not active
-                if (!this.classList.contains('active')) {
-                    this.style.transform = '';
-                    this.style.background = '';
-                    this.style.borderColor = '';
-                }
+
+        // Optional: Add mouseleave to hide content if no card is hovered, or revert to default
+        // For now, we'll keep the last hovered item active until another is hovered.
+        // If you want content to disappear on mouseleave, we'd need more complex logic
+        // to manage the default state or a "no selection" state.
+    });
+
+    // Set the first foundation card as active by default on page load
+    if (foundationCards.length > 0) {
+        activateFoundationCard(foundationCards[0]);
+    }
+    
+    // Values section hover functionality
+    const valueItems = document.querySelectorAll('.value-item');
+    let lastActiveValueItem = null; // To keep track of the last actively open item
+
+    valueItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // If there was a previously active item and it's not the current one, close it
+            if (lastActiveValueItem && lastActiveValueItem !== this) {
+                lastActiveValueItem.classList.remove('open');
             }
+            // Add 'open' class to the hovered item
+            this.classList.add('open');
+            // Update the last active item
+            lastActiveValueItem = this;
         });
     });
-    
+
+    // Set the first value item as open by default on page load
+    if (valueItems.length > 0) {
+        valueItems[0].classList.add('open');
+        lastActiveValueItem = valueItems[0]; // Initialize lastActiveValueItem
+    }
+
     // Smooth scrolling for internal links
     const internalLinks = document.querySelectorAll('a[href^="#"]');
     internalLinks.forEach(link => {

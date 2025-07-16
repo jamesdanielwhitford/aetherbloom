@@ -694,7 +694,7 @@
 
 .movement-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* Two smaller cards on left, one large on right */
+  grid-template-columns: 2fr 1fr; /* Large card on left, two smaller cards on right */
   gap: 3rem;
   align-items: stretch; /* Make children stretch to fill height */
 }
@@ -731,6 +731,7 @@
   text-align: center;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  flex: 1;
 }
 
 .movement-card:hover {

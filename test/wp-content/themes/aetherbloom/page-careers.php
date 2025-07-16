@@ -24,9 +24,13 @@ get_header(); ?>
             
             <!-- Hero Section -->
             <section class="careers-hero">
-                <div class="hero-background">
-                    <div class="hero-background-overlay"></div>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/careers-hero-bg.png'); ?>" alt="Join our team" class="hero-bg-image">
+                <div class="hero-background-video">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/careers-video.mp4'); ?>" type="video/mp4">
+                        <!-- Fallback for browsers that don't support video -->
+                        <div class="video-fallback"></div>
+                    </video>
+                    <div class="hero-video-overlay"></div>
                 </div>
                 <div class="hero-overlay">
                     <div class="container">

@@ -180,11 +180,17 @@
   position: relative;
 }
 
+.foundation-layout {
+  display: flex; /* Changed from grid to flex for equal height columns */
+  gap: 3rem;
+  align-items: stretch; /* Ensures children stretch to the height of the tallest sibling */
+}
+
 .foundation-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 0; /* Remove margin-bottom as it's now part of the grid gap */
 }
 
 .foundation-card {
@@ -205,8 +211,8 @@
   transform: translateY(-5px);
 }
 
-.card-icon {
-  color: #d84e28;
+  .card-icon {
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -229,13 +235,16 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 3rem;
-  min-height: 300px;
+  /* overflow: hidden; */ /* Ensure no overflow from this container */
+  flex: 2; /* Allow foundation-content to take up 2 parts of the available space */
 }
 
 .content-panel {
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  /* height: 100%; */ /* Ensure content panel fills its parent's height */
+  overflow-y: auto; /* Add scroll if content exceeds height */
 }
 
 .content-panel.active {
@@ -244,17 +253,18 @@
 }
 
 .content-panel p {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin: 0;
 }
 
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Add gap between value items */
+  height: 500px; /* Set a fixed height for the values list */
 }
 
 .value-item {
@@ -262,12 +272,23 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  padding: 1.5rem 2rem;
+  transition: flex-grow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  flex: 1 1 0%; /* Allow items to grow and shrink */
+  min-height: 0; /* Allow items to shrink completely */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .value-item:hover {
-  transform: translateY(-3px);
+  /* These styles are now handled by .value-item.open */
+}
+
+.value-item.open {
+  flex-grow: 5 !important; /* Make the open item grow more */
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 147, 64, 0.3);
 }
@@ -276,16 +297,27 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.value-item p {
+.value-item .value-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out; /* Animate both opening and closing */
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  margin: 0;
+  margin-top: 0;
+}
+
+.value-item.open .value-description {
+  max-height: 2000px; /* Increased to prevent content cutoff */
+  opacity: 1;
+  margin-top: 1rem;
+  transition: max-height 0.3s ease-out, margin-top 0.3s ease-out; /* Original opening speed */
 }
 
 /* ===== FOUNDERS SECTION - SIDE BY SIDE LAYOUT ===== */
@@ -328,21 +360,33 @@
   height: 100%;
 }
 
+.founder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
 .founder-image {
-  width: fit-content; /* Container width adapts to image's scaled width */
-  height: 300px; /* Fixed height for the container */
+  width: 200px; /* Larger size for founders' headshots */
+  height: 200px;
+  aspect-ratio: 1/1; /* Ensure a perfect square aspect ratio */
   overflow: hidden;
-  border-radius: 16px;
-  margin-bottom: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  margin: 0 auto 2rem auto; /* Center the container horizontally */
-  background-color: white; /* Set background to white */
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevent shrinking */
+  background-color: white;
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .founder-photo {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensure the entire image (height and width) fits within the container */
+  object-fit: cover;
+  object-position: top;
   transition: transform 0.3s ease;
 }
 
@@ -350,10 +394,11 @@
   transform: scale(1.05);
 }
 
-.founder-info {
-  flex: 1;
+.founder-details {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .founder-name {
@@ -375,7 +420,7 @@
 .founder-location {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Removed margin-bottom as it's now part of founder-details */
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -468,6 +513,10 @@
     gap: 1.5rem;
   }
   
+  .foundation-layout {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+  
   .founders-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -536,8 +585,8 @@
   }
   
   .founder-image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 }
 
@@ -586,8 +635,8 @@
   }
   
   .founder-image {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
   
   .ally-image {
