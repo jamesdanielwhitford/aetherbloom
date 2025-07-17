@@ -473,8 +473,34 @@
 .program-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "header image"
+    "description image";
   gap: 3rem;
-  align-items: center;
+  align-items: start; /* Align items to the start of their grid area */
+}
+
+.program-header {
+  grid-area: header;
+}
+
+.program-description {
+  grid-area: description;
+}
+
+.program-image {
+  grid-area: image;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 1 / 1; /* Make the image container square */
+}
+
+.program-image img {
+  width: 100%;
+  height: 100%; /* Fill the height of the square container */
+  object-fit: cover;
+  object-position: center;
 }
 
 .program-header h3 {
@@ -538,18 +564,6 @@
   margin: 0;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
-
-.program-image {
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.program-image img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  object-position: center;
   
 }
 
