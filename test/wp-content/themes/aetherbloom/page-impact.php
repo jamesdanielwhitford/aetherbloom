@@ -24,9 +24,13 @@ get_header(); ?>
             
             <!-- Hero Section - Cinematic Introduction -->
             <section class="impact-hero">
-                <div class="hero-background">
-                    <div class="hero-overlay"></div>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-workspace.jpg'); ?>" alt="South African women in modern workspace" class="hero-bg-image">
+                <div class="hero-background-video">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.mp4'); ?>" type="video/mp4">
+                        <!-- Fallback for browsers that don't support video -->
+                        <div class="video-fallback"></div>
+                    </video>
+                    <div class="hero-video-overlay"></div>
                 </div>
                 <div class="hero-content">
                     <div class="container">
