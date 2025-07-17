@@ -398,12 +398,12 @@
   background: #ffffff;
   border-radius: 1px;
   transition: all 0.3s ease;
-  transform-origin: left center;
+  transform-origin: center center;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg);
-  width: 120%;
+  transform: translateY(8px) rotate(45deg);
+  width: 100%;
   background: #ffffff;
 }
 
@@ -413,8 +413,8 @@
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  width: 120%;
+  transform: translateY(-8px) rotate(-45deg);
+  width: 100%;
   background: #ffffff;
 }
 
@@ -487,8 +487,8 @@
   }
 
   .nav-menu-content {
-    flex-basis: 100%;
-    width: 100%;
+    /* flex-basis: 100%; */ /* Removed to allow centering */
+    /* width: 100%; */ /* Removed to allow centering */
     display: none;
     flex-direction: column;
     transition: max-height 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out, margin-top 0.4s ease-out, padding 0.4s ease-out;
@@ -498,28 +498,30 @@
     pointer-events: none;
     margin-top: 0;
     padding: 0;
+    align-items: center; /* Added to center content horizontally */
   }
 
   .nav-menu-content.mobile-open {
     display: flex;
     visibility: visible;
-    max-height: auto; /* Changed from 500px to auto */
+    max-height: 500px; /* Set a large enough max-height for transition */
     opacity: 1;
     pointer-events: all;
     margin-top: 0; /* Changed from 1rem to 0 */
     padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .nav-links {
     flex-direction: column;
-    width: 100%;
+    width: 100%; /* Re-added to make it take full width */
     gap: 0.5rem;
     align-items: center;
   }
 
   .nav-links ul {
     flex-direction: column;
-    width: 100%;
+    width: auto; /* Changed from 100% to auto */
     gap: 0.5rem;
     align-items: center;
   }
@@ -527,8 +529,8 @@
   .nav-links li,
   .nav-links li a,
   .nav-link {
-    width: 100%;
-    text-align: left;
+    width: auto; /* Changed from 100% to auto */
+    text-align: center;
     padding: 0.75rem 1rem;
     font-size: 1.1rem;
     color: #ffffff;
@@ -549,14 +551,14 @@
 
   .nav-actions {
     flex-direction: column;
-    width: 100%;
+    width: 100%; /* Changed from 100% to auto */
     gap: 0.75rem;
-    margin-top: 1rem;
+    align-items: center;
   }
 
   .pricing-btn,
   .get-started-btn {
-    width: 100%;
+    /* width: 100%; */ /* Removed to allow centering */
     text-align: center;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -565,7 +567,7 @@
   .pricing-btn {
     background: rgba(26, 95, 71, 0.1);
     border-color: rgba(26, 95, 71, 0.3);
-    color: #1a5f47;
+    color: #ffffff;
   }
 
   .pricing-btn:hover {
@@ -574,9 +576,9 @@
   }
 
   .get-started-btn {
-    background: rgba(216, 78, 40, 0.1);
+    background: rgba(216, 78, 40, 0.25);
     border-color: rgba(216, 78, 40, 0.3);
-    color: #D84E28;
+    color: #ffffff;
   }
 
   .get-started-btn:hover {
