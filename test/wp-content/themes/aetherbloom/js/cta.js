@@ -7,7 +7,7 @@
     const HUBSPOT_CONFIG = {
         portalId: '145903429', // Replace with your HubSpot portal ID
         formId: 'd38ffeaa-6505-4879-ac11-27619fdbb1d0', // Replace with your HubSpot form ID
-        calendarUrl: 'https://meetings.hubspot.com/your-calendar-link', // Replace with your actual calendar link
+        calendarUrl: 'https://meetings-eu1.hubspot.com/aetherbloom', // Replace with your actual calendar link
         apiEndpoint: 'https://api.hsforms.com/submissions/v3/integration/submit'
     };
     
