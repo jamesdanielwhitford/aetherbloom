@@ -229,7 +229,8 @@
 .service-tier:hover .price,
 .service-tier:hover .price-note,
 .service-tier:hover .tier-features li,
-.service-tier:hover .badge-text {
+.service-tier:hover .badge-text,
+.service-tier:hover .feature-group h4 {
     color: #d84e28;
 }
 
@@ -270,7 +271,7 @@
 
 .tier-name {
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #ffffff;
     margin-bottom: 1rem;
     text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
@@ -329,6 +330,14 @@
     left: 0;
     color: #ffffff;
     font-weight: 600;
+}
+
+.feature-group h4 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 
 .tier-cta {
@@ -397,7 +406,7 @@
 
 .call-centre-card h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #ffffff;
     margin-bottom: 1.5rem;
     text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
@@ -476,12 +485,13 @@
 
 .comparison-table th,
 .comparison-table td {
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .comparison-table th {
+    font-size: 1.2rem;
     font-weight: 600;
     color: #ffffff;
     background: rgba(255, 255, 255, 0.05);
@@ -490,7 +500,7 @@
 
 .comparison-table td {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 0.95rem;
+    font-size: 1.1rem;
 }
 
 .comparison-table .checkmark {

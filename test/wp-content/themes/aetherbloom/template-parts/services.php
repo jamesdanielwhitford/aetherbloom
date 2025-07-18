@@ -9,7 +9,7 @@ $services_data = array(
     array(
         'title' => get_theme_mod('service_1_title', 'Customer Support'),
         'subtitle' => get_theme_mod('service_1_subtitle', 'Omnichannel Excellence'),
-        'description' => get_theme_mod('service_1_description', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.'),
+        'description' => get_theme_mod('service_1_description', 'Scalable, remote-first support to manage customer interactions across email, chat, and phone.'),
         'features' => array(
             '24/7 Multi-channel Support',
             'UK Compliance Training',
@@ -20,7 +20,7 @@ $services_data = array(
     array(
         'title' => get_theme_mod('service_2_title', 'Back Office Operations'),
         'subtitle' => get_theme_mod('service_2_subtitle', 'Streamlined Efficiency'),
-        'description' => get_theme_mod('service_2_description', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.'),
+        'description' => get_theme_mod('service_2_description', 'Comprehensive back-office support including HR services, virtual administration, bookkeeping, and data analysis.'),
         'features' => array(
             'Data Processing & Entry',
             'Financial Administration',
@@ -30,7 +30,7 @@ $services_data = array(
     array(
         'title' => get_theme_mod('service_3_title', 'Technical Support'),
         'subtitle' => get_theme_mod('service_3_subtitle', 'Expert Problem Solving'),
-        'description' => get_theme_mod('service_3_description', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.'),
+        'description' => get_theme_mod('service_3_description', 'Expert IT helpdesk and technical support services with tiered assistance for software issues, system troubleshooting, and technical documentation.'),
         'features' => array(
             'Tiered IT Helpdesk',
             'Software Support',

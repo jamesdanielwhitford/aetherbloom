@@ -27,7 +27,7 @@ get_header(); ?>
             $hero_video = get_template_directory_uri() . '/assets/videos/hero-video.mp4';
         }
         ?>
-        <video class="fixed-video" autoplay muted loop playsinline>
+        <video class="fixed-video" autoplay muted loop playsinline poster="<?php echo esc_url(str_replace('.mp4', '.jpg', $hero_video)); ?>">
             <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
             <div class="video-fallback"></div>
         </video>

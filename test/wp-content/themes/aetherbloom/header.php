@@ -19,6 +19,12 @@ if (!defined('ABSPATH')) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <?php wp_head(); ?>
+<script>
+// Immediately add loaded class when DOM is ready - moved here to run before navbar renders
+document.addEventListener('DOMContentLoaded', function() {
+  document.documentElement.classList.add('loaded');
+});
+</script>
 </head>
 
 <body <?php body_class(); ?>>
