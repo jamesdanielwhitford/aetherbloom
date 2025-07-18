@@ -130,7 +130,7 @@ get_header(); ?>
                             <p><?php esc_html_e('"Aetherbloom invested in my GDPR certification – now I support UK clients with confidence. The training and support I received helped me grow professionally and personally."', 'aetherbloom'); ?></p>
                         </blockquote>
                         <cite>
-                            <strong><?php esc_html_e('Sarah M.', 'aetherbloom'); ?></strong>
+                            <strong><?php esc_html_e('Sarah H.', 'aetherbloom'); ?></strong>
                             <span><?php esc_html_e('Customer Success Specialist', 'aetherbloom'); ?></span>
                         </cite>
                     </div>
