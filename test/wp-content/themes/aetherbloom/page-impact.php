@@ -220,15 +220,15 @@ get_header(); ?>
                                     <h3><?php esc_html_e('Work-Readiness Revolution', 'aetherbloom'); ?></h3>
                                     <h4><?php esc_html_e('Skills for Life', 'aetherbloom'); ?></h4>
                                 </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.jpg'); ?>" alt="Skills training program">
+                                </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.', 'aetherbloom'); ?></p>
                                     <div class="program-highlight">
                                         <p><?php esc_html_e('"Graduates gain certifications recognised by UK/South African employers."', 'aetherbloom'); ?></p>
                                     </div>
                                     <p><strong><?php esc_html_e('Beyond Employment:', 'aetherbloom'); ?></strong> <?php esc_html_e('Even if we can\'t hire them, we empower them.', 'aetherbloom'); ?></p>
-                                </div>
-                                <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.jpg'); ?>" alt="Skills training program">
                                 </div>
                             </div>
                         </div>
@@ -241,14 +241,14 @@ get_header(); ?>
                                     <h3><?php esc_html_e('Second-Life Tech Initiative', 'aetherbloom'); ?></h3>
                                     <h4><?php esc_html_e('Sustainability Meets Inclusion', 'aetherbloom'); ?></h4>
                                 </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.jpg'); ?>" alt="Technology refurbishment">
+                                </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Donate or sell your decommissioned laptops, headsets, and phones. We refurbish equipment for our staff and trainees, reducing e-waste while bridging the digital divide.', 'aetherbloom'); ?></p>
                                     <div class="program-highlight">
                                         <p><?php esc_html_e('"Every device donated supports a woman\'s access to work opportunities."', 'aetherbloom'); ?></p>
                                     </div>
-                                </div>
-                                <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.jpg'); ?>" alt="Technology refurbishment">
                                 </div>
                             </div>
                         </div>
@@ -261,14 +261,14 @@ get_header(); ?>
                                     <h3><?php esc_html_e('NGO & Community Partnerships', 'aetherbloom'); ?></h3>
                                     <h4><?php esc_html_e('Collaborate With Us', 'aetherbloom'); ?></h4>
                                 </div>
+                                <div class="program-image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="Community partnerships">
+                                </div>
                                 <div class="program-description">
                                     <ul>
                                         <li><?php esc_html_e('Refer candidates from underserved groups for free training and employment opportunities.', 'aetherbloom'); ?></li>
                                         <li><?php esc_html_e('Co-design CSR projects (e.g., childcare subsidies, mental health workshops).', 'aetherbloom'); ?></li>
                                     </ul>
-                                </div>
-                                <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="Community partnerships">
                                 </div>
                             </div>
                         </div>
