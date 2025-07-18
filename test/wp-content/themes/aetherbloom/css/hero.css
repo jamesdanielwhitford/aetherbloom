@@ -1,3 +1,13 @@
+/* Prevent FOUC in Safari - hide content until ready */
+html {
+  visibility: hidden;
+}
+
+/* Show content once CSS is loaded */
+html.loaded {
+  visibility: visible;
+}
+
 /* File: /wp-content/themes/aetherbloom/css/hero.css */
 
 .hero-container {

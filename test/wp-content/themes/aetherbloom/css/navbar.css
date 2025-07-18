@@ -1,3 +1,12 @@
+html {
+  visibility: hidden;
+}
+
+/* Show content once CSS is loaded */
+html.loaded {
+  visibility: visible;
+}
+
 /* File: /wp-content/themes/aetherbloom/css/navbar.css */
 
 .navbar {
