@@ -34,6 +34,9 @@
         
         // Initialize form handlers
         initFormHandlers();
+
+        // Initialize newsletter modal
+        initNewsletterModal();
         
         // Initialize video handling
         initVideoHandling();
@@ -168,12 +171,6 @@
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', handleContactForm);
-        }
-
-        // Newsletter form handler
-        const newsletterForm = document.getElementById('newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', handleNewsletterForm);
         }
     }
 
@@ -356,6 +353,31 @@
                 // Hide video container if video fails to load
                 if (videoContainer) {
                     videoContainer.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    /**
+     * Initialize newsletter modal functionality
+     */
+    function initNewsletterModal() {
+        const modal = document.getElementById('newsletter-modal');
+        const openButton = document.getElementById('open-newsletter-modal');
+        const closeButton = modal.querySelector('.close-button');
+
+        if (openButton && modal && closeButton) {
+            openButton.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
                 }
             });
         }

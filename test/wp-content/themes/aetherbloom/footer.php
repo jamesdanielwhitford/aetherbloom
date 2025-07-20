@@ -137,8 +137,7 @@
                         <h3 class="newsletter-title"><?php esc_html_e('Stay Updated', 'aetherbloom'); ?></h3>
                         <p class="newsletter-description"><?php esc_html_e('Join our newsletter to get the latest updates.', 'aetherbloom'); ?></p>
                         <form class="newsletter-form" action="#" method="post">
-                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address" required>
-                            <button type="submit" class="newsletter-button"><?php esc_html_e('Subscribe', 'aetherbloom'); ?></button>
+                            <button type="button" class="newsletter-button" id="open-newsletter-modal"><?php esc_html_e('Subscribe', 'aetherbloom'); ?></button>
                         </form>
                     </div>
                 </div>
@@ -157,7 +156,18 @@
 
 </div><!-- #page -->
 
+
+<!-- Newsletter Modal -->
+<div id="newsletter-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <script src="https://js-eu1.hsforms.net/forms/embed/145903429.js" defer></script>
+        <div class="hs-form-frame" data-region="eu1" data-form-id="d61f73e9-f82c-444a-a687-51351f7014a9" data-portal-id="145903429"></div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
+
 
 </body>
 </html>
