@@ -106,7 +106,7 @@
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
   max-width: 280px;
   margin: 0;
 }
@@ -179,7 +179,7 @@
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 0.25rem 0;
@@ -215,7 +215,7 @@
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease;
   line-height: 1.4;
@@ -235,7 +235,7 @@
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.95rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
   line-height: 1.4;
 }
 
@@ -269,7 +269,7 @@
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.85rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
@@ -298,7 +298,7 @@
 }
 
 .newsletter-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
 }
 
 .newsletter-input:focus {
@@ -364,7 +364,7 @@
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
   margin: 0;
 }
 
