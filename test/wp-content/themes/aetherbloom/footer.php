@@ -119,7 +119,7 @@
                             <div class="address-group">
                                 <strong><?php esc_html_e('UK Office:', 'aetherbloom'); ?></strong>
                                 <div class="address-line">London, UK</div>
-                                <div class="address-line">+44 208 0507 881</div>
+                                <a href="tel:+442080507881" class="address-line footer-contact-link">+44 208 0507 881</a>
                             </div>
                         </div>
                         <div class="footer-contact-item">
