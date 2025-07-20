@@ -477,7 +477,7 @@ img {
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
-  max-height: calc(100vh - (var(--navbar-height) + 40px)); /* Max height: viewport height minus navbar height and total vertical padding */
+  max-height: calc(100vh - (var(--navbar-height) + 80px)); /* Max height: viewport height minus navbar height and total vertical padding */
   overflow-y: auto; /* Enable scrolling for content that exceeds max-height */
   position: relative;
   border-radius: 8px;
