@@ -464,7 +464,6 @@ img {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-  display: flex; /* Use flexbox for positioning */
   flex-direction: column; /* Arrange content vertically */
   padding-top: calc(var(--navbar-height) + 20px); /* Space from top, below navbar */
   padding-bottom: 20px; /* Space from bottom */
