@@ -206,8 +206,8 @@
 
 .foundation-card:hover,
 .foundation-card.active {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: #ffffff;
+  border-color: #ffffff;
   transform: translateY(-5px);
 }
 
@@ -216,11 +216,19 @@
   margin-bottom: 1rem;
 }
 
+.foundation-card.active .card-icon {
+  color: #d84e28;
+}
+
 .foundation-card h3 {
   font-size: 1.8rem;
   color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 600;
+}
+
+.foundation-card.active h3 {
+  color: #d84e28;
 }
 
 .foundation-card p {
@@ -289,8 +297,8 @@
 
 .value-item.open {
   flex-grow: 5 !important; /* Make the open item grow more */
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 147, 64, 0.3);
+  background: #ffffff;
+  border-color: #d84e28;
 }
 
 .value-item h4 {
@@ -299,6 +307,10 @@
   color: #ffffff;
   margin-bottom: 0.5rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.value-item.open h4 {
+  color: #d84e28;
 }
 
 .value-item .value-description {
@@ -318,6 +330,7 @@
   opacity: 1;
   margin-top: 1rem;
   transition: max-height 0.3s ease-out, margin-top 0.3s ease-out; /* Original opening speed */
+  color: #d84e28;
 }
 
 /* ===== FOUNDERS SECTION - SIDE BY SIDE LAYOUT ===== */
