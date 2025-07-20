@@ -25,8 +25,7 @@
             phone: '',
             primary_service: '',
             addon_services: [],
-            consent_processing: false,
-            consent_marketing: false
+            consent_processing: false
         },
         isSubmitting: false,
         ajaxUrl: '',
@@ -53,8 +52,7 @@
             phone: null,
             primary_service: null,
             addon_services: [],
-            consent_processing: null,
-            consent_marketing: null
+            consent_processing: null
         },
         // New CTA service dropdown elements
         ctaServiceDropdown: null,
@@ -148,7 +146,7 @@
         ctaElements.formInputs.primary_service = document.getElementById('primary-service');
         ctaElements.formInputs.addon_services = document.querySelectorAll('input[name="addon_services"]');
         ctaElements.formInputs.consent_processing = document.getElementById('consent-processing');
-        ctaElements.formInputs.consent_marketing = document.getElementById('consent-marketing');
+        
         
         // Navigation buttons (will be found dynamically per step)
         ctaElements.navigationButtons.submit = document.getElementById('contact-submit');
@@ -321,7 +319,7 @@
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
             if (input) {
-                if (key === 'addon_services' || key === 'consent_processing' || key === 'consent_marketing') {
+                if (key === 'addon_services' || key === 'consent_processing') {
                     // Handle checkboxes
                     const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
                     inputs.forEach(checkbox => {
@@ -441,7 +439,7 @@
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
             if (input) {
-                if (key === 'addon_services' || key === 'consent_processing' || key === 'consent_marketing') {
+                if (key === 'addon_services' || key === 'consent_processing') {
                     // Handle checkboxes
                     const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
                     if (key === 'addon_services') {
@@ -451,7 +449,7 @@
                                 ctaData.formData.addon_services.push(checkbox.value);
                             }
                         });
-                    } else { // For consent_processing and consent_marketing
+                    } else { // For consent_processing
                         ctaData.formData[key] = inputs[0].checked; // Assuming single checkbox for consent
                     }
                 } else if (key === 'primary_service') {
@@ -602,7 +600,7 @@
                     input.forEach(checkbox => {
                         checkbox.checked = ctaData.formData.addon_services.includes(checkbox.value);
                     });
-                } else if (key === 'consent_processing' || key === 'consent_marketing') {
+            } else if (key === 'consent_processing') {
                     input.checked = ctaData.formData[key] || false;
                 } else if (key === 'primary_service') {
                     // For the custom dropdown, update the label
@@ -827,8 +825,7 @@
                     { name: "phone", value: formData.phone || "" },
                     { name: "primary_service__select_one_", value: formData.primary_service || "" },
                     { name: "addon_services", value: formData.addon_services.join(", ") },
-                    { name: "consent_processing", value: formData.consent_processing },
-                    { name: "consent_marketing", value: formData.consent_marketing }
+                    { name: "consent_processing", value: formData.consent_processing }
                 ],
                 context: {
                     pageUri: window.location.href,
@@ -993,7 +990,7 @@
         Object.keys(ctaData.formData).forEach(key => {
             if (key === 'addon_services') {
                 ctaData.formData[key] = [];
-            } else if (key === 'consent_processing' || key === 'consent_marketing') {
+            } else if (key === 'consent_processing') {
                 ctaData.formData[key] = false;
             }
             else {

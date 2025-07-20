@@ -189,12 +189,7 @@ $cta_service_options = array(
                         <?php esc_html_e('I consent to Aetherbloom processing my data for the purpose of this enquiry.', 'aetherbloom'); ?> *
                     </label>
                 </div>
-                <div class="consent-item">
-                    <input type="checkbox" id="consent-marketing" name="consent_marketing">
-                    <label for="consent-marketing">
-                        <?php esc_html_e('I agree to receive marketing communications from Aetherbloom.', 'aetherbloom'); ?>
-                    </label>
-                </div>
+                
                 <p class="privacy-link">
                     <?php
                     printf(
