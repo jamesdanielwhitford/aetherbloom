@@ -16,6 +16,7 @@
         isVisible: false,
         isHovering: false,
         mousePosition: { x: 0, y: 0, rotateX: 0, rotateY: 0 },
+        isCtaServiceDropdownOpen: false, // New state variable for CTA service dropdown
         formData: {
             company: '',
             firstname: '',
@@ -23,7 +24,9 @@
             email: '',
             phone: '',
             primary_service: '',
-            addon_services: []
+            addon_services: [],
+            consent_processing: false,
+            consent_marketing: false
         },
         isSubmitting: false,
         ajaxUrl: '',
@@ -49,8 +52,17 @@
             email: null,
             phone: null,
             primary_service: null,
-            addon_services: []
+            addon_services: [],
+            consent_processing: null,
+            consent_marketing: null
         },
+        // New CTA service dropdown elements
+        ctaServiceDropdown: null,
+        ctaServiceDropdownTrigger: null,
+        ctaServiceDropdownMenu: null,
+        ctaServiceLabel: null,
+        ctaServiceArrow: null,
+        ctaServiceOptions: [],
         navigationButtons: {
             previous: null,
             next: null,
@@ -95,6 +107,12 @@
         // Initialize multi-step form handling
         initMultiStepForm();
         
+        // Initialize CTA dropdowns
+        initCtaDropdowns();
+
+        // Initialize click outside handling
+        initClickOutsideHandling();
+        
         // Initialize form validation
         initFormValidation();
         
@@ -120,8 +138,17 @@
         ctaElements.formInputs.lastname = document.getElementById('last-name');
         ctaElements.formInputs.email = document.getElementById('contact-email');
         ctaElements.formInputs.phone = document.getElementById('phone-number');
+        // CTA Service Dropdown elements
+        ctaElements.ctaServiceDropdown = document.getElementById('cta-service-dropdown');
+        ctaElements.ctaServiceDropdownTrigger = document.getElementById('cta-service-dropdown-trigger');
+        ctaElements.ctaServiceDropdownMenu = document.getElementById('cta-service-dropdown-menu');
+        ctaElements.ctaServiceLabel = document.getElementById('cta-service-label');
+        ctaElements.ctaServiceArrow = document.getElementById('cta-service-arrow');
+        ctaElements.ctaServiceOptions = Array.from(document.querySelectorAll('#cta-service-dropdown-menu .dropdown-option'));
         ctaElements.formInputs.primary_service = document.getElementById('primary-service');
         ctaElements.formInputs.addon_services = document.querySelectorAll('input[name="addon_services"]');
+        ctaElements.formInputs.consent_processing = document.getElementById('consent-processing');
+        ctaElements.formInputs.consent_marketing = document.getElementById('consent-marketing');
         
         // Navigation buttons (will be found dynamically per step)
         ctaElements.navigationButtons.submit = document.getElementById('contact-submit');
@@ -294,14 +321,116 @@
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
             if (input) {
-                if (key === 'addon_services') {
+                if (key === 'addon_services' || key === 'consent_processing' || key === 'consent_marketing') {
                     // Handle checkboxes
-                    input.forEach(checkbox => {
+                    const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
+                    inputs.forEach(checkbox => {
                         checkbox.addEventListener('change', updateFormData);
                     });
-                } else {
+                } else if (key !== 'primary_service') { // Exclude primary_service as it's handled by custom dropdown
                     input.addEventListener('input', updateFormData);
                 }
+            }
+        });
+    }
+
+    // Initialize CTA dropdown functionality
+    function initCtaDropdowns() {
+        // CTA Service dropdown
+        if (ctaElements.ctaServiceDropdownTrigger) {
+            ctaElements.ctaServiceDropdownTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleCtaServiceDropdown();
+            });
+        }
+        
+        // CTA Service options
+        ctaElements.ctaServiceOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const serviceValue = e.currentTarget.dataset.value;
+                selectCtaService(serviceValue);
+                closeCtaServiceDropdown();
+            });
+        });
+    }
+
+    // Initialize click outside handling
+    function initClickOutsideHandling() {
+        document.addEventListener('click', (e) => {
+            // Check if click is outside CTA service dropdown
+            if (ctaElements.ctaServiceDropdown && !ctaElements.ctaServiceDropdown.contains(e.target)) {
+                closeCtaServiceDropdown();
+            }
+        });
+    }
+
+    // CTA Service dropdown functions
+    function toggleCtaServiceDropdown() {
+        if (ctaData.isCtaServiceDropdownOpen) {
+            closeCtaServiceDropdown();
+        } else {
+            openCtaServiceDropdown();
+        }
+    }
+
+    function openCtaServiceDropdown() {
+        ctaData.isCtaServiceDropdownOpen = true;
+        if (ctaElements.ctaServiceDropdownMenu) {
+            ctaElements.ctaServiceDropdownMenu.style.display = 'block';
+            // Force reflow to ensure proper positioning
+            ctaElements.ctaServiceDropdownMenu.offsetHeight;
+        }
+        if (ctaElements.ctaServiceArrow) {
+            ctaElements.ctaServiceArrow.classList.add('open');
+        }
+        if (ctaElements.ctaServiceDropdownTrigger) {
+            ctaElements.ctaServiceDropdownTrigger.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function closeCtaServiceDropdown() {
+        ctaData.isCtaServiceDropdownOpen = false;
+        if (ctaElements.ctaServiceDropdownMenu) {
+            ctaElements.ctaServiceDropdownMenu.style.display = 'none';
+        }
+        if (ctaElements.ctaServiceArrow) {
+            ctaElements.ctaServiceArrow.classList.remove('open');
+        }
+        if (ctaElements.ctaServiceDropdownTrigger) {
+            ctaElements.ctaServiceDropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    // Select CTA Service
+    function selectCtaService(serviceValue) {
+        if (!serviceValue) return;
+        
+        ctaData.formData.primary_service = serviceValue;
+        
+        // Update label
+        if (ctaElements.ctaServiceLabel) {
+            const selectedOption = ctaElements.ctaServiceOptions.find(option => option.dataset.value === serviceValue);
+            if (selectedOption) {
+                ctaElements.ctaServiceLabel.textContent = selectedOption.querySelector('.option-name').textContent;
+            } else if (serviceValue === '') {
+                ctaElements.ctaServiceLabel.textContent = 'Please Select';
+            }
+        }
+        
+        // Update hidden input
+        if (ctaElements.formInputs.primary_service) {
+            ctaElements.formInputs.primary_service.value = serviceValue;
+        }
+
+        // Update option states
+        ctaElements.ctaServiceOptions.forEach(option => {
+            if (option.dataset.value === serviceValue) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
             }
         });
     }
@@ -311,19 +440,28 @@
         // Update regular inputs
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
-            if (input && key !== 'addon_services') {
-                ctaData.formData[key] = input.value;
+            if (input) {
+                if (key === 'addon_services' || key === 'consent_processing' || key === 'consent_marketing') {
+                    // Handle checkboxes
+                    const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
+                    if (key === 'addon_services') {
+                        ctaData.formData.addon_services = []; // Clear array first
+                        inputs.forEach(checkbox => {
+                            if (checkbox.checked) {
+                                ctaData.formData.addon_services.push(checkbox.value);
+                            }
+                        });
+                    } else { // For consent_processing and consent_marketing
+                        ctaData.formData[key] = inputs[0].checked; // Assuming single checkbox for consent
+                    }
+                } else if (key === 'primary_service') {
+                    // Primary service is handled by custom dropdown logic
+                    // The hidden input's value is updated by selectCtaService
+                } else {
+                    ctaData.formData[key] = input.value;
+                }
             }
         });
-        
-        // Update addon services (checkboxes)
-        const addonServices = [];
-        ctaElements.formInputs.addon_services.forEach(checkbox => {
-            if (checkbox.checked) {
-                addonServices.push(checkbox.value);
-            }
-        });
-        ctaData.formData.addon_services = addonServices;
     }
     
     // Show specific step
@@ -381,8 +519,6 @@
         ctaElements.stepConnectors.forEach((connector, index) => {
             if (index + 1 < ctaData.currentStep) {
                 connector.classList.add('completed');
-            } else {
-                connector.classList.remove('completed');
             }
         });
     }
@@ -463,12 +599,14 @@
             if (input) {
                 if (key === 'addon_services') {
                     // Handle checkboxes
-                    ctaData.formData.addon_services.forEach(service => {
-                        const checkbox = Array.from(input).find(cb => cb.value === service);
-                        if (checkbox) {
-                            checkbox.checked = true;
-                        }
+                    input.forEach(checkbox => {
+                        checkbox.checked = ctaData.formData.addon_services.includes(checkbox.value);
                     });
+                } else if (key === 'consent_processing' || key === 'consent_marketing') {
+                    input.checked = ctaData.formData[key] || false;
+                } else if (key === 'primary_service') {
+                    // For the custom dropdown, update the label
+                    selectCtaService(ctaData.formData[key] || '');
                 } else {
                     input.value = ctaData.formData[key] || '';
                 }
@@ -504,7 +642,7 @@
             case 2:
                 return validateStep2();
             case 3:
-                return true; // No validation needed for final step
+                return validateStep3();
             default:
                 return true;
         }
@@ -532,7 +670,7 @@
         // Email validation
         const emailInput = ctaElements.formInputs.email;
         if (emailInput && emailInput.value.trim()) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
             if (!emailRegex.test(emailInput.value.trim())) {
                 emailInput.style.borderColor = '#ff6b6b';
                 showFormError('Please enter a valid email address.');
@@ -551,15 +689,38 @@
     // Validate step 2 (service selection)
     function validateStep2() {
         const primaryServiceInput = ctaElements.formInputs.primary_service;
+        const ctaServiceDropdownTrigger = ctaElements.ctaServiceDropdownTrigger;
         
         if (!primaryServiceInput || !primaryServiceInput.value.trim()) {
-            if (primaryServiceInput) {
-                primaryServiceInput.style.borderColor = '#ff6b6b';
+            if (ctaServiceDropdownTrigger) {
+                ctaServiceDropdownTrigger.style.borderColor = '#ff6b6b';
             }
             showFormError('Please select a primary service.');
             return false;
+        }
+        else {
+            if (ctaServiceDropdownTrigger) {
+                ctaServiceDropdownTrigger.style.borderColor = '';
+            }
+        }
+        
+        return true;
+    }
+
+    // Validate step 3 (GDPR consent)
+    function validateStep3() {
+        const consentInput = ctaElements.formInputs.consent_processing;
+        
+        if (!consentInput || !consentInput.checked) {
+            if(consentInput) {
+                consentInput.closest('.consent-item').classList.add('error');
+            }
+            showFormError('You must consent to data processing to continue.');
+            return false;
         } else {
-            primaryServiceInput.style.borderColor = '';
+            if(consentInput) {
+                consentInput.closest('.consent-item').classList.remove('error');
+            }
         }
         
         return true;
@@ -570,10 +731,28 @@
         // Clear validation styling on input
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
-            if (input && key !== 'addon_services') {
-                input.addEventListener('input', () => {
-                    input.style.borderColor = '';
-                    hideFormMessages();
+            if (input) {
+                const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
+                inputs.forEach(el => {
+                    el.addEventListener('input', () => {
+                        if (el.style) {
+                           el.style.borderColor = '';
+                        }
+                        if (el.closest('.consent-item')) {
+                            el.closest('.consent-item').classList.remove('error');
+                        }
+                        hideFormMessages();
+                    });
+                });
+            } else if (key === 'primary_service') {
+                // For the custom dropdown, clear validation on option click
+                ctaElements.ctaServiceOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        if (ctaElements.ctaServiceDropdownTrigger) {
+                            ctaElements.ctaServiceDropdownTrigger.style.borderColor = '';
+                        }
+                        hideFormMessages();
+                    });
                 });
             }
         });
@@ -647,7 +826,9 @@
                     { name: "email", value: formData.email },
                     { name: "phone", value: formData.phone || "" },
                     { name: "primary_service__select_one_", value: formData.primary_service || "" },
-                    { name: "addon_services", value: formData.addon_services.join(", ") }
+                    { name: "addon_services", value: formData.addon_services.join(", ") },
+                    { name: "consent_processing", value: formData.consent_processing },
+                    { name: "consent_marketing", value: formData.consent_marketing }
                 ],
                 context: {
                     pageUri: window.location.href,
@@ -708,6 +889,10 @@
             errors.push('Email address is required.');
         } else if (!isValidEmail(data.email)) {
             errors.push('Please enter a valid email address.');
+        }
+
+        if (!data.consent_processing) {
+            errors.push('You must consent to data processing.');
         }
         
         return {
@@ -808,7 +993,10 @@
         Object.keys(ctaData.formData).forEach(key => {
             if (key === 'addon_services') {
                 ctaData.formData[key] = [];
-            } else {
+            } else if (key === 'consent_processing' || key === 'consent_marketing') {
+                ctaData.formData[key] = false;
+            }
+            else {
                 ctaData.formData[key] = '';
             }
         });
@@ -819,8 +1007,16 @@
         // Clear any validation styling
         Object.keys(ctaElements.formInputs).forEach(key => {
             const input = ctaElements.formInputs[key];
-            if (input && key !== 'addon_services') {
-                input.style.borderColor = '';
+            if (input) {
+                const inputs = Array.isArray(input) || input instanceof NodeList ? input : [input];
+                inputs.forEach(el => {
+                    if (el.style) {
+                        el.style.borderColor = '';
+                    }
+                    if (el.closest('.consent-item')) {
+                        el.closest('.consent-item').classList.remove('error');
+                    }
+                });
             }
         });
         
@@ -893,7 +1089,8 @@
         resetForm: resetForm,
         getCurrentStep: () => ctaData.currentStep,
         getFormData: () => ctaData.formData,
-        validateCurrentStep: validateCurrentStep
+        validateCurrentStep: validateCurrentStep,
+        selectCtaService: selectCtaService // Expose selectCtaService
     };
     
 })();
