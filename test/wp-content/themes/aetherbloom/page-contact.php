@@ -103,7 +103,7 @@ get_header(); ?>
                                     <li><?php esc_html_e('Pre-vetted candidates', 'aetherbloom'); ?></li>
                                     <li><?php esc_html_e('Flexible contracts', 'aetherbloom'); ?></li>
                                 </ul>
-                                <a href="#assessment-form-container" id="quick-start-cta" class="path-cta"><?php esc_html_e('Start Now', 'aetherbloom'); ?></a>
+                                <a href="#assessment-form-container" class="path-cta reveal-assessment-trigger"><?php esc_html_e('Start Now', 'aetherbloom'); ?></a>
                             </div>
                         </div>
                         
@@ -127,7 +127,7 @@ get_header(); ?>
                                     <li><?php esc_html_e('Custom recruitment process', 'aetherbloom'); ?></li>
                                     <li><?php esc_html_e('Ongoing support', 'aetherbloom'); ?></li>
                                 </ul>
-                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Let\'s Plan', 'aetherbloom'); ?></a>
+                                <a href="#assessment-form-container" class="path-cta reveal-assessment-trigger"><?php esc_html_e('Let\'s Plan', 'aetherbloom'); ?></a>
                             </div>
                         </div>
                         
@@ -153,7 +153,7 @@ get_header(); ?>
                                     <li><?php esc_html_e('Custom workflows & processes', 'aetherbloom'); ?></li>
                                     <li><?php esc_html_e('Scalable team structure', 'aetherbloom'); ?></li>
                                 </ul>
-                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Discuss Partnership', 'aetherbloom'); ?></a>
+                                <a href="#assessment-form-container" class="path-cta reveal-assessment-trigger"><?php esc_html_e('Discuss Partnership', 'aetherbloom'); ?></a>
                             </div>
                         </div>
                     </div>
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reveal assessment form
     const revealButton = document.getElementById('reveal-assessment-form');
     const assessmentFormContainer = document.getElementById('assessment-form-container');
-    const quickStartCta = document.getElementById('quick-start-cta');
+    const pathCtas = document.querySelectorAll('.reveal-assessment-trigger');
 
     if (revealButton && assessmentFormContainer) {
         revealButton.addEventListener('click', function() {
@@ -350,11 +350,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (quickStartCta && assessmentFormContainer) {
-        quickStartCta.addEventListener('click', function(e) {
-            e.preventDefault();
-            assessmentFormContainer.style.display = 'block';
-            assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
+    if (pathCtas && assessmentFormContainer) {
+        pathCtas.forEach(cta => {
+            cta.addEventListener('click', function(e) {
+                e.preventDefault();
+                assessmentFormContainer.style.display = 'block';
+                assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
+            });
         });
     }
 });
