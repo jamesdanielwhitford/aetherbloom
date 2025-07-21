@@ -268,7 +268,7 @@
   }
 
   .why-card-image {
-    height: 140px;
+    height: 200px; /* Further increased height for larger tablets */
     padding: 0.8rem;
   }
 
@@ -319,7 +319,7 @@
   }
 
   .why-card-image {
-    height: 120px;
+    height: 200px;
     padding: 0.6rem;
   }
 
@@ -359,7 +359,7 @@
   }
 
   .why-card-image {
-    height: 100px;
+    height: 180px; /* Further increased height for smaller mobile screens */
     padding: 0.5rem;
   }
 
