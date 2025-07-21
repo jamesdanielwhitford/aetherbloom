@@ -328,7 +328,7 @@
   text-align: center;
   margin-top: 4rem;
   padding: 3rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/sa-women-workspace.jpg') center/cover no-repeat;
   border-radius: 16px;
   backdrop-filter: blur(10px);
 }
@@ -924,7 +924,7 @@
 /* Footer Tagline Section */
 .impact-footer-tagline {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(57, 86, 79, 0.1), rgba(57, 86, 79, 0.08));
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/sa-women-workspace2.jpg') center/cover no-repeat;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem;
@@ -1023,6 +1023,14 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    grid-template-areas:
+      "header"
+      "description"
+      "image";
+  }
+
+  .program-image {
+    order: 3;
   }
   
   .benefits-layout {
@@ -1108,6 +1116,11 @@
     height: 50px;
     font-size: 1.5rem;
     left: 2rem;
+    top: -30px; /* Adjusted to move the number further up */
+  }
+
+  .program-header {
+    margin-top: 1.5rem; /* Added margin to push the header down */
   }
   
   .flow-item {
