@@ -650,7 +650,8 @@
 
 .next-steps-content p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
+    font-weight: bold;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
