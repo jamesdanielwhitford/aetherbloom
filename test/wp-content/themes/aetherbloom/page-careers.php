@@ -192,6 +192,6 @@ get_header(); ?>
 
 <script>
 function openScheduler() {
-    window.open('https://calendly.com/aetherbloom', '_blank');
+    window.open('https://app.dover.com/apply/Aetherboom/cbf5e60f-c6da-46ca-8ae4-b79e020f2dff', '_blank');
 }
 </script>
