@@ -278,7 +278,7 @@
 /* Statistics Section */
 .stark-reality-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(57, 86, 79, 0.05), rgba(57, 86, 79, 0.03));
+  background: transparent;
 }
 
 .statistics-grid {
@@ -432,7 +432,7 @@
 /* Foundation Section */
 .foundation-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(57, 86, 79, 0.05), rgba(57, 86, 79, 0.03));
+  background: transparent;
 }
 
 .foundation-programs {
@@ -698,7 +698,7 @@
 /* Join the Movement Section */
 .join-movement-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(57, 86, 79, 0.05), rgba(57, 86, 79, 0.03));
+  background: transparent;
 }
 
 .movement-layout {

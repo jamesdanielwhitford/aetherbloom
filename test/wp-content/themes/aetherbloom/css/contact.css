@@ -62,8 +62,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(216, 78, 40, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+  background: transparent;
   border-radius: 32px;
 }
 
@@ -782,7 +781,7 @@
    =========================================== */
 .alternative-contact-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(46, 204, 113, 0.03));
+  background: transparent;
 }
 
 .alternative-contact-section h2 {
