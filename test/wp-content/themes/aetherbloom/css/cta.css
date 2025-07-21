@@ -701,17 +701,18 @@
   }
   
   .step-progress {
-    gap: 0.5rem;
+    top: 1rem;
+    right: 1rem;
+    gap: 0.25rem;
   }
   
   .step-indicator {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.9rem;
+    width: 0.6rem;
+    height: 0.6rem;
   }
   
   .step-connector {
-    width: 1rem;
+    width: 0.4rem;
   }
 }
 
