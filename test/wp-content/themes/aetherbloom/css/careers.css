@@ -513,6 +513,10 @@
     margin: 0; /* Remove margin for full width and height */
   }
   
+  .hero-video {
+    object-position: 70% center;
+  }
+  
   .hero-content {
     padding: 1.5rem;
     gap: 1.5rem;

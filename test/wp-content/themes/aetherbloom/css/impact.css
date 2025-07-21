@@ -1046,6 +1046,10 @@
     margin: 0; /* Remove margin for full width and height */
   }
   
+  .hero-video {
+    object-position: 30% center;
+  }
+  
   .hero-title {
     font-size: 2.8rem;
   }
