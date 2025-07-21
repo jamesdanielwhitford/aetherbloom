@@ -897,6 +897,103 @@
   .hero-title {
     font-size: 3rem;
   }
+}
+
+@media (max-width: 768px) {
+  .contact-hero-section {
+    padding: 80px 0 60px;
+    margin: 0; /* Remove margin for full width */
+    min-height: 70vh; /* Adjust height for mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .contact-hero-section .container {
+    padding: 0 1rem; /* Adjust container padding for smaller screens */
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr; /* Ensure single column layout */
+    gap: 2rem; /* Adjust gap */
+    flex-direction: column; /* Stack content vertically */
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%; /* Ensure both sections take full width */
+  }
+
+  .hero-left {
+    order: 1; /* Move text above contact options on mobile */
+  }
+
+  .hero-right {
+    order: 2; /* Move contact options below text on mobile */
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem; /* Adjust margin */
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem; /* Adjust margin */
+  }
+
+  .hero-description {
+    font-size: 1rem; /* Adjust font size */
+    margin-bottom: 1.5rem; /* Adjust margin */
+  }
+
+  .contact-options {
+    padding: 1.5rem; /* Adjust padding */
+    width: 100%; /* Ensure it takes full width */
+    max-width: 350px; /* Limit width for better appearance */
+    margin: 0 auto; /* Center the block */
+    box-shadow: none; /* Remove box shadow for mobile */
+  }
+
+  .contact-option-header h3 {
+    font-size: 1.5rem; /* Adjust font size */
+  }
+
+  .contact-option-header p {
+    font-size: 0.85rem; /* Adjust font size */
+  }
+
+  .contact-btn {
+    width: 100%; /* Ensure buttons take full width of their container */
+    font-size: 1rem; /* Adjust button font size */
+    padding: 0.8rem 1.5rem; /* Adjust button padding */
+  }
+
+  .btn-icon {
+    left: 1rem; /* Adjust icon position */
+  }
+  
+  .assessment-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-paths {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
   
   .assessment-content {
     grid-template-columns: 1fr;
