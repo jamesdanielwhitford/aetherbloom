@@ -17,7 +17,7 @@ $cards_data = array(
         'id' => 2,
         'title' => get_theme_mod('why_card_2_title', 'Transparent Pricing'),
         'content' => get_theme_mod('why_card_2_content', 'No hidden costs or surprise fees. Clear, upfront pricing structure with detailed breakdown of all services and costs included in your package.'),
-        'image' => get_theme_mod('why_card_2_image', get_template_directory_uri() . '/assets/images/transparent-pricing.png')
+        'image' => get_theme_mod('why_card_2_image', get_template_directory_uri() . '/assets/images/transparent-pricing.jpg')
     ),
     array(
         'id' => 3,
@@ -29,7 +29,7 @@ $cards_data = array(
         'id' => 4,
         'title' => get_theme_mod('why_card_4_title', 'GDPR Compliance'),
         'content' => get_theme_mod('why_card_4_content', 'Full adherence to UK and EU data protection regulations. Comprehensive security protocols ensure your data remains protected and compliant.'),
-        'image' => get_theme_mod('why_card_4_image', get_template_directory_uri() . '/assets/images/gdpr-compliance.png')
+        'image' => get_theme_mod('why_card_4_image', get_template_directory_uri() . '/assets/images/gdpr-compliance.jpg')
     )
 );
 ?>
