@@ -291,7 +291,7 @@ get_header(); ?>
                                 <h4><?php esc_html_e('Storytelling Advantage', 'aetherbloom'); ?></h4>
                                 <ul>
                                     <li><?php esc_html_e('Showcase your partnership in marketing campaigns.', 'aetherbloom'); ?></li>
-                                    <li><?php esc_html_e('Feature employee volunteer opportunities (e.g., virtual mentorship).', 'aetherbloom'); ?></li>
+                                    <li><?php esc_html_e('Feature employee volunteer opportunities.', 'aetherbloom'); ?></li>
                                 </ul>
                             </div>
                         </div>
