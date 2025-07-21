@@ -25,7 +25,7 @@ get_header(); ?>
             <!-- Hero Section - Cinematic Introduction -->
             <section class="impact-hero">
                 <div class="hero-background-video">
-                    <video class="hero-video" autoplay muted loop playsinline>
+                    <video class="hero-video" autoplay muted loop playsinline poster="<?php echo esc_url(str_replace('.mp4', '.jpg', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
                         <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.mp4'); ?>" type="video/mp4">
                         <!-- Fallback for browsers that don't support video -->
                         <div class="video-fallback"></div>
