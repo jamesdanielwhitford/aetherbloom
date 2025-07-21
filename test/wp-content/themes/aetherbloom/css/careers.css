@@ -509,8 +509,8 @@
 
 @media (max-width: 768px) {
   .careers-hero {
-    height: 80vh;
-    margin: 1rem;
+    height: 100vh; /* Ensure full viewport height on mobile */
+    margin: 0; /* Remove margin for full width and height */
   }
   
   .hero-content {

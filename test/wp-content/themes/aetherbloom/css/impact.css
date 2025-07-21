@@ -1042,7 +1042,8 @@
 
 @media (max-width: 768px) {
   .impact-hero {
-    height: 80vh;
+    height: 100vh; /* Ensure full viewport height on mobile */
+    margin: 0; /* Remove margin for full width and height */
   }
   
   .hero-title {
