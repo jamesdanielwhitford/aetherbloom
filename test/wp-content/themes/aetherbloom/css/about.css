@@ -522,12 +522,17 @@
   }
   
   .foundation-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: flex; /* Make cards display in a row */
+    flex-direction: row; /* Arrange cards horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center; /* Center the cards vertically */
+    gap: 1rem; /* Adjust gap for horizontal layout */
+    margin-bottom: 2rem; /* Add space between buttons and content */
   }
   
   .foundation-layout {
-    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    flex-direction: column; /* Stack cards and content vertically */
   }
   
   .founders-grid {
@@ -594,7 +599,13 @@
   
   .foundation-card,
   .ally-card {
-    padding: 1.5rem;
+    padding: 0.8rem; /* Reduced padding for smaller screens */
+  }
+  .foundation-card h3 {
+    font-size: 1.2rem; /* Reduced font size for smaller screens */
+  }
+  .foundation-card h3 {
+    font-size: 1.2rem; /* Reduced font size for smaller screens */
   }
   
   .founder-profile {
@@ -633,6 +644,19 @@
     font-size: 1.8rem;
   }
   
+  .foundation-cards {
+    gap: 0.5rem; /* Reduced gap for very small screens */
+  }
+  
+  .foundation-card {
+    flex: 1 1 auto; /* Allow cards to shrink and grow, but prefer their content size */
+    padding: 0.5rem; /* Further reduced padding for very small screens */
+  }
+  
+  .foundation-card h3 {
+    font-size: 0.9rem; /* Further reduced font size for very small screens */
+  }
+  
   .founder-name {
     font-size: 1.5rem;
   }
@@ -641,10 +665,9 @@
     font-size: 0.9rem;
   }
   
-  .foundation-card,
   .ally-card,
   .founder-profile {
-    padding: 1rem;
+    padding: 0.5rem;
   }
   
   .foundation-content {
