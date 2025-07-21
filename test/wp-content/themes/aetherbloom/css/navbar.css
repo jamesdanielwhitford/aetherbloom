@@ -435,43 +435,7 @@ html.loaded {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .navbar {
-    width: calc(100% - 2rem);
-  }
-  
-  .nav-container {
-    padding: 0.45rem 1.5rem;
-  }
-  
-  .nav-actions {
-    margin-right: 0;
-    gap: 0.75rem;
-  }
-  
-  .nav-links,
-  .nav-links ul {
-    gap: 1.5rem;
-  }
-  
-  .nav-links li a,
-  .nav-link {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.7rem;
-  }
-  
-  .pricing-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-  
-  .get-started-btn {
-    padding: 0.6rem 1.3rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .nav-top-bar {
     display: flex;
     justify-content: space-between;
