@@ -103,7 +103,7 @@ get_header(); ?>
                                     <li><?php esc_html_e('Pre-vetted candidates', 'aetherbloom'); ?></li>
                                     <li><?php esc_html_e('Flexible contracts', 'aetherbloom'); ?></li>
                                 </ul>
-                                <a href="#main-contact-form" class="path-cta"><?php esc_html_e('Start Now', 'aetherbloom'); ?></a>
+                                <a href="#assessment-form-container" id="quick-start-cta" class="path-cta"><?php esc_html_e('Start Now', 'aetherbloom'); ?></a>
                             </div>
                         </div>
                         
@@ -341,9 +341,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reveal assessment form
     const revealButton = document.getElementById('reveal-assessment-form');
     const assessmentFormContainer = document.getElementById('assessment-form-container');
+    const quickStartCta = document.getElementById('quick-start-cta');
 
     if (revealButton && assessmentFormContainer) {
         revealButton.addEventListener('click', function() {
+            assessmentFormContainer.style.display = 'block';
+            assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    if (quickStartCta && assessmentFormContainer) {
+        quickStartCta.addEventListener('click', function(e) {
+            e.preventDefault();
             assessmentFormContainer.style.display = 'block';
             assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
         });
