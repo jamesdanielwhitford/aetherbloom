@@ -369,7 +369,8 @@
 }
 
 .cost-item p {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   color: var(--text-light);
   margin: 0;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);

@@ -121,32 +121,12 @@ get_header(); ?>
                         <p><?php esc_html_e('These aren\'t just numbers, they represent:', 'aetherbloom'); ?></p>
                         <div class="human-cost-grid">
                             <div class="cost-item">
-                                <div class="cost-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 4H8C6.89543 4 6 4.89543 6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6C18 4.89543 17.1046 4 16 4Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 8H8" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 16V8" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
                                 <p><?php esc_html_e('Talented graduates forced into informal work', 'aetherbloom'); ?></p>
                             </div>
                             <div class="cost-item">
-                                <div class="cost-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 18C17 15.7909 15.2091 14 13 14H5C2.79086 14 1 15.7909 1 18V20H17V18Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="9" cy="6" r="4" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M23 20V18C23 16.1362 21.7252 14.5701 20 14.126" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 4.12598C17.7252 4.56992 19 6.13616 19 8C19 9.86384 17.7252 11.4301 16 11.874" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
                                 <p><?php esc_html_e('Single mothers choosing between rent and school fees', 'aetherbloom'); ?></p>
                             </div>
                             <div class="cost-item">
-                                <div class="cost-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#39564F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
                                 <p><?php esc_html_e('Young women with dreams but no pathways', 'aetherbloom'); ?></p>
                             </div>
                         </div>
