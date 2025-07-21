@@ -452,3 +452,51 @@ img {
     color: black;
   }
 }
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+  flex-direction: column; /* Arrange content vertically */
+  padding-top: calc(var(--navbar-height) + 20px); /* Space from top, below navbar */
+  padding-bottom: 20px; /* Space from bottom */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto; /* Center horizontally */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  max-height: calc(100vh - (var(--navbar-height) + 80px)); /* Max height: viewport height minus navbar height and total vertical padding */
+  overflow-y: auto; /* Enable scrolling for content that exceeds max-height */
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  color: #333; /* Ensure text is readable on light background */
+}
+
+.close-button {
+  color: #aaa;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

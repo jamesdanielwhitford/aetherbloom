@@ -97,14 +97,34 @@ $form_button_text = get_theme_mod('cta_form_button', 'Submit');
           <div class="form-step" id="step-2">
             
             <div class="cta-form-grid service-selection">
+              <?php
+// Define service options for the CTA form dropdown
+$cta_service_options = array(
+    array('value' => 'Digital Customer Success', 'label' => 'Digital Customer Success', 'description' => '(Email/chat support, order management, CRM updates)'),
+    array('value' => 'Call Centre Solutions', 'label' => 'Call Centre Solutions', 'description' => '(Inbound/outbound calls, sales support, appointment booking)'),
+);
+?>
               <!-- Primary Service -->
               <div class="cta-input-group primary-service-group">
                 <label class="primary-service-label"><?php esc_html_e('Primary Service *', 'aetherbloom'); ?></label>
-                <select id="primary-service" name="primary_service" class="cta-form-select" required>
-                  <option value=""><?php esc_html_e('Please Select', 'aetherbloom'); ?></option>
-                  <option value="Digital Customer Success"><?php esc_html_e('Digital Customer Success (Email/chat support, order management, CRM updates)', 'aetherbloom'); ?></option>
-                  <option value="Call Centre Solutions"><?php esc_html_e('Call Centre Solutions (Inbound/outbound calls, sales support, appointment booking)', 'aetherbloom'); ?></option>
-                </select>
+                <div class="dropdown" id="cta-service-dropdown">
+                  <button class="dropdown-trigger" id="cta-service-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+                    <span class="dropdown-label" id="cta-service-label"><?php esc_html_e('Please Select', 'aetherbloom'); ?></span>
+                    <span class="dropdown-arrow" id="cta-service-arrow">▼</span>
+                  </button>
+                  <div class="dropdown-menu" id="cta-service-dropdown-menu" role="menu" aria-hidden="true">
+                    <button class="dropdown-option selected" type="button" data-value="" role="menuitem">
+                      <span class="option-name"><?php esc_html_e('Please Select', 'aetherbloom'); ?></span>
+                    </button>
+                    <?php foreach ($cta_service_options as $option) : ?>
+                      <button class="dropdown-option" type="button" data-value="<?php echo esc_attr($option['value']); ?>" role="menuitem">
+                        <span class="option-name"><?php echo esc_html($option['label']); ?></span>
+                        <span class="option-details"><?php echo esc_html($option['description']); ?></span>
+                      </button>
+                    <?php endforeach; ?>
+                  </div>
+                  <input type="hidden" id="primary-service" name="primary_service" value="" required>
+                </div>
               </div>
               
               <!-- Add-On Services -->
@@ -159,6 +179,33 @@ $form_button_text = get_theme_mod('cta_form_button', 'Submit');
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- GDPR Consent -->
+            <div class="gdpr-consent-group">
+                <div class="consent-item">
+                    <input type="checkbox" id="consent-processing" name="consent_processing" required>
+                    <label for="consent-processing">
+                        <?php esc_html_e('I consent to Aetherbloom processing my data for the purpose of this enquiry.', 'aetherbloom'); ?> *
+                    </label>
+                </div>
+                
+                <p class="privacy-link">
+                    <?php
+                    printf(
+                        wp_kses(
+                            __('To understand how we protect your data, please see our <a href="%s" target="_blank">Privacy Policy</a>.', 'aetherbloom'),
+                            [
+                                'a' => [
+                                    'href' => [],
+                                    'target' => [],
+                                ],
+                            ]
+                        ),
+                        esc_url(get_privacy_policy_url())
+                    );
+                    ?>
+                </p>
             </div>
 
             <!-- Navigation for Step 3 -->

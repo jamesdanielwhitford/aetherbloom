@@ -354,7 +354,7 @@ get_header(); ?>
                                 <div class="action-card donate-equipment">
                                     <h3><?php esc_html_e('Donate Equipment', 'aetherbloom'); ?></h3>
                                     <a href="mailto:partnerships@aetherbloom.co.uk" class="action-cta primary">
-                                        <?php esc_html_e('Email Della', 'aetherbloom'); ?>
+                                        <?php esc_html_e('Email Aetherbloom', 'aetherbloom'); ?><br/>
                                         <?php esc_html_e('to Donate Equipment', 'aetherbloom'); ?>
                                     </a>
                                 </div>
@@ -362,8 +362,8 @@ get_header(); ?>
                                 <div class="action-card partner-impact">
                                     <h3><?php esc_html_e('Partner for Impact', 'aetherbloom'); ?></h3>
                                     <a href="mailto:partnerships@aetherbloom.co.za" class="action-cta secondary">
-                                        <?php esc_html_e('Partner with Grace', 'aetherbloom'); ?><br/>
-                                        <?php esc_html_e('on CSR Strategy', 'aetherbloom'); ?>
+                                        <?php esc_html_e('Email Aetherbloom', 'aetherbloom'); ?><br/>
+                                        <?php esc_html_e('to Partner on CSR Strategy', 'aetherbloom'); ?>
                                     </a>
                                 </div>
                             </div>

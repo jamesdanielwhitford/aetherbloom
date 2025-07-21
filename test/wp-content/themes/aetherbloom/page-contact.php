@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.openBookingForm = function() {
         // Here you would integrate with your booking system (Calendly, etc.)
         console.log('Opening booking form');
-        alert('Booking system would open here');
+        window.open('https://meetings-eu1.hubspot.com/aetherbloom', '_blank');
     };
     
     // Email validation helper
