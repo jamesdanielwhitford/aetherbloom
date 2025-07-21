@@ -169,7 +169,7 @@ get_header(); ?>
                             <p><?php esc_html_e('Enter your email and we\'ll send you our assessment form', 'aetherbloom'); ?></p>
                             
                             <div class="email-capture-form">
-                                <button type="button" class="hubspot-form-btn" onclick="openHubSpotForm()">
+                                <button type="button" class="hubspot-form-btn" id="reveal-assessment-form">
                                     <?php esc_html_e('Get My Assessment', 'aetherbloom'); ?>
                                 </button>
                             </div>
@@ -192,6 +192,10 @@ get_header(); ?>
                     </div>
                 </div>
             </section>
+
+            <div id="assessment-form-container" style="display: none;">
+                <?php get_template_part('template-parts/cta'); ?>
+            </div>
 
             <!-- Alternative Contact Methods -->
             <section class="alternative-contact-section">
@@ -333,5 +337,16 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+
+    // Reveal assessment form
+    const revealButton = document.getElementById('reveal-assessment-form');
+    const assessmentFormContainer = document.getElementById('assessment-form-container');
+
+    if (revealButton && assessmentFormContainer) {
+        revealButton.addEventListener('click', function() {
+            assessmentFormContainer.style.display = 'block';
+            assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 });
 </script>

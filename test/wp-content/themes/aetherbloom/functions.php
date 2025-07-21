@@ -158,6 +158,12 @@ function aetherbloom_scripts() {
             array('aetherbloom-style'),
             $theme_version
         );
+        wp_enqueue_style(
+            'aetherbloom-cta',
+            get_template_directory_uri() . '/css/cta.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
     }
 
     // Careers page CSS
@@ -265,6 +271,13 @@ function aetherbloom_scripts() {
         wp_enqueue_script(
             'aetherbloom-contact',
             get_template_directory_uri() . '/js/contact.js',
+            array(),
+            $theme_version,
+            true
+        );
+        wp_enqueue_script(
+            'aetherbloom-cta',
+            get_template_directory_uri() . '/js/cta.js',
             array(),
             $theme_version,
             true
