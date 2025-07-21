@@ -124,7 +124,8 @@ get_header(); ?>
                                 <p><?php esc_html_e('Talented graduates forced into informal work', 'aetherbloom'); ?></p>
                             </div>
                             <div class="cost-item">
-                                <p><?php esc_html_e('Single mothers choosing between rent and school fees', 'aetherbloom'); ?></p>
+                                <p><?php esc_html_e('Single mothers choosing between rent and', 'aetherbloom'); ?></p>
+                                <p><?php esc_html_e('school fees', 'aetherbloom'); ?></p>
                             </div>
                             <div class="cost-item">
                                 <p><?php esc_html_e('Young women with dreams but no pathways', 'aetherbloom'); ?></p>
