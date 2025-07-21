@@ -626,7 +626,7 @@
    ===================================== */
 
 .next-steps-section {
-    background: rgba(216, 78, 40, 0.1);
+    background: url('../assets/images/services-bg.jpg') center/cover no-repeat;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
