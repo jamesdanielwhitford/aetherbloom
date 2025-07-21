@@ -140,6 +140,12 @@ function aetherbloom_scripts() {
             array('aetherbloom-style'),
             $theme_version
         );
+        wp_enqueue_style(
+            'aetherbloom-cta',
+            get_template_directory_uri() . '/css/cta.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
     }
 
     if (is_page('impact')) {
@@ -251,6 +257,13 @@ function aetherbloom_scripts() {
         wp_enqueue_script(
             'aetherbloom-services-page',
             get_template_directory_uri() . '/js/services-page.js',
+            array(),
+            $theme_version,
+            true
+        );
+        wp_enqueue_script(
+            'aetherbloom-cta',
+            get_template_directory_uri() . '/js/cta.js',
             array(),
             $theme_version,
             true

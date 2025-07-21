@@ -87,7 +87,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Digital Customer Success">Get Started</a>
                             </div>
                         </div>
                         
@@ -132,7 +132,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Digital Customer Success">Get Started</a>
                             </div>
                         </div>
                         
@@ -177,7 +177,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Digital Customer Success">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Call Centre Solutions">Get Started</a>
                             </div>
                         </div>
                         
@@ -244,7 +244,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Call Centre Solutions">Get Started</a>
                             </div>
                         </div>
                         
@@ -272,7 +272,7 @@ get_header(); ?>
                             </div>
                             
                             <div class="tier-cta">
-                                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="tier-button">Get Started</a>
+                                <a href="#assessment-form-container" class="tier-button reveal-assessment-trigger" data-service="Call Centre Solutions">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -456,6 +456,10 @@ get_header(); ?>
                 </div>
             </section>
 
+            <div id="assessment-form-container" style="display: none;">
+                <?php get_template_part('template-parts/cta'); ?>
+            </div>
+
             <!-- Next Steps Section -->
             <section class="next-steps-section">
                 <div class="next-steps-background"></div>
@@ -521,6 +525,31 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+
+    // Reveal assessment form
+    const assessmentFormContainer = document.getElementById('assessment-form-container');
+    const revealTriggers = document.querySelectorAll('.reveal-assessment-trigger');
+
+    if (revealTriggers && assessmentFormContainer) {
+        revealTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                const service = this.getAttribute('data-service');
+                assessmentFormContainer.style.display = 'block';
+                assessmentFormContainer.scrollIntoView({ behavior: 'smooth' });
+
+                // Pre-populate the form
+                const serviceDropdown = assessmentFormContainer.querySelector('#cta-service-dropdown-trigger');
+                const serviceInput = assessmentFormContainer.querySelector('#primary-service');
+                const serviceLabel = assessmentFormContainer.querySelector('#cta-service-label');
+
+                if (serviceDropdown && serviceInput && serviceLabel) {
+                    serviceInput.value = service;
+                    serviceLabel.textContent = service;
+                }
+            });
+        });
+    }
 });
 </script>
 
