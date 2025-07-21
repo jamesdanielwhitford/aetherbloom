@@ -385,12 +385,13 @@ get_header(); ?>
             <section class="impact-footer-tagline">
                 <div class="container">
                     <div class="tagline-content">
-                        <h2 class="tagline-text"><?php esc_html_e('"Outsource with intention. Transform with action."', 'aetherbloom'); ?></h2>
-                        <div class="tagline-cta">
-                            <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="btn btn-primary btn-large">
-                                <?php esc_html_e('Start Your Impact Journey', 'aetherbloom'); ?>
-                            </a>
+                        <div class="tagline-card">
+                            <h2 class="tagline-text">"<strong>Outsource with intention.</strong><br><strong>Transform with action.</strong>"</h2>
                         </div>
+                        <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="btn btn-primary btn-large">
+                            <?php esc_html_e('Start Your Impact Journey', 'aetherbloom'); ?><br/>
+                            <?php esc_html_e('to Donate Equipment', 'aetherbloom'); ?>
+                        </a>
                     </div>
                 </div>
             </section>

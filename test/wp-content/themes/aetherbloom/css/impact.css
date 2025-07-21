@@ -925,7 +925,7 @@
 /* Footer Tagline Section */
 .impact-footer-tagline {
   padding: 100px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/transform.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/transform.jpg') center 40%/cover no-repeat;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem;
@@ -934,23 +934,34 @@
 }
 
 .tagline-content {
-  text-align: center;
+  text-align: left;
   max-width: 800px;
-  margin: 0 auto;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.tagline-card {
+  background: var(--text-white);
+  border-radius: 24px;
+  padding: 3rem; /* Even padding all around */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  width: fit-content; /* Make card hug content */
+  white-space: normal; /* Ensure text wraps */
 }
 
 .tagline-text {
   font-size: 2.5rem;
   font-weight: 300;
-  color: var(--text-white);
+  color: var(--brand-color);
   font-style: italic;
-  margin-bottom: 3rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0; /* Adjusted to hug content */
+  text-shadow: none;
+  word-break: break-word; /* Prevent text overflow */
 }
 
 .tagline-cta {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Button Styles */
@@ -966,19 +977,21 @@
   border: 2px solid transparent;
   cursor: pointer;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  word-break: break-word; /* Added to prevent button text overflow */
+  margin-top: 2rem; /* Added margin to separate from the card */
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
-  color: var(--text-white);
-  box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
+  background: var(--text-white);
+  color: var(--brand-color);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-
-
-.btn-large {
-  padding: 1.25rem 2.5rem;
-  font-size: 1.2rem;
+.btn-primary:hover {
+  background: var(--brand-color);
+  color: var(--text-white);
+  box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
 }
 
 /* Animations */
