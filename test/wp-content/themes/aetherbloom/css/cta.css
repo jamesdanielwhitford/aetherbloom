@@ -646,13 +646,13 @@
   }
   
   .cta-content {
-    order: 2;
+    order: 1;
     text-align: center;
     padding: 1rem 0;
   }
   
   .cta-form-container {
-    order: 1;
+    order: 2;
   }
   
   .cta-title {
