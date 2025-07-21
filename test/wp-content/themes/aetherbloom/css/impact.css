@@ -245,20 +245,21 @@
 
 .mission-quote {
   text-align: center;
-  margin: 3rem 0;
+  margin: 3rem auto;
   padding: 2rem;
-  background: rgba(57, 86, 79, 0.1);
+  background: white;
   border: 1px solid rgba(57, 86, 79, 0.2);
   border-radius: 16px;
   backdrop-filter: blur(10px);
+  width: fit-content;
 }
 
 .mission-quote p {
   font-size: 2rem;
   font-weight: 300;
-  color: var(--text-white);
+  color: var(--brand-color);
   font-style: italic;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
   margin: 0;
 }
 
@@ -552,7 +553,7 @@
 }
 
 .program-highlight {
-  background: rgba(57, 86, 79, 0.15);
+  background: white;
   border: 1px solid rgba(57, 86, 79, 0.3);
   border-radius: 12px;
   padding: 1rem;
@@ -561,9 +562,9 @@
 
 .program-highlight p {
   font-style: italic;
-  color: var(--text-white);
+  color: var(--brand-color);
   margin: 0;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: none;
 }
   
 }
@@ -609,7 +610,7 @@
 }
 
 .impact-metric {
-  background: rgba(57, 86, 79, 0.15);
+  background: white;
   border: 1px solid rgba(57, 86, 79, 0.3);
   border-radius: 12px;
   padding: 1.5rem;
@@ -619,8 +620,8 @@
 .metric-highlight {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-white);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  color: var(--brand-color);
+  text-shadow: none;
 }
 
 .benefit-details ul {
@@ -770,14 +771,14 @@
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: white;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .flow-text {
   font-size: 1.1rem;
-  color: var(--text-white);
+  color: #d84e28;
   font-weight: 500;
 }
 
