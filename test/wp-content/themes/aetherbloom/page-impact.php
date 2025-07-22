@@ -186,6 +186,23 @@ get_header(); ?>
                 </div>
             </section>
 
+            <!-- Resource Download Section -->
+            <section class="resource-download-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('Unlock Your Potential', 'aetherbloom'); ?></h2>
+                        <p><?php esc_html_e('Download our free guide to boost your impact', 'aetherbloom'); ?></p>
+                    </div>
+                    <div class="resource-card">
+                        <h3><?php esc_html_e('The 67-Minute Advantage', 'aetherbloom'); ?></h3>
+                        <p><?php esc_html_e('Your Guide to Maximizing Productivity and Impact', 'aetherbloom'); ?></p>
+                        <a href="<?php echo esc_url(get_template_directory_uri() . '/assets/documents/The 67-Minute Advantage (Your Guide).pdf'); ?>" class="resource-btn" download>
+                            <?php esc_html_e('Download Guide', 'aetherbloom'); ?>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             <!-- Aetherbloom Foundation Section -->
             <section class="foundation-section">
                 <div class="container">

@@ -333,6 +333,86 @@
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Resource Download Section */
+.resource-download-section {
+    padding: 80px 0;
+    background: transparent;
+    text-align: center;
+}
+
+.resource-download-section .section-header {
+    margin-bottom: 40px;
+}
+
+.resource-download-section .section-header h2 {
+    font-size: 2.5em;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.resource-download-section .section-header p {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.resource-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card h3 {
+    font-size: 1.8em;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card .resource-btn {
+    display: inline-block;
+    background: var(--brand-color);
+    color: #d84e28;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
+    border: 1px solid transparent;
+}
+
+.resource-card .resource-btn:hover {
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-white);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(216, 78, 40, 0.4);
+}
+
 /* Contact Section */
 .careers-contact-section {
   padding: 100px 0;
@@ -508,6 +588,14 @@
     text-align: center;
     gap: 0.5rem;
   }
+
+  /* Resource Download Section Responsive */
+  .resource-download-section {
+      padding: 60px 0;
+  }
+  .resource-card {
+      padding: 30px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -573,6 +661,20 @@
     text-align: center;
     gap: 0.5rem;
   }
+
+  /* Resource Download Section Responsive */
+  .resource-download-section {
+      padding: 50px 0;
+  }
+  .resource-download-section .section-header h2 {
+      font-size: 2em;
+  }
+  .resource-card {
+      padding: 25px;
+  }
+  .resource-card h3 {
+      font-size: 1.5em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -615,6 +717,24 @@
   
   .contact-card {
     padding: 1.5rem;
+  }
+
+  /* Resource Download Section Responsive */
+  .resource-download-section {
+      padding: 40px 0;
+  }
+  .resource-card {
+      padding: 20px;
+  }
+  .resource-card h3 {
+      font-size: 1.3em;
+  }
+  .resource-card p {
+      font-size: 0.9em;
+  }
+  .resource-card .resource-btn {
+      padding: 10px 20px;
+      font-size: 0.9em;
   }
 }
 

@@ -185,9 +185,9 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 3rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -223,9 +223,9 @@
 }
 
 .values-card-container {
-  height: 750px;
+  height: 600px; /* Made less tall */
   overflow: hidden;
-  position: relative; /* Added for potential absolute positioning of children if needed, or just good practice */
+  position: relative;
 }
 
 /* Specific styles for values list within the card */
@@ -568,7 +568,6 @@
 
   .values-card-container {
     height: auto; /* Allow height to adjust on mobile */
-    min-height: 500px; /* Ensure a minimum height */
   }
 }
 

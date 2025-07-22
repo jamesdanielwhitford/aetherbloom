@@ -185,11 +185,9 @@ get_header(); ?>
                                 <p><?php esc_html_e('The UK Leader\'s Guide to South African Talent', 'aetherbloom'); ?></p>
                                 
                                 <div class="resource-form">
-                                    <div class="resource-input-group">
-                                        <button type="button" class="resource-btn" onclick="downloadResource()">
-                                            <?php esc_html_e('Download Now', 'aetherbloom'); ?>
-                                        </button>
-                                    </div>
+                                    <a href="<?php echo esc_url(get_template_directory_uri() . '/assets/documents/The UK Leader\'s Guide to South African Talent.pdf'); ?>" class="resource-btn" download>
+                                        <?php esc_html_e('Download Now', 'aetherbloom'); ?>
+                                    </a>
                                 </div>                          
                             </div>
                         </div>
@@ -285,18 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Assessment form will be sent to: ' + email);
     };
     
-    // Resource download handler
-    window.downloadResource = function() {
-        const email = document.getElementById('resource-email').value;
-        if (!email || !isValidEmail(email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        // Here you would integrate with your download system
-        console.log('Downloading resource for:', email);
-        alert('Download link will be sent to: ' + email);
-    };
     
     // Booking form opener
     window.openBookingForm = function() {
