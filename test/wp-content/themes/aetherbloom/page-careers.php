@@ -18,6 +18,10 @@ get_header(); ?>
         <div class="fixed-petal fixed-petal3"></div>
         <div class="fixed-petal fixed-petal4"></div>
     </div>
+    <!-- Mobile WebM background -->
+    <video autoplay loop muted playsinline class="mobile-webp-background">
+        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/animated-petals-mobile.webm" type="video/webm">
+    </video>
     
     <main class="site-main careers-page" id="main">
         <div class="content-wrapper">

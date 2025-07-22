@@ -389,9 +389,31 @@ img {
     font-size: 14px;
   }
   
+  .fixed-petals-container {
+    display: none; /* Hide CSS petals on mobile */
+  }
+
+  .mobile-webp-background {
+    display: block; /* Show WebP background on mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -6;
+    pointer-events: none;
+  }
+
   .fixed-petal {
     width: 35vw;
     height: 60vh;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-webp-background {
+    display: none; /* Hide WebP background on desktop */
   }
 }
 
