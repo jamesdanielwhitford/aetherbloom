@@ -149,7 +149,7 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Della\'s Leadership Legacy', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="founder-description">
-                                    <p><?php esc_html_e('With years as a Civil Service Senior HR Lead, our co-founder has mastered the art of building high-performing teams within strict compliance frameworks. This expertise ensures Aetherbloom delivers rigorous quality control, ethical staffing practices, and seamless scalability critical for UK clients navigating complex labor markets.', 'aetherbloom'); ?></p>
+                                    <p><?php esc_html_e('With years of experience as a Senior HR Lead in the UK Civil Service, Della brings a deep, practical understanding of how to build high-performing teams within some of the most regulated and complex environments. This background has shaped Aetherbloom\'s commitment to excellence in every aspect of our operations. From rigorous quality control to ethical, transparent staffing practices, we ensure our solutions not only meet but exceed industry standards.', 'aetherbloom'); ?></p>
                                 </div>
                             </div>
                         </div>
