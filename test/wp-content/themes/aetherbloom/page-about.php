@@ -49,58 +49,49 @@ get_header(); ?>
                 </div>
             </section>
 
-            <!-- Mission, Vision & Values Consolidated Section -->
-            <section class="mission-vision-values-section">
+            <!-- Our Mission Section -->
+            <section class="mission-section section-padding">
                 <div class="container">
                     <div class="section-header">
-                        <h2><?php esc_html_e('Our Foundation', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('The mission, vision and values that drive everything we do', 'aetherbloom'); ?></p>
+                        <h2><?php esc_html_e('Our Mission', 'aetherbloom'); ?></h2>
                     </div>
-                    
-                    <div class="foundation-layout">
-                        <div class="foundation-cards">
-                            <div class="foundation-card active" data-target="mission">
-                                <div class="card-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                        <path d="M2 12h20"></path>
-                                    </svg>
-                                </div>
-                                <h3><?php esc_html_e('Our Mission', 'aetherbloom'); ?></h3>
-                            </div>
-                            
-                            <div class="foundation-card" data-target="vision">
-                                <div class="card-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 12S4 5 12 5S23 12 23 12S20 19 12 19S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h3><?php esc_html_e('Our Vision', 'aetherbloom'); ?></h3>
-                            </div>
-                            
-                            <div class="foundation-card" data-target="values">
-                                <div class="card-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                    </svg>
-                                </div>
-                                <h3><?php esc_html_e('Our Values', 'aetherbloom'); ?></h3>
-                            </div>
+                    <div class="content-image-layout">
+                        <div class="content-card glassmorphism-card">
+                            <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions whilst driving real impact across borders.', 'aetherbloom'); ?></p>
                         </div>
-                        
-                        <div class="foundation-content">
-                            <div class="content-panel active" id="mission">
-                                <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions whilst driving real impact across borders.', 'aetherbloom'); ?></p>
-                            </div>
-                            
-                            <div class="content-panel" id="vision">
-                                <p><?php esc_html_e('To become the leading bridge between UK businesses and exceptional global talent, recognised for our ethical approach, innovative solutions, and positive impact on communities. We envision a future where geographical boundaries no longer limit access to skilled professionals, and where every partnership creates meaningful opportunities for growth and development on both sides.', 'aetherbloom'); ?></p>
-                            </div>
-                            
-                            <div class="content-panel" id="values">
-                                <div class="values-list">
+                        <div class="image-container">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ethical-impact.png'); ?>" alt="<?php esc_attr_e('Our Mission Image', 'aetherbloom'); ?>" class="section-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Vision Section -->
+            <section class="vision-section section-padding">
+                <div class="container">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('Our Vision', 'aetherbloom'); ?></h2>
+                    </div>
+                    <div class="image-content-layout">
+                        <div class="image-container">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="<?php esc_attr_e('Our Vision Image', 'aetherbloom'); ?>" class="section-image">
+                        </div>
+                        <div class="content-card glassmorphism-card">
+                            <p><?php esc_html_e('To become the leading bridge between UK businesses and exceptional global talent, recognised for our ethical approach, innovative solutions, and positive impact on communities. We envision a future where geographical boundaries no longer limit access to skilled professionals, and where every partnership creates meaningful opportunities for growth and development on both sides.', 'aetherbloom'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Values Section -->
+            <section class="values-section section-padding">
+                <div class="container">
+                    <div class="section-header">
+                        <h2><?php esc_html_e('Our Values', 'aetherbloom'); ?></h2>
+                    </div>
+                    <div class="content-image-layout">
+                        <div class="content-card glassmorphism-card values-card-container">
+                            <div class="values-list">
                                 <div class="value-item">
                                     <h4><?php esc_html_e('Integrity', 'aetherbloom'); ?></h4>
                                     <p class="value-description"><?php esc_html_e('We operate with complete transparency and honesty in all our dealings. Trust is earned through consistent, reliable actions and open communication.', 'aetherbloom'); ?></p>
@@ -122,7 +113,9 @@ get_header(); ?>
                                     <p class="value-description"><?php esc_html_e('We believe in the power of opportunity to transform lives. We create pathways for South African professionals to reach their full potential while delivering exceptional value to our UK clients.', 'aetherbloom'); ?></p>
                                 </div>
                             </div>
-                            </div>
+                        </div>
+                        <div class="image-container">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-workspace.jpg'); ?>" alt="<?php esc_attr_e('Our Values Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                     </div>
                 </div>

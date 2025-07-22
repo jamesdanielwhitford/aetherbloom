@@ -173,106 +173,68 @@
   margin: 0;
 }
 
-/* ===== MISSION, VISION & VALUES SECTION ===== */
-.mission-vision-values-section {
-  min-height: 100vh;
+/* ===== MISSION, VISION & VALUES SECTIONS ===== */
+.section-padding {
   padding: 100px 0;
   position: relative;
 }
 
-.foundation-layout {
-  display: flex; /* Changed from grid to flex for equal height columns */
-  gap: 3rem;
-  align-items: stretch; /* Ensures children stretch to the height of the tallest sibling */
-}
-
-.foundation-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 0; /* Remove margin-bottom as it's now part of the grid gap */
-}
-
-.foundation-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.foundation-card:hover,
-.foundation-card.active {
-  background: #ffffff;
-  border-color: #ffffff;
-  transform: translateY(-5px);
-}
-
-  .card-icon {
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.foundation-card.active .card-icon {
-  color: #d84e28;
-}
-
-.foundation-card h3 {
-  font-size: 1.8rem;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.foundation-card.active h3 {
-  color: #d84e28;
-}
-
-.foundation-card p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-.foundation-content {
+.glassmorphism-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 3rem;
-  /* overflow: hidden; */ /* Ensure no overflow from this container */
-  flex: 2; /* Allow foundation-content to take up 2 parts of the available space */
-}
-
-.content-panel {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  /* height: 100%; */ /* Ensure content panel fills its parent's height */
-  overflow-y: auto; /* Add scroll if content exceeds height */
-}
-
-.content-panel.active {
-  display: block;
-  opacity: 1;
-}
-
-.content-panel p {
-  font-size: 1.7rem;
-  line-height: 1.7;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.content-image-layout,
+.image-content-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+.content-image-layout .content-card,
+.image-content-layout .content-card {
+  flex: 1;
+}
+
+.content-image-layout .image-container,
+.image-content-layout .image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.values-card-container {
+  height: 750px;
+  overflow: hidden;
+  position: relative; /* Added for potential absolute positioning of children if needed, or just good practice */
+}
+
+/* Specific styles for values list within the card */
 .values-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Add gap between value items */
-  height: 500px; /* Set a fixed height for the values list */
+  gap: 1rem;
+  height: 100%; /* Ensure it fills the card height */
+  overflow: hidden;
 }
 
 .value-item {
@@ -281,22 +243,18 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1.5rem 2rem;
-  transition: flex-grow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  transition: flex-grow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
   overflow: hidden;
-  flex: 1 1 0%; /* Allow items to grow and shrink */
-  min-height: 0; /* Allow items to shrink completely */
+  flex: 1 1 0%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.value-item:hover {
-  /* These styles are now handled by .value-item.open */
-}
-
 .value-item.open {
-  flex-grow: 5 !important; /* Make the open item grow more */
+  flex-grow: 5 !important;
   background: #ffffff;
   border-color: #d84e28;
 }
@@ -317,7 +275,7 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out; /* Animate both opening and closing */
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
@@ -326,10 +284,10 @@
 }
 
 .value-item.open .value-description {
-  max-height: 2000px; /* Increased to prevent content cutoff */
+  max-height: 2000px;
   opacity: 1;
   margin-top: 1rem;
-  transition: max-height 0.3s ease-out, margin-top 0.3s ease-out; /* Original opening speed */
+  transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
   color: #d84e28;
 }
 
@@ -521,18 +479,9 @@
     font-size: 2.5rem;
   }
   
-  .foundation-cards {
-    display: flex; /* Make cards display in a row */
-    flex-direction: row; /* Arrange cards horizontally */
-    flex-wrap: wrap; /* Allow cards to wrap to the next line */
-    justify-content: center; /* Center the cards horizontally */
-    align-items: center; /* Center the cards vertically */
-    gap: 1rem; /* Adjust gap for horizontal layout */
-    margin-bottom: 2rem; /* Add space between buttons and content */
-  }
-  
-  .foundation-layout {
-    flex-direction: column; /* Stack cards and content vertically */
+  .content-image-layout,
+  .image-content-layout {
+    flex-direction: column;
   }
   
   .founders-grid {
@@ -615,6 +564,11 @@
   .founder-image {
     width: 180px;
     height: 180px;
+  }
+
+  .values-card-container {
+    height: auto; /* Allow height to adjust on mobile */
+    min-height: 500px; /* Ensure a minimum height */
   }
 }
 
