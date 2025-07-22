@@ -144,7 +144,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: none;
+  border: 1px solid transparent;
   font-size: 1.2rem; /* Larger font size */
   width: 300px;
   margin: 0 auto;
@@ -162,7 +162,9 @@
 }
 
 .contact-btn:hover {
-  border-color: rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
 }
 
@@ -172,6 +174,10 @@
   left: 1.5rem; /* Adjust as needed for spacing from the left edge */
   top: 50%;
   transform: translateY(-50%);
+}
+
+.contact-btn:hover .btn-icon {
+  color: white;
 }
 
 /* ===========================================
@@ -592,7 +598,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: none;
+  border: 1px solid transparent;
   font-size: 1rem; /* Match method-card button font size */
   width: 250px; /* Fixed width */
   margin: 0 auto; /* Center the button */
@@ -601,6 +607,9 @@
 }
 
 .hubspot-form-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
@@ -689,7 +698,7 @@
   padding: 1rem 2rem; /* Match method-link padding */
   background: white;
   color: #d84e28;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
@@ -703,6 +712,9 @@
 }
 
 .resource-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
@@ -849,9 +861,13 @@
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
 }
 
   .method-link:hover {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
@@ -875,7 +891,9 @@
 }
 
 .social-link:hover {
-  background: white;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
 }
 
 .social-link svg {

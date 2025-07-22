@@ -305,9 +305,13 @@
   background: #ffffff;
   color: #d84e28;
   box-shadow: 0 4px 20px rgba(216, 78, 40, 0.3);
+  border: 1px solid transparent;
 }
 
 .btn-next:hover {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(216, 78, 40, 0.4);
 }
@@ -317,13 +321,15 @@
   background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   color: #d84e28;
   box-shadow: 0 4px 20px rgba(216, 78, 40, 0.3);
+  border: 1px solid transparent;
 }
 
 .cta-submit-button:hover {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(216, 78, 40, 0.4);
-  background: linear-gradient(135deg, #d84e28 0%, #d84e28 100%);
-  color: #ffffff;
 }
 
 .cta-submit-button:active,

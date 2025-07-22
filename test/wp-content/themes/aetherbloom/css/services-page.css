@@ -347,8 +347,8 @@
 .tier-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: #ffffff;
+    color: #d84e28;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
@@ -447,8 +447,8 @@
 .call-centre-cta {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: #ffffff;
+    color: #d84e28;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;

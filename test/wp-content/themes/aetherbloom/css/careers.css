@@ -419,10 +419,13 @@
   background: var(--brand-color);
   color: #d84e28;
   box-shadow: 0 10px 30px rgba(216, 78, 40, 0.3);
+  border: 1px solid transparent;
 }
 
 .btn-primary:hover {
-  background: var(--brand-color-light);
+  background: transparent;
+  color: white;
+  border: 1px solid white;
   transform: translateY(-2px);
   box-shadow: 0 20px 40px rgba(216, 78, 40, 0.4);
 }
