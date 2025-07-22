@@ -94,10 +94,10 @@
                     <ul class="link-list">
                         <?php
                         $legal_items = array(
-                            array('name' => __('Privacy Policy', 'aetherbloom'), 'url' => get_privacy_policy_url() ? get_privacy_policy_url() : '#'),
-                            array('name' => __('Terms of Service', 'aetherbloom'), 'url' => '#'),
-                            array('name' => __('Cookie Policy', 'aetherbloom'), 'url' => '#'),
-                            array('name' => __('GDPR Compliance', 'aetherbloom'), 'url' => '#')
+                            array('name' => __('Privacy Policy', 'aetherbloom'), 'url' => get_permalink(get_page_by_path('privacy-policy'))),
+                            array('name' => __('Terms of Service', 'aetherbloom'), 'url' => get_permalink(get_page_by_path('privacy-policy'))),
+                            array('name' => __('Cookie Policy', 'aetherbloom'), 'url' => get_permalink(get_page_by_path('privacy-policy'))),
+                            array('name' => __('GDPR Compliance', 'aetherbloom'), 'url' => get_permalink(get_page_by_path('privacy-policy')))
                         );
                         
                         foreach ($legal_items as $item) :
