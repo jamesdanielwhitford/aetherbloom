@@ -517,6 +517,8 @@
         ctaElements.stepConnectors.forEach((connector, index) => {
             if (index + 1 < ctaData.currentStep) {
                 connector.classList.add('completed');
+            } else {
+                connector.classList.remove('completed');
             }
         });
     }
