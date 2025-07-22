@@ -11,6 +11,7 @@ Text Domain: aetherbloom
 
 :root {
   --brand-color: #d84e28;
+  --brand-color-dark-green: #336647;
   --brand-color-light: #ff9340;
   --text-primary: #ffffff;
   --navbar-height: 80px;

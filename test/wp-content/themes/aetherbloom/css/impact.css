@@ -213,16 +213,6 @@
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-
-
-.mission-card.uk-business {
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.mission-card.south-africa {
-  border-color: rgba(57, 86, 79, 0.3);
-}
-
 .mission-icon {
   margin-bottom: 2rem;
   color: var(--brand-color-light);
@@ -470,7 +460,7 @@
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
-  box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
+  box-shadow: none;
 }
 
 .program-content {
@@ -850,23 +840,34 @@
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-
   text-align: center;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .action-cta.primary {
   background: linear-gradient(135deg, var(--brand-color), var(--brand-color-light));
   color: var(--text-white);
-  box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
+  box-shadow: none;
+  border-color: var(--brand-color);
 }
 
-
+.action-cta.primary:hover {
+    background: var(--text-white);
+    color: var(--brand-color);
+}
 
 .action-cta.secondary {
   background: linear-gradient(135deg, var(--success-color), #39564F);
   color: var(--text-white);
-  box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
+  box-shadow: none;
+  border-color: var(--success-color);
+}
+
+.action-cta.secondary:hover {
+    background: var(--text-white);
+    color: var(--success-color);
 }
 
 
@@ -999,6 +1000,10 @@
   background: var(--brand-color);
   color: var(--text-white);
   box-shadow: 0 15px 30px rgba(57, 86, 79, 0.4);
+}
+
+.impact-footer-tagline .btn-primary:hover {
+  border-color: var(--text-white);
 }
 
 /* Animations */
