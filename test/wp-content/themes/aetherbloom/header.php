@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.documentElement.classList.add('loaded');
 });
 </script>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/145903429.js"></script>
+<!-- End of HubSpot Embed Code -->
 </head>
 
 <body <?php body_class(); ?>>
