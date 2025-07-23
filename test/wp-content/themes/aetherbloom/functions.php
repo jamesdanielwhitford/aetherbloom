@@ -564,11 +564,12 @@ function aetherbloom_structured_data() {
         $structured_data = array(
             '@context' => 'https://schema.org',
             '@type' => 'Organization',
-            'name' => get_bloginfo('name'),
-            'url' => home_url(),
+            'name' => 'Aetherbloom',
+            'url' => 'https://aetherbloom.co.uk',
             'description' => get_bloginfo('description'),
             'sameAs' => array(
-                // Add your social media URLs here
+                'https://www.linkedin.com/company/aetherbloom/posts/?feedView=all',
+                'https://www.facebook.com/people/Aetherbloom/61573177293499/'
             )
         );
         echo '<script type="application/ld+json">' . json_encode($structured_data) . '</script>';
@@ -786,8 +787,12 @@ add_action('wp_head', 'aetherbloom_critical_css', 1);
  * Add favicon and app icons
  */
 function aetherbloom_add_favicon() {
-    echo '<link rel="icon" type="image/x-icon" href="' . get_template_directory_uri() . '/assets/images/favicon.ico">';
-    echo '<link rel="apple-touch-icon" href="' . get_template_directory_uri() . '/assets/images/apple-touch-icon.png">';
+    echo '<link rel="icon" href="' . get_template_directory_uri() . '/assets/favicons/favicon.ico" sizes="any">';
+    echo '<link rel="icon" type="image/svg+xml" href="' . get_template_directory_uri() . '/assets/favicons/favicon.svg">';
+    echo '<link rel="icon" type="image/png" sizes="96x96" href="' . get_template_directory_uri() . '/assets/favicons/favicon-96x96.png">';
+    echo '<link rel="apple-touch-icon" sizes="180x180" href="' . get_template_directory_uri() . '/assets/favicons/apple-touch-icon.png">';
+    echo '<link rel="manifest" href="' . get_template_directory_uri() . '/assets/favicons/site.webmanifest">';
+    echo '<meta name="theme-color" content="#C94B2C">';
 }
 add_action('wp_head', 'aetherbloom_add_favicon');
 
@@ -826,3 +831,32 @@ function aetherbloom_version_body_class($classes) {
     return $classes;
 }
 add_filter('body_class', 'aetherbloom_version_body_class');
+
+function aetherbloom_add_google_analytics() {
+    ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RBC4X9LXR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8RBC4X9LXR');
+    </script>
+    <?php
+}
+add_action('wp_head', 'aetherbloom_add_google_analytics');
+
+function aetherbloom_add_meta_description() {
+    if (is_front_page()) {
+        echo '<meta name="description" content="Aetherbloom provides ethical, data-driven outsourcing solutions that empower UK businesses with South African talent. Coming June 2025. Learn about our transparent, cost-efficient business support services.">';
+        echo '<meta name="keywords" content="Aetherbloom, UK outsourcing, ethical outsourcing, data-driven business solutions, South African talent, business support services">';
+    }
+}
+add_action('wp_head', 'aetherbloom_add_meta_description');
+
+function aetherbloom_add_canonical() {
+    if (is_front_page()) {
+        echo '<link rel="canonical" href="' . esc_url(home_url('/')) . '" />';
+    }
+}
+add_action('wp_head', 'aetherbloom_add_canonical');
