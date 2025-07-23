@@ -63,3 +63,6 @@ dbs*.sql
 *.tar.gz
 
 .opcache
+
+
+wp-content/themes/aetherbloom/unminified
