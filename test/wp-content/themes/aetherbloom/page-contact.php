@@ -233,7 +233,7 @@ get_header(); ?>
                         
                         <div class="method-card">
                             <div class="method-icon">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.webp'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon" style="width: 58px; height: 48px;">
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.webp'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon" loading="lazy" width="58" height="48">
                             </div>
                             <h3><?php esc_html_e('Follow Aetherbloom', 'aetherbloom'); ?></h3>
                             <p><?php esc_html_e('Connect with us on social media', 'aetherbloom'); ?></p>

@@ -42,7 +42,15 @@ $services_data = array(
 ?>
 
 <section class="services-section" id="services" data-section="services">
-  <div class="services-background-image" style="background-image: url('<?php echo esc_url($services_bg_image); ?>');"></div>
+  <div class="services-background-image">
+    <picture>
+      <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.webp', '-400w.webp', $services_bg_image)); ?>">
+      <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.webp', '-800w.webp', $services_bg_image)); ?>">
+      <source media="(max-width: 1200px)" srcset="<?php echo esc_url(str_replace('.webp', '-1200w.webp', $services_bg_image)); ?>">
+      <source media="(max-width: 1600px)" srcset="<?php echo esc_url(str_replace('.webp', '-1600w.webp', $services_bg_image)); ?>">
+      <img src="<?php echo esc_url($services_bg_image); ?>" alt="Services Background" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+    </picture>
+  </div>
   <div class="services-overlay"></div>
   
   <div class="services-container">

@@ -32,15 +32,27 @@ get_header(); ?>
         }
         ?>
         <!-- Desktop Video (WebM preferred, then MP4 fallback) -->
-        <video class="fixed-video desktop-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>">
+        <video class="fixed-video desktop-video" autoplay muted loop playsinline preload="metadata">
             <source src="<?php echo esc_url(str_replace('.mp4', '.webm', $hero_video)); ?>" type="video/webm">
             <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
+            <picture>
+                <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.mp4', '-400w.webp', $hero_video)); ?>">
+                <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.mp4', '-800w.webp', $hero_video)); ?>">
+                <source media="(max-width: 1200px)" srcset="<?php echo esc_url(str_replace('.mp4', '-1200w.webp', $hero_video)); ?>">
+                <source media="(max-width: 1600px)" srcset="<?php echo esc_url(str_replace('.mp4', '-1600w.webp', $hero_video)); ?>">
+                <img src="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>" alt="Hero Video Poster" loading="eager" width="1920" height="1080">
+            </picture>
             <div class="video-fallback"></div>
         </video>
 
         <!-- Mobile Video (MP4 only for smaller size) -->
-        <video class="fixed-video mobile-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>">
+        <video class="fixed-video mobile-video" autoplay muted loop playsinline preload="metadata">
             <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
+            <picture>
+                <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.mp4', '-400w.webp', $hero_video)); ?>">
+                <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.mp4', '-800w.webp', $hero_video)); ?>">
+                <img src="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>" alt="Hero Video Poster" loading="eager" width="768" height="432">
+            </picture>
             <div class="video-fallback"></div>
         </video>
         <!--

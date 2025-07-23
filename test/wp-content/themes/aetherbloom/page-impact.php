@@ -29,9 +29,16 @@ get_header(); ?>
             <!-- Hero Section - Cinematic Introduction -->
             <section class="impact-hero">
                 <div class="hero-background-video">
-                    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
                         <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.webm'); ?>" type="video/webm">
                         <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.mp4'); ?>" type="video/mp4">
+                        <picture>
+                            <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.mp4', '-400w.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                            <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.mp4', '-800w.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                            <source media="(max-width: 1200px)" srcset="<?php echo esc_url(str_replace('.mp4', '-1200w.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                            <source media="(max-width: 1600px)" srcset="<?php echo esc_url(str_replace('.mp4', '-1600w.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                            <img src="<?php echo esc_url(str_replace('.mp4', '.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>" alt="Impact Video Poster" loading="eager" width="1920" height="1080">
+                        </picture>
                         <!-- Fallback for browsers that don't support video -->
                         <div class="video-fallback"></div>
                     </video>
@@ -252,7 +259,11 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Skills for Life', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.webp'); ?>" alt="Skills training program">
+                                    <picture>
+                                        <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.webp', '-400w.webp', get_template_directory_uri() . '/assets/images/skills-training.webp')); ?>">
+                                        <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.webp', '-800w.webp', get_template_directory_uri() . '/assets/images/skills-training.webp')); ?>">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.webp'); ?>" alt="Skills training program" loading="lazy" width="800" height="800">
+                                    </picture>
                                 </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.', 'aetherbloom'); ?></p>
@@ -273,7 +284,11 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Sustainability Meets Inclusion', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.webp'); ?>" alt="Technology refurbishment">
+                                    <picture>
+                                        <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.webp', '-400w.webp', get_template_directory_uri() . '/assets/images/tech-refurbishment.webp')); ?>">
+                                        <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.webp', '-800w.webp', get_template_directory_uri() . '/assets/images/tech-refurbishment.webp')); ?>">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.webp'); ?>" alt="Technology refurbishment" loading="lazy" width="800" height="800">
+                                    </picture>
                                 </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Donate or sell your decommissioned laptops, headsets, and phones. We refurbish equipment for our staff and trainees, reducing e-waste while bridging the digital divide.', 'aetherbloom'); ?></p>
@@ -293,7 +308,11 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Collaborate With Us', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.webp'); ?>" alt="Community partnerships">
+                                    <picture>
+                                        <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.webp', '-400w.webp', get_template_directory_uri() . '/assets/images/community-partnerships.webp')); ?>">
+                                        <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.webp', '-800w.webp', get_template_directory_uri() . '/assets/images/community-partnerships.webp')); ?>">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.webp'); ?>" alt="Community partnerships" loading="lazy" width="800" height="800">
+                                    </picture>
                                 </div>
                                 <div class="program-description">
                                     <ul>
