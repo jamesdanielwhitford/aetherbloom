@@ -56,7 +56,7 @@ get_header(); ?>
                     <div class="mission-grid">
                         <div class="mission-card uk-business">
                             <div class="mission-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" zoomAndPan="magnify" viewBox="0 0 30 30.000001" height="64" preserveAspectRatio="xMidYMid meet" version="1.0">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" zoomAndPan="magnify" viewBox="0 0 30 30.000001" height="80" preserveAspectRatio="xMidYMid meet" version="1.0">
   <defs>
     <clipPath id="id1">
       <path d="M 2.511719 6.402344 L 27.191406 6.402344 L 27.191406 24.546875 L 2.511719 24.546875 Z M 2.511719 6.402344 " clip-rule="nonzero"/>
@@ -76,7 +76,7 @@ get_header(); ?>
                         
                         <div class="mission-card south-africa">
                             <div class="mission-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" zoomAndPan="magnify" viewBox="0 0 30 30.000001" height="64" preserveAspectRatio="xMidYMid meet" version="1.0">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" zoomAndPan="magnify" viewBox="0 0 30 30.000001" height="80" preserveAspectRatio="xMidYMid meet" version="1.0">
   <defs>
     <clipPath id="id1">
       <path d="M 7 6.984375 L 26.925781 6.984375 L 26.925781 13 L 7 13 Z M 7 6.984375 " clip-rule="nonzero"/>
