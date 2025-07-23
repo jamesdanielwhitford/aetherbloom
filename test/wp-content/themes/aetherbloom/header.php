@@ -25,8 +25,30 @@ document.addEventListener('DOMContentLoaded', function() {
   document.documentElement.classList.add('loaded');
 });
 </script>
-<!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/145903429.js"></script>
+<!-- HubSpot Embed Code -->
+<script>
+// Load HubSpot script after page is fully loaded
+window.addEventListener('load', function() {
+    var hs = document.createElement('script');
+    hs.type = 'text/javascript';
+    hs.id = 'hs-script-loader';
+    hs.async = true;
+    hs.defer = true;
+    hs.src = '//js-eu1.hs-scripts.com/145903429.js';
+    document.head.appendChild(hs);
+});
+</script>
+<style>
+/* Reserve space for HubSpot iframe to prevent layout shift */
+#hubspot-messages-iframe-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 400px !important; /* Adjust as needed */
+    height: 400px !important; /* Adjust as needed */
+    contain: layout style paint;
+}
+</style>
 <!-- End of HubSpot Embed Code -->
 </head>
 

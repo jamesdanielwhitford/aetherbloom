@@ -57,12 +57,17 @@ $cards_data = array(
             style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1);"
           >
             <div class="why-card-image">
-              <img 
-                src="<?php echo esc_url($card['image']); ?>" 
-                alt="<?php echo esc_attr($card['title']); ?>"
-                class="why-card-icon"
-                loading="lazy"
-              />
+              <picture>
+                <source media="(max-width: 400px)" srcset="<?php echo esc_url(str_replace('.webp', '-400w.webp', $card['image'])); ?>">
+                <source media="(max-width: 800px)" srcset="<?php echo esc_url(str_replace('.webp', '-800w.webp', $card['image'])); ?>">
+                <img 
+                  src="<?php echo esc_url($card['image']); ?>" 
+                  alt="<?php echo esc_attr($card['title']); ?>"
+                  class="why-card-icon"
+                  loading="lazy"
+                  width="100" height="100"
+                />
+              </picture>
             </div>
             <div class="why-card-body">
               <h3 class="why-card-title"><?php echo esc_html($card['title']); ?></h3>
