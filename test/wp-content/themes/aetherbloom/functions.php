@@ -75,6 +75,13 @@ function aetherbloom_scripts() {
 
     // Component CSS files - PROPERLY ORDERED
     wp_enqueue_style(
+        'aetherbloom-accessibility',
+        get_template_directory_uri() . '/css/accessibility.css',
+        array('aetherbloom-style'),
+        $theme_version
+    );
+
+    wp_enqueue_style(
         'aetherbloom-navbar',
         get_template_directory_uri() . '/css/navbar.min.css',
         array('aetherbloom-style'),

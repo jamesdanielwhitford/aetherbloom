@@ -1,0 +1,47 @@
+
+/* Accessibility styles for skip links and screen reader text */
+
+.skip-link,
+.screen-reader-text {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    word-wrap: normal !important;
+}
+
+.skip-link:focus,
+.screen-reader-text:focus {
+    background-color: #fff !important;
+    color: #d84e28 !important;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6) !important;
+    display: block !important;
+    font-size: 1.125rem !important; /* 18px */
+    font-weight: 700 !important;
+    height: auto !important;
+    left: 50% !important;
+    line-height: normal !important;
+    padding: 0.9375rem 1.5rem !important; /* 15px 24px */
+    text-decoration: none !important;
+    top: 0.625rem !important; /* 10px */
+    -webkit-transform: translateX(-50%) !important;
+    -ms-transform: translateX(-50%) !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    z-index: 999999 !important;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.skip-link:hover,
+.screen-reader-text:hover {
+    background-color: #f0f0f0 !important;
+    color: #c04020 !important;
+}
