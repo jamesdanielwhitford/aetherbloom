@@ -61,9 +61,8 @@ get_header(); ?>
                     <div class="benefits-grid">
                         <div class="benefit-card">
                             <div class="benefit-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 6.253V19L21 12L12 6.253Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 6.253V19L3 12L12 6.253Z" stroke="currentColor" stroke-width="2"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"/>
                                 </svg>
                             </div>
                             <h3><?php esc_html_e('UK Compliance Training', 'aetherbloom'); ?></h3>
