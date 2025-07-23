@@ -262,25 +262,8 @@ function aetherbloom_scripts() {
 
     if (is_page('services')) {
         wp_enqueue_script(
-            'aetherbloom-services-page',
-            get_template_directory_uri() . '/js/services-page.min.js',
-            array(),
-            $theme_version,
-            true
-        );
-        wp_enqueue_script(
             'aetherbloom-cta',
             get_template_directory_uri() . '/js/cta.min.js',
-            array(),
-            $theme_version,
-            true
-        );
-    }
-
-    if (is_page('impact')) {
-        wp_enqueue_script(
-            'aetherbloom-impact',
-            get_template_directory_uri() . '/js/impact.min.js',
             array(),
             $theme_version,
             true
@@ -298,17 +281,6 @@ function aetherbloom_scripts() {
         wp_enqueue_script(
             'aetherbloom-cta',
             get_template_directory_uri() . '/js/cta.min.js',
-            array(),
-            $theme_version,
-            true
-        );
-    }
-
-    // Careers page JavaScript (if needed)
-    if (is_page('careers') || is_page_template('page-careers.php')) {
-        wp_enqueue_script(
-            'aetherbloom-careers',
-            get_template_directory_uri() . '/js/careers.min.js',
             array(),
             $theme_version,
             true
