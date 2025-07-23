@@ -79,7 +79,7 @@ get_header(); ?>
                             <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions whilst driving real impact across borders.', 'aetherbloom'); ?></p>
                         </div>
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ethical-impact.webp'); ?>" alt="<?php esc_attr_e('Our Mission Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/mission.webp'); ?>" alt="<?php esc_attr_e('Our Mission Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ get_header(); ?>
                     </div>
                     <div class="image-content-layout">
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.webp'); ?>" alt="<?php esc_attr_e('Our Vision Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/vision.webp'); ?>" alt="<?php esc_attr_e('Our Vision Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                         <div class="content-card glassmorphism-card">
                             <p><?php esc_html_e('To become the leading bridge between UK businesses and exceptional global talent, recognised for our ethical approach, innovative solutions, and positive impact on communities. We envision a future where geographical boundaries no longer limit access to skilled professionals, and where every partnership creates meaningful opportunities for growth and development on both sides.', 'aetherbloom'); ?></p>
@@ -134,7 +134,7 @@ get_header(); ?>
                             </div>
                         </div>
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-workspace.webp'); ?>" alt="<?php esc_attr_e('Our Values Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/values.webp'); ?>" alt="<?php esc_attr_e('Our Values Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                     </div>
                 </div>
