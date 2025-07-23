@@ -377,7 +377,7 @@
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .founder-title {
@@ -653,5 +653,24 @@
   
   .value-item {
     padding: 1.5rem;
+  }
+}
+
+/* Video Switching for Responsive Design */
+.hero-video.desktop-video {
+  display: block;
+}
+
+.hero-video.mobile-video {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero-video.desktop-video {
+    display: none;
+  }
+  
+  .hero-video.mobile-video {
+    display: block;
   }
 }

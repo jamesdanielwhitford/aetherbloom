@@ -523,3 +523,26 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Video Switching for Responsive Design */
+.fixed-video.desktop-video,
+.hero-video.desktop-video {
+  display: block;
+}
+
+.fixed-video.mobile-video,
+.hero-video.mobile-video {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .fixed-video.desktop-video,
+  .hero-video.desktop-video {
+    display: none;
+  }
+  
+  .fixed-video.mobile-video,
+  .hero-video.mobile-video {
+    display: block;
+  }
+}
