@@ -127,7 +127,7 @@
   background: linear-gradient(135deg, 
     rgba(216, 78, 40, 0), 
     rgba(255, 147, 64, 0)), 
-    url('../assets/images/sa-women-workspace.jpg') center/cover;
+    url('../assets/images/sa-women-workspace.webp') center/cover;
   background-attachment: fixed;
 }
 
@@ -317,7 +317,7 @@
   text-align: center;
   margin-top: 4rem;
   padding: 3rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/human-cost.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/human-cost.webp') center/cover no-repeat;
   border-radius: 16px;
   backdrop-filter: blur(10px);
 }
@@ -992,7 +992,7 @@
 /* Footer Tagline Section */
 .impact-footer-tagline {
   padding: 100px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/transform.jpg') center 40%/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/transform.webp') center 40%/cover no-repeat;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem;

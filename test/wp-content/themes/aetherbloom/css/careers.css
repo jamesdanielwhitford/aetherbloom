@@ -122,8 +122,7 @@
   bottom: 0;
   background: linear-gradient(135deg,
     rgba(216, 78, 40, 0),
-    rgba(255, 147, 64, 0)),
-    url('../assets/images/careers-hero-bg.png') center/cover;
+    rgba(255, 147, 64, 0));
   background-attachment: fixed;
 }
 

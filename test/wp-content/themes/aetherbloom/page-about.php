@@ -29,11 +29,30 @@ get_header(); ?>
             <!-- Hero Section - Full-width video background with story overlay -->
             <section class="about-hero-section">
                 <div class="hero-background-video">
-                    <video class="hero-video" autoplay muted loop playsinline poster="<?php echo esc_url(str_replace('.mp4', '.jpg', get_template_directory_uri() . '/assets/videos/about.mp4')); ?>">
+                    <!-- Desktop Video (WebM preferred, then MP4 fallback) -->
+                    <video class="hero-video desktop-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', get_template_directory_uri() . '/assets/videos/about.mp4')); ?>">
+                        <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/about.webm'); ?>" type="video/webm">
                         <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/about.mp4'); ?>" type="video/mp4">
-                        <!-- Fallback for browsers that don't support video -->
                         <div class="video-fallback"></div>
                     </video>
+
+                    <!-- Mobile Video (MP4 only for smaller size) -->
+                    <video class="hero-video mobile-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', get_template_directory_uri() . '/assets/videos/about.mp4')); ?>">
+                        <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/about.mp4'); ?>" type="video/mp4">
+                        <div class="video-fallback"></div>
+                    </video>
+                    <!--
+                        IMPORTANT: Add CSS media queries to your stylesheet (e.g., about.css)
+                        to show/hide 'desktop-video' and 'mobile-video' based on screen size.
+                        Example:
+                        .hero-video.desktop-video { display: block; }
+                        .hero-video.mobile-video { display: none; }
+
+                        @media (max-width: 768px) { /* Adjust breakpoint as needed */
+                            .hero-video.desktop-video { display: none; }
+                            .hero-video.mobile-video { display: block; }
+                        }
+                    -->
                     <div class="hero-video-overlay"></div>
                 </div>
                 <div class="hero-overlay">
@@ -60,7 +79,7 @@ get_header(); ?>
                             <p><?php esc_html_e('Aetherbloom\'s mission is to strategically connect UK businesses with highly skilled professionals in South Africa, delivering agile, high-quality outsourcing solutions that are ethically driven, cost-effective and empower individuals through meaningful economic opportunities and professional development. By combining rigorous recruitment and UK-standard training with social responsibility, we empower businesses to scale their support functions whilst driving real impact across borders.', 'aetherbloom'); ?></p>
                         </div>
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ethical-impact.png'); ?>" alt="<?php esc_attr_e('Our Mission Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ethical-impact.webp'); ?>" alt="<?php esc_attr_e('Our Mission Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                     </div>
                 </div>
@@ -74,7 +93,7 @@ get_header(); ?>
                     </div>
                     <div class="image-content-layout">
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="<?php esc_attr_e('Our Vision Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.webp'); ?>" alt="<?php esc_attr_e('Our Vision Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                         <div class="content-card glassmorphism-card">
                             <p><?php esc_html_e('To become the leading bridge between UK businesses and exceptional global talent, recognised for our ethical approach, innovative solutions, and positive impact on communities. We envision a future where geographical boundaries no longer limit access to skilled professionals, and where every partnership creates meaningful opportunities for growth and development on both sides.', 'aetherbloom'); ?></p>
@@ -115,7 +134,7 @@ get_header(); ?>
                             </div>
                         </div>
                         <div class="image-container">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-workspace.jpg'); ?>" alt="<?php esc_attr_e('Our Values Image', 'aetherbloom'); ?>" class="section-image">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sa-women-workspace.webp'); ?>" alt="<?php esc_attr_e('Our Values Image', 'aetherbloom'); ?>" class="section-image">
                         </div>
                     </div>
                 </div>
@@ -139,7 +158,7 @@ get_header(); ?>
                                         <p class="founder-location"><?php esc_html_e('Cape Town, South Africa', 'aetherbloom'); ?></p>
                                     </div>
                                     <div class="founder-image">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-headshot.jpg'); ?>" alt="<?php esc_attr_e('Della - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/della-headshot.webp'); ?>" alt="<?php esc_attr_e('Della - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
                                     </div>
                                 </div>
                                 <div class="founder-tagline">
@@ -160,7 +179,7 @@ get_header(); ?>
                                         <p class="founder-location"><?php esc_html_e('London, UK', 'aetherbloom'); ?></p>
                                     </div>
                                     <div class="founder-image">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-headshot.jpg'); ?>" alt="<?php esc_attr_e('Grace - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/grace-headshot.webp'); ?>" alt="<?php esc_attr_e('Grace - Co-founder', 'aetherbloom'); ?>" class="founder-photo">
                                     </div>
                                 </div>
                                 <div class="founder-tagline">

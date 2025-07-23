@@ -2,7 +2,7 @@
 // File: /wp-content/themes/aetherbloom/template-parts/services.php
 
 // Get custom field values with defaults
-$services_bg_image = get_theme_mod('services_bg_image', get_template_directory_uri() . '/assets/images/services-bg.jpg');
+$services_bg_image = get_theme_mod('services_bg_image', get_template_directory_uri() . '/assets/images/services-bg.webp');
 
 // Default services data - can be made customizable through WordPress admin
 $services_data = array(

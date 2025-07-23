@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <?php the_custom_logo(); ?>
                         <?php else : ?>
                             <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link" rel="home">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="brand-icon">
+                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/logo.webp" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo-symbol">
                                 <span class="brand-name"><?php bloginfo('name'); ?></span>
                             </a>
                         <?php endif; ?>

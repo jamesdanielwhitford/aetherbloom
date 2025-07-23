@@ -29,7 +29,8 @@ get_header(); ?>
             <!-- Hero Section - Cinematic Introduction -->
             <section class="impact-hero">
                 <div class="hero-background-video">
-                    <video class="hero-video" autoplay muted loop playsinline poster="<?php echo esc_url(str_replace('.mp4', '.jpg', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', get_template_directory_uri() . '/assets/videos/impact-video.mp4')); ?>">
+                        <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.webm'); ?>" type="video/webm">
                         <source src="<?php echo esc_url(get_template_directory_uri() . '/assets/videos/impact-video.mp4'); ?>" type="video/mp4">
                         <!-- Fallback for browsers that don't support video -->
                         <div class="video-fallback"></div>
@@ -186,22 +187,7 @@ get_header(); ?>
                 </div>
             </section>
 
-            <!-- Resource Download Section -->
-            <section class="resource-download-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2><?php esc_html_e('Unlock Your Potential', 'aetherbloom'); ?></h2>
-                        <p><?php esc_html_e('Download our free guide to boost your impact', 'aetherbloom'); ?></p>
-                    </div>
-                    <div class="resource-card">
-                        <h3><?php esc_html_e('The 67-Minute Advantage', 'aetherbloom'); ?></h3>
-                        <p><?php esc_html_e('Your Guide to Maximizing Productivity and Impact', 'aetherbloom'); ?></p>
-                        <a href="<?php echo esc_url(get_template_directory_uri() . '/assets/documents/The 67-Minute Advantage (Your Guide).pdf'); ?>" class="resource-btn" download>
-                            <?php esc_html_e('Download Guide', 'aetherbloom'); ?>
-                        </a>
-                    </div>
-                </div>
-            </section>
+            
 
             <!-- Aetherbloom Foundation Section -->
             <section class="foundation-section">
@@ -221,7 +207,7 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Skills for Life', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.jpg'); ?>" alt="Skills training program">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/skills-training.webp'); ?>" alt="Skills training program">
                                 </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Free 12-week programs in digital literacy, finance, and soft skills for women referred by NGOs.', 'aetherbloom'); ?></p>
@@ -242,7 +228,7 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Sustainability Meets Inclusion', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.jpg'); ?>" alt="Technology refurbishment">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tech-refurbishment.webp'); ?>" alt="Technology refurbishment">
                                 </div>
                                 <div class="program-description">
                                     <p><?php esc_html_e('Donate or sell your decommissioned laptops, headsets, and phones. We refurbish equipment for our staff and trainees, reducing e-waste while bridging the digital divide.', 'aetherbloom'); ?></p>
@@ -262,7 +248,7 @@ get_header(); ?>
                                     <h4><?php esc_html_e('Collaborate With Us', 'aetherbloom'); ?></h4>
                                 </div>
                                 <div class="program-image">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.jpg'); ?>" alt="Community partnerships">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/community-partnerships.webp'); ?>" alt="Community partnerships">
                                 </div>
                                 <div class="program-description">
                                     <ul>

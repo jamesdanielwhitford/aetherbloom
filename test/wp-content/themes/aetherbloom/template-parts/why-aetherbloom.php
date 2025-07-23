@@ -11,25 +11,25 @@ $cards_data = array(
         'id' => 1,
         'title' => get_theme_mod('why_card_1_title', 'High Quality Recruitment'),
         'content' => get_theme_mod('why_card_1_content', 'Rigorous vetting process ensures only top-tier talent joins your team. Every candidate undergoes comprehensive skills assessment and cultural fit evaluation.'),
-        'image' => get_theme_mod('why_card_1_image', get_template_directory_uri() . '/assets/images/quality-recruitment.png')
+        'image' => get_theme_mod('why_card_1_image', get_template_directory_uri() . '/assets/images/quality-recruitment.webp')
     ),
     array(
         'id' => 2,
         'title' => get_theme_mod('why_card_2_title', 'Transparent Pricing'),
         'content' => get_theme_mod('why_card_2_content', 'No hidden costs or surprise fees. Clear, upfront pricing structure with detailed breakdown of all services and costs included in your package.'),
-        'image' => get_theme_mod('why_card_2_image', get_template_directory_uri() . '/assets/images/transparent-pricing.jpg')
+        'image' => get_theme_mod('why_card_2_image', get_template_directory_uri() . '/assets/images/transparent-pricing.webp')
     ),
     array(
         'id' => 3,
         'title' => get_theme_mod('why_card_3_title', 'Ethical Impact'),
         'content' => get_theme_mod('why_card_3_content', 'Supporting fair employment practices and sustainable business growth. We create meaningful career opportunities while delivering exceptional value.'),
-        'image' => get_theme_mod('why_card_3_image', get_template_directory_uri() . '/assets/images/ethical-impact.png')
+        'image' => get_theme_mod('why_card_3_image', get_template_directory_uri() . '/assets/images/ethical-impact.webp')
     ),
     array(
         'id' => 4,
         'title' => get_theme_mod('why_card_4_title', 'GDPR Compliance'),
         'content' => get_theme_mod('why_card_4_content', 'Full adherence to UK and EU data protection regulations. Comprehensive security protocols ensure your data remains protected and compliant.'),
-        'image' => get_theme_mod('why_card_4_image', get_template_directory_uri() . '/assets/images/gdpr-compliance.jpg')
+        'image' => get_theme_mod('why_card_4_image', get_template_directory_uri() . '/assets/images/gdpr-compliance.webp')
     )
 );
 ?>

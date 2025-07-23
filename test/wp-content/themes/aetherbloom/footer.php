@@ -12,7 +12,7 @@
                     <div class="brand-header">
                         <div class="logo-container">
                             <a href="<?php echo esc_url(home_url('/')); ?>" class="logo">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="logo-symbol">
+                                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/logo-footer.webp" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="brand-icon">
                                 <span class="logo-text"><?php bloginfo('name'); ?></span>
                             </a>
                         </div>

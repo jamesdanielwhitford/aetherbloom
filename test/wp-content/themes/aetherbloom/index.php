@@ -31,10 +31,30 @@ get_header(); ?>
             $hero_video = get_template_directory_uri() . '/assets/videos/hero-video.mp4';
         }
         ?>
-        <video class="fixed-video" autoplay muted loop playsinline poster="<?php echo esc_url(str_replace('.mp4', '.jpg', $hero_video)); ?>">
+        <!-- Desktop Video (WebM preferred, then MP4 fallback) -->
+        <video class="fixed-video desktop-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>">
+            <source src="<?php echo esc_url(str_replace('.mp4', '.webm', $hero_video)); ?>" type="video/webm">
             <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
             <div class="video-fallback"></div>
         </video>
+
+        <!-- Mobile Video (MP4 only for smaller size) -->
+        <video class="fixed-video mobile-video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url(str_replace('.mp4', '.webp', $hero_video)); ?>">
+            <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
+            <div class="video-fallback"></div>
+        </video>
+        <!--
+            IMPORTANT: Add CSS media queries to your stylesheet (e.g., style.css)
+            to show/hide 'desktop-video' and 'mobile-video' based on screen size.
+            Example:
+            .fixed-video.desktop-video { display: block; }
+            .fixed-video.mobile-video { display: none; }
+
+            @media (max-width: 768px) { /* Adjust breakpoint as needed */
+                .fixed-video.desktop-video { display: none; }
+                .fixed-video.mobile-video { display: block; }
+            }
+        -->
     </div>
     
     <main class="site-main" id="main">
