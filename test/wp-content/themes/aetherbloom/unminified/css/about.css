@@ -367,7 +367,6 @@
   flex-shrink: 0; /* Prevent shrinking */
   background-color: white;
   display: flex; /* Use flexbox for centering */
-  align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
 }
 

@@ -173,7 +173,7 @@ get_header(); ?>
                                     <div class="founder-details">
                                         <h3 class="founder-name"><?php esc_html_e('Della', 'aetherbloom'); ?></h3>
                                         <p class="founder-title"><?php esc_html_e('Co-founder', 'aetherbloom'); ?></p>
-                                        <p class="founder-location"><?php esc_html_e('Cape Town, South Africa', 'aetherbloom'); ?></p>
+                                        <p class="founder-location"><?php esc_html_e('Johannesburg, South Africa', 'aetherbloom'); ?></p>
                                     </div>
                                     <div class="founder-image">
                                         <picture>
