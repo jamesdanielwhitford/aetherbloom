@@ -212,6 +212,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  touch-action: manipulation; /* Prevents double-tap zoom and delays */
+  user-select: none; /* Prevents text selection on tap */
+  -webkit-touch-callout: none; /* Disables callout on iOS */
 }
 
 .dropdown-trigger:hover {

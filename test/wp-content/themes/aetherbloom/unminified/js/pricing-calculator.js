@@ -130,44 +130,69 @@ function updateSectionVisibility() {
 
 // Initialize dropdown functionality
 function initDropdowns() {
+    let touchHandled = false; // Flag to prevent click after touchend
+
+    // Helper function to handle dropdown toggle
+    const handleDropdownToggle = (toggleFn) => (e) => {
+        if (e.type === 'touchend') {
+            touchHandled = true;
+            setTimeout(() => { touchHandled = false; }, 500); // Reset flag after a short delay
+        } else if (e.type === 'click' && touchHandled) {
+            return; // Prevent click if touch already handled
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFn();
+    };
+
     // Role dropdown
     if (pricingElements.roleDropdownTrigger) {
-        pricingElements.roleDropdownTrigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleRoleDropdown();
-        });
+        pricingElements.roleDropdownTrigger.addEventListener('click', handleDropdownToggle(toggleRoleDropdown));
+        pricingElements.roleDropdownTrigger.addEventListener('touchend', handleDropdownToggle(toggleRoleDropdown));
     }
     
     // Role options
     pricingElements.roleOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
+        const handleRoleOptionSelect = (e) => {
+            if (e.type === 'touchend') {
+                touchHandled = true;
+                setTimeout(() => { touchHandled = false; }, 500);
+            } else if (e.type === 'click' && touchHandled) {
+                return;
+            }
             e.preventDefault();
             e.stopPropagation();
             const roleName = e.currentTarget.dataset.role;
             selectRole(roleName);
             closeRoleDropdown();
-        });
+        };
+        option.addEventListener('click', handleRoleOptionSelect);
+        option.addEventListener('touchend', handleRoleOptionSelect);
     });
     
     // Tier dropdown
     if (pricingElements.tierDropdownTrigger) {
-        pricingElements.tierDropdownTrigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleTierDropdown();
-        });
+        pricingElements.tierDropdownTrigger.addEventListener('click', handleDropdownToggle(toggleTierDropdown));
+        pricingElements.tierDropdownTrigger.addEventListener('touchend', handleDropdownToggle(toggleTierDropdown));
     }
     
     // Tier options
     pricingElements.tierOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
+        const handleTierOptionSelect = (e) => {
+            if (e.type === 'touchend') {
+                touchHandled = true;
+                setTimeout(() => { touchHandled = false; }, 500);
+            } else if (e.type === 'click' && touchHandled) {
+                return;
+            }
             e.preventDefault();
             e.stopPropagation();
             const tierId = e.currentTarget.dataset.tier;
             selectTier(tierId);
             closeTierDropdown();
-        });
+        };
+        option.addEventListener('click', handleTierOptionSelect);
+        option.addEventListener('touchend', handleTierOptionSelect);
     });
 }
 
