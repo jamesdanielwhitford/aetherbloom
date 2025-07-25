@@ -130,6 +130,13 @@ function aetherbloom_scripts() {
         $theme_version
     );
 
+    wp_enqueue_style(
+        'aetherbloom-cookie-banner',
+        get_template_directory_uri() . '/css/cookie-banner.min.css',
+        array('aetherbloom-style'),
+        $theme_version
+    );
+
     // Page-specific CSS files
     if (is_page('about')) {
         wp_enqueue_style(

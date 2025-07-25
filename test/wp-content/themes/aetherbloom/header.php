@@ -25,35 +25,107 @@ document.addEventListener('DOMContentLoaded', function() {
   document.documentElement.classList.add('loaded');
 });
 </script>
-<!-- HubSpot Embed Code -->
-<script>
-// Load HubSpot script after page is fully loaded
-window.addEventListener('load', function() {
-    var hs = document.createElement('script');
-    hs.type = 'text/javascript';
-    hs.id = 'hs-script-loader';
-    hs.async = true;
-    hs.defer = true;
-    hs.src = '//js-eu1.hs-scripts.com/145903429.js';
-    document.head.appendChild(hs);
-});
-</script>
-<style>
-/* Reserve space for HubSpot iframe to prevent layout shift */
-#hubspot-messages-iframe-container {
-    position: fixed !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    width: 400px !important; /* Adjust as needed */
-    height: 400px !important; /* Adjust as needed */
-    contain: layout style paint;
-}
-</style>
-<!-- End of HubSpot Embed Code -->
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<div id="cookie-consent-banner" class="cookie-consent-banner" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
+    <div class="cookie-consent-content">
+        <p id="cookie-consent-description" class="cookie-consent-text">
+            <?php esc_html_e('We use cookies to improve your experience and for marketing purposes. For more details, please see our', 'aetherbloom'); ?>
+            <a href="<?php echo esc_url(get_permalink(get_page_by_path('privacy-policy'))); ?>"><?php esc_html_e('privacy policy', 'aetherbloom'); ?></a>.
+        </p>
+        <div class="cookie-consent-buttons">
+            <button id="cookie-consent-decline" class="cookie-consent-button decline"><?php esc_html_e('Decline', 'aetherbloom'); ?></button>
+            <button id="cookie-consent-accept" class="cookie-consent-button accept"><?php esc_html_e('Accept', 'aetherbloom'); ?></button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-consent-accept');
+    const declineBtn = document.getElementById('cookie-consent-decline');
+    const consentKey = 'aetherbloom_cookie_consent';
+    const cookieVersion = '1.0';
+
+    function showBanner() {
+        banner.setAttribute('aria-hidden', 'false');
+        banner.classList.add('show');
+        acceptBtn.focus();
+    }
+
+    function hideBanner() {
+        banner.classList.remove('show');
+        banner.setAttribute('aria-hidden', 'true');
+    }
+
+    function loadHubSpot() {
+        var hs = document.createElement('script');
+        hs.type = 'text/javascript';
+        hs.id = 'hs-script-loader';
+        hs.async = true;
+        hs.defer = true;
+        hs.src = '//js-eu1.hs-scripts.com/145903429.js';
+        document.head.appendChild(hs);
+    }
+
+    function checkConsent() {
+        const consent = localStorage.getItem(consentKey);
+        if (!consent) {
+            showBanner();
+            return;
+        }
+
+        try {
+            const { version, status, timestamp } = JSON.parse(consent);
+            if (version !== cookieVersion) {
+                localStorage.removeItem(consentKey);
+                showBanner();
+                return;
+            }
+
+            if (status === 'accepted') {
+                loadHubSpot();
+            }
+        } catch (e) {
+            localStorage.removeItem(consentKey);
+            showBanner();
+        }
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        const consent = {
+            version: cookieVersion,
+            status: 'accepted',
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem(consentKey, JSON.stringify(consent));
+        hideBanner();
+        loadHubSpot();
+    });
+
+    declineBtn.addEventListener('click', () => {
+        const consent = {
+            version: cookieVersion,
+            status: 'declined',
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem(consentKey, JSON.stringify(consent));
+        hideBanner();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && banner.classList.contains('show')) {
+            hideBanner();
+        }
+    });
+
+    checkConsent();
+});
+</script>
 
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'aetherbloom'); ?></a>
