@@ -219,6 +219,52 @@ get_header(); ?>
                     </div>
                 </div>
             </section>
+            <!-- End Founders Section -->
+
+<!-- Strategic Allies Section -->
+<section class="strategic-allies-section">
+    <div class="container">
+        <div class="section-header">
+            <h2><?php esc_html_e('Our Strategic Allies', 'aetherbloom'); ?></h2>
+            <p><?php esc_html_e('Expanding Our Capabilities Through Trusted Expertise', 'aetherbloom'); ?></p>
+        </div>
+        
+        <div class="allies-grid">
+            <!-- James Daniel Witford -->
+            <div class="ally-card">
+                <div class="ally-image">JW</div>
+                <h3 class="ally-name"><?php esc_html_e('James Daniel Witford', 'aetherbloom'); ?></h3>
+                <p class="ally-role"><?php esc_html_e('Software Developer & UX Specialist', 'aetherbloom'); ?></p>
+                <p class="ally-quote"><?php esc_html_e('"Code. Design. Strategy. James brings it all together to power Aetherbloom\'s future with seamless, user-friendly tech."', 'aetherbloom'); ?></p>
+            </div>
+
+            <!-- Sally Jones -->
+            <div class="ally-card">
+                <div class="ally-image">SJ</div>
+                <h3 class="ally-name"><?php esc_html_e('Sally Jones', 'aetherbloom'); ?></h3>
+                <p class="ally-role"><?php esc_html_e('Business Strategy Advisor', 'aetherbloom'); ?></p>
+                <p class="ally-quote"><?php esc_html_e('"Architecting scalable cross-continent growth frameworks for UK-South Africa alignment."', 'aetherbloom'); ?></p>
+            </div>
+
+            <!-- Gugulethu Motsei -->
+            <div class="ally-card">
+                <div class="ally-image">GM</div>
+                <h3 class="ally-name"><?php esc_html_e('Gugulethu Motsei', 'aetherbloom'); ?></h3>
+                <p class="ally-role"><?php esc_html_e('International Finance Manager', 'aetherbloom'); ?></p>
+                <p class="ally-quote"><?php esc_html_e('"Navigating currency, tax, and compliance for seamless UK-SA financial operations."', 'aetherbloom'); ?></p>
+            </div>
+
+            <!-- Aaron Hayle -->
+            <div class="ally-card">
+                <div class="ally-image">AH</div>
+                <h3 class="ally-name"><?php esc_html_e('Aaron Hayle', 'aetherbloom'); ?></h3>
+                <p class="ally-role"><?php esc_html_e('Business Coach & Leadership Consultant', 'aetherbloom'); ?></p>
+                <p class="ally-quote"><?php esc_html_e('"Optimising team resilience and performance in hybrid UK/SA workforce models."', 'aetherbloom'); ?></p>
+            </div>
+        </div>
+    </div>
+</section>
+
             <?php get_footer(); ?>
 
         </div>
