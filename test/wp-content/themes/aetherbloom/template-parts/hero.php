@@ -4,7 +4,7 @@
 // Get custom field values with defaults
 $hero_title_line1 = get_theme_mod('hero_title_line1', 'Your Business');
 $hero_animated_texts = get_theme_mod('hero_animated_texts', 'Transformed.,Empowered.,in Full Bloom.');
-$hero_description = get_theme_mod('hero_description', 'Scale your operations with expertly-sourced South African professionals trained to UK standards. Cut costs by 40%+ while scaling with confidence.');
+$hero_description = get_theme_mod('hero_description', 'Scale with Confidence. Exceptional South African Talent, Trained to UK Standards and Ethically Hired.');
 $hero_learn_more_text = get_theme_mod('hero_learn_more_text', 'Learn More');
 $hero_pricing_text = get_theme_mod('hero_pricing_text', 'See our Pricing');
 
