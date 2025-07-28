@@ -308,9 +308,20 @@ function selectRole(roleName) {
             option.classList.remove('selected');
         }
     });
-    
-    // Recalculate costs
-    updateCalculations();
+
+    // Link specific roles to service tiers
+    const roleTierLinks = {
+        'Admin Assistant': 'growth',
+        'Customer Service Representative': 'enterprise',
+        'Sales Support Coordinator': 'engagement'
+    };
+
+    if (roleTierLinks[roleName]) {
+        selectTier(roleTierLinks[roleName]);
+    } else {
+        // Recalculate costs for non-linked roles
+        updateCalculations();
+    }
 }
 
 function selectTier(tierId) {
