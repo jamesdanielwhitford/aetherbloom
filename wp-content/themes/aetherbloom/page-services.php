@@ -203,7 +203,7 @@ get_header(); ?>
                                 <h3 class="tier-name">Reception <br/>Tier</h3>
                                 <div class="tier-pricing">
                                     <span class="price">£12/hr</span>
-                                    <span class="period">20hrs/month</span>
+                                    <span class="period">30hrs/month</span>
                                 </div>
                                 <p class="tier-ideal">Ideal for: Small businesses needing a friendly voice on the line</p>
                             </div>
