@@ -196,6 +196,16 @@ function aetherbloom_scripts() {
         );
     }
 
+    // Privacy policy page CSS
+    if (is_page('privacy-policy')) {
+        wp_enqueue_style(
+            'aetherbloom-privacy-policy',
+            get_template_directory_uri() . '/css/privacy-policy.min.css',
+            array('aetherbloom-style'),
+            $theme_version
+        );
+    }
+
     // JavaScript files - Load navbar on all pages
     wp_enqueue_script(
         'aetherbloom-navbar',
