@@ -115,6 +115,9 @@ function aetherbloom_scripts() {
     if (is_page('privacy-policy')) {
         wp_enqueue_style('aetherbloom-privacy-policy', get_template_directory_uri() . '/css/privacy-policy.min.css', array('aetherbloom-style'), aetherbloom_get_file_version('/css/privacy-policy.min.css'));
     }
+    if (is_404()) {
+        wp_enqueue_style('aetherbloom-404', get_template_directory_uri() . '/css/404.min.css', array('aetherbloom-style'), aetherbloom_get_file_version('/css/404.min.css'));
+    }
 
     // JavaScript files
     wp_enqueue_script('aetherbloom-navbar', get_template_directory_uri() . '/js/navbar.min.js', array(), aetherbloom_get_file_version('/js/navbar.min.js'), true);
@@ -138,6 +141,7 @@ function aetherbloom_scripts() {
     }
     if (is_page('services')) {
         wp_enqueue_script('aetherbloom-cta', get_template_directory_uri() . '/js/cta.min.js', array(), aetherbloom_get_file_version('/js/cta.min.js'), true);
+        wp_enqueue_script('aetherbloom-services-page', get_template_directory_uri() . '/js/services-page.min.js', array(), aetherbloom_get_file_version('/js/services-page.min.js'), true);
     }
     if (is_page('contact')) {
         wp_enqueue_script('aetherbloom-contact', get_template_directory_uri() . '/js/contact.min.js', array(), aetherbloom_get_file_version('/js/contact.min.js'), true);
@@ -448,7 +452,8 @@ function aetherbloom_defer_scripts($tag, $handle, $src) {
         'aetherbloom-cta',
         'aetherbloom-about',
         'aetherbloom-contact',
-        'aetherbloom-careers'
+        'aetherbloom-careers',
+        'aetherbloom-services-page'
     );
     
     if (in_array($handle, $defer_scripts)) {
@@ -519,6 +524,67 @@ function aetherbloom_customize_register($wp_customize) {
         'label' => __('Calendly URL', 'aetherbloom'),
         'section' => 'aetherbloom_options',
         'type' => 'url',
+    ));
+    
+    // Add Hero Section
+    $wp_customize->add_section('aetherbloom_hero', array(
+        'title' => __('Hero Section', 'aetherbloom'),
+        'priority' => 35,
+    ));
+    
+    // Hero Title Line 1
+    $wp_customize->add_setting('hero_title_line1', array(
+        'default' => 'Your Business',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('hero_title_line1', array(
+        'label' => __('Hero Title (First Line)', 'aetherbloom'),
+        'section' => 'aetherbloom_hero',
+        'type' => 'text',
+    ));
+    
+    // Hero Animated Texts
+    $wp_customize->add_setting('hero_animated_texts', array(
+        'default' => 'Transformed.,Empowered.,in Full Bloom.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('hero_animated_texts', array(
+        'label' => __('Animated Text (comma separated)', 'aetherbloom'),
+        'section' => 'aetherbloom_hero',
+        'type' => 'text',
+        'description' => __('Enter words separated by commas, e.g: Transformed.,Empowered.,Successful.', 'aetherbloom'),
+    ));
+    
+    // Hero Description
+    $wp_customize->add_setting('hero_description', array(
+        'default' => 'Scale with Confidence. Exceptional South African Talent, Trained to UK Standards and Ethically Hired.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('hero_description', array(
+        'label' => __('Hero Description', 'aetherbloom'),
+        'section' => 'aetherbloom_hero',
+        'type' => 'textarea',
+    ));
+    
+    // Hero Button Texts
+    $wp_customize->add_setting('hero_learn_more_text', array(
+        'default' => 'Learn More',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('hero_learn_more_text', array(
+        'label' => __('Learn More Button Text', 'aetherbloom'),
+        'section' => 'aetherbloom_hero',
+        'type' => 'text',
+    ));
+    
+    $wp_customize->add_setting('hero_pricing_text', array(
+        'default' => 'See our Pricing',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('hero_pricing_text', array(
+        'label' => __('Pricing Button Text', 'aetherbloom'),
+        'section' => 'aetherbloom_hero',
+        'type' => 'text',
     ));
 }
 add_action('customize_register', 'aetherbloom_customize_register');

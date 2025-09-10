@@ -34,7 +34,7 @@ php.ini                 # if you keep one for dev
 # ----------------------------------------
 # Permalinks & rewrites
 # ----------------------------------------
-.htaccess
+# .htaccess
 sitemap.xml
 sitemap.xml.gz
 
@@ -65,4 +65,4 @@ dbs*.sql
 .opcache
 
 
-wp-content/themes/aetherbloom/unminified
+# wp-content/themes/aetherbloom/unminified

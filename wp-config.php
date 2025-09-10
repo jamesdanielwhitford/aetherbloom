@@ -22,7 +22,7 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-if ( $_SERVER['HTTP_HOST'] === 'localhost:8000' ) {
+if ( $_SERVER['HTTP_HOST'] === 'localhost:3000' ) {
     // 🖥️ Local development DB settings
     define( 'DB_NAME',     'wp_local' );
     define( 'DB_USER',     'root' );
@@ -100,9 +100,9 @@ define( 'WP_DEBUG_LOG',   true );
 define( 'SCRIPT_DEBUG',   true );
 
 // Tell WordPress our local URL (including port) so it stops redirecting:
-if ( $_SERVER['HTTP_HOST'] == 'localhost:8000' ) {
-    define( 'WP_HOME', 'http://localhost:8000/' );
-    define( 'WP_SITEURL', 'http://localhost:8000/' );
+if ( $_SERVER['HTTP_HOST'] == 'localhost:3000' ) {
+    define( 'WP_HOME', 'http://localhost:3000/' );
+    define( 'WP_SITEURL', 'http://localhost:3000/' );
 } else {
     define( 'WP_HOME', 'https://www.aetherbloom.co.uk/' );
     define( 'WP_SITEURL', 'https://www.aetherbloom.co.uk/' );
